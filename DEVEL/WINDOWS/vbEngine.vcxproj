@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\SRC\basetypes.h" />
+    <ClInclude Include="..\..\SRC\vbEngine.h" />
+    <ClInclude Include="..\..\SRC\raylib\camera.h" />
+    <ClInclude Include="..\..\SRC\raylib\config.h" />
+    <ClInclude Include="..\..\SRC\raylib\easings.h" />
+    <ClInclude Include="..\..\SRC\raylib\gestures.h" />
+    <ClInclude Include="..\..\SRC\raylib\gui_textbox_extended.h" />
+    <ClInclude Include="..\..\SRC\raylib\physac.h" />
+    <ClInclude Include="..\..\SRC\raylib\raudio.h" />
+    <ClInclude Include="..\..\SRC\raylib\raygui.h" />
+    <ClInclude Include="..\..\SRC\raylib\raylib.h" />
+    <ClInclude Include="..\..\SRC\raylib\raymath.h" />
+    <ClInclude Include="..\..\SRC\raylib\ricons.h" />
+    <ClInclude Include="..\..\SRC\raylib\rlgl.h" />
+    <ClInclude Include="..\..\SRC\raylib\rmem.h" />
+    <ClInclude Include="..\..\SRC\raylib\rnet.h" />
+    <ClInclude Include="..\..\SRC\raylib\utils.h" />
+    <ClInclude Include="..\..\SRC\raylib\uwp_events.h" />
+    <ClInclude Include="..\..\SRC\text\vbFont.h" />
+    <ClInclude Include="..\..\SRC\text\hb-ft.h" />
+    <ClInclude Include="..\..\SRC\text\scope_guard.h" />
+    <ClInclude Include="..\..\SRC\text\skyline_binpack.h" />
+    <ClInclude Include="..\..\SRC\text\texture_atlas.h" />
+    <ClInclude Include="..\..\SRC\text\text_render.h" />
+    <ClInclude Include="..\..\SRC\text\text_run.h" />
+    <ClInclude Include="..\..\SRC\vbErrors.h" />
+    <ClInclude Include="..\..\SRC\vbLanguage.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\json-builder.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\json.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbButton.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbCanvas.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbContainer.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbEasing.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicObject.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbAtlas.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbLivingObject.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbMessage.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbProperty.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbRenderer.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbSequence.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbImage.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
+    <ClInclude Include="vbGraphicStrctures.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\SRC\raylib\core.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\raylib\models.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\raylib\raudio.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\raylib\rglfw.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\raylib\shapes.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\raylib\text.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\raylib\textures.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\raylib\utils.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\text\vbFont.cpp" />
+    <ClCompile Include="..\..\SRC\text\hb-ft.cc" />
+    <ClCompile Include="..\..\SRC\text\skyline_binpack.cpp" />
+    <ClCompile Include="..\..\SRC\text\texture_atlas.cpp" />
+    <ClCompile Include="..\..\SRC\text\text_render.cpp" />
+    <ClCompile Include="..\..\SRC\text\text_run.cpp" />
+    <ClCompile Include="..\..\SRC\vbErrors.cpp" />
+    <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\json-builder.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\json.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbButton.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbCanvas.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbContainer.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbEasing.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbImage.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbLivingObject.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbMessage.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbProperty.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbRenderer.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSequence.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
+    <ClCompile Include="vbGraphicStrctures.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DCC81AC0-F29F-49F9-8FCD-757D005A27F0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>raylib_example_cpp</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>vbEngine</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>vbEngine</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>vbEngine</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>vbEngine</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>vbEngine</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;PLATFORM_DESKTOP;PLATFORM_DESKTOP_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\SRC\raylib\external\glfw\include\;$(ProjectDir)..\..\SRC\raylib\;$(ProjectDir)..\..\SRC\;$(ProjectDir)..\..\SRC\text\deps\alfons\;$(ProjectDir)..\..\SRC\text\deps\glm\;$(ProjectDir)..\..\SRC\text\deps\harfbuzz\src\;$(ProjectDir)..\..\SRC\text\deps\;$(ProjectDir)..\..\SRC\text\deps\icu\;$(ProjectDir)..\..\SRC\text\deps\freetype\include\;$(ProjectDir)..\..\SRC\text\;$(ProjectDir)..\..\SRC\vbMultimedia\;$(SolutionDir)..\SRC\game\GUI\;$(SolutionDir)..\SRC\game\;$(SolutionDir)..\SRC\resources\;$(SolutionDir)..\SRC\vbOmninterface\;$(SolutionDir)..\SRC\engine\;$(SolutionDir)..\SRC\statemachine\;$(SolutionDir)..\SRC\text;$(SolutionDir)..\SRC\text\deps\;$(SolutionDir)..\SRC\text\deps\harfbuzz\src;$(SolutionDir)..\SRC\text\deps\freetype\include;$(SolutionDir)..\SRC\text\deps\glm;$(SolutionDir)..\SRC\text\deps\harfbuzz\src\glad\include;$(SolutionDir)..\SRC\text\deps\icu;C:\emsdk\upstream\emscripten\system\include</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winmm.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;vcruntime.lib;psapi.lib;dlfcnWin.lib;vbEngine.lib;harfbuzz.lib;freetyped.lib;alfons.lib;icucommon.lib;linebreak.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\BIN\;$(SolutionDir)bin\$(Platform)\$(Configuration)\;$(SolutionDir)..\SRC\lib\dlfcn;$(SolutionDir)..\SRC\lib\</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.exe" "$(SolutionDir)..\BIN"
+COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.lib" "$(SolutionDir)..\BIN"
+COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.dll" "$(SolutionDir)..\BIN"
+COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.pdb" "$(SolutionDir)..\BIN"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;PLATFORM_DESKTOP;PLATFORM_DESKTOP_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\SRC\raylib\external\glfw\include\;$(ProjectDir)..\..\SRC\raylib\;$(ProjectDir)..\..\SRC\;$(ProjectDir)..\..\SRC\text\deps\alfons\;$(ProjectDir)..\..\SRC\text\deps\glm\;$(ProjectDir)..\..\SRC\text\deps\harfbuzz\src\;$(ProjectDir)..\..\SRC\text\deps\;$(ProjectDir)..\..\SRC\text\deps\icu\;$(ProjectDir)..\..\SRC\text\deps\freetype\include\;$(ProjectDir)..\..\SRC\text\;$(ProjectDir)..\..\SRC\vbMultimedia\;$(SolutionDir)..\SRC\game\;$(SolutionDir)..\SRC\resources\;$(SolutionDir)..\SRC\vbOmninterface\;$(SolutionDir)..\SRC\statemachine\;C:\Workspace\NAZIONALE/RevolverEngine\EngMic\;$(SolutionDir)..\ENGINE\SRC\;C:\Workspace\omniMich\SRC\text\deps\harfbuzz\src;C:\Workspace\omniMich\SRC\text;C:\Workspace\omniMich\SRC\text\deps\freetype\include;C:\Workspace\omniMich\SRC\text\deps\glm;C:\Workspace\omniMich\SRC\text\deps\glad\include</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winmm.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;vcruntime.lib;psapi.lib;dlfcnWin.lib;vbEngine.lib;harfbuzz.lib;freetyped.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\BIN\;$(SolutionDir)bin\$(Platform)\$(Configuration)\;$(SolutionDir)..\SRC\lib\dlfcn;$(SolutionDir)..\SRC\lib\</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\$(TargetFileName) $(SolutionDir)\..\bin\
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.lib $(SolutionDir)\..\bin
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.dll $(SolutionDir)\..\bin
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.pdb $(SolutionDir)\..\bin
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;PLATFORM_DESKTOP;PLATFORM_DESKTOPNDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\SRC\raylib\external\glfw\include\;$(ProjectDir)..\..\SRC\raylib\;$(ProjectDir)..\..\SRC\;$(ProjectDir)..\..\SRC\text\deps\alfons\;$(ProjectDir)..\..\SRC\text\deps\glm\;$(ProjectDir)..\..\SRC\text\deps\harfbuzz\src\;$(ProjectDir)..\..\SRC\text\deps\;$(ProjectDir)..\..\SRC\text\deps\icu\;$(ProjectDir)..\..\SRC\text\deps\freetype\include\;$(ProjectDir)..\..\SRC\text\;$(ProjectDir)..\..\SRC\vbMultimedia\;$(SolutionDir)..\SRC\game\;$(SolutionDir)..\SRC\resources\;$(SolutionDir)..\SRC\vbOmninterface\;$(SolutionDir)..\SRC\statemachine\;C:\Workspace\NAZIONALE/RevolverEngine\EngMic\;$(SolutionDir)..\ENGINE\SRC\</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\BIN\;$(SolutionDir)bin\$(Platform)\$(Configuration)\;$(SolutionDir)..\SRC\lib\dlfcn</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winmm.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;vbEngine.lib;dlfcnWin.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\$(TargetFileName) $(SolutionDir)\..\bin\
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.lib $(SolutionDir)\..\bin
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.dll $(SolutionDir)\..\bin
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.pdb $(SolutionDir)\..\bin
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;PLATFORM_DESKTOP;PLATFORM_DESKTOPNDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\SRC\raylib\external\glfw\include\;$(ProjectDir)..\..\SRC\raylib\;$(ProjectDir)..\..\SRC\;$(ProjectDir)..\..\SRC\text\deps\alfons\;$(ProjectDir)..\..\SRC\text\deps\glm\;$(ProjectDir)..\..\SRC\text\deps\harfbuzz\src\;$(ProjectDir)..\..\SRC\text\deps\;$(ProjectDir)..\..\SRC\text\deps\icu\;$(ProjectDir)..\..\SRC\text\deps\freetype\include\;$(ProjectDir)..\..\SRC\text\;$(ProjectDir)..\..\SRC\vbMultimedia\;$(SolutionDir)..\SRC\game\;$(SolutionDir)..\SRC\resources\;$(SolutionDir)..\SRC\vbOmninterface\;$(SolutionDir)..\SRC\statemachine\;C:\Workspace\NAZIONALE/RevolverEngine\EngMic\;$(SolutionDir)..\ENGINE\SRC\</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\BIN\;$(SolutionDir)bin\$(Platform)\$(Configuration)\;$(SolutionDir)..\SRC\lib\dlfcn</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winmm.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;vbEngine.lib;dlfcnWin.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\$(TargetFileName) $(SolutionDir)\..\bin\
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.lib $(SolutionDir)\..\bin
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.dll $(SolutionDir)\..\bin
+COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.pdb $(SolutionDir)\..\bin
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
