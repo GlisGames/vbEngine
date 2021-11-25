@@ -77,6 +77,29 @@ void vbGraphicObject::moveForward()
 		}
 	}
 }
+void vbGraphicObject::applyStyle(styleElement* prop)
+{
+	if (prop != NULL)
+	{
+		if (prop->position != NULL)
+		{
+			this->position.x = prop->position->x;
+			this->position.y = prop->position->y;
+		}
+		if (prop->size != NULL)
+		{
+			this->width = prop->size->x;
+			this->height = prop->size->y;
+		}
+		if (prop->texture != NULL && this->type == TYPE_TEXTURE)
+		{
+			vbImage* tx;
+			tx = (vbImage*)(this);
+			tx->setTexture(prop->texture);
+		}
+	}
+}
+
 void vbGraphicObject::setLayer(WORD l)
 {
 	if (this->layer != l)

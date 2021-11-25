@@ -50,16 +50,6 @@ vbContainer::~vbContainer()
 	//TODO deallocate all objects in the list?
 }
 
-//vbContainer::vbContainer(vbImageList initvbImageList, WORD width, WORD height, string name)
-//{
-//	this->init(width, height);
-//	this->name = name;
-//	//this->images = initvbImageList;
-//}
-void vbContainer::addObject(vbGraphicObject* ob)
-{
-	this->addObject(ob, "");
-}
 
 void vbContainer::removeObject(vbGraphicObject* ob)
 {
@@ -91,14 +81,9 @@ void vbContainer::resize()
 	this->height = botright.y - topleft.y;
 }
 
-void vbContainer::addObject(vbGraphicObject* ob, std::string name, WORD layer)
+void vbContainer::addObject(vbGraphicObject* ob, std::string name, BOOL applyStyle, WORD layer)
 {
 	ob->setLayer(layer);
-	this->addObject(ob, name);
-}
-
-void vbContainer::addObject(vbGraphicObject* ob, std::string name)
-{
 	ob->parentCanvas = this;
 	ob->parentList = &this->gObjects;
 	this->gObjects.push_back(ob);
@@ -106,23 +91,7 @@ void vbContainer::addObject(vbGraphicObject* ob, std::string name)
 		ob->name = name;
 	if (name == "")
 		name = ob->name;
+	if(applyStyle)
+		ob->applyStyle(pGAME->style(name));
 	this->gObjects.goMap[name] = ob;
 }
-
-//vbGraphicObject* vbContainer::getObject(const char* sname)
-//{
-//	if (this->gObjects.goMap.find(sname) != this->gObjects.goMap.end())
-//	{
-//		if (this->gObjects.goMap[sname]->type == TYPE_CONTAINER)
-//			return (vbContainer*)(this->gObjects.goMap[sname]);
-//		else if (this->gObjects.goMap[sname]->type == TYPE_TEXTURE)
-//			return (vbImage*)(this->gObjects.goMap[sname]);
-//		else if (this->gObjects.goMap[sname]->type == TYPE_SEQUENCE)
-//			return (vbSequence*)(this->gObjects.goMap[sname]);
-//		else if (this->gObjects.goMap[sname]->type == TYPE_TEXT)
-//			return (vbTextbox*)(this->gObjects.goMap[sname]);
-//		else
-//			return (this->gObjects.goMap[sname]);
-//	}
-//	return (vbGraphicObject*)NULL;
-//}

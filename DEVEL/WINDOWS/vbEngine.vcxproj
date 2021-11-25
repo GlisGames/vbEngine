@@ -63,7 +63,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
-    <ClInclude Include="vbGraphicStrctures.h" />
+    <ClInclude Include="..\..\SRC\vbStyles.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\raylib\core.c">
@@ -138,7 +138,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
-    <ClCompile Include="vbGraphicStrctures.cpp" />
+    <ClCompile Include="..\..\SRC\vbStyles.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DCC81AC0-F29F-49F9-8FCD-757D005A27F0}</ProjectGuid>

@@ -29,6 +29,7 @@
 #include "vbCanvas.h"
 #include "vbLanguage.h"
 #include "vbMessage.h"
+#include "vbStyles.h"
 
 class vbSequenceMap : public std::map<std::string, Texture2Dvector*>
 {
@@ -51,14 +52,13 @@ public:
 	Sound operator [](std::string str);
 };
 
-class vbReelsBox;
 class vbLivingObject; //forward delaration
-class vbLines;
 class vbState;
 
 class vbGame
 {
 private:
+	vbStyle *current_style;
 public:
 	vbGame() {};
 	vbContainer mainGame;
@@ -79,6 +79,9 @@ public:
 	vbSoundMap sounds;
 	vbLanguage* language;
 	LanguageList languages;
+	vbStylesMap styles;
+	styleElement* style(vbString element_name);
+	void changeStyle(vbContainer* c, vbString stylename);
 	vbTextEngine textEngine;
 
 	Vector2 gameResolution;

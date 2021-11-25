@@ -2,7 +2,6 @@
 #include "basetypes.h"
 #include "vbLivingObject.h"
 #include "vbTween.h"
-//#include "vbContainer.h"
 
 enum gObjectType
 {
@@ -31,6 +30,7 @@ enum class transformRegRule
 
 class vbContainer;
 class vbGraphicObject;
+class styleElement;
 
 class gObjectList : public std::list<vbGraphicObject*> //std::map<std::string, vbGraphicObject*>
 {
@@ -62,6 +62,7 @@ public:
 	void sendBackwards();
 	void moveForward();
 	void setLayer(WORD l);
+	void applyStyle(styleElement* prop);
 	vbTweenMap tweens;
 	vbTween* addtween(const char* name, vbTween tw) { return this->tweens.addtween(name, tw); };
 	std::string name;

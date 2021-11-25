@@ -89,9 +89,6 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbEasing.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
-    <ClInclude Include="vbGraphicStrctures.h">
-      <Filter>vbMultimedia</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\SRC\vbMultimedia\vbLivingObject.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
@@ -139,6 +136,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbMessage.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbStyles.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\raylib\core.c">
@@ -201,9 +199,6 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbEasing.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="vbGraphicStrctures.cpp">
-      <Filter>vbMultimedia</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbLivingObject.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
@@ -239,5 +234,6 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbMessage.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbStyles.cpp" />
   </ItemGroup>
 </Project>

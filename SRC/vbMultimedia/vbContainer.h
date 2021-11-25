@@ -31,9 +31,7 @@ public:
 	void setCacheFlag(BOOL cacheON);
 	void updateCache();
 	BOOL getCacheFlag();
-	void addObject(vbGraphicObject *ob);
-	void addObject(vbGraphicObject* ob, std::string name);
-	void addObject(vbGraphicObject* ob, std::string name, WORD layer);
+	void addObject(vbGraphicObject* ob, std::string name = "", BOOL applyStyle = TRUE, WORD layer = 0);
 	void removeObject(vbGraphicObject* ob);
 	void resize();
 	//vbGraphicObject* getObject(const char* sname);
