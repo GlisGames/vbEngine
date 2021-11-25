@@ -35,11 +35,11 @@ BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
 	WORD jsonlen = 0;
 	unsigned char* jsonContent = LoadFileData(filepath.c_str(), &jsonlen);
 	if (jsonContent == NULL)
-		PANIC(FormatText("CONFIG FILE NOT FOUND: %s", filepath));
+		PANIC(FormatText("CONFIG FILE NOT FOUND: %s", filepath.c_str()));
 
 	json_value* root = json_parse((json_char*)jsonContent, jsonlen);
 	if (root == NULL)
-		PANIC(FormatText("CONFIG FORMAT ERROR: %s", filepath));
+		PANIC(FormatText("CONFIG FORMAT ERROR: %s", filepath.c_str()));
 
 	if (strcmp(root->u.object.values[0].name, "style") == 0)
 	{

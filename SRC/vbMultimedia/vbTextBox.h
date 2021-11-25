@@ -176,7 +176,7 @@ public:
 	float fillPrecision = 0.2f;
 	bool wrapText = true;
 	void setText(vbString toset, vbString appendText = "");
-	vbString vbTextbox::getDictionaryText(vbString dictionaryText);
+	vbString getDictionaryText(vbString dictionaryText);
 	vbString getText();
 	//vbFont* GetFont();
 	//size_t GetGlyphCount();

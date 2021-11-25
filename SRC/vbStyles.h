@@ -9,8 +9,9 @@
 
 class vbGame;
 
-typedef struct styleElement
+class styleElement
 {
+public:
 	Vector2* position;
 	Vector2* size;
 	Texture2D* texture;
@@ -19,15 +20,14 @@ typedef struct styleElement
 class vbStyle : public map <vbString, styleElement>
 {
 public:
-	styleElement vbStyle::operator [](vbString str)
+	styleElement operator [](vbString str)
 	{
 		styleElement *ret = checkName(str);
 		if (ret == NULL)
 		{	string msg = "STYLE name '" + str + "' NOT FOUND";
 			PANIC(msg.c_str());
 		}
-		else
-			return *ret;
+		return *ret;
 	}
 
 	styleElement* checkName(vbString str)
@@ -44,7 +44,7 @@ public:
 class vbStylesMap : public map <vbString, vbStyle>
 {
 public:
-	vbStyle vbStylesMap::operator [](vbString str)
+	vbStyle operator [](vbString str)
 	{
 		vbStyle* ret = checkName(str);
 		if (ret == NULL)
