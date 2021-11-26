@@ -4,7 +4,7 @@
 #include <queue>
 //#define DEBUG_BOX_ALL
 BOOL clickDone = FALSE;
-void _recursiveUpdate(vbContainer* c)
+void _recursiveUpdate(vbContainer* c, BOOL visible)
 {
 	gObjectList* objList = NULL;
 	objList = &c->gObjects;
@@ -14,9 +14,9 @@ void _recursiveUpdate(vbContainer* c)
 		(*it)->setClick(FALSE);
 		if ((*it)->type == TYPE_CONTAINER)
 		{
-			_recursiveUpdate((vbContainer*)(*it));
+			_recursiveUpdate((vbContainer*)(*it), ((*it)->visible && visible));
 		}
-		if (clickDone == FALSE && (*it)->visible && (*it)->isClickable && IsMouseButtonPressed(0) && (*it)->isMouseOver())
+		if (clickDone == FALSE && (*it)->visible && visible && (*it)->isClickable && IsMouseButtonPressed(0) && (*it)->isMouseOver())
 		{
 			(*it)->setClick(TRUE);
 			clickDone = TRUE;
@@ -294,7 +294,7 @@ void _recursiveRender(vbContainer* c)
 
 void vbRender_printWorld(vbContainer* worldcanvas)
 {
-	_recursiveUpdate(worldcanvas);
+	_recursiveUpdate(worldcanvas, worldcanvas->visible);
 	_recursiveRender(worldcanvas);
 	clickDone = FALSE;
 }
