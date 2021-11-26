@@ -47,7 +47,7 @@ RAYLIB_VERSION        = 3.5.0
 RAYLIB_API_VERSION    = 350
 
 # Define raylib source code path
-RAYLIB_SRC_PATH      ?= C:\Workspace\INSTANT_GAMES\Investor\APP\SRC\raylib
+RAYLIB_SRC_PATH      ?= .
 
 # Define output directory for compiled library, defaults to src directory
 # NOTE: If externally provided, make sure directory exists

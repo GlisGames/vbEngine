@@ -3473,11 +3473,9 @@ Vector2 GetMousePosition(void)
 #else
     position.x = (CORE.Input.Mouse.position.x + CORE.Input.Mouse.offset.x)*CORE.Input.Mouse.scale.x;
     position.y = (CORE.Input.Mouse.position.y + CORE.Input.Mouse.offset.y)*CORE.Input.Mouse.scale.y;
-
+#endif
     position.x *= ((float)CORE.Window.render.width / (float)CORE.Window.currentFbo.width);
     position.y *= ((float)CORE.Window.render.height / (float)CORE.Window.currentFbo.height);
-#endif
-
     return position;
 }
 

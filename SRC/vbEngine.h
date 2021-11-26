@@ -3,10 +3,14 @@
 //BASE
 #include "basetypes.h"
 #include "vbErrors.h"
+//#define PLATFORM_WEB
+#if defined(PLATFORM_WEB)
+#include <emscripten/emscripten.h>
+#include <emscripten/html5.h>
+#endif
 
 //GAME
 #include "vbUtils.h"
-#include "vbEngine.h"
 
 //MULTIMEDIA
 #include "raylib.h"
