@@ -23,9 +23,9 @@ public:
 	WORD actualIndex;
 	BOOL enabled = TRUE;
 	seqRepeatType repeat = seqRepeatType::REP_BEGINTOEND;
-	Texture2Dvector seqList;
+	Texture2Dvector *seqList;
 	vbSequence();
-	vbSequence(Texture2Dvector slist, Vector2 pos, std::string name = "", WORD layer = 0, WORD frameFrequency = 1);
+	vbSequence(Texture2Dvector *slist, Vector2 pos, WORD frameFrequency = 1, std::string name = "", WORD layer = 0);
 	void startAnim(seqRepeatType rep = seqRepeatType::REP_BEGINTOEND, WORD frameFrequency = 1);
 	void resetAnim();
 	void stopAnim();

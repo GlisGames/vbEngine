@@ -16,7 +16,7 @@ vbSequence::vbSequence()
 	this->name = "";
 }
 
-vbSequence::vbSequence(Texture2Dvector slist, Vector2 pos, std::string name, WORD layer, WORD frameFrequency)
+vbSequence::vbSequence(Texture2Dvector* slist, Vector2 pos, WORD frameFrequency, std::string name, WORD layer)
 {
 	this->name = name;
 	this->seqList = slist;
@@ -26,7 +26,7 @@ vbSequence::vbSequence(Texture2Dvector slist, Vector2 pos, std::string name, WOR
 	this->frameFreq = frameFrequency;
 	this->enabled = TRUE;
 	this->setLayer(layer);
-	this->setTexture(slist[actualIndex]);
+	this->setTexture(slist->at(actualIndex)); //TODO not found protection
 	this->type = TYPE_SEQUENCE;
 }
 
@@ -50,7 +50,7 @@ void vbSequence::stopAnim()
 }
 bool vbSequence::isFinshed()
 {
-	if (this->actualIndex >= this->seqList.size() - 1)
+	if (this->actualIndex >= this->seqList->size() - 1)
 	{
 		return true;
 	}
@@ -62,7 +62,7 @@ void vbSequence::stepAnim()
 	if (this->enabled == FALSE)
 		return;
 
-	if(this->frameCounter >= 0xFFFFFFFF)
+	if(this->frameCounter >= 0xFFFFFFFF) //overflow prevention
 		this->frameCounter=0;
 	else
 		this->frameCounter++;
@@ -71,7 +71,7 @@ void vbSequence::stepAnim()
 	{
 		if (this->repeat == seqRepeatType::REP_BEGINTOEND)
 		{
-			if ((this->actualIndex + 1) >= this->seqList.size())
+			if ((this->actualIndex + 1) >= this->seqList->size())
 				this->actualIndex = 0;
 			else
 				this->actualIndex++;
@@ -79,17 +79,17 @@ void vbSequence::stepAnim()
 				
 		if (this->repeat == seqRepeatType::REP_YOYO)
 		{
-			if ((this->actualIndex + 1) >= this->seqList.size()) //se siamo arrivat in fondo
+			if ((this->actualIndex + 1) >= this->seqList->size()) //if we reaced the end
 				this->yoyoDirection = 1;
-			else if ((this->actualIndex - 1) < 0) //se siamo tornati a capo
+			else if ((this->actualIndex - 1) < 0) //if we are back to the beginning
 				this->yoyoDirection = -1;
 			
 			this->actualIndex += this->yoyoDirection;
 
 		}
-		else if ((this->repeat == seqRepeatType::REP_ONETIME)&&((this->actualIndex + 1) < this->seqList.size()))
+		else if ((this->repeat == seqRepeatType::REP_ONETIME)&&((this->actualIndex + 1) < this->seqList->size()))
 			this->actualIndex++;
 	}
 
-	this->setTexture(this->seqList[this->actualIndex]);
+	this->setTexture(this->seqList->at(this->actualIndex));
 }
