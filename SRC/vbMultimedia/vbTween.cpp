@@ -84,7 +84,8 @@ void vbTween::Finish()
 vbTween* vbTween::Reset()
 {
 	this->currStep = 0;
-	this->repeatFor = 0;
+	if(this->repeatFor != -1)
+		this->repeatFor = 0;
 	return this;
 }
 

@@ -286,7 +286,7 @@ void _recursiveRender(vbContainer* c)
 		
 			//UnloadRenderTexture(targetCache); //unload the rest
 			//UnloadTexture(targetCache.depth);
-			//rlUnloadFramebuffer(targetCache.id);
+			rlUnloadFramebuffer(targetCache.id);
 			_recursiveRender(c); //call again to print the cached texture (we were inside texture mode)
 		}
 	}
