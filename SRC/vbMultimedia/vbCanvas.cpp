@@ -32,7 +32,7 @@ vbCanvas::vbCanvas(Texture2D* tex, Vector2 position, vbString stext) : vbContain
 	this->init(tex, { position.x, position.y, (FLOAT)tex->width, (FLOAT)tex->height }, stext);
 }
 
-void vbCanvas::setCaption(vbString stext)
+void vbCanvas::setCaption(vbString stext, vbString appendText)
 {
 	if (stext != "" || stext.length() > 0)
 	{
@@ -47,7 +47,7 @@ void vbCanvas::setCaption(vbString stext)
 			//TODO alignment of the text inside the button (left, centered, right, etc..)
 		}
 		else
-			this->caption->setText(stext);
+			this->caption->setText(stext, appendText);
 	}
 }
 
