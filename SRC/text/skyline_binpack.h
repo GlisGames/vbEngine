@@ -7,7 +7,7 @@
 */
 #ifndef SKYLINEBINPACK_H
 #define SKYLINEBINPACK_H
-
+#include <string.h>
 #include <vector>
 
 struct binRect

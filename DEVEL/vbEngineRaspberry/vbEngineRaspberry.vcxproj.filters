@@ -1,0 +1,1476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\..\SRC\text\hb-ft.cc">
+      <Filter>text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\text\skyline_binpack.cpp">
+      <Filter>text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\text\text_render.cpp">
+      <Filter>text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\text\text_run.cpp">
+      <Filter>text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\text\texture_atlas.cpp">
+      <Filter>text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\text\vbFont.cpp">
+      <Filter>text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\json.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\json-builder.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbButton.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbCanvas.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbContainer.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbEasing.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbImage.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbLivingObject.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbMessage.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbProperty.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbRenderer.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSequence.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbErrors.cpp" />
+    <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
+    <ClCompile Include="..\..\SRC\vbStyles.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="text">
+      <UniqueIdentifier>{29a7e4bd-f902-44e6-af78-76f1f2b37401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vbMultimedia">
+      <UniqueIdentifier>{fad19a17-3c01-4d49-92f1-af618e795509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps">
+      <UniqueIdentifier>{f4cf4ced-a184-49e3-8093-d2a489482fcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\alfons">
+      <UniqueIdentifier>{ec704211-eb96-408e-a107-19a4896ca36a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\freetype">
+      <UniqueIdentifier>{d1413abf-a83c-41e6-9da8-8a68f3637e8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\glm">
+      <UniqueIdentifier>{4aab8ca0-b0f5-4498-8205-eaf4820ded74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\harfbuzz">
+      <UniqueIdentifier>{678d74fa-1e19-4dd2-8c11-879d32051f93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\icu">
+      <UniqueIdentifier>{0fe00cf6-f480-4d57-b4d0-8e6c60c9803b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\alfons\path">
+      <UniqueIdentifier>{6fc584e7-d4bb-48c2-aa82-1386c88fab5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\freetype\include">
+      <UniqueIdentifier>{2449505f-0704-4ff9-9125-2c57a018d30f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\freetype\include\freetype">
+      <UniqueIdentifier>{6cc33a5b-5ec3-4505-98f2-489065cf30d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\freetype\include\freetype\config">
+      <UniqueIdentifier>{b0487469-aa2b-4ecc-b18c-4d3228d55e26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\freetype\include\freetype\internal">
+      <UniqueIdentifier>{2fb17373-e1e2-4427-80f5-f922600e870b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\freetype\include\freetype\internal\services">
+      <UniqueIdentifier>{97738181-9fa5-40e7-8fb5-0b968a3259bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\glm\detail">
+      <UniqueIdentifier>{f3ef17a6-51b3-4be5-b3b7-89c79bad7d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\harfbuzz\src">
+      <UniqueIdentifier>{d98145d2-890f-4ca9-bbba-f4c98f251b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="text\deps\icu\unicode">
+      <UniqueIdentifier>{27a27111-9ebf-4a84-8a6b-5520865b0231}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\SRC\text\hb-ft.h">
+      <Filter>text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\scope_guard.h">
+      <Filter>text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\skyline_binpack.h">
+      <Filter>text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\text_render.h">
+      <Filter>text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\text_run.h">
+      <Filter>text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\texture_atlas.h">
+      <Filter>text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\vbFont.h">
+      <Filter>text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\utils.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\alfons.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\appleFontFace.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\atlas.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\font.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\fontFace.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\fontManager.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\freetypeHelper.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\glyph.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\inputSource.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\langHelper.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\lineLayout.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\quadMatrix.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\scrptrun.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\textBatch.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\textShaper.h">
+      <Filter>text\deps\alfons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\alfons\path\lineSampler.h">
+      <Filter>text\deps\alfons\path</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\ft2build.h">
+      <Filter>text\deps\freetype\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\fttypes.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftwinfnt.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\t1tables.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ttnameid.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\tttables.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\tttags.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\freetype.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftadvanc.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftbbox.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftbdf.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftbitmap.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftbzip2.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftcache.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftchapters.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftcid.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftcolor.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftdriver.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\fterrdef.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\fterrors.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftfntfmt.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftgasp.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftglyph.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftgxval.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftgzip.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftimage.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftincrem.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftlcdfil.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftlist.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftlzw.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftmac.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftmm.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftmodapi.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftmoderr.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftotval.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftoutln.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftparams.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftpfr.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftrender.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftsizes.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftsnames.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftstroke.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftsynth.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\ftsystem.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\fttrigon.h">
+      <Filter>text\deps\freetype\include\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\config\mac-support.h">
+      <Filter>text\deps\freetype\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\config\public-macros.h">
+      <Filter>text\deps\freetype\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\config\ftconfig.h">
+      <Filter>text\deps\freetype\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\config\ftheader.h">
+      <Filter>text\deps\freetype\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\config\ftmodule.h">
+      <Filter>text\deps\freetype\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\config\ftoption.h">
+      <Filter>text\deps\freetype\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\config\ftstdlib.h">
+      <Filter>text\deps\freetype\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\config\integer-types.h">
+      <Filter>text\deps\freetype\include\freetype\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\psaux.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\pshints.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\sfnt.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\t1types.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\tttypes.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\wofftypes.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\autohint.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\cffotypes.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\cfftypes.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\compiler-macros.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftcalc.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftdebug.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftdrv.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftgloadr.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\fthash.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftmemory.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftobjs.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftpsprop.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftrfork.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftserv.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftstream.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\fttrace.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\ftvalid.h">
+      <Filter>text\deps\freetype\include\freetype\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svttcmap.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svtteng.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svttglyf.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svwinfnt.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svbdf.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svcfftl.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svcid.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svfntfmt.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svgldict.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svgxval.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svkern.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svmetric.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svmm.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svotval.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svpfr.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svpostnm.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svprop.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svpscmap.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svpsinfo.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\freetype\include\freetype\internal\services\svsfnt.h">
+      <Filter>text\deps\freetype\include\freetype\internal\services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\vector_relational.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\common.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\exponential.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\ext.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\fwd.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\geometric.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\glm.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\integer.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat2x2.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat2x3.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat2x4.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat3x2.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat3x3.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat3x4.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat4x2.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat4x3.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\mat4x4.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\matrix.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\packing.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\trigonometric.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\vec2.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\vec3.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\vec4.hpp">
+      <Filter>text\deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_vec1.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_vec2.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_vec3.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_vec4.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\_features.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\_fixes.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\_noise.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\_swizzle.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\_swizzle_func.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\_vectorize.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\func_common.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\func_exponential.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\func_geometric.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\func_integer.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\func_matrix.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\func_packing.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\func_trigonometric.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\func_vector_relational.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\intrinsic_common.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\intrinsic_exponential.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\intrinsic_geometric.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\intrinsic_integer.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\intrinsic_matrix.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\intrinsic_trigonometric.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\intrinsic_vector_relational.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\precision.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\setup.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_float.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_gentype.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_half.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_int.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat2x2.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat2x3.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat2x4.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat3x2.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat3x3.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat3x4.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat4x2.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat4x3.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_mat4x4.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\glm\detail\type_vec.hpp">
+      <Filter>text\deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-subset-cff-common.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-subset-input.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-subset-plan.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ucd-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-unicode.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-unicode.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-unicode-emoji-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-uniscribe.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-utf.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-vector.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-version.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-ankr-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-bsln-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-common.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-feat-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-just-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-kerx-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-morx-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-opbd-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-layout-trak-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-ltag-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-aat-map.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-algs.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-array.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-atomic.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-bimap.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-blob.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-blob.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-buffer.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-buffer.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-buffer-deserialize-json.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-buffer-deserialize-text.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-cache.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-cff1-interp-cs.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-cff2-interp-cs.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-cff-interp-common.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-cff-interp-cs-common.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-cff-interp-dict-common.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-common.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-config.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-coretext.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-debug.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-deprecated.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-directwrite.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-dispatch.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-draw.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-draw.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-face.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-face.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-font.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-font.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ft.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-gdi.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-glib.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-gobject.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-gobject-structs.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-graphite2.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-icu.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-iter.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-kern.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-machinery.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-map.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-map.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-meta.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-mutex.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-null.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-number.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-number-parser.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-object.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-open-file.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-open-type.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-cff1-std-str.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-cff1-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-cff2-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-cff-common.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-cmap-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-color.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-color-cbdt-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-color-colr-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-color-cpal-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-color-sbix-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-color-svg-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-deprecated.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-face.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-face-table-list.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-font.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-gasp-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-glyf-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-hdmx-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-head-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-hhea-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-hmtx-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-kern-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout-base-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout-common.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout-gdef-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout-gpos-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout-gsubgpos.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout-gsub-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-layout-jstf-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-map.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-math.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-math-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-maxp-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-meta.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-meta-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-metrics.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-metrics.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-name.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-name-language.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-name-language-static.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-name-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-os2-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-os2-unicode-ranges.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-post-macroman.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-post-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-arabic.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-arabic-fallback.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-arabic-joining-list.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-arabic-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-arabic-win1256.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-indic.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-indic-machine.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-khmer.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-khmer-machine.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-machine-index.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-myanmar.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-myanmar-machine.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-use.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-use-machine.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-complex-vowel-constraints.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-fallback.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-shape-normalize.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-stat-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-tag-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-var.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-var-avar-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-var-fvar-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-var-gvar-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-var-hvar-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-var-mvar-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-ot-vorg-table.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-pool.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-sanitize.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-serialize.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-set.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-set.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-set-digest.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-shape.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-shape-plan.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-shape-plan.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-shaper.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-shaper-impl.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-shaper-list.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-string-array.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-style.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-subset.h">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-subset.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-subset-cff1.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\harfbuzz\src\hb-subset-cff2.hh">
+      <Filter>text\deps\harfbuzz\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\cmemory.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\cstring.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\putilimp.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\uassert.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\ucase.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\udataswp.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\uelement.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\umutex.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\uset_imp.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\ustr_imp.h">
+      <Filter>text\deps\icu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\utf.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\utf_old.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\utf8.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\utf16.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\utypes.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\uvernum.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\uversion.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\appendable.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\bytestream.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\localpointer.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\platform.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\ptypes.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\putil.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\rep.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\std_string.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\stringpiece.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\ucasemap.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\uchar.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\uclean.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\uconfig.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\uiter.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\umachine.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\unistr.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\uobject.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\urename.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\uset.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\text\deps\icu\unicode\ustring.h">
+      <Filter>text\deps\icu\unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbEasing.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicObject.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbImage.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbLivingObject.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbMessage.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbProperty.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbRenderer.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbSequence.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\json.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\json-builder.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\sdf.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbAtlas.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbButton.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbCanvas.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbContainer.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\basetypes.h" />
+    <ClInclude Include="..\..\SRC\vbEngine.h" />
+    <ClInclude Include="..\..\SRC\vbErrors.h" />
+    <ClInclude Include="..\..\SRC\vbLanguage.h" />
+    <ClInclude Include="..\..\SRC\vbStyles.h" />
+    <ClInclude Include="..\..\SRC\vbUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_vec1.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_vec2.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_vec3.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_vec4.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_vec4_avx.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_vec4_avx2.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_vec4_sse2.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\func_common.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\func_exponential.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\func_geometric.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\func_integer.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\func_matrix.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\func_packing.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\func_trigonometric.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\func_vector_relational.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\intrinsic_common.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\intrinsic_exponential.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\intrinsic_geometric.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\intrinsic_integer.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\intrinsic_matrix.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\intrinsic_trigonometric.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\intrinsic_vector_relational.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_gentype.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_half.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat2x2.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat2x3.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat2x4.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat3x2.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat3x3.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat3x4.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat4x2.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat4x3.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_mat4x4.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\SRC\text\deps\glm\detail\type_vec.inl">
+      <Filter>text\deps\glm\detail</Filter>
+    </None>
+  </ItemGroup>
+</Project>

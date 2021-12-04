@@ -26,7 +26,6 @@
 
 #ifndef UTILS_H
 #define UTILS_H
-#define SUPPORT_TRACELOG
 #if defined(PLATFORM_ANDROID)
     #include <stdio.h>                      // Required for: FILE
     #include <android/asset_manager.h>      // Required for: AAssetManager
