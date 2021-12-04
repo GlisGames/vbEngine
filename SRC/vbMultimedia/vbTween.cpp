@@ -11,6 +11,7 @@ void vbTween::init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop
 	this->easingF = easingFunction;
 	this->currStep = 0;
 	this->repeatFor = repeatFor;
+	this->repeatSet = repeatFor;
 	this->callbackEnd = callback;
 	this->endLambda = NULL;
 }
@@ -84,8 +85,9 @@ void vbTween::Finish()
 vbTween* vbTween::Reset()
 {
 	this->currStep = 0;
-	if(this->repeatFor != -1)
-		this->repeatFor = 0;
+	this->repeatFor = this->repeatSet;
+	//if(this->repeatFor != -1)
+	//	this->repeatFor = 0;
 	return this;
 }
 

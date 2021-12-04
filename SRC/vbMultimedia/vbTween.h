@@ -55,6 +55,7 @@ public:
 	FLOAT startP = 0;
 	FLOAT stopP = 0;
 	int repeatFor = -1;
+	int repeatSet = -1; //initial repeat value that has been set
 	BYTE *valueBYTE = NULL;
 	WORD *valueWORD = NULL;
 	DWORD *valueDWORD = NULL;
