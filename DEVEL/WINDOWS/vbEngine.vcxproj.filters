@@ -12,45 +12,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\SRC\raylib\camera.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\config.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\easings.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\gestures.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\physac.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\raudio.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\raylib.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\raymath.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\rlgl.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\rmem.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\rnet.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\utils.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\uwp_events.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicObject.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
@@ -92,15 +53,6 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbLivingObject.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\ricons.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\gui_textbox_extended.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\raylib\raygui.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\SRC\text\text_run.h">
       <Filter>text</Filter>
     </ClInclude>
@@ -137,32 +89,32 @@
       <Filter>vbMultimedia</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\vbStyles.h" />
+    <ClInclude Include="..\..\..\raylib\src\config.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\raudio.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\raylib.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\raymath.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\rcamera.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\rgestures.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\rlgl.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\utils.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\SRC\raylib\core.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\raylib\models.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\raylib\raudio.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\raylib\rglfw.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\raylib\shapes.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\raylib\text.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\raylib\textures.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\raylib\utils.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
@@ -235,5 +187,29 @@
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbStyles.cpp" />
+    <ClCompile Include="..\..\..\raylib\src\rshapes.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rtext.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rtextures.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\utils.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\raudio.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rcore.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rglfw.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rmodels.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

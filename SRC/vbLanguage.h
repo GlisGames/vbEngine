@@ -57,14 +57,14 @@ public:
 				a->second = f->second; //otherwise replace the existing one
 		}
 		else
-			PANIC(FormatText("ERROR: Font %s not found", fontName));
+			PANIC(TextFormat("ERROR: Font %s not found", fontName));
 	}
 	FontPtr getFont(const char* fontName)
 	{
 		std::pair<vbString, FontPtr>* ret = NULL;
 		ret = findFont(fontName);
 		if(ret == NULL)
-			PANIC(FormatText("ERROR: Font %s not found", fontName)); //MAYBE remove
+			PANIC(TextFormat("ERROR: Font %s not found", fontName)); //MAYBE remove
 		return ret->second;
 	}
 	std::pair<vbString, FontPtr> *findFont(const char* fontName)

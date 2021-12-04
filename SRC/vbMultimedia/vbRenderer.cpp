@@ -112,7 +112,7 @@ void _recursiveRender(vbContainer* c)
 					targetCache = LoadRenderTexture(c->width, c->height); //create render target
 				//else
 					//targetCache = LoadRenderTexture(pGAME->gameResolution.x, pGAME->gameResolution.y); //MAYBE not?
-				BeginTextureModePro(targetCache);
+				BeginTextureMode(targetCache);
 				ClearBackground(BLANK);  // Clear texture background
 				cacheBox = c->getAbsolutePosition();
 				canvasToCache = TRUE;

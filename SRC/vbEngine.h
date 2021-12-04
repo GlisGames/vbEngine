@@ -35,6 +35,29 @@
 #include "vbMessage.h"
 #include "vbStyles.h"
 
+// Load an image from RAW file data
+Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int width, int height, int format, int headerSize)
+{
+	Image image = { 0 };
+
+	if (fileData != NULL && dataSize > 0)
+	{
+		unsigned char* dataPtr = fileData;
+		unsigned int size = GetPixelDataSize(width, height, format);
+
+		if (headerSize > 0) dataPtr += headerSize;
+
+		image.data = RL_MALLOC(size);      // Allocate required memory in bytes
+		memcpy(image.data, dataPtr, size); // Copy required data to image
+		image.width = width;
+		image.height = height;
+		image.mipmaps = 1;
+		image.format = format;
+	}
+
+	return image;
+}
+
 class vbSequenceMap : public std::map<std::string, Texture2Dvector*>
 {
 public:

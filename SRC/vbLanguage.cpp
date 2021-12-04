@@ -30,7 +30,7 @@ int vbLanguage::loadDictionary(void* gameptr, string jsonPath)
 	WORD jsonlen = 0;
 	unsigned char* jsonContent = LoadFileData(jsonPath.c_str(), &jsonlen);
 	if (jsonContent == NULL)
-		PANIC(FormatText("DICTIONARY CONFIG FILE NOT FOUND: %s", jsonPath.c_str()));
+		PANIC(TextFormat("DICTIONARY CONFIG FILE NOT FOUND: %s", jsonPath.c_str()));
 	//json_settings settings = {  }
 	json_value* root = json_parse((json_char*)jsonContent, jsonlen);
 	if (root == NULL)
