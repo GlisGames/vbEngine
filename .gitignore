@@ -47,3 +47,6 @@ DEVEL/Investor.WEB/Investor.WEB.sln
 *.zip
 SRC/SOUNDS/
 SRC/omniMich.js
+DEVEL/vbEngineRaspberry/obj/
+DEVEL/vbEngineRaspberry/bin/
+DEVEL/readme/

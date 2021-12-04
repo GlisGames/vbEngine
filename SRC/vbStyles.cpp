@@ -36,11 +36,9 @@ BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
 	unsigned char* jsonContent = LoadFileData(filepath.c_str(), &jsonlen);
 	if (jsonContent == NULL)
 		PANIC(FormatText("CONFIG FILE NOT FOUND: %s", filepath.c_str()));
-
 	json_value* root = json_parse((json_char*)jsonContent, jsonlen);
 	if (root == NULL)
 		PANIC(FormatText("CONFIG FORMAT ERROR: %s", filepath.c_str()));
-
 	if (strcmp(root->u.object.values[0].name, "style") == 0)
 	{
 		vbStyle newstyle;
@@ -59,8 +57,6 @@ BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
 						continue;	//move on
 
 					styleElement element = {0};
-					Vector2* setcoord = NULL;
-					Vector2* setsize = NULL;
 					const json_value* first = slist->u.object.values[i].value->u.array.values[0];
 					const json_value* second = (slist->u.object.values[i].value->u.array.length == 2) ? second = slist->u.object.values[i].value->u.array.values[1] : NULL;
 
@@ -76,6 +72,7 @@ BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
 					{
 						if (elem_coord->u.array.length >= 2)
 						{
+							Vector2* setcoord = NULL;
 							setcoord = (Vector2*)malloc(sizeof(Vector2));
 							ZeroMemory(setcoord, sizeof(Rectangle));
 							setcoord->x = elem_coord->u.array.values[0]->u.integer;
@@ -83,6 +80,7 @@ BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
 							element.position = setcoord;
 							if (elem_coord->u.array.length >= 4)
 							{
+								Vector2* setsize = NULL;
 								setsize = (Vector2*)malloc(sizeof(Vector2));
 								ZeroMemory(setsize, sizeof(Rectangle));
 								setsize->x = elem_coord->u.array.values[2]->u.integer;
