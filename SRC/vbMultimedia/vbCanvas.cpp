@@ -1,4 +1,5 @@
 #include "vbEngine.h"
+#include "vbCanvas.h"
 
 vbCanvas::~vbCanvas()
 {

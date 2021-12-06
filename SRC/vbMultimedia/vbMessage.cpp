@@ -5,7 +5,7 @@ void vbMessage::init(Texture2D* tex, Vector2 pos, BOOL b) {
 	this->isAlive = TRUE;
 	this->position = pos;
 	this->isClickable = TRUE;
-	this->setCaption("0");
+	this->setCaption("0", "");
 	this->caption->isDictionaryText = TRUE;
 	this->setBackground(tex);
 	this->setClickToDismiss(b);
@@ -37,7 +37,7 @@ void vbMessage::setClickToDismiss(BOOL b) {
 // OTHERS
 void vbMessage::pushMessage(vbString txt, int timer) {
 	this->resetMessage();
-	this->setCaption(txt);
+	this->setCaption(txt, "");
 	this->visible = TRUE;
 	this->tweens.addtimer("twtimer", timer)
 		->endLambdaSet(

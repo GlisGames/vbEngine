@@ -47,7 +47,7 @@ RAYLIB_VERSION        = 4.0.0
 RAYLIB_API_VERSION    = 400
 
 # Define raylib source code path
-RAYLIB_SRC_PATH      ?= ../src
+RAYLIB_SRC_PATH      ?= .
 
 # Define output directory for compiled library, defaults to src directory
 # NOTE: If externally provided, make sure directory exists
@@ -159,8 +159,10 @@ ifeq ($(PLATFORM),PLATFORM_WEB)
     EMSDK_PATH         ?= C:/emsdk
     EMSCRIPTEN_PATH    ?= $(EMSDK_PATH)/upstream/emscripten
     CLANG_PATH          = $(EMSDK_PATH)/upstream/bin
-    PYTHON_PATH         = $(EMSDK_PATH)/python/3.9.2-1_64bit
-    NODE_PATH           = $(EMSDK_PATH)/node/14.15.5_64bit/bin
+#    PYTHON_PATH         = $(EMSDK_PATH)/python/3.9.2-1_64bit
+#    NODE_PATH           = $(EMSDK_PATH)/node/14.15.5_64bit/bin
+    PYTHON_PATH         = $(EMSDK_PATH)/python/3.7.4-pywin32_64bit
+    NODE_PATH           = $(EMSDK_PATH)/node/12.18.1_64bit/bin
     export PATH         = $(EMSDK_PATH);$(EMSCRIPTEN_PATH);$(CLANG_PATH);$(NODE_PATH);$(PYTHON_PATH);C:\raylib\MinGW\bin:$$(PATH)
 endif
 
@@ -299,6 +301,7 @@ endif
 ifeq ($(RAYLIB_BUILD_MODE),RELEASE)
     ifeq ($(PLATFORM),PLATFORM_WEB)
         CFLAGS += -Os
+		CFLAGS += -O1
     endif
     ifeq ($(PLATFORM),PLATFORM_DESKTOP)
         CFLAGS += -s -O1

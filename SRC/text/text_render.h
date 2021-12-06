@@ -40,6 +40,7 @@ class TextRender
     GlyphCache glyphs_;
     Glyph line_;
     Shader mys;
+    int mysLocation = -1;
     Shader sdfShader;
     unsigned int lastTexID_;
     Color currentColor_ = BLANK;

@@ -62,7 +62,38 @@ void main()
     float alpha = smoothstep(0.5 - smoothing, 0.5 + smoothing, distance);
     
     // Calculate final fragment color
-    gl_FragColor = vec4(fragColor.rgb, fragColor.a*alpha);
+    //gl_FragColor = vec4(fragColor.rgb, fragColor.a*alpha);
+    gl_FragColor = vec4(fragColor.rgb, texture2D(texture0, fragTexCoord).r*alpha);
+}
+)";
+
+static const char* sdf_shader33 = R"(
+#version 330
+
+// Input vertex attributes (from vertex shader)
+in vec2 fragTexCoord;
+in vec4 fragColor;
+
+// Input uniform values
+uniform sampler2D texture0;
+uniform vec4 colDiffuse;
+
+// Output fragment color
+out vec4 finalColor;
+
+// NOTE: Add here your custom variables
+
+void main()
+{
+    // Texel color fetching from texture sampler
+    // NOTE: Calculate alpha using signed distance field (SDF)
+    float distanceFromOutline = texture(texture0, fragTexCoord).a - 0.5;
+    float distanceChangePerFragment = length(vec2(dFdx(distanceFromOutline), dFdy(distanceFromOutline)));
+    float alpha = smoothstep(-distanceChangePerFragment, distanceChangePerFragment, distanceFromOutline);
+
+    // Calculate final fragment color
+    //finalColor = vec4(fragColor.rgb, fragColor.a*alpha);
+    finalColor = vec4(fragColor.rgb, texture2D(texture0, fragTexCoord).r*alpha);
 }
 )";
 
@@ -111,7 +142,7 @@ bool TextRender::Init(int numTextureAtlas)
 #else
     mys = LoadShaderFromMemory(vertex_shader_string, fragment_shader_string);
 #endif
-
+    mysLocation = GetShaderLocation(mys, "textColor");
     for (int i = 0; i < numTextureAtlas; i++)
     {
         std::unique_ptr<TextureAtlas> t(new TextureAtlas);
@@ -413,11 +444,12 @@ void TextRender::DrawTextBoundingAlfons(vbTextbox* text,
     {
         currentColor_ = color;
         float tocolor[4] = { (float)color.r / 255.0f, (float)color.g / 255.0f, (float)color.b / 255.0f, (float)color.a / 255.0f, };
-        SetShaderValue(mys, GetShaderLocation(mys, "textColor"), tocolor, SHADER_UNIFORM_VEC4);
+        SetShaderValue(mys, this->mysLocation, tocolor, SHADER_UNIFORM_VEC4);
     }
+
     text->draw(initialx, initialy);
-    //debug bounding box
-    if (text->debugBox)
+    
+    if (text->debugBox) //debug bounding box
         DrawRectangleLinesEx({ initialx, initialy, text->getBoundingBox().x ,text->getBoundingBox().y }, 1, RED);
     //DrawLine(initialx, initialy, 1000, initialy, VIOLET); //Debug baseline
 
