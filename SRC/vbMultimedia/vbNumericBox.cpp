@@ -1,6 +1,6 @@
 #include "vbEngine.h"
 // INIT
-void NumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
+void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
 	this->isAlive = TRUE;
 	this->positioningRule = posRule::POS_CANVAS_RELATIVE;
 	this->position = pos;
@@ -30,14 +30,14 @@ void NumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle pl
 
 	this->resize();
 }
-NumericBox::NumericBox(Vector2 pos) {
+vbNumericBox::vbNumericBox(Vector2 pos) {
 	this->init(pos, { 0,0,0,0 }, { 0,0,0,0 }, { 0,0,0,0 });
 }
-NumericBox::NumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
+vbNumericBox::vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
 	this->init(pos, minus, text, plus);
 }
 // UPDATE
-void NumericBox::update() {
+void vbNumericBox::update() {
 	if (this->cmdMinus->isClicked()) {
 		if (this->value > this->min) {
 			this->value -= this->increment;
@@ -55,28 +55,28 @@ void NumericBox::update() {
 
 }
 // GETTERS & SETTERS
-DWORD NumericBox::getValue() {
+DWORD vbNumericBox::getValue() {
 	return this->value;
 }
-DWORD NumericBox::getMin() {
+DWORD vbNumericBox::getMin() {
 	return this->min;
 }
-DWORD NumericBox::getMax() {
+DWORD vbNumericBox::getMax() {
 	return this->max;
 }
-DWORD NumericBox::getIncrement() {
+DWORD vbNumericBox::getIncrement() {
 	return this->increment;
 }
-void NumericBox::setValue(DWORD _value) {
+void vbNumericBox::setValue(DWORD _value) {
 	this->value = _value;
 	//TODO: this->txtValue->setText("");
 }
-void NumericBox::setMin(DWORD _min) {
+void vbNumericBox::setMin(DWORD _min) {
 	this->min = _min;
 }
-void NumericBox::setMax(DWORD _max) {
+void vbNumericBox::setMax(DWORD _max) {
 	this->max = _max;
 }
-void NumericBox::setIncrement(DWORD _increment) {
+void vbNumericBox::setIncrement(DWORD _increment) {
 	this->increment = _increment;
 }

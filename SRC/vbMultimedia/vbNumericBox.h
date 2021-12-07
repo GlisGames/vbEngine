@@ -3,7 +3,7 @@
 #include "vbButton.h"
 #include "vbTextBox.h"
 
-class NumericBox : public vbCanvas {
+class vbNumericBox : public vbCanvas {
 private:
 	DWORD value = 0;
 	DWORD min = 0;
@@ -16,8 +16,8 @@ public:
 	vbButton* cmdPlus = NULL;
 	Sound soundMinus;
 	Sound soundPlus;
-	NumericBox(Vector2 pos);
-	NumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
+	vbNumericBox(Vector2 pos);
+	vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
 	void update();
 	DWORD getValue();
 	DWORD getMin();
