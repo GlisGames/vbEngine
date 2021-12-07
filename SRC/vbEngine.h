@@ -34,6 +34,8 @@
 #include "vbLanguage.h"
 #include "vbMessage.h"
 #include "vbStyles.h"
+#include "vbNumericBox.h"
+
 Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int width, int height, int format, int headerSize);
 
 class vbSequenceMap : public std::map<std::string, Texture2Dvector*>
