@@ -113,6 +113,9 @@
     <ClInclude Include="..\..\..\raylib\src\utils.h">
       <Filter>raylib</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbNumericBox.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -210,6 +213,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\raylib\src\rmodels.c">
       <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp">
+      <Filter>vbMultimedia</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
