@@ -87,6 +87,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbImage.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbLivingObject.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbMessage.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbProperty.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRenderer.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbSequence.cpp" />
@@ -508,6 +509,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbImage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbLivingObject.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbMessage.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbNumericBox.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbProperty.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbRenderer.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSequence.h" />

@@ -71,6 +71,9 @@
     <ClCompile Include="..\..\SRC\vbErrors.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
     <ClCompile Include="..\..\SRC\vbStyles.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="text">
@@ -1365,6 +1368,9 @@
     <ClInclude Include="..\..\SRC\vbLanguage.h" />
     <ClInclude Include="..\..\SRC\vbStyles.h" />
     <ClInclude Include="..\..\SRC\vbUtils.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbNumericBox.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\SRC\text\deps\glm\detail\type_vec1.inl">
