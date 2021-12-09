@@ -55,7 +55,7 @@
       <LibraryDependencies>wiringPi</LibraryDependencies>
     </Link>
     <RemotePostBuildEvent>
-      <Command>gpio export 17 out</Command>
+      <Command>cp $(RemoteTargetPath) /home/pi/libs/</Command>
       <Message>export pin 17 using the gpio utility so that we can execute the blink program without sudo</Message>
     </RemotePostBuildEvent>
   </ItemDefinitionGroup>

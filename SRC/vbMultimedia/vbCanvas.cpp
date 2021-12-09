@@ -33,6 +33,11 @@ vbCanvas::vbCanvas(Texture2D* tex, Vector2 position, vbString stext) : vbContain
 	this->init(tex, { position.x, position.y, (FLOAT)tex->width, (FLOAT)tex->height }, stext);
 }
 
+void vbCanvas::setCaption(vbString stext, const char* appendText)
+{
+	this->setCaption(stext, vbString(appendText));
+}
+
 void vbCanvas::setCaption(vbString stext, vbString appendText)
 {
 	if (stext != "" || stext.length() > 0)

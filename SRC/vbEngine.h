@@ -116,8 +116,9 @@ public:
 		this->GAME = pGAME;
 		this->DATA = pDATA;
 		this->exitState = 0xFF;
-		this->canvas.visible = FALSE;
-		this->GAME->mainGame.addObject(&this->canvas);
+		this->canvas = new vbCanvas({ 0,0, pGAME->gameResolution.x, pGAME->gameResolution.y });
+		this->canvas->visible = FALSE;
+		this->GAME->mainGame.addObject(this->canvas);
 		this->GAME->stateList.push_back(this);
 	}
 	void stateExit(WORD s)
@@ -125,7 +126,7 @@ public:
 		this->exitState = s;
 	};
 	vbTweenMap tweens;
-	vbContainer canvas;
+	vbContainer *canvas;
 	BOOL afterAndEvery(DWORD after, DWORD every)
 	{
 		return (this->frame > after && !((this->frame + after) % every));
