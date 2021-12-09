@@ -12,6 +12,8 @@ namespace Frames
 	}
 }
 
+const char* formatMoney(DWORD value);
+
 /// <summary>
 /// Takes out 50% of the brightness of the given color
 /// </summary>

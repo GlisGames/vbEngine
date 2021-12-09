@@ -69,9 +69,11 @@ private:
 public:
 	vbGame() {};
 	vbContainer mainGame;
+	vbMessage* alertBox;
 	class vbGUI* GUI; //(forward declaration)
 	vbImage* mainBG;
 	vbState* currentState;
+	
 	std::vector<vbState*> stateList;
 	//BYTE startBet;
 	//DWORD betView[MAXBETBOX];
@@ -121,6 +123,9 @@ public:
 		this->canvas = new vbCanvas({ 0,0, pGAME->gameResolution.x, pGAME->gameResolution.y });
 		this->canvas->visible = FALSE;
 		this->GAME->mainGame.addObject(this->canvas);
+		this->GAME->alertBox = new vbMessage(pGAME->textureMap["message"], {0, 0}, TRUE);
+		this->GAME->alertBox->visible = FALSE;
+		this->GAME->mainGame.addObject(this->GAME->alertBox, "alertBox");
 		this->GAME->stateList.push_back(this);
 	}
 	void stateExit(WORD s)

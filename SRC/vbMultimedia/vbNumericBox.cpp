@@ -29,6 +29,7 @@ void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle 
 	//this->cmdPlus->debugBox = TRUE;
 
 	this->resize();
+	this->txtValue->setText(formatMoney(this->value));
 }
 vbNumericBox::vbNumericBox(Vector2 pos) {
 	this->init(pos, { 0,0,0,0 }, { 0,0,0,0 }, { 0,0,0,0 });
@@ -45,7 +46,7 @@ void vbNumericBox::update() {
 			if (this->soundMinus != NULL)
 				PlaySound(*this->soundMinus);
 		}
-		//else pGAME->GUI->alert->pushMessage("txt_min_reach");
+		else pGAME->alertBox->pushMessage("txt_min_reach");
 	}
 	if (this->cmdPlus->isClicked() ) {
 		if (this->value < this->max) {
@@ -54,7 +55,7 @@ void vbNumericBox::update() {
 			if (this->soundPlus != NULL)
 				PlaySound(*this->soundPlus);
 		}
-		//else pGAME->GUI->alert->pushMessage("txt_max_reach");
+		else pGAME->alertBox->pushMessage("txt_max_reach");
 	}
 
 }
@@ -73,7 +74,7 @@ DWORD vbNumericBox::getIncrement() {
 }
 void vbNumericBox::setValue(DWORD _value) {
 	this->value = _value;
-	//TODO: this->txtValue->setText("");
+	this->txtValue->setText(formatMoney(this->value));
 }
 void vbNumericBox::setMin(DWORD _min) {
 	this->min = _min;
