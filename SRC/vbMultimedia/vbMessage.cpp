@@ -53,7 +53,7 @@ void vbMessage::pushMessage(vbString txt, int timer) {
 			});
 }
 void vbMessage::resetMessage() {
-	this->background->colour.a = 255;
+	if (this->background != NULL) this->background->colour.a = 255;
 	this->backgroundColor.a = 255;
 	this->caption->colour.a = 255;
 	this->tweens.clear();
