@@ -8,6 +8,8 @@ private:
 	void init(Texture2D* tex, Vector2 pos, BOOL b);
 	void resetMessage();
 public:
+	Color backgroundColor = WHITE;
+	float borderThickness = 5;
 	vbMessage();
 	vbMessage(Texture2D* tex, Vector2 pos, BOOL b);
 	void update();
