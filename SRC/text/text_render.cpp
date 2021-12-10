@@ -136,7 +136,7 @@ bool TextRender::Init(int numTextureAtlas)
     assert(numTextureAtlas > 0 && numTextureAtlas <= 16);
 
     std::string errorLog;
-#ifndef PLATFORM_WEB
+#if !defined(PLATFORM_WEB) && !defined(PLATFORM_RPI)
     mys = LoadShader("vertex_shader.txt", "fragment_shader.txt");//FromMemory(vertex_shader_string, fragment_shader_string);
     //sdfShader = LoadShader("vertex_shader.txt", "fragment_shader.txt");//FromMemory(vertex_shader_string, fragment_shader_string);
 #else
