@@ -9,7 +9,6 @@ void vbMessage::init(Texture2D* tex, Vector2 pos, BOOL b) {
 	this->caption->isDictionaryText = TRUE;
 	this->setBackground(tex);
 	this->setClickToDismiss(b);
-	this->debugBox = TRUE;
 }
 vbMessage::vbMessage() : vbCanvas(NULL, { 0, 0 }) {
 	this->init(NULL, { 0, 0 }, FALSE);
