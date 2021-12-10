@@ -98,7 +98,7 @@ BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
 						{
 							Vector2* setcoord = NULL;
 							setcoord = (Vector2*)malloc(sizeof(Vector2));
-							ZeroMemory(setcoord, sizeof(Rectangle));
+							ZeroMemory(setcoord, sizeof(Vector2));
 							setcoord->x = elem_coord->u.array.values[0]->u.integer;
 							setcoord->y = elem_coord->u.array.values[1]->u.integer;
 							element.position = setcoord;
@@ -106,7 +106,7 @@ BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
 							{
 								Vector2* setsize = NULL;
 								setsize = (Vector2*)malloc(sizeof(Vector2));
-								ZeroMemory(setsize, sizeof(Rectangle));
+								ZeroMemory(setsize, sizeof(Vector2));
 								setsize->x = elem_coord->u.array.values[2]->u.integer;
 								setsize->y = elem_coord->u.array.values[3]->u.integer;
 								element.size = setsize;
