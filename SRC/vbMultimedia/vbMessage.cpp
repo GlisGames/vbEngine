@@ -24,7 +24,9 @@ void vbMessage::update() {
 	}
 }
 void vbMessage::render() {
-
+	if (this->background == NULL) {
+		DrawRectangle( this->position.x, this->position.y, 450, 200, WHITE);
+	}
 }
 // GETTERS & SETTERS
 BOOL vbMessage::getClickToDismiss() {
