@@ -14,8 +14,8 @@ public:
 	vbButton* cmdMinus = NULL;
 	vbTextbox* txtValue = NULL;
 	vbButton* cmdPlus = NULL;
-	Sound soundMinus;
-	Sound soundPlus;
+	Sound* soundMinus = NULL;
+	Sound* soundPlus = NULL;
 	vbNumericBox(Vector2 pos);
 	vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
 	void update();

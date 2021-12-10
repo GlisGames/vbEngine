@@ -299,7 +299,7 @@ vbString vbTextbox::getDictionaryText(vbString dictionaryText)
     return txtnew;
 }
 
-void vbTextbox::setText(vbString toset, vbString appendText)
+void vbTextbox::setText(vbString toset, vbString _appendText)
 {
     vbString txtnew = "";
     if (this->isDictionaryText)
@@ -309,8 +309,10 @@ void vbTextbox::setText(vbString toset, vbString appendText)
     else
         txtnew = toset;
 
-    if(appendText != "")
-        txtnew += appendText;
+    this->appendText = _appendText;
+    if (_appendText != "") {
+        txtnew += _appendText;
+    }
     
     if (!TextIsEqual(txtnew.c_str(), this->text.c_str()))
     {
@@ -331,7 +333,7 @@ vbString vbTextbox::getText()
         if (this->lastLang != pGAME->language)
         {
             this->lastLang = pGAME->language;
-            this->setText(this->dictionaryText);
+            this->setText(this->dictionaryText, this->appendText);
         }
     }
     return this->text;

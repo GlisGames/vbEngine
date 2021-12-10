@@ -128,6 +128,7 @@ private:
 	vbString text;
 	vbLanguage* lastLang = NULL;
 	vbString dictionaryText = "";
+	vbString appendText = "";
 	bool useCache = FALSE;
 	Vector2 boundingBox = { 0,0 };
 	alfons::LineLayout lineLayout;

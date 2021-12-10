@@ -19,12 +19,14 @@ vbMessage::vbMessage(Texture2D* tex, Vector2 pos, BOOL b) : vbCanvas(tex, pos) {
 
 // UPDATE
 void vbMessage::update() {
-	if (this->canClickToDismiss && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+	if (this->canClickToDismiss && this->isClicked()) {
 		this->visible = FALSE;
 	}
 }
 void vbMessage::render() {
-
+	if (this->background == NULL) {
+		DrawRectangle( this->position.x, this->position.y, 450, 200, WHITE);
+	}
 }
 // GETTERS & SETTERS
 BOOL vbMessage::getClickToDismiss() {
@@ -39,12 +41,15 @@ void vbMessage::pushMessage(vbString txt, int timer) {
 	this->resetMessage();
 	this->setCaption(txt, "");
 	this->visible = TRUE;
+	this->moveToFront();
 	this->tweens.addtimer("twtimer", timer)
 		->endLambdaSet(
 			lvoid{
 				this->tweens.addtween("twfadeout", &this->background->colour.a, 255, 0, 60, twOneShot);
 				this->tweens.addtween("twfadeouttxt", &this->caption->colour.a, 255, 0, 60, twOneShot)
-					->endLambdaSet(lvoid{ this->visible = FALSE; });
+					->endLambdaSet(lvoid{ 
+					this->visible = FALSE;
+					});
 			});
 }
 void vbMessage::resetMessage() {

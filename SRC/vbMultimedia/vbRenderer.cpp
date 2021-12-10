@@ -164,7 +164,7 @@ void _recursiveRender(vbContainer* c)
 		if ((*it)->visible /*&& parentCache == FALSE*/) //if it's visible and not inside a cached canvas
 		{
 			vbGraphicObject* t = (vbGraphicObject*)(*it);
-			if (t->name == "cmdPlay")
+			if (t->name == "txtGeneral")
 				BREAKPOINT;
 			Vector2 pos = t->getAbsolutePosition();
 			pos.x -= cacheBox.x;

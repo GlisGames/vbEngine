@@ -57,6 +57,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
     <ClInclude Include="..\..\SRC\vbStyles.h" />
+    <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\raylib\src\raudio.c">
@@ -109,6 +110,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
     <ClCompile Include="..\..\SRC\vbStyles.cpp" />
+    <ClCompile Include="..\..\SRC\vbUtils.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DCC81AC0-F29F-49F9-8FCD-757D005A27F0}</ProjectGuid>
