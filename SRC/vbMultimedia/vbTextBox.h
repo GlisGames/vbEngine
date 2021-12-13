@@ -52,6 +52,7 @@ enum class fitToBoundingBox
 struct GlyphTextureAtlas {
 
 	std::vector<unsigned char> texData;
+	Image atlasImage;
 	uint16_t width = 0;
 	uint16_t height = 0;
 	uint16_t dirtyRect[4] = { 0 };
@@ -71,6 +72,7 @@ struct QuadBatch {
 
 	std::vector<Rectangle> rectDest;
 	std::vector<Rectangle> rectSource;
+	std::vector<alfons::AtlasID> atlasTarget;
 	float boundingX1 = 0;
 	float boundingY1 = 0;
 	float boundingX2 = 0;
@@ -80,7 +82,7 @@ struct QuadBatch {
 	void resetVertexData();
 	// return number of quads
 	int size() const;
-	void add(const alfons::Rect& _rect, const alfons::Glyph& _glyph);
+	void add(const alfons::Rect& _rect, const alfons::Glyph& _glyph, const alfons::AtlasID _atlasID);
 };
 
 class vbAlfonsFontManager: public alfons::TextureCallback
@@ -93,7 +95,7 @@ public:
 	alfons::GlyphAtlas& getAtlas() { return atlas; };
 	alfons::LineLayout shapeText(vbString txt, FontPtr fnt);
 	void loadTextureAtlas();
-	const Texture2D getAtlasTexture() { return atlasTexture; };
+	const std::vector<Texture2D> getAtlasTexture() { return atlasTexture; };
 	void freeTextureData();// Texts can not be changed after this!
 	// Alfons callbacks
 	virtual void addTexture(alfons::AtlasID id, uint16_t textureWidth, uint16_t textureHeight);
@@ -111,7 +113,7 @@ private:
 	alfons::GlyphAtlas atlas;
 	alfons::TextShaper shaper;
 	GlyphTextureAtlas glyphTextureAtlas;
-	Texture2D atlasTexture = { 0 };
+	std::vector<Texture2D> atlasTexture;
 
 };
 
@@ -120,7 +122,7 @@ class vbTextbox : public vbGraphicObject, public alfons::MeshCallback
 private:
 	void CacheText();
 	void setDirty();
-	void drawVertices(Texture2D texture, QuadBatch& quads, float initialx, float initialy);
+	void drawVertices(std::vector<Texture2D> texture, QuadBatch& quads, float initialx, float initialy);
 
 	RenderTexture2D cacheTarget = { 0 };
 	Texture2D cachetxt = { 0 };

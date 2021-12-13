@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <vector>
 #include <limits>
-
+//#define TEXT_USE_SHADER
 #ifdef USE_SDF
 #define SDF_IMPLEMENTATION
 #include "sdf.h"
@@ -14,6 +14,7 @@
 GlyphTextureAtlas::GlyphTextureAtlas()
 {
     resetAtlas();
+    //atlasImage = GenImageColor
 }
 
 void GlyphTextureAtlas::resetAtlas()
@@ -36,6 +37,7 @@ void QuadBatch::resetVertexData()
 { 
     rectDest.clear();
     rectSource.clear();
+    atlasTarget.clear();
     boundingX1 = 0;
     boundingY1 = 0;
     boundingX2 = 0;
@@ -48,7 +50,7 @@ int QuadBatch::size() const
     return rectDest.size();
 }
 
-void QuadBatch::add(const alfons::Rect& _rect, const alfons::Glyph& _glyph) 
+void QuadBatch::add(const alfons::Rect& _rect, const alfons::Glyph& _glyph, const alfons::AtlasID _atlasID)
 {
     if (rectDest.empty()) {
         boundingX1 = _rect.x1;
@@ -72,6 +74,7 @@ void QuadBatch::add(const alfons::Rect& _rect, const alfons::Glyph& _glyph)
     }
     Rectangle src = { (float)_glyph.u1, (float)_glyph.v1, (float)_glyph.u2 - (float)_glyph.u1, (float)_glyph.v2 - (float)_glyph.v1 };
     rectSource.push_back(src);
+    atlasTarget.push_back(_atlasID);
 }
 
 vbAlfonsFontManager& vbAlfonsFontManager::getAlfonsFontManager()
@@ -83,7 +86,9 @@ vbAlfonsFontManager& vbAlfonsFontManager::getAlfonsFontManager()
 vbAlfonsFontManager::vbAlfonsFontManager() :
     atlas(*this, 1024, 2)
 {
-
+#ifndef TEXT_USE_SHADER
+    //this->loadTextureAtlas();
+#endif
 }
 
 FontPtr vbAlfonsFontManager::addFont(const char* fontname, const char* fontFile, float fontSize)
@@ -112,6 +117,7 @@ alfons::LineLayout vbAlfonsFontManager::shapeText(vbString txt, FontPtr fnt)
 Texture2D vbAlfonsFontManager::loadTexture(GlyphTextureAtlas& atlas)
 {
     Texture2D rlTexture = { 0 };
+#ifdef TEXT_USE_SHADER
     if (atlas.texData.size() > 0) {
         Image img = LoadImageRawFromBuffer(&atlas.texData[0], atlas.texData.size(),
             atlas.width, atlas.height, PIXELFORMAT_UNCOMPRESSED_GRAYSCALE, 0 /*header size*/);
@@ -121,23 +127,28 @@ Texture2D vbAlfonsFontManager::loadTexture(GlyphTextureAtlas& atlas)
     else {
         TRACELOG(LOG_ERROR, "No texture for Alfons text rendering!");
     }
+#else
+	Image img = GenImageColor(atlas.width, atlas.height, BLANK);
+    rlTexture = LoadTextureFromImage(img);
+    UnloadImage(img);
+#endif
     return rlTexture;
 }
 
 void vbAlfonsFontManager::loadTextureAtlas()
 {
     if (glyphTextureAtlas.dirty) {
-        //if (atlasTexture.id != 0) {
-        //    UnloadTexture(atlasTexture);
-        //}
-        if(atlasTexture.width == 0)
-            atlasTexture = loadTexture(glyphTextureAtlas);
+        //if(atlasTexture.width == 0)
+        //    atlasTexture = loadTexture(glyphTextureAtlas);
+#ifdef TEXT_USE_SHADER
         else
             UpdateTexture(atlasTexture, &glyphTextureAtlas.texData[0]);
+#endif // TEXT_USE_SHADER
         glyphTextureAtlas.dirty = false;
     }
     // Debug: test the atlas
-    //DrawTexture(atlasTexture, 0, 0, CLITERAL(Color){ 200, 200, 200, 255 });
+    //DrawRectangle(0, 0, pGAME->gameResolution.x, pGAME->gameResolution.y, BLACK);
+    //DrawTexture(atlasTexture, 0, 0, WHITE/*CLITERAL(Color){ 200, 200, 200, 255 }*/);
 }
 
 void vbAlfonsFontManager::addTexture(alfons::AtlasID id, uint16_t textureWidth, uint16_t textureHeight)
@@ -150,9 +161,13 @@ void vbAlfonsFontManager::addTexture(alfons::AtlasID id, uint16_t textureWidth, 
     if (id > 0) {
         TRACELOG(LOG_INFO, "Unexpected Alfons Atlas Id.");
     }
-    glyphTextureAtlas.texData.resize(textureWidth * textureHeight);
     glyphTextureAtlas.width = textureWidth;
     glyphTextureAtlas.height = textureHeight;
+#ifdef TEXT_USE_SHADER
+    glyphTextureAtlas.texData.resize(textureWidth * textureHeight);
+#else
+    atlasTexture.push_back(loadTexture(glyphTextureAtlas));
+#endif
 }
 
 void vbAlfonsFontManager::addGlyph(alfons::AtlasID id, uint16_t gx, uint16_t gy, uint16_t gw, uint16_t gh, const unsigned char* src, uint16_t padding)
@@ -162,16 +177,45 @@ void vbAlfonsFontManager::addGlyph(alfons::AtlasID id, uint16_t gx, uint16_t gy,
     auto& dirtyRect = glyphTextureAtlas.dirtyRect;
     auto width = glyphTextureAtlas.width;
     unsigned int stride = width;
-
+    //PIXELFORMAT_UNCOMPRESSED_R8G8B8A8
+#ifndef TEXT_USE_SHADER
+    Image img = LoadImageRawFromBuffer((unsigned char*)src, gw * gh, gw, gh, PIXELFORMAT_UNCOMPRESSED_GRAYSCALE, 0);
+    Image target = GenImageColor(gw, gh, BLANK);
+    //ImageFormat(&img, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
+    //ImageColorInvert(&img);
+    //ImageColorReplace(&img, BLACK, BLANK);
+    for (int y = 0; y < img.height; y++)
+    {
+        for (int x = 0; x < img.width; x++)
+        {
+            Color p = GetImageColor(img, x, y);
+            if (p.r != 255 && p.r != 0)
+                BREAKPOINT;
+            if (p.r)
+            {
+                Color c = WHITE;
+                c.a = p.r; //give alpha channel equal to the grayscale
+                ImageDrawPixel(&target, x, y, c);
+            }
+        }
+    }    
+    Rectangle upd;
+    upd.x = gx + padding;
+    upd.y = gy + padding;
+    upd.width = gw;
+    upd.height = gh;
+    UpdateTextureRec(this->atlasTexture[id], upd, target.data);
+    UnloadImage(img);
+    UnloadImage(target);
+#else
     unsigned char* dst = &texData[(gx + padding) + (gy + padding) * stride];
-
+    //unsigned char* pp = (unsigned char*)img.data;
     unsigned int pos = 0;
     for (unsigned int y = 0; y < gh; y++) {
         for (unsigned int x = 0; x < gw; x++) {
             dst[x + (y * stride)] = src[pos++];
         }
     }
-
     dst = &texData[gx + gy * width];
     gw += padding * 2;
     gh += padding * 2;
@@ -194,26 +238,19 @@ void vbAlfonsFontManager::addGlyph(alfons::AtlasID id, uint16_t gx, uint16_t gy,
     dirtyRect[1] = std::min(dirtyRect[1], gy);
     dirtyRect[2] = std::max(dirtyRect[2], uint16_t(gx + gw));
     dirtyRect[3] = std::max(dirtyRect[3], uint16_t(gy + gh));
-    //Rectangle upd;
-    //upd.x = gx;
-    //upd.y = gy;
-    //upd.width = gx+gw;
-    //upd.height = gy+gh;
-    ////upd.x = dirtyRect[0];
-    ////upd.y = dirtyRect[1];
-    ////upd.width = dirtyRect[2];
-    ////upd.height = dirtyRect[3];
-    //UpdateTextureRec(this->atlasTexture, upd, src);
+#endif
     glyphTextureAtlas.dirty = true;
+
 }
 
 void vbAlfonsFontManager::freeTextureData()
 {
+    //FIXME finish the unloading logic
     // remove logically the elements
     glyphTextureAtlas.texData.clear();
     // release the memory
     glyphTextureAtlas.texData.shrink_to_fit();
-    UnloadTexture(this->atlasTexture);
+    //UnloadTexture(this->atlasTexture);
 }
 
 
@@ -410,13 +447,13 @@ void vbTextbox::CacheText()
 }
 
 
-void vbTextbox::drawVertices(Texture2D texture, QuadBatch& quads, float initialx, float initialy)
+void vbTextbox::drawVertices(std::vector<Texture2D> texture, QuadBatch& quads, float initialx, float initialy)
 {
     for (uint32_t idx = 0; idx < quads.rectDest.size(); ++idx)  {
         Rectangle dest = quads.rectDest[idx];
         dest.x += initialx;
         dest.y += initialy;
-        DrawTexturePro(texture, quads.rectSource[idx], dest, { 0, 0 }, 0, GREEN);
+        DrawTexturePro(texture[quads.atlasTarget[idx]], quads.rectSource[idx], dest, { 0, 0 }, 0, this->colour);
         // Debug - draw the boxes for the fonts
         //DrawRectangleLinesEx({ dest.x, dest.y, dest.width, dest.height}, 1, RED);
     }
@@ -429,7 +466,9 @@ void vbTextbox::draw(float initialx, float initialy)
         return;
 
     vbAlfonsFontManager& fontMan = vbAlfonsFontManager::getAlfonsFontManager();
+#ifdef TEXT_USE_SHADER
     fontMan.loadTextureAtlas();
+#endif // !
 
     float verticalAlignmentOffset = 0;
     switch (verticalAlignment) {
@@ -485,7 +524,7 @@ void vbTextbox::drawGlyph(const alfons::Rect& rect, const alfons::AtlasGlyph& gl
     }
     bool bad = false;
     if (!textLines.empty()) {
-        textLines.back().add(rect, *glyph.glyph);
+        textLines.back().add(rect, *glyph.glyph, glyph.atlas);
     }
     //DrawRectangleLinesEx({ rect.x1, rect.y1, rect.x2 - rect.x1, rect.y2 - rect.y1 }, 1, GREEN);
 }

@@ -5,6 +5,7 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_OUTLINE_H
+//#define TEXT_USE_SHADER
 
 #include <algorithm>
 #include <cstdlib>
@@ -143,16 +144,16 @@ bool TextRender::Init(int numTextureAtlas)
     mys = LoadShaderFromMemory(vertex_shader_string, fragment_shader_string);
 #endif
     mysLocation = GetShaderLocation(mys, "textColor");
-    for (int i = 0; i < numTextureAtlas; i++)
-    {
-        std::unique_ptr<TextureAtlas> t(new TextureAtlas);
-        if (!t->Init(TextureAtlasWidth, TextureAtlasHeight))
-        {
-            return false;
-        }
-        tex_.push_back(std::move(t));
-        texGen_.push_back(0);
-    }
+    //for (int i = 0; i < numTextureAtlas; i++)
+    //{
+    //    std::unique_ptr<TextureAtlas> t(new TextureAtlas);
+    //    if (!t->Init(TextureAtlasWidth, TextureAtlasHeight))
+    //    {
+    //        return false;
+    //    }
+    //    tex_.push_back(std::move(t));
+    //    texGen_.push_back(0);
+    //}
 
     line_.TexIdx = -1;
     return true;
@@ -236,209 +237,13 @@ void TextRender::DrawTextureFonthere(Texture2D texture, Rectangle source, Rectan
     }
 }
 #define MEMCMP(a, b) memcmp((a), (b), (sizeof(a) < sizeof(b)) ? sizeof(a) : sizeof(b))
-/*
-void TextRender::DrawText(vbTextbox* text,
-    float x,
-    float y,
-    Color color, float zoom, float rotation)
-{
-    // Iterate over each glyph.
-    size_t glyph_count = text->GetGlyphCount();
-    BeginShaderMode(mys);
-    if (MEMCMP(&color, &currentColor_) != 0)
-    {
-        currentColor_ = color;
-        float tocolor[4] = { (float)color.r / 255.0f, (float)color.g / 255.0f, (float)color.b / 255.0f, (float)color.a / 255.0f, };
-        SetShaderValue(mys, GetShaderLocation(mys, "textColor"), tocolor, SHADER_UNIFORM_VEC4);
-    }
-    float maxs = text->getMaxHeight();
-    Vector2 box = { 0,0 };
-    if (text->zoom != 1.0f)
-        box = text->getPrintSize();
-    //DrawLine(x, y, 1000, y, VIOLET); //Debug baseline
-    for (size_t i = 0; i < glyph_count; i++)
-    {
-        GlyphInfo info;
-        text->GetGlyph(i, info);
-
-        Glyph g;
-        if (!getGlyph(text->GetFont(), info.glyphid, g))
-        {
-            // TODO: error log
-            break;
-        }
-
-        if (g.Size.x > 0 && g.Size.y > 0)
-        {
-            TextureAtlas* t = tex_[g.TexIdx].get();
-            float glyph_x = (x + g.Bearing.x * zoom + info.x_offset * zoom);
-
-            //glyph_x *= zoom;
-            //glyph_x -= (g.Bearing.x * zoom + info.x_offset* zoom);
-            //glyph_x -= glyph_x * (1 - zoom);
-            //float glyph_y = y - (g.Size.y - g.Bearing.y) + info.y_offset; //Original to be flipped
-            //glyph_y = -(glyph_y + g.height) + y + y + g.height*0.8; //OK flipped
-
-            float glyph_y = y - (g.descent * zoom + g.Bearing.y * zoom) - info.y_offset * zoom; //OK NO FLIP
-            glyph_y += (g.ff->bbox.yMax / 64.0f) * zoom;
-            glyph_y += maxs;
-
-            //line spacing options
-            //glyph_y += ((text->GetFont()->getSize())) * (g.ff->height ) / (g.ff->units_per_EM );
-            //glyph_y -= maxs.y;
-            //glyph_y += (text->GetFont()->getUnderlinePos());
-            //glyph_y *= zoom;
-            //glyph_y += text->GetFont().getSize() * 1.3f;//((g.ff->size->metrics.ascender - g.ff->size->metrics.descender) >> 6)*0.8f;
-
-            float glyph_w = (float)g.Size.x;
-            float glyph_h = (float)g.Size.y;
-
-            float tex_x = g.TexOffset.x / (float)t->Width();
-            float tex_y = g.TexOffset.y / (float)t->Height();
-            float tex_w = glyph_w / (float)t->Width();
-            float tex_h = glyph_h / (float)t->Height();
-
-            Rectangle source = { tex_x, tex_y, tex_w, tex_h };
-            Rectangle dest;
-            if (text->regPointRule == transformRegRule::REG_CENTER) //vvv Some magic is happening down here vvv
-                dest = { glyph_x + (box.x * 0.25f * (1.0f - zoom)) , glyph_y + (box.y * 0.25f * (1.0f - zoom)) , glyph_w * zoom, glyph_h * zoom };
-            else
-                dest = { glyph_x, glyph_y, glyph_w * zoom, glyph_h * zoom };
-            //dest.x += (g.Bearing.x * zoom) + (info.x_offset * zoom);
-            //debug triangles
-            //DrawRectangleLinesEx({ glyph_x,glyph_y, glyph_w, (float)g.Bearing.y }, 4, GREEN);
-            //DrawRectangleLinesEx({ glyph_x,glyph_y, glyph_w, glyph_h }, 2, RED);
-            //DrawTextureFonthere(t->texture_, source, { glyph_x,glyph_y, glyph_w, glyph_h }, { 0,0 }, rotation, color);           
-            //dest.y = 1.0f - dest.y;
-            
-            DrawTextureFont(t->texture_, source, dest, { 0,0 }, rotation, color);
-        }
-        // advance cursors for next glyph
-        x += info.x_advance * zoom;
-        y += info.y_advance * zoom;
-    }
-    EndShaderMode();
-}
-
-
-void TextRender::DrawTextBounding(vbTextbox* text,
-    float initialx,
-    float initialy,
-    Color color, float zoom, float rotation)
-{
-    // Iterate over each glyph.
-    size_t glyph_count = text->GetGlyphCount();
-    vbString clearText = text->getText();
-    WORD lines = 0;
-    Vector2 box = text->getPrintSize();
-    float boxedScale = text->getBoundingScale();
-    vector<WORD> breakList = text->getLineBreaks();
-    float maxs = text->getMaxHeight() * boxedScale;
-    zoom *= boxedScale;
-    //initialx = text->centerCoords[0];
-    float x = initialx;
-    if(text->alignment == alignmentText::ALIGN_CENTER && text->centerCoords.size() && text->useBoundingBox)
-        x += text->centerCoords[0];
-    float y = initialy;
-    if (text->useBoundingBox)
-    {
-        float totlines = ((float)breakList.size()+1.0f) * ((box.y * 1.05f) * zoom);
-        y += floor( (text->getBoundingBox().y - totlines )/2);
-    }
-    BeginShaderMode(mys);
-    if (MEMCMP(&color, &currentColor_) != 0)
-    {
-        currentColor_ = color;
-        float tocolor[4] = { (float)color.r / 255.0f, (float)color.g / 255.0f, (float)color.b / 255.0f, (float)color.a / 255.0f, };
-        SetShaderValue(mys, GetShaderLocation(mys, "textColor"), tocolor, SHADER_UNIFORM_VEC4);
-    }
-
-    //debug bounding box
-    if(text->debugBox)
-        DrawRectangleLinesEx({ initialx, initialy, text->getBoundingBox().x ,text->getBoundingBox().y }, 1, RED); 
-    //DrawLine(x, y, 1000, y, VIOLET); //Debug baseline
-    for (size_t i = 0; i < glyph_count; i++)
-    {
-        GlyphInfo info;
-        text->GetGlyph(i, info);
-
-        Glyph g;
-        if (!getGlyph(text->GetFont(), info.glyphid, g))
-        {
-            // TODO: error log
-            break;
-        }
-
-        if (breakList.size() > lines )
-        {
-            if (breakList[lines] == i)
-            {
-                x = initialx;
-                if (text->alignment == alignmentText::ALIGN_CENTER && text->centerCoords.size()>=(lines + 1) && text->useBoundingBox)
-                    x += text->centerCoords[lines + 1];
-                y += (box.y * 1.05f) * zoom; //Line spacing
-                lines++;
-            }
-        }
-        if (info.isLineBreak)
-            continue;
-
-        if (g.Size.x > 0 && g.Size.y > 0)
-        {
-            TextureAtlas* t = tex_[g.TexIdx].get();
-            float glyph_x = (x + g.Bearing.x * zoom + info.x_offset * zoom);
-
-            //glyph_x *= zoom;
-            //glyph_x -= (g.Bearing.x * zoom + info.x_offset* zoom);
-            //glyph_x -= glyph_x * (1 - zoom);
-            //float glyph_y = y - (g.Size.y - g.Bearing.y) + info.y_offset; //Original to be flipped
-            //glyph_y = -(glyph_y + g.height) + y + y + g.height*0.8; //OK flipped
-
-            float glyph_y = y - (g.descent * zoom + g.Bearing.y * zoom) - info.y_offset * zoom; //OK NO FLIP
-            glyph_y += (g.ff->bbox.yMax / 64.0f) * zoom;
-            glyph_y += maxs;// -(g.descent * zoom);
-
-            //line spacing options
-            //glyph_y += ((text->GetFont()->getSize())) * (g.ff->height ) / (g.ff->units_per_EM );
-            //glyph_y -= maxs.y;
-            //glyph_y += (text->GetFont()->getUnderlinePos());
-            //glyph_y *= zoom;
-            //glyph_y += text->GetFont().getSize() * 1.3f;//((g.ff->size->metrics.ascender - g.ff->size->metrics.descender) >> 6)*0.8f;
-
-            float glyph_w = (float)g.Size.x;
-            float glyph_h = (float)g.Size.y;
-
-            float tex_x = g.TexOffset.x / (float)t->Width();
-            float tex_y = g.TexOffset.y / (float)t->Height();
-            float tex_w = glyph_w / (float)t->Width();
-            float tex_h = glyph_h / (float)t->Height();
-            glyph_w *= zoom;
-            glyph_h *= zoom;
-            Rectangle source = { tex_x, tex_y, tex_w, tex_h };
-            Rectangle dest;
-            if (text->regPointRule == transformRegRule::REG_CENTER) //vvv Some magic is happening down here vvv
-                //dest = { glyph_x + (box.x * 0.25f * (1.0f - zoom)) , glyph_y + (box.y * 0.25f * (1.0f - zoom)) , glyph_w, glyph_h };
-                dest = { glyph_x + (box.x * 0.25f * (1.0f - zoom)) , glyph_y + (maxs * 0.25f * (1.0f - zoom)) , glyph_w, glyph_h };
-            else
-                dest = { glyph_x, glyph_y, glyph_w, glyph_h };
-
-            //DrawRectangleLinesEx({ glyph_x,glyph_y, glyph_w, glyph_h }, 2, RED);
-
-            DrawTextureFont(t->texture_, source, dest, { 0,0 }, rotation, color);
-        }
-        y += info.y_advance * zoom;//0.894660830
-        x += info.x_advance * zoom;
-        //DrawLine(x, 0, x, 2000, VIOLET); //Debug baseline
-    }
-    EndShaderMode();
-}
-*/
 
 void TextRender::DrawTextBoundingAlfons(vbTextbox* text,
     float initialx,
     float initialy,
     Color color, float zoom, float rotation)
 {
+#ifdef TEXT_USE_SHADER
     BeginShaderMode(mys);
     if (MEMCMP(&color, &currentColor_) != 0)
     {
@@ -446,14 +251,17 @@ void TextRender::DrawTextBoundingAlfons(vbTextbox* text,
         float tocolor[4] = { (float)color.r / 255.0f, (float)color.g / 255.0f, (float)color.b / 255.0f, (float)color.a / 255.0f, };
         SetShaderValue(mys, this->mysLocation, tocolor, SHADER_UNIFORM_VEC4);
     }
-
+#endif
     text->draw(initialx, initialy);
+
+#ifdef TEXT_USE_SHADER
+    EndShaderMode();
+#endif
     
     if (text->debugBox) //debug bounding box
         DrawRectangleLinesEx({ initialx, initialy, text->getBoundingBox().x ,text->getBoundingBox().y }, 1, RED);
     //DrawLine(initialx, initialy, 1000, initialy, VIOLET); //Debug baseline
 
-    EndShaderMode();
 }
 
 
