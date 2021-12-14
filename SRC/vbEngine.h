@@ -3,6 +3,7 @@
 //BASE
 #include "basetypes.h"
 #include "vbErrors.h"
+#include "vbGPIO.h"
 //#define PLATFORM_WEB
 #if defined(PLATFORM_WEB)
 #include <emscripten/emscripten.h>

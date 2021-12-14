@@ -37,6 +37,7 @@
     <ClInclude Include="..\..\SRC\text\text_render.h" />
     <ClInclude Include="..\..\SRC\text\text_run.h" />
     <ClInclude Include="..\..\SRC\vbErrors.h" />
+    <ClInclude Include="..\..\SRC\vbGPIO.h" />
     <ClInclude Include="..\..\SRC\vbLanguage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json-builder.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json.h" />
@@ -91,6 +92,7 @@
     <ClCompile Include="..\..\SRC\text\text_render.cpp" />
     <ClCompile Include="..\..\SRC\text\text_run.cpp" />
     <ClCompile Include="..\..\SRC\vbErrors.cpp" />
+    <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json-builder.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json.cpp" />
