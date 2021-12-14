@@ -1,5 +1,6 @@
 #include "text_render.h"
 //#include "scope_guard.h"
+#include "math.h"
 #include "rlgl.h"
 #include <assert.h>
 #include <ft2build.h>

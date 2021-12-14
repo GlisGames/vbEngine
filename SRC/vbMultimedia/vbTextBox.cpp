@@ -1,5 +1,7 @@
 ﻿#include "vbEngine.h"
 #include "rlgl.h"
+#include "raylib.h"
+#include <math.h>
 #include <assert.h>
 #include <alfons/path/lineSampler.h>
 #include <algorithm>
