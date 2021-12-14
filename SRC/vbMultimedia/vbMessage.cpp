@@ -25,7 +25,7 @@ void vbMessage::update() {
 }
 void vbMessage::render() {
 	if (this->background == NULL) {
-		DrawRectangle( this->position.x, this->position.y, 450, 200, WHITE);
+		DrawRectangleLinesEx({ this->position.x, this->position.y, 450, 200 }, borderThickness, backgroundColor);
 	}
 }
 // GETTERS & SETTERS
@@ -45,7 +45,7 @@ void vbMessage::pushMessage(vbString txt, int timer) {
 	this->tweens.addtimer("twtimer", timer)
 		->endLambdaSet(
 			lvoid{
-				this->tweens.addtween("twfadeout", &this->background->colour.a, 255, 0, 60, twOneShot);
+				this->tweens.addtween("twfadeout", (this->background != NULL) ? &this->background->colour.a : &this->backgroundColor.a, 255, 0, 60, twOneShot);
 				this->tweens.addtween("twfadeouttxt", &this->caption->colour.a, 255, 0, 60, twOneShot)
 					->endLambdaSet(lvoid{ 
 					this->visible = FALSE;
@@ -53,7 +53,8 @@ void vbMessage::pushMessage(vbString txt, int timer) {
 			});
 }
 void vbMessage::resetMessage() {
-	this->background->colour.a = 255;
+	if (this->background != NULL) this->background->colour.a = 255;
+	this->backgroundColor.a = 255;
 	this->caption->colour.a = 255;
 	this->tweens.clear();
 }
