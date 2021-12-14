@@ -16,6 +16,18 @@ void _recursiveUpdate(vbContainer* c, BOOL visible)
 		{
 			_recursiveUpdate((vbContainer*)(*it), ((*it)->visible && visible));
 		}
+		//else if ((*it)->type == TYPE_TEXT)
+		//{
+		//	vbTextbox* t = (vbTextbox*)(*it);
+		//	if (t->getCacheFlag() && t->getCacheTexture().id == 0) //cache to be done
+		//	{
+		//		RenderTexture targetTxtCache = LoadRenderTexture(t->getBoundingBox().x, t->getBoundingBox().y); //create render target
+		//		BeginTextureMode(targetTxtCache);
+		//		ClearBackground(BLANK);  // Clear texture background
+		//		t->draw(0,0);
+		//		t->getCacheTexture
+		//	}
+		//}
 		if (clickDone == FALSE && (*it)->visible && visible && (*it)->isClickable && IsMouseButtonPressed(0) && (*it)->isMouseOver())
 		{
 			(*it)->setClick(TRUE);
@@ -108,10 +120,7 @@ void _recursiveRender(vbContainer* c)
 		{
 			if (c->getCacheTexture().id == NULL) //new cache to do
 			{
-				//if (c->width > 1 && c->height > 1)
-					targetCache = LoadRenderTexture(c->width, c->height); //create render target
-				//else
-					//targetCache = LoadRenderTexture(pGAME->gameResolution.x, pGAME->gameResolution.y); //MAYBE not?
+				targetCache = LoadRenderTexture(c->width, c->height); //create render target
 				BeginTextureMode(targetCache);
 				ClearBackground(BLANK);  // Clear texture background
 				cacheBox = c->getAbsolutePosition();

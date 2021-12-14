@@ -124,7 +124,6 @@ private:
 	void setDirty();
 	void drawVertices(std::vector<Texture2D> texture, QuadBatch& quads, float initialx, float initialy);
 
-	RenderTexture2D cacheTarget = { 0 };
 	Texture2D cachetxt = { 0 };
 	bool dirty_ = true;
 	vbString text;

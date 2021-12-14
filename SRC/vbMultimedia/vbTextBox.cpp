@@ -356,7 +356,7 @@ void vbTextbox::setText(vbString toset, vbString _appendText)
         this->text = txtnew;
         this->setDirty();
         if (this->useCache)
-            this->doLayout();
+            this->CacheText();
     }
 }
 
@@ -444,6 +444,18 @@ void vbTextbox::doLayout()
 void vbTextbox::CacheText()
 {
     // not yet implemented
+    return;
+    if (this->getCacheTexture().id != 0) //cache to be done
+    {
+        UnloadTexture(this->cachetxt);
+        this->cachetxt.id = 0;
+    }
+        RenderTexture targetTxtCache = LoadRenderTexture(this->getBoundingBox().x, this->getBoundingBox().y); //create render target
+        BeginTextureMode(targetTxtCache);
+        ClearBackground(BLANK);  // Clear texture background
+        this->draw(0, 0);
+
+        this->cachetxt = targetTxtCache.texture;
 }
 
 
