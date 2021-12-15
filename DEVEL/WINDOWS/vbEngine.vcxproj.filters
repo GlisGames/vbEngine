@@ -117,6 +117,7 @@
       <Filter>vbMultimedia</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\vbUtils.h" />
+    <ClInclude Include="..\..\SRC\vbGPIO.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -219,5 +220,6 @@
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />
+    <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
   </ItemGroup>
 </Project>
