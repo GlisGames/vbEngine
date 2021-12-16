@@ -1,7 +1,82 @@
 #ifndef VBGPIO_H
 #define VBGPIO_H
+#ifdef PLATFORM_RASPBERRY
+#include "basetypes.h"
+#include <functional>
+#include <wiringPi.h>
+typedef void (*GPIOcallback)(void);
 
 class vbGPIO {
+private:
+	WORD pin_number = 0;
+	WORD pin_mode = INPUT;
+	WORD pull_mode = PUD_OFF;
+	WORD isr_edge = INT_EDGE_SETUP;
+	GPIOcallback *prova;
+	std::function<void()> ISRcallback = NULL;
+public:
 
+	std::function<void()> callbackLambda = NULL;
+	/// <summary>
+	/// Set the callback when the edge is triggered
+	/// </summary>
+	/// <param name="edge">INT_EDGE_FALLING or INT_EDGE_RISING or INT_EDGE_BOTH</param>
+	/// <param name="f">lamba function to be set</param>
+	/// <returns></returns>
+	vbGPIO* setCallback(WORD edge, GPIOcallback f) {
+		callbackLambda = f;
+		this->prova = &f;
+		isr_edge = edge;
+		ISRcallback = lvoid
+		{
+			this->callbackLambda();
+			return; 
+		};
+		//auto* d = +[]() {
+		//	this->ISRcallback();
+		//	return; };
+		wiringPiISR(pin_number, isr_edge, f);
+		return this;
+	}
+
+	/// <summary>
+	/// Init GPIO pin
+	/// </summary>
+	/// <param name="_pin_number">pin must be between 0-63</param>
+	/// <param name="_pinmode">OUTPUT or INPUT</param>
+	vbGPIO(WORD _pin_number, WORD _pinmode)
+	{
+		pin_number = _pin_number;
+		pin_mode = _pinmode;
+		pinMode(_pin_number, _pinmode);
+	}
+
+	/// <summary>
+	/// set internal pullups
+	/// </summary>
+	/// <param name="pull">PUD_DOWN or PUD_UP or PUD_OFF</param>
+	void setPullUpDown(WORD pull)
+	{
+		pullUpDnControl(pin_number, pull);
+	}
+
+	/// <summary>
+	/// read the state of a GPIO
+	/// </summary>
+	/// <returns>1 if high, 0 if low</returns>
+	int readGPIO()
+	{
+		return digitalRead(pin_number);
+	}
+
+	/// <summary>
+	/// set the state of the GPIO
+	/// </summary>
+	/// <param name="value">HIGH or LOW</param>
+	void writeGPIO(BOOL value)
+	{
+		digitalWrite(pin_number, value);
+	}
 };
+#endif
 #endif

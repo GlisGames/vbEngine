@@ -1371,6 +1371,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbNumericBox.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbGPIO.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\SRC\text\deps\glm\detail\type_vec1.inl">
