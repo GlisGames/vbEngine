@@ -560,7 +560,7 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
-      <PreprocessorDefinitions>PLATFORM_RPI;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;_CONSOLE;HAVE_PTHREAD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PLATFORM_RPI;PLATFORM_RASPBERRY;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;_CONSOLE;HAVE_PTHREAD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-fcommon -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result $(sdl-config --cflags) $(sdl-config --libs) %(AdditionalOptions)</AdditionalOptions>
       <CppLanguageStandard>c++14</CppLanguageStandard>
       <AdditionalIncludeDirectories>$(RemoteProjectDir)SRC/;$(RemoteProjectDir)SRC/vbMultimedia;$(RemoteProjectDir)SRC/text/;$(RemoteProjectDir)SRC/text/deps/;$(RemoteProjectDir)SRC/text/deps/icu;$(RemoteProjectDir)SRC/text/deps/harfbuzz/src;$(RemoteProjectDir)SRC/text/deps/harfbuzz/src/glad/include;$(RemoteProjectDir)SRC/text/deps/freetype;$(RemoteProjectDir)SRC/text/deps/freetype/include;$(RemoteProjectDir)SRC/text/deps/glm;/home/pi/GLIS/raylib/src;/home/pi/GLIS/raylib/src/external/;/home/pi/GLIS/raylib/src/external/glfw/include;$(SolutionDir)..\SRC\;$(SolutionDir)..\SRC\vbMultimedia;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

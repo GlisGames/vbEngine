@@ -1,9 +1,12 @@
 #ifndef VBGPIO_H
 #define VBGPIO_H
 #ifdef PLATFORM_RASPBERRY
+#include <wiringPi.h>
+#else
+#include "wiringpi/wiringPi.h"
+#endif
 #include "basetypes.h"
 #include <functional>
-#include <wiringPi.h>
 typedef void (*GPIOcallback)(void);
 
 class vbGPIO {
@@ -78,5 +81,4 @@ public:
 		digitalWrite(pin_number, value);
 	}
 };
-#endif
 #endif
