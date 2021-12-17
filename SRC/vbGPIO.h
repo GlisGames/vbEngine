@@ -54,6 +54,7 @@ public:
 	/// <param name="pull">PUD_DOWN or PUD_UP or PUD_OFF</param>
 	void setPullUpDown(WORD pull)
 	{
+		pull_mode = pull;
 #ifdef PLATFORM_RASPBERRY
 		pullUpDnControl(pin_number, pull);
 #endif
