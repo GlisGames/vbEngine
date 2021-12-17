@@ -27,7 +27,9 @@ public:
 	vbGPIO* setCallback(WORD edge, GPIOcallback f) {
 		callbackLambda = f;
 		isr_edge = edge;
+#ifdef PLATFORM_RASPBERRY
 		wiringPiISR(pin_number, isr_edge, f);
+#endif // PLATFORM_RASPBERRY
 		return this;
 	}
 
@@ -40,7 +42,9 @@ public:
 	{
 		pin_number = _pin_number;
 		pin_mode = _pinmode;
+#ifdef PLATFORM_RASPBERRY
 		pinMode(_pin_number, _pinmode);
+#endif
 		buttonID = btn;
 	}
 
@@ -50,7 +54,9 @@ public:
 	/// <param name="pull">PUD_DOWN or PUD_UP or PUD_OFF</param>
 	void setPullUpDown(WORD pull)
 	{
+#ifdef PLATFORM_RASPBERRY
 		pullUpDnControl(pin_number, pull);
+#endif
 	}
 
 	/// <summary>
@@ -59,7 +65,11 @@ public:
 	/// <returns>1 if high, 0 if low</returns>
 	int readGPIO()
 	{
+#ifdef PLATFORM_RASPBERRY
 		return digitalRead(pin_number);
+#else
+		return 1;
+#endif
 	}
 
 	/// <summary>
@@ -68,8 +78,10 @@ public:
 	/// <param name="value">HIGH or LOW</param>
 	void writeGPIO(BOOL value)
 	{
+#ifdef PLATFORM_RASPBERRY
 		if(this->pin_mode == OUTPUT)
 			digitalWrite(pin_number, value);
+#endif
 	}
 };
 #endif

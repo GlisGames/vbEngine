@@ -41,13 +41,4 @@ static Color colorApplyFilter(Color color, Color filter)
 	ret.a = (unsigned char)(((float)color.a / 255 * cA) * 255.0f);
 	return ret;
 }
-
-namespace utils
-{
-	static std::string wstringToBytes(std::wstring s)
-	{
-		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-		return converter.to_bytes(s);
-	}
-}
 #endif
