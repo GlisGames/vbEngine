@@ -16,6 +16,7 @@ private:
 	WORD pull_mode = PUD_OFF;
 	WORD isr_edge = INT_EDGE_SETUP;
 public:
+	hwButton buttonID = hwButton::BUTTON_NONE;
 	std::function<void()> callbackLambda = NULL;
 	/// <summary>
 	/// Set the callback when the edge is triggered
@@ -35,11 +36,12 @@ public:
 	/// </summary>
 	/// <param name="_pin_number">pin must be between 0-63</param>
 	/// <param name="_pinmode">OUTPUT or INPUT</param>
-	vbGPIO(WORD _pin_number, WORD _pinmode)
+	vbGPIO(WORD _pin_number, WORD _pinmode, hwButton btn = hwButton::BUTTON_NONE)
 	{
 		pin_number = _pin_number;
 		pin_mode = _pinmode;
 		pinMode(_pin_number, _pinmode);
+		buttonID = btn;
 	}
 
 	/// <summary>
@@ -66,7 +68,8 @@ public:
 	/// <param name="value">HIGH or LOW</param>
 	void writeGPIO(BOOL value)
 	{
-		digitalWrite(pin_number, value);
+		if(this->pin_mode == OUTPUT)
+			digitalWrite(pin_number, value);
 	}
 };
 #endif
