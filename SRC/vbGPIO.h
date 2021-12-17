@@ -15,10 +15,7 @@ private:
 	WORD pin_mode = INPUT;
 	WORD pull_mode = PUD_OFF;
 	WORD isr_edge = INT_EDGE_SETUP;
-	GPIOcallback *prova;
-	std::function<void()> ISRcallback = NULL;
 public:
-
 	std::function<void()> callbackLambda = NULL;
 	/// <summary>
 	/// Set the callback when the edge is triggered
@@ -28,16 +25,7 @@ public:
 	/// <returns></returns>
 	vbGPIO* setCallback(WORD edge, GPIOcallback f) {
 		callbackLambda = f;
-		this->prova = &f;
 		isr_edge = edge;
-		ISRcallback = lvoid
-		{
-			this->callbackLambda();
-			return; 
-		};
-		//auto* d = +[]() {
-		//	this->ISRcallback();
-		//	return; };
 		wiringPiISR(pin_number, isr_edge, f);
 		return this;
 	}
