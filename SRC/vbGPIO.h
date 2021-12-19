@@ -7,15 +7,25 @@
 #endif
 #include "basetypes.h"
 #include <functional>
+#include <thread>
+#include <mutex>
 typedef void (*GPIOcallback)(void);
 
 class vbGPIO {
 private:
+	int buttonState = 0;         // current state of the button
+	int lastButtonState = 0;     // previous state of the button
+	int lastButtonStateDebounce = 0;     // previous state of the button
+	unsigned long lastDebounceTime = 0;
+	WORD debounceDelay = 25;
 	WORD pin_number = 0;
 	WORD pin_mode = INPUT;
 	WORD pull_mode = PUD_OFF;
 	WORD isr_edge = INT_EDGE_SETUP;
+	mutex gpioMutex;
+	mutex pressedMutex;
 public:
+	BOOL pressedState = FALSE;
 	hwButton buttonID = hwButton::BUTTON_NONE;
 	std::function<void()> callbackLambda = NULL;
 	/// <summary>
@@ -44,8 +54,18 @@ public:
 		pin_mode = _pinmode;
 #ifdef PLATFORM_RASPBERRY
 		pinMode(_pin_number, _pinmode);
+		buttonState = lastButtonState = digitalRead(pin_number);
 #endif
 		buttonID = btn;
+	}
+
+	/// <summary>
+	/// Set the debounce delay, defaut is 25ms
+	/// </summary>
+	/// <param name="milliseconds">time in milliseconds</param>
+	void setDebounceDelay(WORD milliseconds)
+	{
+		debounceDelay = milliseconds;
 	}
 
 	/// <summary>
@@ -60,17 +80,68 @@ public:
 #endif
 	}
 
-	/// <summary>
-	/// read the state of a GPIO
-	/// </summary>
-	/// <returns>1 if high, 0 if low</returns>
-	int readGPIO()
+	BOOL isPressed()
+	{
+		BOOL ret = FALSE;
+		pressedMutex.lock();
+		ret = pressedState;
+		pressedState = FALSE; //reset
+		pressedMutex.unlock();
+		return ret;
+	}
+
+	void pollState()
 	{
 #ifdef PLATFORM_RASPBERRY
-		return digitalRead(pin_number);
-#else
-		return 1;
 #endif
+		int reading = digitalRead(pin_number);
+
+		// If the switch changed, due to noise or pressing:
+		if (reading != lastButtonStateDebounce) {
+			// reset the debouncing timer
+			lastDebounceTime = millis();
+		}
+
+		if ((millis() - lastDebounceTime) > debounceDelay) {
+			// whatever the reading is at, it's been there for longer than the debounce
+			// delay, so take it as the actual current state:
+
+			// if the button state has changed:
+			if (reading != buttonState) {
+				gpioMutex.lock();
+				buttonState = reading;
+				gpioMutex.unlock();
+			}
+		}
+		lastButtonStateDebounce = reading;
+		
+		if (buttonState != lastButtonState)
+		{
+			pressedMutex.lock();
+			if (buttonState == LOW)
+				pressedState = TRUE;
+			//else
+			//	pressedState = FALSE;
+			pressedMutex.unlock();
+		}
+		lastButtonState = buttonState;
+	}
+
+	int digitalPinRead()
+	{
+		return digitalRead(pin_number);
+	}
+
+	int readGPIO()
+	{
+		int ret = 0;
+#ifdef PLATFORM_RASPBERRY
+		//return digitalRead(pin_number);
+		gpioMutex.lock();
+		ret = buttonState;
+		gpioMutex.unlock();
+#endif
+		return ret;
 	}
 
 	/// <summary>

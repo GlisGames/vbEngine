@@ -74,6 +74,7 @@ public:
 	class vbGUI* GUI; //(forward declaration)
 	vbImage* mainBG;
 	vbState* currentState;
+	DWORD gameCredits = 0;
 	
 	std::vector<vbState*> stateList;
 	//BYTE startBet;
