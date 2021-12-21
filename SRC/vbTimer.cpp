@@ -1,15 +1,24 @@
 #include "vbEngine.h"
 
-void vbTimer::init() {
+void vbTimer::init(double _duration) {
 	this->isAlive = TRUE;
-	double initTime = GetTime();
+	this->initTime = GetTime();
+	this->duration = _duration;
 }
 
-vbTimer::vbTimer() {
-	this->init();
+vbTimer::vbTimer(double _duration) {
+	this->init(_duration);
 }
 
 void vbTimer::update(){
+	if (this->getTimeAlive() > this->duration) {
+		printf("TIME'S UP");
+		this->reset();
+	}
+}
+
+void vbTimer::reset() {
+	this->initTime = GetTime();
 }
 
 double vbTimer::getTimeAlive() {

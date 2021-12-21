@@ -58,6 +58,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
     <ClInclude Include="..\..\SRC\vbStyles.h" />
+    <ClInclude Include="..\..\SRC\vbTimer.h" />
     <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +113,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
     <ClCompile Include="..\..\SRC\vbStyles.cpp" />
+    <ClCompile Include="..\..\SRC\vbTimer.cpp" />
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

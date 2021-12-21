@@ -4,10 +4,12 @@
 class vbTimer : public vbLivingObject {
 private:
 	double initTime = GetTime();
-	void init();
+	double duration = 0;
+	void init(double _duration);
 public:
-	vbTimer();
+	vbTimer(double _duration = 1);
 	void update();
+	void reset();
 	double getTimeAlive();
 };
 #endif // !VBTIMER_H
