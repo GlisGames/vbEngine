@@ -36,6 +36,7 @@
 #include "vbMessage.h"
 #include "vbStyles.h"
 #include "vbNumericBox.h"
+#include "vbTimer.h"
 
 Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int width, int height, int format, int headerSize);
 
