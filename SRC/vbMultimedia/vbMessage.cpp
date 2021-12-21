@@ -5,9 +5,14 @@ void vbMessage::init(Texture2D* tex, Vector2 pos, BOOL b) {
 	this->isAlive = TRUE;
 	this->position = pos;
 	this->isClickable = TRUE;
-	this->setCaption("0", "");
+	if (tex == NULL) {
+		this->width = 450;
+		this->height = 200;
+	}
+	else
+		this->setBackground(tex);
+	this->setCaption("0");
 	this->caption->isDictionaryText = TRUE;
-	this->setBackground(tex);
 	this->setClickToDismiss(b);
 }
 vbMessage::vbMessage() : vbCanvas(NULL, { 0, 0 }) {
