@@ -4,7 +4,7 @@
 
 
 typedef void (*timer_callback) ();
-class vbTimer : public vbLivingObject {
+class vbTimer : public vbGraphicObject {
 private:
 	double initTime = GetTime();
 	double duration = 0;
@@ -24,7 +24,7 @@ public:
 	double getTimeAlive();
 	double getInitTime();
 	double getDuration();
-	void setDuration(double _duration);
+	void setDuration(double _duration, timer_callback callback = NULL);
 
 	//template <class callable, class... arguments>
 	//void later(bool async, callable&& f, arguments&&... args); // TESTING Thread safe with callable 
