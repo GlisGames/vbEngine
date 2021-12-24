@@ -44,3 +44,28 @@ Texture2D* vbImage::getTexture()
 {
 	return this->texture;
 }
+
+// vbImageMap
+void vbImageMap::addTexture(std::string texname, Texture2D tex)
+{
+	this->insert(std::pair<std::string, Texture2D>(texname, tex));
+}
+
+Texture2D* vbImageMap::getTexturePtr(std::string str)
+{
+	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
+	vbImageMap::iterator it = this->find(str);
+	if (it != this->end())
+		return &this->at(str);
+	else
+	{
+		string msg = "TEXTURE '" + str + "' NOT FOUND";
+		PANIC(msg.c_str());
+		return NULL;
+	}
+}
+
+Texture2D* vbImageMap::operator [](std::string str)
+{
+	return getTexturePtr(str);
+}

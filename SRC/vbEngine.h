@@ -17,6 +17,9 @@
 #include "raylib.h"
 #include "utils.h" 
 #include "json.h"
+#include "vbGame.h"
+#include "vbState.h"
+#include "vbGUI.h"
 #include "vbButton.h"
 #include "vbTextBox.h"
 #include "vbRenderer.h"
@@ -38,69 +41,43 @@
 #include "vbNumericBox.h"
 #include "vbTimer.h"
 
+using namespace std;
+
 Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int width, int height, int format, int headerSize);
 
-class vbSequenceMap : public std::map<std::string, Texture2Dvector*>
-{
-public:
-	Texture2Dvector* operator [](std::string str);
-};
+//class vbGame
+//{
+//private:
+//	vbStyle *current_style;
+//public:
+//	vbGame() {};
+//	vbContainer mainGame;
+//	vbMessage* alertBox;
+//	class vbGUI* GUI; //(forward declaration)
+//	vbImage* mainBG;
+//	vbState* currentState;
+//	DWORD gameCredits = 0;
+//	
+//	std::vector<vbState*> stateList;
+//	std::map<std::string, Image> imageMapLocal;
+//	std::vector<Image> atlasList;
+//
+//	gObjectList clickList;
+//	vbImageMap textureMap;
+//	vbSequenceMap sequenceMap;
+//	vbSoundMap sounds;
+//	vbLanguage* language;
+//	LanguageList languages;
+//	vbStylesMap styles;
+//	styleElement* style(vbString element_name);
+//	void changeStyle(vbContainer* c, vbString stylename);
+//	vbTextEngine textEngine;
+//
+//	Vector2 gameResolution;
+//	Vector2 screenResolution;
+//}/*vbGame*/;
 
-class vbImageMap : private std::map<std::string, Texture2D>
-{
-public:
-	void addTexture(std::string texname, Texture2D tex);
-	Texture2D* getTexturePtr(std::string str);
-	Texture2D* operator [](std::string str);
-};
-
-class vbSoundMap : private std::map<std::string, Sound>
-{
-public:
-	void addSound(std::string texname, Sound tex);
-	Sound operator [](std::string str);
-};
-
-class vbLivingObject; //forward delaration
-class vbState;
-
-class vbGame
-{
-private:
-	vbStyle *current_style;
-public:
-	vbGame() {};
-	vbContainer mainGame;
-	vbMessage* alertBox;
-	class vbGUI* GUI; //(forward declaration)
-	vbImage* mainBG;
-	vbState* currentState;
-	DWORD gameCredits = 0;
-	
-	std::vector<vbState*> stateList;
-	//BYTE startBet;
-	//DWORD betView[MAXBETBOX];
-	//DWORD betLevel;
-	//std::vector <DWORD> betList;
-	std::map<std::string, Image> imageMapLocal;
-	std::vector<Image> atlasList;
-
-	gObjectList clickList;
-	vbImageMap textureMap;
-	vbSequenceMap sequenceMap;
-	vbSoundMap sounds;
-	vbLanguage* language;
-	LanguageList languages;
-	vbStylesMap styles;
-	styleElement* style(vbString element_name);
-	void changeStyle(vbContainer* c, vbString stylename);
-	vbTextEngine textEngine;
-
-	Vector2 gameResolution;
-	Vector2 screenResolution;
-}/*vbGame*/;
-
-
+/*
 class vbState
 {
 private:
@@ -174,10 +151,9 @@ public:
 		return 0xFF;
 	};
 };
+*/
 
 
-using namespace std;
-extern vbData* pDATA;
-extern vbGame* pGAME;
+//extern vbGame* pGAME;
 
 #endif

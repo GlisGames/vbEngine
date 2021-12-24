@@ -7,8 +7,6 @@
 #include "vector"
 #include <string>
 
-class vbGame;
-
 class styleElement
 {
 public:

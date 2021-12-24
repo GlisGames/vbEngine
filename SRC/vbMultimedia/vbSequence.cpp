@@ -1,5 +1,4 @@
 #include "vbEngine.h"
-#include "vbSequence.h"
 #include <vector>
 
 vbSequence::vbSequence()
@@ -48,6 +47,7 @@ void vbSequence::stopAnim()
 	this->enabled = FALSE;
 	this->resetAnim();
 }
+
 bool vbSequence::isFinshed()
 {
 	if (this->actualIndex >= this->seqList->size() - 1)
@@ -92,4 +92,12 @@ void vbSequence::stepAnim()
 	}
 
 	this->setTexture(this->seqList->at(this->actualIndex));
+}
+
+// vbSequenceMap
+Texture2Dvector* vbSequenceMap::operator [](std::string str)
+{
+	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
+	Texture2Dvector* ret = this->at(str);
+	return ret;
 }

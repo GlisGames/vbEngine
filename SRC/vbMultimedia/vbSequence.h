@@ -2,9 +2,6 @@
 #define vbSequence_H
 
 #include "basetypes.h"
-#include "vbContainer.h"
-#include "vbGraphicObject.h"
-#include "vbImage.h"
 
 enum class seqRepeatType
 {
@@ -33,4 +30,10 @@ public:
 	bool isFinshed();
 };
 
+// vbSequenceMap
+class vbSequenceMap : public std::map<std::string, Texture2Dvector*>
+{
+public:
+	Texture2Dvector* operator [](std::string str);
+};
 #endif
