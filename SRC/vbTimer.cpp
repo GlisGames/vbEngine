@@ -3,7 +3,6 @@
 // INIT
 void vbTimer::init(double _duration, timer_callback callback) {
 	this->isAlive = TRUE;
-	this->enabled = TRUE;
 	this->initTime = GetTime();
 	this->duration = _duration;
 	this->callbackEnd = callback;
@@ -14,19 +13,21 @@ vbTimer::vbTimer(double _duration, timer_callback callback) {
 }
 // UPDATE
 void vbTimer::update(){
-	if (this->getTimeAlive() >= this->duration) {
+	double t = this->getTimeAlive();
+	if (t >= this->duration) {
 		this->isTimesUp = TRUE;
 	}
 
 	if (this->isTimesUp) {
 		if (this->callbackEnd != NULL) {
 			this->callbackEnd();
-			this->reset();
+			this->initTime = GetTime();
 		}
 		if (this->endLambda != NULL) {
 			this->endLambda();
-			this->reset();
+			this->initTime = GetTime();
 		}
+		this->isTimesUp = FALSE;
 	}
 }
 // GETTERS & SETTERS
@@ -36,6 +37,9 @@ double vbTimer::getInitTime() {
 double vbTimer::getDuration() {
 	return this->duration;
 }
+void vbTimer::setInitTime() {
+	this->initTime = GetTime();
+}
 void vbTimer::setDuration(double _duration, timer_callback callback) {
 	this->duration = _duration;
 	this->callbackEnd = callback;
@@ -44,6 +48,8 @@ void vbTimer::setDuration(double _duration, timer_callback callback) {
 void vbTimer::reset() {
 	this->initTime = GetTime();
 	this->isTimesUp = FALSE;
+	this->callbackEnd = NULL;
+	this->endLambda = NULL;
 }
 double vbTimer::getTimeAlive() {
 	return (GetTime() - this->initTime);

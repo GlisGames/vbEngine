@@ -24,6 +24,7 @@ public:
 	double getTimeAlive();
 	double getInitTime();
 	double getDuration();
+	void setInitTime();
 	void setDuration(double _duration, timer_callback callback = NULL);
 
 	//template <class callable, class... arguments>
