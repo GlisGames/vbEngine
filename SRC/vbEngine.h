@@ -19,7 +19,7 @@
 #include "json.h"
 #include "vbGame.h"
 #include "vbState.h"
-#include "vbGUI.h"
+#include "vbData.h"
 #include "vbButton.h"
 #include "vbTextBox.h"
 #include "vbRenderer.h"
@@ -37,13 +37,13 @@
 #include "vbCanvas.h"
 #include "vbLanguage.h"
 #include "vbMessage.h"
-#include "vbStyles.h"
+#include "vbStyle.h"
 #include "vbNumericBox.h"
 #include "vbTimer.h"
 
 using namespace std;
 
-Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int width, int height, int format, int headerSize);
+//Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int width, int height, int format, int headerSize);
 
 //class vbGame
 //{
@@ -53,7 +53,7 @@ Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int
 //	vbGame() {};
 //	vbContainer mainGame;
 //	vbMessage* alertBox;
-//	class vbGUI* GUI; //(forward declaration)
+//	class GUI* GUI; //(forward declaration)
 //	vbImage* mainBG;
 //	vbState* currentState;
 //	DWORD gameCredits = 0;
@@ -68,9 +68,9 @@ Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int
 //	vbSoundMap sounds;
 //	vbLanguage* language;
 //	LanguageList languages;
-//	vbStylesMap styles;
+//	vbStyleMap styles;
 //	styleElement* style(vbString element_name);
-//	void changeStyle(vbContainer* c, vbString stylename);
+//	void setStyle(vbContainer* c, vbString stylename);
 //	vbTextEngine textEngine;
 //
 //	Vector2 gameResolution;

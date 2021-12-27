@@ -7,10 +7,10 @@ vbState::vbState()
 	this->exitState = 0xFF;
 	this->canvas = new vbCanvas({ 0,0, pGAME->gameResolution.x, pGAME->gameResolution.y });
 	this->canvas->visible = FALSE;
-	this->GAME->mainGame.addObject(this->canvas);
-	this->GAME->alertBox = new vbMessage(NULL, { 0, 0 }, TRUE);
-	this->GAME->alertBox->visible = FALSE;
-	this->GAME->mainGame.addObject(this->GAME->alertBox, "alertBox");
+	this->GAME->mainScene->addObject(this->canvas);
+	//this->GAME->alertBox = new vbMessage(NULL, { 0, 0 }, TRUE);
+	//this->GAME->alertBox->visible = FALSE;
+	//this->GAME->GUI->addObject(this->GAME->alertBox, "alertBox");
 	this->GAME->stateList.push_back(this);
 }
 

@@ -19,15 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\raylib\src\config.h" />
-    <ClInclude Include="..\..\..\raylib\src\raudio.h" />
-    <ClInclude Include="..\..\..\raylib\src\raylib.h" />
-    <ClInclude Include="..\..\..\raylib\src\raymath.h" />
-    <ClInclude Include="..\..\..\raylib\src\rcamera.h" />
-    <ClInclude Include="..\..\..\raylib\src\rgestures.h" />
-    <ClInclude Include="..\..\..\raylib\src\rlgl.h" />
-    <ClInclude Include="..\..\..\raylib\src\utils.h" />
     <ClInclude Include="..\..\SRC\basetypes.h" />
+    <ClInclude Include="..\..\SRC\game\vbData.h" />
+    <ClInclude Include="..\..\SRC\game\vbGame.h" />
+    <ClInclude Include="..\..\SRC\game\vbState.h" />
     <ClInclude Include="..\..\SRC\vbEngine.h" />
     <ClInclude Include="..\..\SRC\text\vbFont.h" />
     <ClInclude Include="..\..\SRC\text\hb-ft.h" />
@@ -37,7 +32,6 @@
     <ClInclude Include="..\..\SRC\text\text_render.h" />
     <ClInclude Include="..\..\SRC\text\text_run.h" />
     <ClInclude Include="..\..\SRC\vbErrors.h" />
-    <ClInclude Include="..\..\SRC\vbGame.h" />
     <ClInclude Include="..\..\SRC\vbGPIO.h" />
     <ClInclude Include="..\..\SRC\vbLanguage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json-builder.h" />
@@ -58,36 +52,14 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
-    <ClInclude Include="..\..\SRC\vbState.h" />
-    <ClInclude Include="..\..\SRC\vbStyles.h" />
+    <ClInclude Include="..\..\SRC\vbStyle.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
     <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\raylib\src\raudio.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rcore.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rglfw.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rmodels.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rshapes.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rtext.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rtextures.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\utils.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
-    </ClCompile>
+    <ClCompile Include="..\..\SRC\game\vbData.cpp" />
+    <ClCompile Include="..\..\SRC\game\vbGame.cpp" />
+    <ClCompile Include="..\..\SRC\game\vbState.cpp" />
     <ClCompile Include="..\..\SRC\text\vbFont.cpp" />
     <ClCompile Include="..\..\SRC\text\hb-ft.cc" />
     <ClCompile Include="..\..\SRC\text\skyline_binpack.cpp" />
@@ -95,7 +67,6 @@
     <ClCompile Include="..\..\SRC\text\text_render.cpp" />
     <ClCompile Include="..\..\SRC\text\text_run.cpp" />
     <ClCompile Include="..\..\SRC\vbErrors.cpp" />
-    <ClCompile Include="..\..\SRC\vbGame.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json-builder.cpp" />
@@ -115,8 +86,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
-    <ClCompile Include="..\..\SRC\vbState.cpp" />
-    <ClCompile Include="..\..\SRC\vbStyles.cpp" />
+    <ClCompile Include="..\..\SRC\vbStyle.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />
   </ItemGroup>
@@ -201,7 +171,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;PLATFORM_DESKTOP;PLATFORM_DESKTOP_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\raylib\src\;$(ProjectDir)..\..\..\raylib\src\external\glfw\include\;$(ProjectDir)..\..\SRC\raylib\;$(ProjectDir)..\..\SRC\;$(ProjectDir)..\..\SRC\text\deps\alfons\;$(ProjectDir)..\..\SRC\text\deps\glm\;$(ProjectDir)..\..\SRC\text\deps\harfbuzz\src\;$(ProjectDir)..\..\SRC\text\deps\;$(ProjectDir)..\..\SRC\text\deps\icu\;$(ProjectDir)..\..\SRC\text\deps\freetype\include\;$(ProjectDir)..\..\SRC\text\;$(ProjectDir)..\..\SRC\wiringpi\;$(ProjectDir)..\..\SRC\vbMultimedia\;$(SolutionDir)..\SRC\game\GUI\;$(SolutionDir)..\SRC\game\;$(SolutionDir)..\SRC\resources\;$(SolutionDir)..\SRC\wiringpi\;$(SolutionDir)..\SRC\vbOmninterface\;$(SolutionDir)..\SRC\engine\;$(SolutionDir)..\SRC\statemachine\;$(SolutionDir)..\SRC\text;$(SolutionDir)..\SRC\text\deps\;$(SolutionDir)..\SRC\text\deps\harfbuzz\src;$(SolutionDir)..\SRC\text\deps\freetype\include;$(SolutionDir)..\SRC\text\deps\glm;$(SolutionDir)..\SRC\text\deps\harfbuzz\src\glad\include;$(SolutionDir)..\SRC\text\deps\icu;C:\emsdk\upstream\emscripten\system\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\raylib\src\;$(ProjectDir)..\..\..\raylib\src\external\glfw\include\;$(ProjectDir)..\..\SRC\game\;$(ProjectDir)..\..\SRC\raylib\;$(ProjectDir)..\..\SRC\;$(ProjectDir)..\..\SRC\text\deps\alfons\;$(ProjectDir)..\..\SRC\text\deps\glm\;$(ProjectDir)..\..\SRC\text\deps\harfbuzz\src\;$(ProjectDir)..\..\SRC\text\deps\;$(ProjectDir)..\..\SRC\text\deps\icu\;$(ProjectDir)..\..\SRC\text\deps\freetype\include\;$(ProjectDir)..\..\SRC\text\;$(ProjectDir)..\..\SRC\wiringpi\;$(ProjectDir)..\..\SRC\vbMultimedia\;$(SolutionDir)..\SRC\game\GUI\;$(SolutionDir)..\SRC\game\;$(SolutionDir)..\SRC\resources\;$(SolutionDir)..\SRC\wiringpi\;$(SolutionDir)..\SRC\vbOmninterface\;$(SolutionDir)..\SRC\engine\;$(SolutionDir)..\SRC\statemachine\;$(SolutionDir)..\SRC\text;$(SolutionDir)..\SRC\text\deps\;$(SolutionDir)..\SRC\text\deps\harfbuzz\src;$(SolutionDir)..\SRC\text\deps\freetype\include;$(SolutionDir)..\SRC\text\deps\glm;$(SolutionDir)..\SRC\text\deps\harfbuzz\src\glad\include;$(SolutionDir)..\SRC\text\deps\icu;C:\emsdk\upstream\emscripten\system\include</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -226,7 +196,7 @@ COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.pdb" "$(SolutionDir)..\BI
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;PLATFORM_DESKTOP;PLATFORM_DESKTOP_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\SRC\raylib\external\glfw\include\;$(ProjectDir)..\..\SRC\raylib\;$(ProjectDir)..\..\SRC\;$(ProjectDir)..\..\SRC\text\deps\alfons\;$(ProjectDir)..\..\SRC\text\deps\glm\;$(ProjectDir)..\..\SRC\text\deps\harfbuzz\src\;$(ProjectDir)..\..\SRC\text\deps\;$(ProjectDir)..\..\SRC\text\deps\icu\;$(ProjectDir)..\..\SRC\text\deps\freetype\include\;$(ProjectDir)..\..\SRC\text\;$(ProjectDir)..\..\SRC\vbMultimedia\;$(SolutionDir)..\SRC\game\;$(SolutionDir)..\SRC\resources\;$(SolutionDir)..\SRC\vbOmninterface\;$(SolutionDir)..\SRC\statemachine\;C:\Workspace\NAZIONALE/RevolverEngine\EngMic\;$(SolutionDir)..\ENGINE\SRC\;C:\Workspace\omniMich\SRC\text\deps\harfbuzz\src;C:\Workspace\omniMich\SRC\text;C:\Workspace\omniMich\SRC\text\deps\freetype\include;C:\Workspace\omniMich\SRC\text\deps\glm;C:\Workspace\omniMich\SRC\text\deps\glad\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\raylib\src\;$(ProjectDir)..\..\..\raylib\src\external\glfw\include\;$(ProjectDir)..\..\SRC\raylib\;$(ProjectDir)..\..\SRC\;$(ProjectDir)..\..\SRC\text\deps\alfons\;$(ProjectDir)..\..\SRC\text\deps\glm\;$(ProjectDir)..\..\SRC\text\deps\harfbuzz\src\;$(ProjectDir)..\..\SRC\text\deps\;$(ProjectDir)..\..\SRC\text\deps\icu\;$(ProjectDir)..\..\SRC\text\deps\freetype\include\;$(ProjectDir)..\..\SRC\text\;$(ProjectDir)..\..\SRC\wiringpi\;$(ProjectDir)..\..\SRC\vbMultimedia\;$(SolutionDir)..\SRC\game\;$(SolutionDir)..\SRC\resources\;$(SolutionDir)..\SRC\vbOmninterface\;$(SolutionDir)..\SRC\statemachine\;$(SolutionDir)..\..\SRC\text;$(SolutionDir)..\..\SRC\text\deps\;$(SolutionDir)..\..\SRC\text\deps\harfbuzz\src;$(SolutionDir)..\..\SRC\text\deps\freetype\include;$(SolutionDir)..\..\SRC\text\deps\glm;$(SolutionDir)..\..\SRC\text\deps\harfbuzz\src\glad\include;$(SolutionDir)..\..\SRC\text\deps\icu;C:\emsdk\upstream\emscripten\system\include</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

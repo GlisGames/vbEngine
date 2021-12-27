@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="raylib">
-      <UniqueIdentifier>{ea0689dd-d76c-496b-a164-a5f6a2fce0ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="vbMultimedia">
       <UniqueIdentifier>{ba4bb264-6b14-4740-9a87-d690c550d401}</UniqueIdentifier>
     </Filter>
     <Filter Include="text">
       <UniqueIdentifier>{2e28bb12-9ce8-438f-bcb4-5e0e0c325ce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{b42636d4-6757-4157-984d-4536fe163b8e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -88,39 +88,22 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbMessage.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\vbStyles.h" />
-    <ClInclude Include="..\..\..\raylib\src\config.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\raudio.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\raylib.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\raymath.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\rcamera.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\rgestures.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\rlgl.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\utils.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbStyle.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbNumericBox.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\vbUtils.h" />
     <ClInclude Include="..\..\SRC\vbGPIO.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
-    <ClInclude Include="..\..\SRC\vbGame.h" />
-    <ClInclude Include="..\..\SRC\vbState.h" />
+    <ClInclude Include="..\..\SRC\game\vbState.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\game\vbGame.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\game\vbData.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -194,38 +177,21 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbMessage.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SRC\vbStyles.cpp" />
-    <ClCompile Include="..\..\..\raylib\src\rshapes.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rtext.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rtextures.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\utils.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\raudio.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rcore.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rglfw.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rmodels.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbStyle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />
-    <ClCompile Include="..\..\SRC\vbGame.cpp" />
-    <ClCompile Include="..\..\SRC\vbState.cpp" />
+    <ClCompile Include="..\..\SRC\game\vbState.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\game\vbGame.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\game\vbData.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

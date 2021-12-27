@@ -1,6 +1,5 @@
 #include "vbEngine.h"
 
-
 // Load an image from RAW file data
 Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int width, int height, int format, int headerSize)
 {
@@ -24,36 +23,48 @@ Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int
 	return image;
 }
 
-styleElement *vbGame::style(vbString element_name)
+// vbStyle
+styleElement vbStyle::operator[](vbString str)
 {
-	if (current_style != NULL)
-		return this->current_style->checkName(element_name);
+	styleElement* ret = checkName(str);
+	if (ret == NULL)
+	{
+		string msg = "STYLE name '" + str + "' NOT FOUND";
+		PANIC(msg.c_str());
+	}
+	return *ret;
+}
+styleElement* vbStyle::checkName(vbString str)
+{
+	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
+	vbStyle::iterator it = this->find(str);
+	if (it != this->end())
+		return &this->at(str);
 	else
 		return NULL;
 }
 
-void vbGame::changeStyle(vbContainer* c, vbString stylename)
+// vbStyleMap
+vbStyle vbStyleMap::operator[](vbString str)
 {
-	vbStyle* newstyle = this->styles.checkName(stylename);
-	if (newstyle != NULL)
-		pGAME->current_style = newstyle;
-
-	gObjectList* objList = NULL;
-	objList = &c->gObjects;
-
-	for (auto it = objList->begin(); it != objList->end(); it++)
+	vbStyle* ret = checkName(str);
+	if (ret == NULL)
 	{
-		styleElement* prop = newstyle->checkName((*it)->name);
-		if (prop != NULL)
-		{
-			(*it)->applyStyle(prop);
-		}
-		if ((*it)->type == TYPE_CONTAINER)
-			changeStyle((vbContainer*)(*it), stylename);
+		string msg = "STYLE name '" + str + "' NOT FOUND";
+		PANIC(msg.c_str());
 	}
+	return *ret;
 }
-
-BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
+vbStyle* vbStyleMap::checkName(vbString str)
+{
+	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
+	vbStyleMap::iterator it = this->find(str);
+	if (it != this->end())
+		return &this->at(str);
+	else
+		return NULL;
+}
+BYTE vbStyleMap::loadStyle(vbString stylename, vbString filepath)
 {
 	std::transform(stylename.begin(), stylename.end(), stylename.begin(), ::toupper);
 	WORD jsonlen = 0;
@@ -128,4 +139,5 @@ BYTE vbStylesMap::loadStyle(vbString stylename, vbString filepath)
 	UnloadFileData(jsonContent);
 	return 0;
 }
+
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <basetypes.h>
 
-typedef enum
+enum TYPE_GAME_STATE
 {
 	S_NONE = 0xFF,
 	S_BOOT = 0,		//!< Stato di inizializzazione del gioco
@@ -30,7 +30,7 @@ typedef enum
 	S_ARROTONDA = 22,	//!< Stato di arrotondamento della vincita
 #endif
 	S_LOADING = 23
-} TYPE_GAME_STATE;
+};
 
 class vbState
 {

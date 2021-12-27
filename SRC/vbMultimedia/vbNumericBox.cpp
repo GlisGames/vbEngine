@@ -46,7 +46,7 @@ void vbNumericBox::update() {
 			if (this->soundMinus != NULL)
 				PlaySound(*this->soundMinus);
 		}
-		else pGAME->alertBox->pushMessage("txt_min_reach");
+		//else pGAME->alertBox->pushMessage("txt_min_reach");
 	}
 	if (this->cmdPlus->isClicked() ) {
 		if (this->value < this->max) {
@@ -55,7 +55,7 @@ void vbNumericBox::update() {
 			if (this->soundPlus != NULL)
 				PlaySound(*this->soundPlus);
 		}
-		else pGAME->alertBox->pushMessage("txt_max_reach");
+		//else pGAME->alertBox->pushMessage("txt_max_reach");
 	}
 
 }
