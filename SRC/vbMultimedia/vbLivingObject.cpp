@@ -1,11 +1,9 @@
 #include "vbEngine.h"
 
-vbData* pDATA = NULL;
 vbGame* pGAME = NULL;
 
-vbLivingObject::vbLivingObject(vbGame* game, vbData* data)
+vbLivingObject::vbLivingObject(vbGame* game)
 {
-	this->DATA = data;
 	this->GAME = game;
 	//this->type = TYPE_LIVING_OBJECT;
 	//GAME->livingObjects.push_front(this);

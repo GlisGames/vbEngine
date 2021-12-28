@@ -1,13 +1,14 @@
-#pragma once
-#include <basetypes.h>
-#include <vbStyle.h>
-#include <vbCanvas.h>
-#include <vbImage.h>
-#include <GUI.h>
-#include <vbState.h>
-#include <vbSequence.h>
-#include <vbLanguage.h>
-#include <vbTextEngine.h>
+#ifndef VBGAME_H
+#define VBGAME_H
+
+#include "basetypes.h"
+#include "vbStyle.h"
+#include "vbCanvas.h"
+#include "vbImage.h"
+#include "vbState.h"
+#include "vbSequence.h"
+#include "vbLanguage.h"
+#include "vbTextEngine.h"
 
 
 class vbSoundMap : private std::map<std::string, Sound>
@@ -24,8 +25,6 @@ private:
 public:
 	Vector2 gameResolution = { 0, 0 };
 	vbCanvas* mainScene = NULL;
-	//vbImage* background = NULL;
-	//GUI* GUI;
 	vbState* currentState;
 	std::vector<vbState*> stateList;
 	std::map<std::string, Image> imageMapLocal;
@@ -42,13 +41,21 @@ public:
 	styleElement* style(vbString element_name);
 	void setStyle(vbCanvas* c, vbString stylename);
 
-	vbGame(Vector2 _gameResolution, vbString title);
+	vbGame();
 	~vbGame() noexcept;
-	vbGame(const vbGame& other) = delete;
-	vbGame& operator=(const vbGame& other) = delete;
-	bool vbGameShouldClose() const;
+	vbGame(const vbGame& other) {};
+	vbGame& operator=(const vbGame& other) {};
+	vbGame(const vbGame&& other) = delete;
+	vbGame& operator=(const vbGame&& other) = delete;
+	bool GameShouldClose() const;
+	virtual void StateMachine() {};
 	virtual void update() {};
 	virtual void render() {};
+
+	void setLanguage(vbString langCode);
+	void setState(TYPE_GAME_STATE newState);
 };
 
 extern vbGame* pGAME;
+
+#endif // !VBGAME_H

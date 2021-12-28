@@ -1,9 +1,8 @@
-#pragma once
+#ifndef TEXT_RUN_H
+#define TEXT_RUN_H
 
 #include "vbFont.h"
-
 #include <hb.h>
-
 #include <string>
 #include <vector>
 
@@ -55,3 +54,5 @@ private:
     void setDirty();
     void doLayout();
 };
+
+#endif // !TEXT_RUN_H

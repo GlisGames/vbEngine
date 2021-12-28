@@ -1,9 +1,8 @@
 #include <vbEngine.h>
 
-vbGame::vbGame(Vector2 _gameResolution, vbString _title)
+vbGame::vbGame()
 {
-	this->gameResolution = _gameResolution;
-	InitWindow(this->gameResolution.x, this->gameResolution.y, _title.c_str());
+	
 }
 
 vbGame::~vbGame() noexcept
@@ -11,9 +10,27 @@ vbGame::~vbGame() noexcept
 	CloseWindow();
 }
 
-bool vbGame::vbGameShouldClose() const
+bool vbGame::GameShouldClose() const
 {
 	return WindowShouldClose();
+}
+
+void vbGame::setLanguage(vbString langCode)
+{
+	this->language = &this->languages.getLang(langCode);
+}
+
+void vbGame::setState(TYPE_GAME_STATE newState)
+{
+	for (WORD i = 0; i < this->stateList.size(); i++)
+	{
+		if (this->stateList[i]->stateID == newState)
+		{
+			this->currentState = this->stateList[i];
+			return;
+		}
+	}
+	PANIC(TextFormat("ERROR, GAME STATE %d NOT SUPPORTED", newState));
 }
 
 

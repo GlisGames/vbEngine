@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SRC\basetypes.h" />
-    <ClInclude Include="..\..\SRC\game\vbData.h" />
     <ClInclude Include="..\..\SRC\game\vbGame.h" />
     <ClInclude Include="..\..\SRC\game\vbState.h" />
     <ClInclude Include="..\..\SRC\vbEngine.h" />
@@ -57,7 +56,6 @@
     <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\SRC\game\vbData.cpp" />
     <ClCompile Include="..\..\SRC\game\vbGame.cpp" />
     <ClCompile Include="..\..\SRC\game\vbState.cpp" />
     <ClCompile Include="..\..\SRC\text\vbFont.cpp" />

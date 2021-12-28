@@ -1,4 +1,6 @@
-#pragma once
+#ifndef VBGRAPHICOBJECT_H
+#define VBGRAPHICOBJECT_H
+
 #include "basetypes.h"
 #include "vbLivingObject.h"
 #include "vbTween.h"
@@ -142,4 +144,4 @@ public:
 	//}
 };
 
-
+#endif // !VBGRAPHICOBJECT_H

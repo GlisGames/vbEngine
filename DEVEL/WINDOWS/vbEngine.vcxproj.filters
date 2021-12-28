@@ -101,9 +101,6 @@
     <ClInclude Include="..\..\SRC\game\vbGame.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\game\vbData.h">
-      <Filter>game</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -188,9 +185,6 @@
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\game\vbGame.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\game\vbData.cpp">
       <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>

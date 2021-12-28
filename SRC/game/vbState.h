@@ -1,5 +1,9 @@
-#pragma once
-#include <basetypes.h>
+#ifndef VBSTATE_H
+#define VBSTATE_H
+
+#include "basetypes.h"
+#include "vbContainer.h"
+#include "vbTween.h"
 
 enum TYPE_GAME_STATE
 {
@@ -39,8 +43,6 @@ private:
 protected:
 	BOOL firstIn = TRUE;
 	DWORD frame = 0;
-	vbGame* GAME = NULL;
-	vbData* DATA = NULL;
 
 	virtual void init() {};
 	virtual void exit() {};
@@ -58,3 +60,5 @@ public:
 	BOOL afterAndEveryUntil(DWORD after, DWORD until, DWORD every);
 	WORD run();
 };
+
+#endif // !VBSTATE_H

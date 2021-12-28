@@ -1,9 +1,10 @@
-#pragma once
+#ifndef VBCANVAS_H
+#define VBCANVAS_H
+
 #include "basetypes.h"
 #include "vbContainer.h"
 #include "vbImage.h"
 #include "vbTextBox.h"
-#include <vector>
 
 class vbCanvas : public vbContainer
 {
@@ -22,3 +23,5 @@ public:
 	BYTE borderWidth = 0;
 	Color borderColor = BLACK;
 };
+
+#endif // !VBCANVAS_H
