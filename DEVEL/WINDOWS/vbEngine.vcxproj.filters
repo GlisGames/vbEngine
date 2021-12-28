@@ -10,6 +10,9 @@
     <Filter Include="game">
       <UniqueIdentifier>{b42636d4-6757-4157-984d-4536fe163b8e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="raylib">
+      <UniqueIdentifier>{7c16cdaf-81c1-40eb-b810-d194452c1554}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicObject.h">
@@ -101,6 +104,30 @@
     <ClInclude Include="..\..\SRC\game\vbGame.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\config.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\rgestures.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\rlgl.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\utils.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\raudio.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\raylib.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\raymath.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\raylib\src\rcamera.h">
+      <Filter>raylib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -186,6 +213,30 @@
     </ClCompile>
     <ClCompile Include="..\..\SRC\game\vbGame.cpp">
       <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rcore.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rglfw.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rmodels.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rshapes.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rtext.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rtextures.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\utils.c">
+      <Filter>raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\raudio.c">
+      <Filter>raylib</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
