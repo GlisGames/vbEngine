@@ -2,7 +2,7 @@
 
 vbGame::vbGame()
 {
-	
+	this->mainScene = new vbCanvas({ 0, 0, 0, 0 });
 }
 
 vbGame::~vbGame() noexcept
@@ -68,7 +68,7 @@ void vbGame::setStyle(vbCanvas* c, vbString stylename)
 {
 	vbStyle* newstyle = this->styles.checkName(stylename);
 	if (newstyle != NULL)
-		pGAME->currentStyle = newstyle;
+		this->currentStyle = newstyle;
 
 	gObjectList* objList = NULL;
 	objList = &c->gObjects;

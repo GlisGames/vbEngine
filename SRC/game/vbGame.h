@@ -10,7 +10,6 @@
 #include "vbLanguage.h"
 #include "vbTextEngine.h"
 
-
 class vbSoundMap : private std::map<std::string, Sound>
 {
 public:

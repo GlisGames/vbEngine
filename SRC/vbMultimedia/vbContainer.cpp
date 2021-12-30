@@ -91,7 +91,7 @@ void vbContainer::addObject(vbGraphicObject* ob, std::string name, BOOL applySty
 		ob->name = name;
 	if (name == "")
 		name = ob->name;
-	if(applyStyle)
+	if (applyStyle)
 		ob->applyStyle(pGAME->style(name));
 	this->gObjects.goMap[name] = ob;
 }

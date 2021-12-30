@@ -51,7 +51,7 @@ protected:
 
 public:
 	vbTweenMap tweens;
-	vbContainer* canvas;
+	vbContainer* canvas = NULL;
 	WORD stateID = 0xFF;
 	vbState();
 	void stateExit(WORD s);
