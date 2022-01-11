@@ -2,6 +2,10 @@
 vbTween::vbTween()
 {}
 
+vbTween::~vbTween()
+{
+}
+
 void vbTween::init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int repeatFor, tween_callback callback)
 {
 	this->startP = Start_p;
@@ -13,7 +17,7 @@ void vbTween::init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop
 	this->repeatFor = repeatFor;
 	this->repeatSet = repeatFor;
 	this->callbackEnd = callback;
-	this->endLambda = NULL;
+	//this->endLambda = NULL;
 }
 vbTween::vbTween(BYTE* value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int repeatFor, tween_callback callback)
 {

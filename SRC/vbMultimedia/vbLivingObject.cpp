@@ -8,9 +8,9 @@ vbLivingObject::vbLivingObject()
 	this->initialized = TRUE;
 }
 
-vbLivingObject::vbLivingObject()
-{
-}
+//vbLivingObject::vbLivingObject()
+//{
+//}
 
 vbLivingObject::~vbLivingObject()
 {

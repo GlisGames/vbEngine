@@ -12,7 +12,8 @@ enum tweenRepeat
 	twYoyo = 2, //Repeats from start to end then from end to start
 	twRepeatOnce = 3 //Repeats from start to end only once
 };
-typedef void (*tween_callback) ();
+//typedef void (*tween_callback) ();
+typedef std::function<void()> tween_callback;
 class vbTween;
 class vbTween
 {
@@ -65,12 +66,13 @@ public:
 	int *valueINT = NULL;
 	tweenRepeat repeat = twYoyo;
 	EasingFunction easingF = LinearInterpolation;
-	std::function<void()> endLambda = NULL;
+	//tween_callback callbackEnd = NULL;
 	vbTween* endLambdaSet(std::function<void()> f) {
-		this->endLambda = f;
+		this->callbackEnd = f;
 		return this;
 	}
 	vbTween();
+	~vbTween();
 	vbTween(BYTE *value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twYoyo, EasingFunction easingFunction = LinearInterpolation,  int repeatFor = -1, tween_callback callback = NULL);
 	vbTween(WORD *value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twYoyo, EasingFunction easingFunction = LinearInterpolation,  int repeatFor = -1, tween_callback callback = NULL);
 	vbTween(DWORD *value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twYoyo, EasingFunction easingFunction = LinearInterpolation, int repeatFor =  -1, tween_callback callback = NULL);
@@ -173,8 +175,8 @@ public:
 			{
 				if (itw->second.callbackEnd != NULL)
 					itw->second.callbackEnd();
-				if (itw->second.endLambda != NULL)
-					itw->second.endLambda();
+				//if (itw->second.endLambda != NULL)
+				//	itw->second.endLambda();
 
 				if (itw->second.next)
 					nextList.push_back(itw->second.next);

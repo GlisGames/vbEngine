@@ -3,7 +3,7 @@
 
 #include "basetypes.h"
 #include "vbStyle.h"
-#include "vbCanvas.h"
+#include "vbContainer.h"
 #include "vbImage.h"
 #include "vbState.h"
 #include "vbSequence.h"
@@ -23,7 +23,7 @@ private:
 	vbStyle* currentStyle;
 public:
 	Vector2 gameResolution = { 0, 0 };
-	vbCanvas* mainScene = NULL;
+	vbContainer* mainScene = NULL;
 	vbState* currentState;
 	std::vector<vbState*> stateList;
 	std::map<std::string, Image> imageMapLocal;
