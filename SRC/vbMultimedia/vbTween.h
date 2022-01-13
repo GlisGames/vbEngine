@@ -63,7 +63,6 @@ public:
 	void Step();
 	void Finish();
 	BOOL isFinished();
-	BOOL isTerminated();
 	vbTween* next = NULL;
 	vbTween* addNext(vbTween* n)
 	{

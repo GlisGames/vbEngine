@@ -151,12 +151,6 @@ BOOL vbTween::isFinished()
 	return ((this->currStep % this->totStep)==0);
 }
 
-BOOL vbTween::isTerminated()
-{
-	return (this->repeatFor == 0);
-}
-
-
 // TWEENMAP
 vbTween* vbTweenMap::addtween(const char* name, vbTween tw)
 {
@@ -217,17 +211,16 @@ void vbTweenMap::stepAll()
 		if (itw->second.isFinished() && itw->second.repeatFor > 0)
 			itw->second.repeatFor--;
 
-		if (itw->second.isFinished())
+		if (itw->second.isFinished() && ((itw->second.repeat == twOneShot) || (itw->second.repeatFor == 0)))
 		{
 			if (itw->second.callbackEnd != NULL)
 				itw->second.callbackEnd();
 
-			if (itw->second.next && itw->second.repeatFor == 0 && itw->second.repeatSet != 0)
+			if (itw->second.next)
 				nextList.push_back(itw->second.next);
-			if ((itw->second.repeat == twOneShot) || (itw->second.repeatFor == 0))
-				itw = this->erase(itw);
+			itw = this->erase(itw);
 		}
-		if (itw != this->end())
+		else if (itw != this->end())
 			itw++;
 	}
 
