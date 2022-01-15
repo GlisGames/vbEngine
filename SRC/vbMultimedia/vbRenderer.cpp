@@ -173,8 +173,6 @@ void _recursiveRender(vbContainer* c)
 		if ((*it)->visible /*&& parentCache == FALSE*/) //if it's visible and not inside a cached canvas
 		{
 			vbGraphicObject* t = (vbGraphicObject*)(*it);
-			if (t->name == "txtGeneral")
-				BREAKPOINT;
 			Vector2 pos = t->getAbsolutePosition();
 			pos.x -= cacheBox.x;
 			pos.y -= cacheBox.y;
@@ -251,6 +249,11 @@ void _recursiveRender(vbContainer* c)
 								dest = { pos.x + (((float)tx->width * 0.5f) * (1.0f - imgZoom)), pos.y + (((float)tx->height * 0.5f) * (1.0f - imgZoom)), (float)tx->width * imgZoom, (float)tx->height * imgZoom };
 							else
 								dest = { pos.x, pos.y, (float)tx->width * imgZoom, (float)tx->height * imgZoom };
+							if (t->name == "sym1_r0")
+							{
+								//printf("%.2f\n", dest.y);
+ 								BREAKPOINT;
+							}
 							if (isCachedText || c->getCacheFlag() == TRUE)
 								source.height *= -1;
 							//DrawTexturePro(*tx->getTexture(), source, dest, origin, t->rotation + finalRotation, t->colour);
