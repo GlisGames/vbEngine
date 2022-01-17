@@ -46,7 +46,7 @@ FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, DWORD currentStep, DWORD TOT
 			currentStep %= TOTsteps;
 		}
 	}
-	p = (FLOAT)((double)currentStep / (TOTsteps));
+	p = (FLOAT)((double)currentStep / (TOTsteps - 1));
 	p = easingFunction(p);
 	Current_p = (Stop_p - Start_p) * p + Start_p;
 	return Current_p;
@@ -125,8 +125,8 @@ void vbTween::Step()
 {
 	if (this->enabled == FALSE)
 		return;
-	//if (this->currStep > 0 && this->repeat == twRepeat && this->isFinished())
-	//	this->currStep++; //FIXME
+	if (this->currStep > 0 && this->repeat == twRepeat && this->isFinished())
+		this->currStep++; //FIXME
 
 	FLOAT res = doTween(this->startP, this->stopP, this->currStep, this->totStep, this->repeat, this->easingF);
 	if (this->valueBYTE != NULL)
