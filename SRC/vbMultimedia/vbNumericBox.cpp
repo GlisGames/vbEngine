@@ -57,7 +57,8 @@ void vbNumericBox::update() {
 		}
 		else pGAME->alertBox->pushMessage("txt_max_reach");
 	}
-
+	this->cmdMinus->isClickable = this->isClickable;
+	this->cmdPlus->isClickable = this->isClickable;
 }
 // GETTERS & SETTERS
 DWORD vbNumericBox::getValue() {
