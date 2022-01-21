@@ -64,7 +64,7 @@ styleElement* vbGame::style(vbString element_name)
 		return NULL;
 }
 
-void vbGame::setStyle(vbCanvas* c, vbString stylename)
+void vbGame::setStyle(vbContainer* c, vbString stylename)
 {
 	vbStyle* newstyle = this->styles.checkName(stylename);
 	if (newstyle != NULL)
@@ -81,6 +81,6 @@ void vbGame::setStyle(vbCanvas* c, vbString stylename)
 			(*it)->applyStyle(prop);
 		}
 		if ((*it)->type == TYPE_CONTAINER)
-			this->setStyle((vbCanvas*)(*it), stylename);
+			this->setStyle((vbContainer*)(*it), stylename);
 	}
 }

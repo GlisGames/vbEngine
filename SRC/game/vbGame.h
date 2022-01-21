@@ -38,7 +38,7 @@ public:
 	LanguageList languages;
 	vbTextEngine textEngine;
 	styleElement* style(vbString element_name);
-	void setStyle(vbCanvas* c, vbString stylename);
+	void setStyle(vbContainer* c, vbString stylename);
 
 	vbGame();
 	~vbGame() noexcept;
