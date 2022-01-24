@@ -64,14 +64,38 @@
     <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\raylib\src\raudio.c" />
-    <ClCompile Include="..\..\..\raylib\src\rcore.c" />
-    <ClCompile Include="..\..\..\raylib\src\rglfw.c" />
-    <ClCompile Include="..\..\..\raylib\src\rmodels.c" />
-    <ClCompile Include="..\..\..\raylib\src\rshapes.c" />
-    <ClCompile Include="..\..\..\raylib\src\rtext.c" />
-    <ClCompile Include="..\..\..\raylib\src\rtextures.c" />
-    <ClCompile Include="..\..\..\raylib\src\utils.c" />
+    <ClCompile Include="..\..\..\raylib\src\raudio.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rcore.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rglfw.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rmodels.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rshapes.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rtext.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\rtextures.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raylib\src\utils.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+    </ClCompile>
     <ClCompile Include="..\..\SRC\game\vbGame.cpp" />
     <ClCompile Include="..\..\SRC\game\vbState.cpp" />
     <ClCompile Include="..\..\SRC\text\vbFont.cpp" />

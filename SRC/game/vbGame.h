@@ -40,6 +40,7 @@ public:
 	styleElement* style(vbString element_name);
 	void setStyle(vbContainer* c, vbString stylename);
 
+	virtual void init() = 0;
 	vbGame();
 	~vbGame() noexcept;
 	vbGame(const vbGame& other) {};
