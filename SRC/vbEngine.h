@@ -34,7 +34,7 @@
 #include "vbCanvas.h"
 #include "vbLanguage.h"
 #include "vbMessage.h"
-#include "vbStyle.h"
+#include "vbStyles.h"
 #include "vbNumericBox.h"
 #include "vbTimer.h"
 
