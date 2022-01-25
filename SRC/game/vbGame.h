@@ -43,10 +43,6 @@ public:
 	virtual void init() = 0;
 	vbGame();
 	~vbGame() noexcept;
-	vbGame(const vbGame& other) {};
-	vbGame& operator=(const vbGame& other) {};
-	vbGame(const vbGame&& other) = delete;
-	vbGame& operator=(const vbGame&& other) = delete;
 	bool GameShouldClose() const;
 	virtual void StateMachine() {};
 	virtual void update() {};

@@ -349,7 +349,8 @@ void TextRender::PrintStats()
     fprintf(stdout, "texture atlas occupancy:");
     for (size_t i = 0; i < tex_.size(); i++)
     {
-        float rate = tex_[i].get()->Occupancy() * 100.f;
+        //float rate = tex_[i]->get()->Occupancy() * 100.f; //HACK
+        float rate = tex_[i]->Occupancy() * 100.f;
         fprintf(stdout, " %.1f%%", rate);
     }
     fprintf(stdout, "\n");
@@ -468,7 +469,8 @@ bool TextRender::addToTextureAtlas(uint16_t width, uint16_t height, const uint8_
 {
     for (size_t i = 0; i < tex_.size(); i++)
     {
-        TextureAtlas *t = tex_[i].get();
+        //TextureAtlas *t = tex_[i].get(); //HACK
+        TextureAtlas *t = tex_[i];
         if (t->AddRegion(width, height, data, tex_x, tex_y))
         {
             tex_idx = (unsigned int)i;
@@ -479,7 +481,8 @@ bool TextRender::addToTextureAtlas(uint16_t width, uint16_t height, const uint8_
 
     // evict a random choosed one
     size_t index = (size_t)rand() % tex_.size();
-    TextureAtlas *tex = tex_[index].get();
+    //TextureAtlas *tex = tex_[index].get();//
+    TextureAtlas *tex = tex_[index];
     // clear contents
     tex->Clear();
     // increment generation

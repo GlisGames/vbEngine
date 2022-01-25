@@ -29,7 +29,8 @@ class TextRender
 {
     typedef std::map<GlyphKey, Glyph> GlyphCache;
 
-    typedef std::vector<std::unique_ptr<TextureAtlas>> TexVector;
+    //typedef std::vector<std::unique_ptr<TextureAtlas>> TexVector;
+    typedef std::vector<TextureAtlas*> TexVector;
     typedef std::vector<unsigned int> TexGenVector;
     void DrawTextureFonthere(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint);
     TexVector tex_;

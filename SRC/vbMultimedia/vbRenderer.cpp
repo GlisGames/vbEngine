@@ -114,7 +114,6 @@ void _recursiveRender(vbContainer* c)
 			}
 			pc = pc->parentCanvas; //MAYBE TOFIX
 		}
-
 		//CHECK cache
 		if (c->getCacheFlag() == TRUE && parentCache == FALSE) //if to be cached and not inside an already cached canvas
 		{
@@ -134,6 +133,8 @@ void _recursiveRender(vbContainer* c)
 		if (c->scissor)// && (finalScissor.width != c->width || finalScissor.height != c->height || finalScissor.x != c->position.x || finalScissor.y != c->position.y))
 		{
 			c->scissorBox = finalScissor;
+			//scale scissor
+
 			BeginScissorMode(finalScissor.x, finalScissor.y, finalScissor.width, finalScissor.height); //it evetually overwrite precendent scissors areas
 			//DrawRectangleLinesEx({ finalScissor.x, finalScissor.y, finalScissor.width, finalScissor.height }, 4, RED);
 		}
@@ -195,6 +196,7 @@ void _recursiveRender(vbContainer* c)
 					vbTextbox* txt = (vbTextbox*)(*it);
 					if (txt->getText().length() > 0 && txt->getText() != "")
 					{
+						// scale
 						pGAME->textEngine.render.DrawTextBoundingAlfons(txt, pos.x, pos.y, destColor, txt->zoom * finalZoom, txt->rotation + finalRotation);
 					}
 				}
@@ -257,6 +259,7 @@ void _recursiveRender(vbContainer* c)
 							if (isCachedText || c->getCacheFlag() == TRUE)
 								source.height *= -1;
 							//DrawTexturePro(*tx->getTexture(), source, dest, origin, t->rotation + finalRotation, t->colour);
+							//scale
 							DrawTexturePro(*tx->getTexture(), source, dest, origin, t->rotation + finalRotation, destColor);
 #ifndef DEBUG_BOX_ALL
 							if (t->debugBox == TRUE)
@@ -274,6 +277,7 @@ void _recursiveRender(vbContainer* c)
 				_recursiveRender((vbContainer*)(*it));
 
 				if (c->scissor)
+					//scale scissor
 					BeginScissorMode(finalScissor.x, finalScissor.y, finalScissor.width, finalScissor.height);
 				break;
 			}
