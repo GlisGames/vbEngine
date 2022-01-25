@@ -1,7 +1,7 @@
-#pragma once
+#ifndef VBBUTTON_H
+#define VBBUTTON_H
+
 #include "basetypes.h"
-#include "vbGraphicObject.h"
-#include <vector>
 #include "vbContainer.h"
 #include "vbImage.h"
 #include "vbTextBox.h"
@@ -13,6 +13,7 @@ private:
 	void checkSize();
 public:
 	vbButton();
+	~vbButton();
 	vbImage* image = NULL;
 	vbTextbox* text = NULL;
 	void setImage(Texture2D* tex);
@@ -20,9 +21,8 @@ public:
 	explicit vbButton(hwButton bID, Texture2D* tex, Vector2 position, vbString stext = "");
 	void setText(vbString stext, vbString appendText = "");
 	BYTE borderWidth = 0;
-	//BOOL enabled = true;
 	Color borderColor = BLACK;
 	hwButton buttonID;
-	//BOOL isClicked();
-	~vbButton();
 };
+
+#endif // !VBBUTTON_H
