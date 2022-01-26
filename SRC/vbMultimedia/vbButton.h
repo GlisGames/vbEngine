@@ -9,20 +9,22 @@
 class vbButton : public vbContainer
 {
 private:
-	void init(hwButton bID, Texture2D* tex, Rectangle position, vbString stext = "");
+	void init(hwButton bID, Texture2D* tex, Rectangle position, Color c = WHITE, vbString stext = "");
 	void checkSize();
 public:
 	vbButton();
 	~vbButton();
+	explicit vbButton(hwButton bID, Rectangle rect, Color c = WHITE, vbString stext = "");
+	explicit vbButton(hwButton bID, Texture2D* tex, Vector2 position, Color c = WHITE, vbString stext = "");
+	void setImage(Texture2D* tex);
+	void setText(vbString stext, vbString appendText = "");
 	vbImage* image = NULL;
 	vbTextbox* text = NULL;
-	void setImage(Texture2D* tex);
-	explicit vbButton(hwButton bID, Rectangle rect, vbString stext = "");
-	explicit vbButton(hwButton bID, Texture2D* tex, Vector2 position, vbString stext = "");
-	void setText(vbString stext, vbString appendText = "");
 	BYTE borderWidth = 0;
 	Color borderColor = BLACK;
 	hwButton buttonID;
+
+	void update();
 };
 
 #endif // !VBBUTTON_H

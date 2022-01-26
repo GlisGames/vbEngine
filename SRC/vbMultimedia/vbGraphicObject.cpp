@@ -135,12 +135,15 @@ BOOL vbGraphicObject::isMouseOver()
 //	Vector2 absPos = this->getAbsolutePosition();
 //	if (ret.x >= absPos.x && ret.x <= (absPos.x + (this->width/ratio.x)) && ret.y >= absPos.y && ret.y <= (absPos.y + (this->height/ratio.y)))
 //		return true;
-
+	BOOL on = FALSE;
 	Vector2 ret = GetMousePosition();
 	Vector2 absPos = this->getAbsolutePosition();
 	if (ret.x >= absPos.x && ret.x <= (absPos.x + this->width) && ret.y >= absPos.y && ret.y <= (absPos.y + this->height))
-		return true;
-	return false;
+		on = true;
+	else
+		on = false;
+
+	return on;
 }
 
 WORD vbGraphicObject::getLayer()
