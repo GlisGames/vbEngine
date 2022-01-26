@@ -208,10 +208,11 @@ void vbTweenMap::stepAll()
 	while (itw != this->end())
 	{
 		itw->second.Step();
-		if (itw->second.isFinished() && itw->second.repeatFor > 0)
+		if (itw->second.isFinished() && itw->second.repeatFor != 0)
 			itw->second.repeatFor--;
 
-		if (itw->second.isFinished() && ((itw->second.repeat == twOneShot) || (itw->second.repeatFor == 0)))
+		if (itw->second.isFinished() && 
+			((itw->second.repeat == twOneShot) || ((itw->second.repeat == twRepeat || itw->second.repeat == twYoyo) && (itw->second.repeatFor == 0))))
 		{
 			if (itw->second.callbackEnd != NULL)
 				itw->second.callbackEnd();

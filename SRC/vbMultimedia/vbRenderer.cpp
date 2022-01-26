@@ -2,6 +2,7 @@
 #include "rlgl.h"
 #include <vector>
 #include <queue>
+
 //#define DEBUG_BOX_ALL
 BOOL clickDone = FALSE;
 void _recursiveUpdate(vbContainer* c, BOOL visible)
@@ -78,6 +79,7 @@ void _recursiveRender(vbContainer* c)
 				//finalColor = ColorAlphaBlend(WHITE, finalColor, pc->colour);
 			pc = pc->parentCanvas; //MAYBE TOFIX
 		}
+		// Scissoring
 		Rectangle dest;
 		if (c->regPointRule == transformRegRule::REG_CENTER)
 			dest = { finalScissor.x + ((finalScissor.width * 0.5f) * (1.0f - finalZoom)), finalScissor.y + ((finalScissor.height * 0.5f) * (1.0f - finalZoom)), finalScissor.width * finalZoom, finalScissor.height * finalZoom };
@@ -132,8 +134,8 @@ void _recursiveRender(vbContainer* c)
 
 		if (c->scissor)// && (finalScissor.width != c->width || finalScissor.height != c->height || finalScissor.x != c->position.x || finalScissor.y != c->position.y))
 		{
-			c->scissorBox = finalScissor;
 			//scale scissor
+			c->scissorBox = finalScissor;
 
 			BeginScissorMode(finalScissor.x, finalScissor.y, finalScissor.width, finalScissor.height); //it evetually overwrite precendent scissors areas
 			//DrawRectangleLinesEx({ finalScissor.x, finalScissor.y, finalScissor.width, finalScissor.height }, 4, RED);
@@ -158,6 +160,8 @@ void _recursiveRender(vbContainer* c)
 	gObjectList cclist;
 	gObjectList* objList = NULL;
 	vbImage cachedanvas;
+
+	// Check if object has Cache
 	if (c->getCacheFlag() == TRUE && canvasToCache == FALSE)
 	{
 		cachedanvas = vbImage(&c->canvasCache, c->getAbsolutePosition());
@@ -197,7 +201,8 @@ void _recursiveRender(vbContainer* c)
 					if (txt->getText().length() > 0 && txt->getText() != "")
 					{
 						// scale
-						pGAME->textEngine.render.DrawTextBoundingAlfons(txt, pos.x, pos.y, destColor, txt->zoom * finalZoom, txt->rotation + finalRotation);
+						
+						pGAME->textEngine.render.DrawTextBoundingAlfons(txt, pos.x, pos.y, destColor, txt->zoom* finalZoom, txt->rotation + finalRotation);
 					}
 				}
 			}
