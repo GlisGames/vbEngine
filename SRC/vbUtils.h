@@ -28,6 +28,16 @@ static Color ColorTurnOff(Color c)
 	return ret;
 }
 
+static Color ColorTurnOffPercent(Color c, float percent = 100.0f)
+{
+	Color ret = c;
+	percent /= 100;
+	ret.r *= percent;
+	ret.g *= percent;
+	ret.b *= percent;
+	return ret;
+}
+
 static Color colorApplyFilter(Color color, Color filter)
 {
 	Color ret = color;

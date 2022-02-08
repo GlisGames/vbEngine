@@ -14,7 +14,7 @@ void vbButton::checkSize()
 	}
 }
 
-void vbButton::init(hwButton bID, Texture2D* tex, Rectangle position, vbString stext)
+void vbButton::init(hwButton bID, Texture2D* tex, Rectangle position, Color c, vbString stext)
 {
 	this->isAlive = TRUE;
 	this->position = { position.x, position.y };
@@ -22,6 +22,11 @@ void vbButton::init(hwButton bID, Texture2D* tex, Rectangle position, vbString s
 	this->height = position.height;
 	this->setImage(tex);
 	this->setText(stext);
+	if (this->image != NULL)
+	{
+		this->image->fallbackColour = c;
+		this->image->colour = this->image->fallbackColour;
+	}
 	this->isClickable = TRUE;
 	this->buttonID = bID;
 }
@@ -31,16 +36,16 @@ vbButton::vbButton() : vbContainer(0, 0)
 	this->init(hwButton::BUTTON_NONE, NULL, { 0,0,0,0 });
 }
 
-vbButton::vbButton(hwButton bID, Texture2D* tex, Vector2 position, vbString stext)
+vbButton::vbButton(hwButton bID, Texture2D* tex, Vector2 position, Color c, vbString stext)
 	:vbContainer(tex->width, tex->height)
 {
-	this->init(bID, tex, { position.x, position.y, (FLOAT)tex->width, (FLOAT)tex->height }, stext);
+	this->init(bID, tex, { position.x, position.y, (FLOAT)tex->width, (FLOAT)tex->height }, c, stext);
 }
 
-vbButton::vbButton(hwButton bID, Rectangle rect, vbString stext)
+vbButton::vbButton(hwButton bID, Rectangle rect, Color c, vbString stext)
 	:vbContainer(rect.width, rect.height)
 {
-	this->init(bID, NULL, rect, stext);
+	this->init(bID, NULL, rect, c, stext);
 }
 
 void vbButton::setText(vbString stext, vbString appendText)
@@ -79,4 +84,22 @@ void vbButton::setImage(Texture2D* tex)
 	}
 	else
 		this->image->setTexture(tex);
+}
+
+void vbButton::update()
+{
+	if (this->image != NULL)
+	{
+		if (this->isMouseOver() &&
+			(this->image->colour.r == this->image->fallbackColour.r) &&
+			(this->image->colour.g == this->image->fallbackColour.g) &&
+			(this->image->colour.b == this->image->fallbackColour.b))
+		{
+			this->image->colour = ColorTurnOffPercent(this->image->colour, 70.0f);
+		}
+		else if (!this->isMouseOver())
+		{
+			this->image->colour = this->image->fallbackColour;
+		}
+	}
 }
