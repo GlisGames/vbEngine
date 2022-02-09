@@ -23,7 +23,7 @@ public:
 	BYTE borderWidth = 0;
 	Color borderColor = BLACK;
 	hwButton buttonID;
-
+	bool canHover = TRUE;
 	void update();
 };
 

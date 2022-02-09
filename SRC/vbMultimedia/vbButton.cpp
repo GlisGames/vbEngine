@@ -29,6 +29,7 @@ void vbButton::init(hwButton bID, Texture2D* tex, Rectangle position, Color c, v
 	}
 	this->isClickable = TRUE;
 	this->buttonID = bID;
+	this->canHover = TRUE;
 }
 
 vbButton::vbButton() : vbContainer(0, 0)
@@ -88,7 +89,7 @@ void vbButton::setImage(Texture2D* tex)
 
 void vbButton::update()
 {
-	if (this->image != NULL)
+	if (this->image != NULL && this->canHover)
 	{
 		if (this->isMouseOver() && 
 			(this->image->colour.r == this->image->fallbackColour.r) && 
