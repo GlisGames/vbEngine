@@ -17,18 +17,6 @@ void _recursiveUpdate(vbContainer* c, BOOL visible)
 		{
 			_recursiveUpdate((vbContainer*)(*it), ((*it)->visible && visible));
 		}
-		//else if ((*it)->type == TYPE_TEXT)
-		//{
-		//	vbTextbox* t = (vbTextbox*)(*it);
-		//	if (t->getCacheFlag() && t->getCacheTexture().id == 0) //cache to be done
-		//	{
-		//		RenderTexture targetTxtCache = LoadRenderTexture(t->getBoundingBox().x, t->getBoundingBox().y); //create render target
-		//		BeginTextureMode(targetTxtCache);
-		//		ClearBackground(BLANK);  // Clear texture background
-		//		t->draw(0,0);
-		//		t->getCacheTexture
-		//	}
-		//}
 		if (clickDone == FALSE && (*it)->visible && visible && (*it)->isClickable && IsMouseButtonPressed(0) && (*it)->isMouseOver())
 		{
 			(*it)->setClick(TRUE);
@@ -312,12 +300,16 @@ void _recursiveRender(vbContainer* c)
 		}
 	}
 }
-
-void vbRender_printWorld(vbContainer* worldcanvas)
+double prevMillis = 0;
+void vbRender_renderWorld(vbContainer* worldcanvas)
 {
 	_recursiveUpdate(worldcanvas, worldcanvas->visible);
-	_recursiveRender(worldcanvas);
 	clickDone = FALSE;
+}
+
+void vbRender_updateWorld(vbContainer* worldcanvas)
+{
+	_recursiveRender(worldcanvas);
 }
 
 void vbRender_init()
