@@ -5,7 +5,9 @@
 
 //#define DEBUG_BOX_ALL
 BOOL clickDone = FALSE;
-void _recursiveUpdate(vbContainer* c, BOOL visible)
+double previousFrameMillis = 0;
+
+void _recursiveUpdate(vbContainer* c, BOOL visible, uint64_t timeSinceLastFrame = 0)
 {
 	gObjectList* objList = NULL;
 	objList = &c->gObjects;
@@ -15,7 +17,7 @@ void _recursiveUpdate(vbContainer* c, BOOL visible)
 		(*it)->setClick(FALSE);
 		if ((*it)->type == TYPE_CONTAINER)
 		{
-			_recursiveUpdate((vbContainer*)(*it), ((*it)->visible && visible));
+			_recursiveUpdate((vbContainer*)(*it), ((*it)->visible && visible), timeSinceLastFrame);
 		}
 		if (clickDone == FALSE && (*it)->visible && visible && (*it)->isClickable && IsMouseButtonPressed(0) && (*it)->isMouseOver())
 		{
@@ -24,7 +26,7 @@ void _recursiveUpdate(vbContainer* c, BOOL visible)
 		}
 		//Living object logic update
 		if ((*it)->isAlive == TRUE && (*it)->enabled == TRUE)
-			(*it)->update();
+			(*it)->update(timeSinceLastFrame);
 
 		if ((*it)->lupdate != NULL && (*it)->enabled == TRUE)
 			(*it)->lupdate();
@@ -300,14 +302,16 @@ void _recursiveRender(vbContainer* c)
 		}
 	}
 }
-double prevMillis = 0;
-void vbRender_renderWorld(vbContainer* worldcanvas)
+uint64_t prevtime = 0;
+void vbRender_updateWorld(vbContainer* worldcanvas)
 {
-	_recursiveUpdate(worldcanvas, worldcanvas->visible);
+	uint64_t timeNow = vbTimer::getMillis().count();
+	_recursiveUpdate(worldcanvas, worldcanvas->visible, (timeNow-prevtime));
 	clickDone = FALSE;
+	prevtime = timeNow;
 }
 
-void vbRender_updateWorld(vbContainer* worldcanvas)
+void vbRender_renderWorld(vbContainer* worldcanvas)
 {
 	_recursiveRender(worldcanvas);
 }
