@@ -120,28 +120,6 @@ public:
 	BOOL isMouseOver();
 	vbGraphicObject* getChild(const char* sname);
 	vbGraphicObject* getObject(const char* sname);
-	//template <typename T>
-	//T* getObject(const char* sname);
-	//{
-	//	if (this->type == TYPE_CONTAINER)
-	//	{
-	//		vbContainer* cv = (vbContainer*)(this);
-	//		if (cv->gObjects.goMap.find(sname) != cv->gObjects.goMap.end())
-	//		{
-	//			return (T*)(cv->gObjects.goMap[sname]);
-	//		}
-	//	}
-	//	return (T*)NULL; //TODO gestire errore
-	//};
-
-
-	//{
-	//	if (this->gObjects.goMap.find(sname) != this->gObjects.goMap.end())
-	//	{
-	//		return (T*)(this->gObjects.goMap[sname]);
-	//	}
-	//	return (T*)NULL;
-	//}
 };
 
 #endif // !VBGRAPHICOBJECT_H
