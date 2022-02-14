@@ -27,7 +27,6 @@
 #include "vbLivingObject.h"
 #include "vbMessage.h"
 #include "vbNumericBox.h"
-#include "vbProperty.h"
 #include "vbRenderer.h"
 #include "vbSequence.h"
 #include "vbState.h"

@@ -52,7 +52,6 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbLivingObject.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbMessage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbNumericBox.h" />
-    <ClInclude Include="..\..\SRC\vbMultimedia\vbProperty.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbRenderer.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSequence.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbImage.h" />
@@ -109,19 +108,30 @@
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json-builder.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbButton.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbCanvas.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbButton.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbCanvas.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbContainer.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbEasing.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbImage.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbLivingObject.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbMessage.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbProperty.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbMessage.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRenderer.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbSequence.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSequence.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
     <ClCompile Include="..\..\SRC\vbStyle.cpp" />

@@ -7,25 +7,74 @@ vbGraphicObject::~vbGraphicObject()
 	//	this->parentList->removeit(this);
 }
 
+void vbGraphicObject::setup()
+{
+	vbGameObject::setup();
+}
+
+void vbGraphicObject::update()
+{
+	vbGameObject::update();
+	this->tweens.stepAll();
+}
+
+
+void vbGraphicObject::draw()
+{
+	vbGameObject::draw();
+	this->transformed.position = _calculateAbsolutePosition();
+	if(this->parentContainer != NULL && this->inheritTransformations == TRUE)
+	{
+		this->transformed.scale = this->scale * this->parentContainer->transformed.scale;
+		this->transformed.rotation = this->rotation + this->parentContainer->transformed.rotation;
+
+		if (this->parentContainer->colour.a != 255 || this->parentContainer->colour.r != 255 ||
+			this->parentContainer->colour.g != 255 || this->parentContainer->colour.b != 255)
+			this->transformed.colour = colorApplyFilter(this->colour, this->parentContainer->colour);
+		else
+			this->transformed.colour = this->colour;
+
+		this->transformed.width = this->width * this->transformed.scale;
+		this->transformed.height = this->height * this->transformed.scale;
+
+		this->transformed.visible = this->parentContainer->transformed.visible;
+		if (this->regPointRule == transformRegRule::REG_CENTER && (this->parentContainer->transformed.scale != this->transformed.scale || this->parentContainer->regPointRule == transformRegRule::REG_TOP_LEFT))
+		{
+				this->transformed.position =
+				{ this->transformed.position.x + (((float)this->width * 0.5f) * (1.0f - this->transformed.scale))
+				, this->transformed.position.y + (((float)this->height * 0.5f) * (1.0f - this->transformed.scale)) };
+		}
+		
+		// When caching, hence inside a render target, the coordinate system is relative to the coordinates of the parent container
+		this->transformed.position.x -= this->parentContainer->inheritedCachePosition.x;
+		this->transformed.position.y -= this->parentContainer->inheritedCachePosition.y;
+	}
+
+	if (this->debugBox == TRUE)
+		DrawRectangleLinesEx({ this->transformed.position.x, this->transformed.position.y, (float)this->transformed.width, (float)this->transformed.height }, 1, RED);
+}
+
 vbGraphicObject::vbGraphicObject()
 {
-	this->position.x = 0;
-	this->position.y = 0;
-	this->colour = WHITE;
-	this->visible = TRUE;
-	this->zoom = 1.0f;
-	this->layer = 0;
-	this->rotation = 0;
-	this->parentList = NULL;
+	this->position.x	= 0;
+	this->position.y	= 0;
+	this->colour		= WHITE;
+	this->visible		= TRUE;
+	this->scale			= 1.0f;
+	this->rotation		= 0;
+
+	this->parentList	= NULL;
+	this->layer			= 0;
 }
 
 void vbGraphicObject::setParams(Vector2 position, WORD rotation, BYTE zoom, Color tint)
 {
 	this->position = position;
 	this->colour = tint;
-	this->zoom = zoom;
+	this->scale = zoom;
 	this->rotation = rotation;
 }
+
 void vbGraphicObject::sendToBack()
 {
 	if (this->parentList != NULL)
@@ -161,12 +210,46 @@ Vector2 vbGraphicObject::getAbsolutePosition()
 	}
 	else if (this->positioningRule == posRule::POS_CANVAS_RELATIVE)
 	{
-		vbContainer* pc = this->parentCanvas;
+		vbContainer* pc = this->parentContainer;
 		if (pc == NULL)
 			pos = this->position;
 		else
 		{
 			Vector2 parentPos = pc->getAbsolutePosition();
+			pos.x = this->position.x + parentPos.x;
+			pos.y = this->position.y + parentPos.y;
+		}
+	}
+	else
+		pos = this->position;
+
+	if (this->useCenterCoordinates == TRUE)
+	{
+		pos.x = this->position.x - (this->width / 2);
+		pos.y = this->position.y - (this->height / 2);
+	}
+	return pos;
+}
+
+Vector2 vbGraphicObject::_calculateAbsolutePosition()
+{
+	Vector2 pos = { 0, 0 };
+	//Calculate the right position according to the positioning role
+	if (this->positioningRule == posRule::POS_ABSOLUTE)
+		pos = this->position;
+	else if (this->positioningRule == posRule::POS_PIVOT_RELATIVE)
+	{
+		pos.x = this->position.x + this->pivot.x;
+		pos.y = this->position.y + this->pivot.y;
+	}
+	else if (this->positioningRule == posRule::POS_CANVAS_RELATIVE)
+	{
+		vbContainer* pc = this->parentContainer;
+		if (pc == NULL)
+			pos = this->position;
+		else
+		{
+			Vector2 parentPos = pc->transformed.position;
 			pos.x = this->position.x + parentPos.x;
 			pos.y = this->position.y + parentPos.y;
 		}

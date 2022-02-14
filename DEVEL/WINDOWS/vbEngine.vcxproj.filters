@@ -18,9 +18,6 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicObject.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\vbMultimedia\vbProperty.h">
-      <Filter>vbMultimedia</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\SRC\vbMultimedia\vbRenderer.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
@@ -131,9 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
-      <Filter>vbMultimedia</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbProperty.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRenderer.cpp">

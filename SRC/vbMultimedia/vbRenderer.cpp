@@ -9,6 +9,7 @@ double previousFrameMillis = 0;
 
 void _recursiveUpdate(vbContainer* c, BOOL visible, uint64_t timeSinceLastFrame = 0)
 {
+	/*
 	gObjectList* objList = NULL;
 	objList = &c->gObjects;
 
@@ -40,10 +41,14 @@ void _recursiveUpdate(vbContainer* c, BOOL visible, uint64_t timeSinceLastFrame 
 			s->stepAnim();
 		}
 	}
+
+	*/
 }
 
 void _recursiveRender(vbContainer* c)
 {
+	/*
+
 	BOOL canvasToCache = FALSE;
 	BOOL parentCache = FALSE;
 	RenderTexture2D targetCache = { 0 };
@@ -58,7 +63,7 @@ void _recursiveRender(vbContainer* c)
 	Rectangle finalScissor = { c->getAbsolutePosition().x, c->getAbsolutePosition().y, (FLOAT)c->width, (FLOAT)c->height };
 	if (c->width > 0 && c->height > 0)
 	{
-		vbContainer* pc = c->parentCanvas;
+		vbContainer* pc = c->parentContainer;
 		while (pc != NULL)
 		{
 			//inherit transformation
@@ -67,7 +72,7 @@ void _recursiveRender(vbContainer* c)
 			if (pc->colour.a != 255 || pc->colour.r != 255 || pc->colour.g != 255 || pc->colour.b != 255)
 				finalColor = colorApplyFilter(finalColor, pc->colour);
 				//finalColor = ColorAlphaBlend(WHITE, finalColor, pc->colour);
-			pc = pc->parentCanvas; //MAYBE TOFIX
+			pc = pc->parentContainer; //MAYBE TOFIX
 		}
 		// Scissoring
 		Rectangle dest;
@@ -77,10 +82,10 @@ void _recursiveRender(vbContainer* c)
 			dest = { finalScissor.x, finalScissor.y, finalScissor.width * finalZoom, finalScissor.height * finalZoom };
 		finalScissor = dest;
 
-		pc = c->parentCanvas;
+		pc = c->parentContainer;
 		while (pc != NULL)
 		{
-			if (pc->getCacheFlag() == TRUE/* && pc->getCacheTexture().id != 0*/)
+			if (pc->getCacheFlag() == TRUE)
 			{
 				parentCache = TRUE;
 				cacheBox = pc->getAbsolutePosition();
@@ -104,7 +109,7 @@ void _recursiveRender(vbContainer* c)
 				if (pc->scissorBox.y + pc->scissorBox.height < finalScissor.y + finalScissor.height)
 					finalScissor.height = (pc->scissorBox.y + pc->scissorBox.height) - finalScissor.y;
 			}
-			pc = pc->parentCanvas; //MAYBE TOFIX
+			pc = pc->parentContainer; //MAYBE TOFIX
 		}
 		//CHECK cache
 		if (c->getCacheFlag() == TRUE && parentCache == FALSE) //if to be cached and not inside an already cached canvas
@@ -154,7 +159,7 @@ void _recursiveRender(vbContainer* c)
 	// Check if object has Cache
 	if (c->getCacheFlag() == TRUE && canvasToCache == FALSE)
 	{
-		cachedanvas = vbImage(&c->canvasCache, c->getAbsolutePosition());
+		cachedanvas = vbImage(&c->containerCache, c->getAbsolutePosition());
 		(vbGraphicObject)cachedanvas = (vbGraphicObject)(*c);
 		cclist.push_back(&cachedanvas);
 		objList = &cclist;
@@ -165,7 +170,7 @@ void _recursiveRender(vbContainer* c)
 	for (gObjectIndex it = objList->begin(); it != objList->end(); it++)
 	{
 		//Render
-		if ((*it)->visible /*&& parentCache == FALSE*/) //if it's visible and not inside a cached canvas
+		if ((*it)->visible)// && parentCache == FALSE) //if it's visible and not inside a cached canvas
 		{
 			vbGraphicObject* t = (vbGraphicObject*)(*it);
 			Vector2 pos = t->getAbsolutePosition();
@@ -292,7 +297,7 @@ void _recursiveRender(vbContainer* c)
 	{
 		if (c->getCacheTexture().id == NULL)
 		{
-			c->canvasCache = targetCache.texture;
+			c->containerCache = targetCache.texture;
 			EndTextureMode();
 		
 			//UnloadRenderTexture(targetCache); //unload the rest
@@ -301,6 +306,8 @@ void _recursiveRender(vbContainer* c)
 			_recursiveRender(c); //call again to print the cached texture (we were inside texture mode)
 		}
 	}
+
+	*/
 }
 uint64_t prevtime = 0;
 void vbRender_updateWorld(vbContainer* worldcanvas)

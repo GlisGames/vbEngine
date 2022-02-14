@@ -13,6 +13,11 @@ protected:
 public:
 	vbImage(WORD layer = 0);
 	vbImage(Texture2D* tex, Vector2 pos = {0,0}, std::string name = "", WORD layer = 0);
+
+	virtual void setup();
+	virtual void update();
+	virtual void draw();
+	BOOL isCacheImage = FALSE;
 	void setTexture(Texture2D* tex);
 	Texture2D *getTexture();
 	~vbImage();

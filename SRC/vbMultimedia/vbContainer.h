@@ -15,18 +15,21 @@ class vbContainer : public vbGraphicObject
 {
 private:
 	void init(WORD width, WORD height);
+	Rectangle _calculateActiveArea();
 	bool useCache = FALSE;
 public:
-	//vbImageList images;
-	//canvasList canvases;
-	Texture2D canvasCache = { 0 };
+	Texture2D containerCache = { 0 };
+	vbImage *cacheImage = NULL;
 	gObjectList gObjects;
-	BOOL changed = TRUE;
-	BOOL scissor = FALSE;
-	Rectangle scissorBox;
+	BOOL autoResize = FALSE;
+
 	vbContainer(WORD width = 1, WORD height = 1, std::string name = "");
 	~vbContainer();
-	//vbContainer(vbImageList initvbImageList, WORD width = 0, WORD height = 0, std::string name = "");
+	BOOL useActiveArea = FALSE;
+	BOOL inheritedActiveArea = FALSE;
+	BOOL inheritedCache = FALSE;
+	Vector2 inheritedCachePosition = { 0,0 };
+	Rectangle activeArea = Rectangle({ 0,0,0,0 });
 	Texture2D getCacheTexture();
 	void setCacheFlag(BOOL cacheON);
 	void updateCache();
@@ -34,7 +37,10 @@ public:
 	void addObject(vbGraphicObject* ob, std::string name = "", BOOL applyStyle = TRUE, WORD layer = 0);
 	void removeObject(vbGraphicObject* ob);
 	void resize();
-	//vbGraphicObject* getObject(const char* sname);
+
+	virtual void vbContainer::setup();
+	virtual void vbContainer::update();
+	virtual void vbContainer::draw();
 
 	vbContainer* getChildCanvas(const char* sname)
 	{

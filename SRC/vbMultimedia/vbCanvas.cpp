@@ -23,6 +23,20 @@ vbCanvas::vbCanvas() : vbContainer(0, 0)
 	this->init(NULL, { 0,0,0,0 });
 }
 
+void vbCanvas::setup()
+{
+	vbContainer::setup();
+}
+void vbCanvas::update()
+{
+	vbContainer::update();
+}
+void vbCanvas::draw()
+{
+	vbContainer::draw();
+
+}
+
 vbCanvas::vbCanvas(Rectangle rect, vbString stext) : vbContainer(rect.width, rect.height)
 {
 	this->init(NULL, rect, stext);

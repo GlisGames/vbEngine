@@ -2,16 +2,12 @@
 
 vbGame* pGAME = NULL;
 
-vbLivingObject::vbLivingObject()
+vbGameObject::vbGameObject()
 {
-	this->init();
+	this->setup();
 	this->initialized = TRUE;
 }
 
-//vbLivingObject::vbLivingObject()
-//{
-//}
-
-vbLivingObject::~vbLivingObject()
+vbGameObject::~vbGameObject()
 {
 }

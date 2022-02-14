@@ -15,6 +15,9 @@ public:
 	vbTextbox* caption = NULL;
 	vbCanvas();
 	~vbCanvas();
+	virtual void vbCanvas::setup();
+	virtual void vbCanvas::update();
+	virtual void vbCanvas::draw();
 	explicit vbCanvas(Rectangle rect, vbString stext = "");
 	explicit vbCanvas(Texture2D* tex, Vector2 position, vbString stext = ""); 
 	void setBackground(Texture2D* tex);

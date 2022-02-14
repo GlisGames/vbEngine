@@ -255,6 +255,30 @@ void vbAlfonsFontManager::freeTextureData()
     //UnloadTexture(this->atlasTexture);
 }
 
+void vbTextbox::setup()
+{
+    vbGraphicObject::setup();
+
+}
+
+void vbTextbox::update()
+{
+    vbGraphicObject::update();
+
+}
+
+void vbTextbox::draw()
+{
+    vbGraphicObject::draw();
+    if (this->visible == TRUE)
+    {
+        if (this->getText().length() > 0 && this->getText() != "")
+        {
+            pGAME->textEngine.render.DrawTextBoundingAlfons(this, this->transformed.position.x, this->transformed.position.y, this->transformed.colour, this->transformed.scale, this->transformed.rotation);
+        }
+    }
+}
+
 
 vbTextbox::vbTextbox():
     batchTextRenderer(vbAlfonsFontManager::getAlfonsFontManager().getAtlas(), *this)
