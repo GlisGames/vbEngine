@@ -4,20 +4,47 @@
 void vbContainer::setup()
 {
 	vbGraphicObject::setup();
-	cacheImage = new vbImage(&this->containerCache);
+	cacheImage = new vbImage(&this->targetCache.texture);
 	cacheImage->isCacheImage = TRUE;
+	cacheImage->parentContainer = this;
+	cacheImage->position = { 0,0 };
 	cacheImage->positioningRule = posRule::POS_CANVAS_RELATIVE;
-	this->addObject(this->cacheImage);
 }
 
 void vbContainer::update()
 {
 	vbGraphicObject::update();
-	for (vbGraphicObject* obj : this->gObjects)
+	//for (auto obj : this->gObjects)
+	//{
+	//	if (obj->isAlive && obj->enabled)
+	//		obj->update();
+	//}
+
+	//return;
+	if (this->parentContainer != NULL) //inherit clicked
+		this->transformed.canBeClicked = this->parentContainer->transformed.canBeClicked;
+	else
+		this->transformed.canBeClicked = TRUE;
+
+	for (auto it = this->gObjects.rbegin(); it != this->gObjects.rend(); it++)
 	{
-		if (obj->isAlive && obj->enabled)
-			obj->update();
+		(*it)->setClick(FALSE); //reset click flag
+		BOOL parentClickable = (this->parentContainer) ? this->parentContainer->transformed.canBeClicked : TRUE;
+		if (parentClickable && this->transformed.canBeClicked // no clicks done yet
+			&& (*it)->isClickable && (*it)->visible && visible // is visible and clickable
+			&& IsMouseButtonPressed(0) && (*it)->isMouseOver()) // and clicked
+		{
+			(*it)->setClick(TRUE);
+			this->transformed.canBeClicked = FALSE;
+		}
+
+		if ((*it)->isAlive && (*it)->enabled)
+		{
+			(*it)->update();
+		}
 	}
+	if(this->parentContainer) //inherit backwards
+		this->parentContainer->transformed.canBeClicked = this->transformed.canBeClicked;
 }
 
 void vbContainer::draw()
@@ -25,18 +52,27 @@ void vbContainer::draw()
 	vbGraphicObject::draw();
 	this->inheritedCache = FALSE;
 	this->inheritedCachePosition = { 0,0 };
+	BOOL containerToCache = FALSE;
 
 	if ((this->parentContainer == NULL && this->useCache == TRUE) || // if it's the root and needs to ba cached
 		(this->parentContainer != NULL && // or not the root and
 		this->useCache == TRUE &&	// has to be cached
-		this->containerCache.id == NULL && // not yet cached
+		this->dirtyCache == TRUE && // not yet cached
 		this->parentContainer->getCacheTexture().id == NULL)) //and not inside an already cached canvas
 	{
-			RenderTexture2D targetCache = { 0 };
+		//unload cache only if the size has changed 
+		if (this->targetCache.id != NULL && this->width != this->targetCache.texture.width && this->height != this->targetCache.texture.height)
+		{
+			UnloadRenderTexture(this->targetCache);
+			this->targetCache = { 0 };
+		}
+
+		if(this->targetCache.id == NULL)
 			targetCache = LoadRenderTexture(this->width, this->height); //create render target
-			BeginTextureMode(targetCache);
-			ClearBackground(BLANK);  // Clear texture background
-			this->inheritedCachePosition = this->transformed.position;
+		BeginTextureMode(targetCache);
+		ClearBackground(BLANK);  // Clear texture background
+		this->inheritedCachePosition = this->transformed.position;
+		containerToCache = TRUE;
 	}
 	else
 	{
@@ -51,7 +87,7 @@ void vbContainer::draw()
 	if (this->inheritedActiveArea || this->useActiveArea)
 		BeginScissorMode(this->activeArea.x, this->activeArea.y, this->activeArea.width, this->activeArea.height);
 
-	if (this->containerCache.id == NULL)
+	if (!this->useCache || containerToCache)
 	{
 		for (vbGraphicObject* obj : this->gObjects)
 		{
@@ -66,19 +102,38 @@ void vbContainer::draw()
 		}
 	}
 	else
+	{
+		this->cacheImage->update();
 		this->cacheImage->draw();
+	}
 
 	if (this->inheritedActiveArea || this->useActiveArea)
 		EndScissorMode();
+
+	if (containerToCache && this->dirtyCache)
+	{
+		this->dirtyCache = FALSE;
+		EndTextureMode();
+		this->cacheImage->setTexture(&this->targetCache.texture);
+		this->cacheImage->update();
+		this->cacheImage->draw(); //print the newely cached texture (we were inside texture mode)
+	}
 }
 
 Rectangle vbContainer::_calculateActiveArea()
 {
-	Rectangle finalScissor = { this->transformed.position.x, this->transformed.position.y, (float)this->transformed.width, (float)this->transformed.height };
+	Rectangle finalScissor;
 	this->inheritedActiveArea = FALSE;
+	finalScissor = { this->transformed.position.x, this->transformed.position.y, (float)this->transformed.width, (float)this->transformed.height };
 	if (this->parentContainer != NULL)
 	{
 		auto pc = this->parentContainer;
+
+		if (this->useActiveArea == FALSE && (pc->useActiveArea || pc->inheritedActiveArea))
+		{
+			this->inheritedActiveArea = TRUE;
+			return pc->activeArea; // if this canvas has no active area, it takes the parent one
+		}
 		if (pc->useActiveArea || pc->inheritedActiveArea)
 		{
 			this->inheritedActiveArea = TRUE;
@@ -120,20 +175,27 @@ vbContainer::vbContainer(WORD width, WORD height, string name)
 
 void vbContainer::updateCache()
 {
-	if (this->useCache == TRUE)
+	/*if (this->useCache == TRUE)
 	{
 		UnloadTexture(this->containerCache);
 		this->containerCache.id = 0;
-	}
+		this->dirtyCache = TRUE;
+	}*/
+		this->dirtyCache = TRUE;
 }
 
 void vbContainer::setCacheFlag(BOOL cacheON)
 {
 	if (cacheON == FALSE)
 	{
-		UnloadTexture(this->containerCache);
-		this->containerCache.id = 0;
+		UnloadRenderTexture(this->targetCache);
+		ZeroMemory(&this->targetCache.texture, sizeof(this->targetCache.texture));
+		//this->dirtyCache = FALSE;
+		//UnloadTexture(this->containerCache);
+		//this->containerCache.id = 0;
 	}
+
+	this->dirtyCache = TRUE;
 	this->useCache = cacheON;
 }
 
@@ -144,7 +206,7 @@ BOOL vbContainer::getCacheFlag()
 
 Texture2D vbContainer::getCacheTexture()
 {
-	return this->containerCache;
+	return this->targetCache.texture;
 }
 
 vbContainer::~vbContainer()

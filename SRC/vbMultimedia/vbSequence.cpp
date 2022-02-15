@@ -1,6 +1,22 @@
 #include "vbEngine.h"
 #include <vector>
 
+void vbSequence::setup()
+{
+	vbImage::setup();
+
+}
+void vbSequence::update()
+{
+	vbImage::update();
+	this->stepAnim();
+}
+void vbSequence::draw()
+{
+	vbImage::draw();
+
+}
+
 vbSequence::vbSequence()
 {
 	this->seqList = {0};

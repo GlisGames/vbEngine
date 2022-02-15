@@ -61,13 +61,20 @@ class vbProperties
 	WORD height = 0;
 	Color colour = WHITE;
 	BOOL visible = TRUE;
+	BOOL canBeClicked = TRUE;
 };
 
 class vbGraphicObject: public vbGameObject, public vbProperties
 {
 private:
 	Vector2 _calculateAbsolutePosition();
-	int layer = 0;
+	// Layers get printed from the smallest to the highest
+	// means that layer 0 is printer on the back of layer 1
+	// layer with the highest value gets printed on top
+	// NOTE: 
+	// The draw() function gets called from the smalles layer to the highest
+	// The update() function gets called from the highest to the smallest
+	int layer = 0; 
 	BOOL _isClicked = FALSE;
 public:
 	vbGraphicObject();

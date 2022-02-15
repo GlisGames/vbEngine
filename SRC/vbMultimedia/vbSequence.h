@@ -17,6 +17,9 @@ private:
 	WORD frameFreq = 1;
 	WORD frameCounter = 0;
 public:
+	virtual void vbSequence::setup();
+	virtual void vbSequence::update();
+	virtual void vbSequence::draw();
 	WORD actualIndex;
 	BOOL enabled = TRUE;
 	seqRepeatType repeat = seqRepeatType::REP_BEGINTOEND;

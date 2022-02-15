@@ -5,6 +5,38 @@ vbButton::~vbButton()
 
 }
 
+void vbButton::setup()
+{
+	vbContainer::setup();
+}
+
+void vbButton::update()
+{
+	vbContainer::update();
+	if (this->image != NULL)
+	{
+		if (this->isMouseOver() &&
+			(this->image->colour.r == this->image->fallbackColour.r) &&
+			(this->image->colour.g == this->image->fallbackColour.g) &&
+			(this->image->colour.b == this->image->fallbackColour.b))
+		{
+			this->image->colour = ColorTurnOffPercent(this->image->colour, 70.0f);
+		}
+		else if (!this->isMouseOver())
+		{
+			this->image->colour = this->image->fallbackColour;
+		}
+	}
+	if (this->isClicked())
+		this->onClick.trigger(this);
+}
+
+void vbButton::draw()
+{
+	vbContainer::draw();
+
+}
+
 void vbButton::checkSize()
 {
 	Vector2 dim = { (float)this->width,(float)this->height };
@@ -29,6 +61,7 @@ void vbButton::init(hwButton bID, Texture2D* tex, Rectangle position, Color c, v
 	}
 	this->isClickable = TRUE;
 	this->buttonID = bID;
+	this->onClick.subscribe(&this->onClickListener);
 }
 
 vbButton::vbButton() : vbContainer(0, 0)
@@ -84,22 +117,4 @@ void vbButton::setImage(Texture2D* tex)
 	}
 	else
 		this->image->setTexture(tex);
-}
-
-void vbButton::update()
-{
-	if (this->image != NULL)
-	{
-		if (this->isMouseOver() &&
-			(this->image->colour.r == this->image->fallbackColour.r) &&
-			(this->image->colour.g == this->image->fallbackColour.g) &&
-			(this->image->colour.b == this->image->fallbackColour.b))
-		{
-			this->image->colour = ColorTurnOffPercent(this->image->colour, 70.0f);
-		}
-		else if (!this->isMouseOver())
-		{
-			this->image->colour = this->image->fallbackColour;
-		}
-	}
 }

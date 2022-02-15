@@ -16,9 +16,10 @@ class vbContainer : public vbGraphicObject
 private:
 	void init(WORD width, WORD height);
 	Rectangle _calculateActiveArea();
+	RenderTexture2D targetCache = { 0 };
 	bool useCache = FALSE;
+	bool dirtyCache = FALSE;
 public:
-	Texture2D containerCache = { 0 };
 	vbImage *cacheImage = NULL;
 	gObjectList gObjects;
 	BOOL autoResize = FALSE;

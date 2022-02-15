@@ -5,6 +5,31 @@
 #include "vbContainer.h"
 #include "vbImage.h"
 #include "vbTextBox.h"
+#include "vbEvent.h"
+
+#define lbutton [=](vbButton* b)
+
+class clickHandler
+{
+private:
+	std::list<vbGraphicObject*> items;
+public:
+	void subscribe(vbGraphicObject* toAdd)
+	{
+		items.push_back(toAdd);
+	}
+
+	void pollClicks()
+	{
+		if (!IsMouseButtonPressed(0)) //if there's no click don't bother checking
+			return;
+
+		for (vbGraphicObject* o : items)
+		{
+
+		}
+	}
+};
 
 class vbButton : public vbContainer
 {
@@ -14,6 +39,9 @@ private:
 public:
 	vbButton();
 	~vbButton();
+	virtual void vbButton::setup();
+	virtual void vbButton::update();
+	virtual void vbButton::draw();
 	vbImage* image = NULL;
 	vbTextbox* text = NULL;
 	void setImage(Texture2D* tex);
@@ -22,9 +50,9 @@ public:
 	void setText(vbString stext, vbString appendText = "");
 	BYTE borderWidth = 0;
 	Color borderColor = BLACK;
+	vbEventListener<vbButton*> onClickListener;
 	hwButton buttonID;
-
-	void update();
+	vbEvent<vbButton*> onClick;
 };
 
 #endif // !VBBUTTON_H

@@ -1,4 +1,39 @@
 #include "vbEngine.h"
+
+void vbNumericBox::setup()
+{
+	vbCanvas::setup();
+
+}
+void vbNumericBox::update()
+{
+	vbCanvas::update();
+	if (this->cmdMinus->isClicked()) {
+		if (this->value > this->min) {
+			this->value -= this->increment;
+			this->setValue(this->value);
+			if (this->soundMinus != NULL)
+				PlaySound(*this->soundMinus);
+		}
+		//else pGAME->alertBox->pushMessage("txt_min_reach");
+	}
+	if (this->cmdPlus->isClicked()) {
+		if (this->value < this->max) {
+			this->value += this->increment;
+			this->setValue(this->value);
+			if (this->soundPlus != NULL)
+				PlaySound(*this->soundPlus);
+		}
+		//else pGAME->alertBox->pushMessage("txt_max_reach");
+	}
+
+}
+void vbNumericBox::draw()
+{
+	vbCanvas::draw();
+
+}
+
 // INIT
 void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
 	this->isAlive = TRUE;
@@ -37,28 +72,7 @@ vbNumericBox::vbNumericBox(Vector2 pos) {
 vbNumericBox::vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
 	this->init(pos, minus, text, plus);
 }
-// UPDATE
-void vbNumericBox::update() {
-	if (this->cmdMinus->isClicked()) {
-		if (this->value > this->min) {
-			this->value -= this->increment;
-			this->setValue(this->value);
-			if (this->soundMinus != NULL)
-				PlaySound(*this->soundMinus);
-		}
-		//else pGAME->alertBox->pushMessage("txt_min_reach");
-	}
-	if (this->cmdPlus->isClicked() ) {
-		if (this->value < this->max) {
-			this->value += this->increment;
-			this->setValue(this->value);
-			if (this->soundPlus != NULL)
-				PlaySound(*this->soundPlus);
-		}
-		//else pGAME->alertBox->pushMessage("txt_max_reach");
-	}
 
-}
 // GETTERS & SETTERS
 DWORD vbNumericBox::getValue() {
 	return this->value;

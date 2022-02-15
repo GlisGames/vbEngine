@@ -32,6 +32,14 @@ vbImage::vbImage(Texture2D* tex,  Vector2 pos, std::string name, WORD layer)
 void vbImage::update()
 {
 	vbGraphicObject::update();
+	if (this->getTexture() != NULL)
+	{
+		if (this->transformed.rotation != 0)
+		{	// here we change the point of origin so that the rotation point is centered, look inside 'DrawTexturePro' to know why
+			this->transformed.position.x += (float)this->transformed.width / 2.0f;
+			this->transformed.position.y += (float)this->transformed.height / 2.0f;
+		}
+	}
 
 }
 
@@ -50,8 +58,6 @@ void vbImage::draw()
 		if (this->transformed.rotation != 0)
 		{	// here we change the point of origin so that the rotation point is centered, look inside 'DrawTexturePro' to know why
 			origin = { ((float)this->transformed.width / 2.0f), ((float)this->transformed.height / 2.0f)};
-			this->transformed.position.x += (float)this->transformed.width / 2.0f;
-			this->transformed.position.y += (float)this->transformed.height / 2.0f;
 		}
 		
 		Rectangle source = { 0.0f, 0.0f, (float)this->width, (float)this->height }; // Piece of the texture to print (all of it)
@@ -62,14 +68,20 @@ void vbImage::draw()
 			(float)this->transformed.height };
 
 		//DrawTextureEx(*this->getTexture(), this->transformed.position, this->transformed.rotation, this->transformed.scale, this->transformed.colour);
-		
-		if (isCacheImage) //cached containers created via render target are vertically flipped for openGL reasons...
-			source.height *= -1;
+
+		if (isCacheImage) 
+			source.height *= -1; // Cached containers created via render target are vertically flipped for openGL reasons...
+		else
+		{
+			// When caching, hence inside a render target, the coordinate system is relative to the coordinates of the parent container
+			dest.x -= this->parentContainer->inheritedCachePosition.x;
+			dest.y -= this->parentContainer->inheritedCachePosition.y;
+		}
 
 		DrawTexturePro(*this->getTexture(), source, dest, origin, this->transformed.rotation, this->transformed.colour);
 
 		if (this->debugBox == TRUE)
-			DrawRectangleLinesEx(dest, 1, RED);
+			DrawRectangleLinesEx(dest, 2, RED);
 	}
 }
 

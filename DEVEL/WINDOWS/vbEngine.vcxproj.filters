@@ -125,6 +125,7 @@
     <ClInclude Include="..\..\..\raylib\src\rcamera.h">
       <Filter>raylib</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -232,5 +233,6 @@
     <ClCompile Include="..\..\..\raylib\src\raudio.c">
       <Filter>raylib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbEvent.cpp" />
   </ItemGroup>
 </Project>

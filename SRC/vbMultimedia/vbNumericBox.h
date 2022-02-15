@@ -11,6 +11,10 @@ private:
 	DWORD increment = 50;
 	void init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
 public:
+	virtual void vbNumericBox::setup();
+	virtual void vbNumericBox::update();
+	virtual void vbNumericBox::draw();
+
 	vbButton* cmdMinus = NULL;
 	vbTextbox* txtValue = NULL;
 	vbButton* cmdPlus = NULL;
@@ -18,7 +22,6 @@ public:
 	Sound* soundPlus = NULL;
 	vbNumericBox(Vector2 pos);
 	vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
-	void update();
 	DWORD getValue();
 	DWORD getMin();
 	DWORD getMax();

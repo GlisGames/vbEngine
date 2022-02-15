@@ -16,14 +16,9 @@ void vbGraphicObject::update()
 {
 	vbGameObject::update();
 	this->tweens.stepAll();
-}
 
-
-void vbGraphicObject::draw()
-{
-	vbGameObject::draw();
 	this->transformed.position = _calculateAbsolutePosition();
-	if(this->parentContainer != NULL && this->inheritTransformations == TRUE)
+	if (this->parentContainer != NULL && this->inheritTransformations == TRUE)
 	{
 		this->transformed.scale = this->scale * this->parentContainer->transformed.scale;
 		this->transformed.rotation = this->rotation + this->parentContainer->transformed.rotation;
@@ -40,15 +35,18 @@ void vbGraphicObject::draw()
 		this->transformed.visible = this->parentContainer->transformed.visible;
 		if (this->regPointRule == transformRegRule::REG_CENTER && (this->parentContainer->transformed.scale != this->transformed.scale || this->parentContainer->regPointRule == transformRegRule::REG_TOP_LEFT))
 		{
-				this->transformed.position =
-				{ this->transformed.position.x + (((float)this->width * 0.5f) * (1.0f - this->transformed.scale))
-				, this->transformed.position.y + (((float)this->height * 0.5f) * (1.0f - this->transformed.scale)) };
+			this->transformed.position =
+			{ this->transformed.position.x + (((float)this->width * 0.5f) * (1.0f - this->transformed.scale))
+			, this->transformed.position.y + (((float)this->height * 0.5f) * (1.0f - this->transformed.scale)) };
 		}
-		
-		// When caching, hence inside a render target, the coordinate system is relative to the coordinates of the parent container
-		this->transformed.position.x -= this->parentContainer->inheritedCachePosition.x;
-		this->transformed.position.y -= this->parentContainer->inheritedCachePosition.y;
 	}
+}
+
+
+void vbGraphicObject::draw()
+{
+	vbGameObject::draw();
+	
 
 	if (this->debugBox == TRUE)
 		DrawRectangleLinesEx({ this->transformed.position.x, this->transformed.position.y, (float)this->transformed.width, (float)this->transformed.height }, 1, RED);
@@ -78,8 +76,9 @@ void vbGraphicObject::setParams(Vector2 position, WORD rotation, BYTE zoom, Colo
 void vbGraphicObject::sendToBack()
 {
 	if (this->parentList != NULL)
-	{	//MAYBE control if findit has actually found the iterator
+	{
 		this->layer = (*this->parentList).front()->layer + 1;
+		// Move to back without reordering the list
 		this->parentList->splice(this->parentList->begin(), *this->parentList, this->parentList->findit(this));
 	}
 }
@@ -87,16 +86,16 @@ void vbGraphicObject::moveToFront()
 {
 	if (this->parentList != NULL)
 	{
-		//MAYBE control if findit has actually found the iterator
 		this->layer = (*this->parentList).back()->layer - 1;
+		// Move to the front without reordering the list
 		this->parentList->splice(this->parentList->end(), *this->parentList, this->parentList->findit(this));
 	}
 }
 void vbGraphicObject::sendBackwards()
 {
 	if (this->parentList != NULL)
-	{	
-		auto source = this->parentList->findit(this); //serious iterators magic happens here
+	{	//serious iterators magic happens down here
+		auto source = this->parentList->findit(this);
 		if (*source != this->parentList->front())
 		{
 			auto dest = source;
@@ -112,8 +111,8 @@ void vbGraphicObject::sendBackwards()
 void vbGraphicObject::moveForward()
 {
 	if (this->parentList != NULL)
-	{
-		auto source = this->parentList->findit(this); //serious iterators magic happens here
+	{	//serious iterators magic happens down here
+		auto source = this->parentList->findit(this);
 		if (*source != this->parentList->back())
 		{
 			auto dest = source;
@@ -186,8 +185,8 @@ BOOL vbGraphicObject::isMouseOver()
 //		return true;
 
 	Vector2 ret = GetMousePosition();
-	Vector2 absPos = this->getAbsolutePosition();
-	if (ret.x >= absPos.x && ret.x <= (absPos.x + this->width) && ret.y >= absPos.y && ret.y <= (absPos.y + this->height))
+	Vector2 absPos = this->transformed.position;
+	if (ret.x >= absPos.x && ret.x <= (absPos.x + this->transformed.width) && ret.y >= absPos.y && ret.y <= (absPos.y + this->transformed.height))
 		return true;
 	return false;
 }
@@ -291,7 +290,6 @@ void gObjectList::sortMe()
 {
 	if (this->toSort == TRUE)
 	{
-		//std::sort(this->begin(), this->end(), vbGraphicObject::minLayer());
 		this->sort(vbGraphicObject::minLayer());
 		this->toSort = FALSE;
 	}
