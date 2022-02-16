@@ -3,6 +3,10 @@
 #include <functional>
 #include <chrono>
 
+void updateFrameMillis();
+
+QWORD getElapsedMillis();
+
 typedef void (*timer_callback) ();
 class vbTimer : public vbGraphicObject {
 private:

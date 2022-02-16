@@ -21,13 +21,13 @@ void vbTween::init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop
 	this->callbackEnd = callback;
 	this->callbackKill = callbackKill;
 }
-FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, WORD currentStep, WORD TOTsteps)
+FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, QWORD currentStep, WORD TOTsteps)
 {
 	if (currentStep >= TOTsteps)
 		currentStep = TOTsteps;
 	return (Stop_p - Start_p) * ((FLOAT)currentStep / (FLOAT)TOTsteps) + Start_p;
 }
-FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, DWORD currentStep, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction)
+FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, QWORD currentStep, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction)
 {
 	FLOAT Current_p;
 	FLOAT p;
@@ -125,10 +125,22 @@ void vbTween::Step()
 {
 	if (this->enabled == FALSE)
 		return;
+
 	if (this->currStep > 0 && this->repeat == twRepeat && this->isFinished())
-		this->currStep++; //FIXME
+	{
+		if (this->isTimeBased)
+			this->currStep += getElapsedMillis();
+		else
+			this->currStep++; //FIXME baby one more time
+	}
 
 	FLOAT res = doTween(this->startP, this->stopP, this->currStep, this->totStep, this->repeat, this->easingF);
+
+	if (this->isTimeBased)
+		this->currStep += getElapsedMillis();
+	else
+		this->currStep++;
+
 	if (this->valueBYTE != NULL)
 		*this->valueBYTE = (BYTE)res;
 	else if (this->valueWORD != NULL)
@@ -139,7 +151,7 @@ void vbTween::Step()
 		*this->valueINT = (int)res;
 	else if (this->valueFLOAT != NULL)
 		*this->valueFLOAT = res;
-	this->currStep++;
+
 }
 
 BOOL vbTween::isFinished()
