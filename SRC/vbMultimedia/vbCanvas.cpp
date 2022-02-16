@@ -27,14 +27,15 @@ void vbCanvas::setup()
 {
 	vbContainer::setup();
 }
+
 void vbCanvas::update()
 {
 	vbContainer::update();
 }
+
 void vbCanvas::draw()
 {
 	vbContainer::draw();
-
 }
 
 vbCanvas::vbCanvas(Rectangle rect, vbString stext) : vbContainer(rect.width, rect.height)

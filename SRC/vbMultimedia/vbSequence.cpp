@@ -6,15 +6,16 @@ void vbSequence::setup()
 	vbImage::setup();
 
 }
+
 void vbSequence::update()
 {
 	vbImage::update();
 	this->stepAnim();
 }
+
 void vbSequence::draw()
 {
 	vbImage::draw();
-
 }
 
 vbSequence::vbSequence()
@@ -75,7 +76,7 @@ bool vbSequence::isFinshed()
 
 void vbSequence::stepAnim()
 {
-	if (this->enabled == FALSE)
+	if (this->enabled == FALSE || this->seqList == NULL)
 		return;
 
 	if(this->frameCounter >= 0xFFFFFFFF) //overflow prevention

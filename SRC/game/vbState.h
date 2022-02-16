@@ -33,7 +33,9 @@ enum TYPE_GAME_STATE
 	S_MISTERYWIN = 21,
 	S_ARROTONDA = 22,	//!< Stato di arrotondamento della vincita
 #endif
-	S_LOADING = 23
+	S_LOADING = 23, 
+	S_BONUS_ONE = 24,
+	S_BONUS_TWO = 25
 };
 
 class vbState
