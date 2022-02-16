@@ -40,7 +40,6 @@ void vbImage::update()
 			this->transformed.position.y += (float)this->transformed.height / 2.0f;
 		}
 	}
-
 }
 
 void vbImage::setup()

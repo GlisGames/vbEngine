@@ -10,8 +10,8 @@ template<class Sender>
 class vbEventListener
 {
 private:
-	vbEvent<Sender>* owner = NULL;
 public:
+	vbEvent<Sender>* owner = NULL;
 	typedef std::function<void(Sender)> t_callback;
 
 	/// <summary>
