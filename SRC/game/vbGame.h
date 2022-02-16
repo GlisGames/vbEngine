@@ -46,7 +46,7 @@ public:
 	bool GameShouldClose() const;
 	virtual void StateMachine() {};
 	virtual void update() {};
-	virtual void render() {};
+	virtual void draw() {};
 
 	void setLanguage(vbString langCode);
 	void setState(TYPE_GAME_STATE newState);

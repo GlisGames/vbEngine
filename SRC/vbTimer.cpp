@@ -1,4 +1,21 @@
 #include "vbEngine.h"
+QWORD oldFrameMillis = 0;
+QWORD frameMillis = 0;
+
+void updateFrameMillis()
+{
+	QWORD millis = vbTimer::getMillis().count();
+	if (!oldFrameMillis)
+		oldFrameMillis = millis + 16;
+	frameMillis = millis - oldFrameMillis;
+	oldFrameMillis = millis;
+}
+
+QWORD getElapsedMillis()
+{
+	if (!frameMillis) frameMillis = 16;
+	return frameMillis;
+}
 
 // INIT
 void vbTimer::init(chrono::milliseconds _duration, timer_callback callback) {

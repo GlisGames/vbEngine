@@ -39,9 +39,9 @@ private:
 public:
 	vbButton();
 	~vbButton();
-	virtual void vbButton::setup();
-	virtual void vbButton::update();
-	virtual void vbButton::draw();
+	virtual void setup();
+	virtual void update();
+	virtual void draw();
 	vbImage* image = NULL;
 	vbTextbox* text = NULL;
 	void setImage(Texture2D* tex);
