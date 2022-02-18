@@ -175,7 +175,7 @@ vbTween* vbTweenMap::addtimer(const char* name, DWORD TOTsteps, tweenRepeat loop
 	this->insert(std::pair<const char*, vbTween>(name, vbTween(0, (FLOAT)TOTsteps, TOTsteps, loop, easingFunction, numRepeats, callback)));
 	return &this->operator[](name);
 }
-vbTween* vbTweenMap::tweenGet(const char* name)
+vbTween* vbTweenMap::getTween(const char* name)
 {
 	if (this->find(name) == this->end())
 		return NULL;

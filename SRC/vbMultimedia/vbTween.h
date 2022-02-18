@@ -85,7 +85,7 @@ public:
 	};
 	vbTween* addtween(const char* name, vbTween tw);
 	vbTween* addtimer(const char* name, DWORD TOTsteps, tweenRepeat loop = twOneShot, EasingFunction easingFunction = LinearInterpolation, int numRepeats = 0, tween_callback callback = NULL);
-	vbTween* tweenGet(const char* name);
+	vbTween* getTween(const char* name);
 	void killTween(const char* name);
 	void killAll();
 	void stopAll();
