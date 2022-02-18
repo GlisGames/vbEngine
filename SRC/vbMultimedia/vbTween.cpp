@@ -160,7 +160,15 @@ BOOL vbTween::isFinished()
 		return FALSE;
 	else if (this->currStep == 0 && this->totStep == 0)
 		return TRUE;
-	return ((this->currStep % this->totStep)==0);
+	if(this->isTimeBased == FALSE)
+		return ((this->currStep % this->totStep)==0);
+	else
+	{
+		if (this->currStep >= this->totStep)
+			return TRUE;
+		else
+			return FALSE;
+	}
 }
 
 // TWEENMAP
@@ -234,7 +242,11 @@ void vbTweenMap::stepAll()
 			itw = this->erase(itw);
 		}
 		else if (itw != this->end())
+		{
+			if (itw->second.isTimeBased && itw->second.currStep >= itw->second.totStep && itw->second.repeat != twYoyo)
+				itw->second.currStep = 0;
 			itw++;
+		}
 	}
 
 	for (WORD i = 0; i < nextList.size(); i++)
