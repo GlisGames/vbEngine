@@ -22,7 +22,7 @@ vbImage::vbImage(WORD layer)
 	this->init_(layer);
 }
 
-vbImage::vbImage(Texture2D* tex,  Vector2 pos, std::string name, WORD layer)
+vbImage::vbImage(Texture2D* tex, Vector2 pos, std::string name, WORD layer)
 {
 	this->init_(layer);
 	this->setTexture(tex);

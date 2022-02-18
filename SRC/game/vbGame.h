@@ -40,11 +40,14 @@ public:
 	styleElement* style(vbString element_name);
 	void setStyle(vbContainer* c, vbString stylename);
 
-	virtual void init() = 0;
 	vbGame();
 	~vbGame() noexcept;
+	vbGame(const vbGame& other) {};
+	//vbGame& operator=(const vbGame& other) { return *this; };
+	//vbGame(const vbGame&& other) = delete;
+	//vbGame& operator=(const vbGame&& other) = delete;
 	bool GameShouldClose() const;
-	virtual void StateMachine() {};
+	static void StateMachine(void *);
 	virtual void update() {};
 	virtual void render() {};
 

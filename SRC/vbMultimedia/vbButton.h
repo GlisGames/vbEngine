@@ -1,8 +1,8 @@
 #ifndef VBBUTTON_H
 #define VBBUTTON_H
 
-#include "basetypes.h"
 #include "vbContainer.h"
+#include "basetypes.h"
 #include "vbImage.h"
 #include "vbTextBox.h"
 

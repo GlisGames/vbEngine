@@ -21,6 +21,9 @@ using namespace std;
 #define ZeroMemory(Destination,Length) memset((Destination),0,(Length))
 #endif
 
+//PHYSICS
+#define PPM 100
+
 #define lvoid [=]()
 typedef void(*fvoid)();
 
