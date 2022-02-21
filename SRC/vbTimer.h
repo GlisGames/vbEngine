@@ -4,10 +4,10 @@
 #include <chrono>
 
 void updateFrameMillis();
-
 QWORD getElapsedMillis();
+QWORD getMillis();
 
-typedef void (*timer_callback) ();
+typedef std::function<void()> timer_callback;
 class vbTimer : public vbGraphicObject {
 private:
 	chrono::milliseconds initTime = 0ms;
@@ -16,7 +16,7 @@ private:
 	bool isTimesUp = FALSE;
 	void init(chrono::milliseconds _duration, timer_callback callback);
 public:
-	static chrono::milliseconds getMillis()
+	static chrono::milliseconds getMonotonicMillis()
 	{
 		return std::chrono::duration_cast<std::chrono::milliseconds>(
 			std::chrono::system_clock::now().time_since_epoch()

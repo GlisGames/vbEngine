@@ -5,7 +5,7 @@ vbTween::vbTween()
 vbTween::~vbTween()
 {
 	if (this->callbackKill)
-		this->callbackKill;
+		this->callbackKill();
 }
 
 void vbTween::init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int repeatFor, tween_callback callback, tween_callback callbackKill)
@@ -84,6 +84,28 @@ vbTween::vbTween(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop, 
 vbTween* vbTween::Play()
 {
 	this->enabled = TRUE;
+	return this;
+}
+
+/// <summary>
+/// Bring the tween instantly to the last step and assign the value to destination
+/// </summary>
+/// <returns></returns>
+vbTween* vbTween::End()
+{
+	this->currStep = this->totStep;
+	FLOAT res = this->stopP;
+
+	if (this->valueBYTE != NULL)
+		*this->valueBYTE = (BYTE)res;
+	else if (this->valueWORD != NULL)
+		*this->valueWORD = (WORD)res;
+	else if (this->valueDWORD != NULL)
+		*this->valueDWORD = (DWORD)res;
+	else if (this->valueINT != NULL)
+		*this->valueINT = (int)res;
+	else if (this->valueFLOAT != NULL)
+		*this->valueFLOAT = res;
 	return this;
 }
 
@@ -228,14 +250,18 @@ void vbTweenMap::stepAll()
 	while (itw != this->end())
 	{
 		itw->second.Step();
-		if (itw->second.isFinished() && itw->second.repeatFor > 0)
+		BOOL _isFinished = itw->second.isFinished();
+
+		if (_isFinished && itw->second.repeatFor > 0)
 			itw->second.repeatFor--;
 
-		if (itw->second.isFinished() && 
-			((itw->second.repeat == twOneShot) || ((itw->second.repeat == twRepeat || itw->second.repeat == twYoyo) && (itw->second.repeatFor == 0))))
+		if (itw->second.callbackEnd != NULL && _isFinished)
+			itw->second.callbackEnd();
+
+		if (_isFinished && itw->second.repeatFor == 0)
+			//((itw->second.repeat == twOneShot) || ((itw->second.repeat == twRepeat || itw->second.repeat == twYoyo) && (itw->second.repeatFor == 0))))
 		{
-			if (itw->second.callbackEnd != NULL)
-				itw->second.callbackEnd();
+			itw->second.End(); //make sure that the value goes to the end;
 
 			if (itw->second.next)
 				nextList.push_back(itw->second.next);

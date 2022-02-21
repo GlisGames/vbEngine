@@ -35,8 +35,8 @@ public:
 	DWORD *valueDWORD = NULL;
 	FLOAT *valueFLOAT = NULL;
 	DWORD valueTIMER = NULL;
-	tween_callback callbackEnd = NULL;
-	tween_callback callbackKill = NULL;
+	tween_callback callbackEnd = NULL; //called every time the tween end one cycle
+	tween_callback callbackKill = NULL; //called when the tween finished its last cycle, before being deallocated
 	int *valueINT = NULL;
 	tweenRepeat repeat = twYoyo;
 	EasingFunction easingF = LinearInterpolation;
@@ -48,6 +48,11 @@ public:
 		this->callbackKill = f;
 		return this;
 	}
+	vbTween* setTimeBased(BOOL _isTimebased)
+	{
+		this->isTimeBased = _isTimebased;
+		return this;
+	};
 	vbTween();
 	~vbTween();
 	vbTween(BYTE *value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twYoyo, EasingFunction easingFunction = LinearInterpolation,  int repeatFor = 0, tween_callback callback = NULL, tween_callback callbackKill = NULL);
@@ -58,6 +63,7 @@ public:
 	vbTween(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twOneShot, EasingFunction easingFunction = LinearInterpolation, int repeatFor = 0, tween_callback callback = NULL, tween_callback callbackKill = NULL);
 	vbTween* Play();
 	vbTween* Stop();
+	vbTween* End();
 	vbTween* Pause();
 	vbTween* Restart();
 	vbTween* Reset();

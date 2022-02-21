@@ -1,14 +1,22 @@
 #include "vbEngine.h"
 QWORD oldFrameMillis = 0;
 QWORD frameMillis = 0;
+chrono::milliseconds monotonicMillis = 0ms;
+QWORD monotonicMillisCount = 0;
 
 void updateFrameMillis()
 {
-	QWORD millis = vbTimer::getMillis().count();
+	monotonicMillis = vbTimer::getMonotonicMillis();
+	monotonicMillisCount = monotonicMillis.count();
 	if (!oldFrameMillis)
-		oldFrameMillis = millis + 16;
-	frameMillis = millis - oldFrameMillis;
-	oldFrameMillis = millis;
+		oldFrameMillis = monotonicMillis.count() + 16;
+	frameMillis = monotonicMillis.count() - oldFrameMillis;
+	oldFrameMillis = monotonicMillis.count();
+}
+
+QWORD getMillis()
+{
+	return monotonicMillisCount;
 }
 
 QWORD getElapsedMillis()
@@ -20,7 +28,7 @@ QWORD getElapsedMillis()
 // INIT
 void vbTimer::init(chrono::milliseconds _duration, timer_callback callback) {
 	this->isAlive = TRUE;
-	this->initTime = vbTimer::getMillis();
+	this->initTime = monotonicMillis;
 	this->duration = _duration;
 	this->callbackEnd = callback;
 }
@@ -30,7 +38,8 @@ vbTimer::vbTimer(chrono::milliseconds _duration, timer_callback callback) {
 }
 // UPDATE
 void vbTimer::update(){
-	chrono::milliseconds t = vbTimer::getMillis();
+
+	chrono::milliseconds t = monotonicMillis - initTime;
 	if (t >= this->duration) {
 		this->isTimesUp = TRUE;
 	}
@@ -38,11 +47,11 @@ void vbTimer::update(){
 	if (this->isTimesUp) {
 		if (this->callbackEnd != NULL) {
 			this->callbackEnd();
-			this->initTime = vbTimer::getMillis();
+			this->initTime = monotonicMillis;
 		}
 		if (this->endLambda != NULL) {
 			this->endLambda();
-			this->initTime = vbTimer::getMillis();
+			this->initTime = monotonicMillis;
 		}
 		this->isTimesUp = FALSE;
 	}
@@ -57,7 +66,7 @@ chrono::milliseconds vbTimer::getDuration() {
 }
 
 void vbTimer::setInitTime() {
-	this->initTime = vbTimer::getMillis();
+	this->initTime = monotonicMillis;
 }
 void vbTimer::setDuration(chrono::milliseconds _duration, timer_callback callback) {
 	this->duration = _duration;
@@ -65,12 +74,12 @@ void vbTimer::setDuration(chrono::milliseconds _duration, timer_callback callbac
 }
 // OTHERS
 void vbTimer::reset() {
-	this->initTime = vbTimer::getMillis();
+	this->initTime = monotonicMillis;
 	this->isTimesUp = FALSE;
 	this->callbackEnd = NULL;
 	this->endLambda = NULL;
 }
 
 chrono::milliseconds vbTimer::getTimeAlive() {
-	return (vbTimer::getMillis() - this->initTime);
+	return (monotonicMillis - this->initTime);
 }
