@@ -1,4 +1,5 @@
 #include "vbEngine.h"
+#include "vbContainer.h"
 #include "vbCanvas.h"
 
 vbCanvas::~vbCanvas()
@@ -14,13 +15,26 @@ void vbCanvas::init(Texture2D* tex, Rectangle position, vbString stext)
 	this->height = position.height;
 	this->setBackground(tex);
 	this->setCaption(stext);
-	//this->caption->setCacheFlag(TRUE);
-	this->isClickable = TRUE;
 }
 
 vbCanvas::vbCanvas() : vbContainer(0, 0)
 {
 	this->init(NULL, { 0,0,0,0 });
+}
+
+void vbCanvas::setup()
+{
+	vbContainer::setup();
+}
+
+void vbCanvas::update()
+{
+	vbContainer::update();
+}
+
+void vbCanvas::draw()
+{
+	vbContainer::draw();
 }
 
 vbCanvas::vbCanvas(Rectangle rect, vbString stext) : vbContainer(rect.width, rect.height)

@@ -9,7 +9,6 @@ void vbImage::init_(WORD layer)
 
 vbImage::~vbImage()
 { 
-	//se fa parte di una lista lo vado a rimuovere
 	if (this->parentList)
 		this->parentList->removeit(this);
 }
@@ -28,6 +27,61 @@ vbImage::vbImage(Texture2D* tex, Vector2 pos, std::string name, WORD layer)
 	this->setTexture(tex);
 	this->name = name;
 	this->position = pos;
+}
+
+void vbImage::update()
+{
+	vbGraphicObject::update();
+	if (this->getTexture() != NULL)
+	{
+		if (this->transformed.rotation != 0)
+		{	// here we change the point of origin so that the rotation point is centered, look inside 'DrawTexturePro' to know why
+			this->transformed.position.x += (float)this->transformed.width / 2.0f;
+			this->transformed.position.y += (float)this->transformed.height / 2.0f;
+		}
+	}
+}
+
+void vbImage::setup()
+{
+	vbGraphicObject::setup();
+
+}
+
+void vbImage::draw()
+{
+	vbGraphicObject::draw();
+	if (this->getTexture() != NULL)
+	{
+		Vector2 origin = { 0,0 };
+		if (this->transformed.rotation != 0)
+		{	// here we change the point of origin so that the rotation point is centered, look inside 'DrawTexturePro' to know why
+			origin = { ((float)this->transformed.width / 2.0f), ((float)this->transformed.height / 2.0f)};
+		}
+		
+		Rectangle source = { 0.0f, 0.0f, (float)this->width, (float)this->height }; // Piece of the texture to print (all of it)
+		Rectangle dest = { //portion of the framebuffer to draw with the target texture
+			this->transformed.position.x, 
+			this->transformed.position.y, 
+			(float)this->transformed.width, 
+			(float)this->transformed.height };
+
+		//DrawTextureEx(*this->getTexture(), this->transformed.position, this->transformed.rotation, this->transformed.scale, this->transformed.colour);
+
+		if (isCacheImage) 
+			source.height *= -1; // Cached containers created via render target are vertically flipped for openGL reasons...
+		else
+		{
+			// When caching, hence inside a render target, the coordinate system is relative to the coordinates of the parent container
+			dest.x -= this->parentContainer->inheritedCachePosition.x;
+			dest.y -= this->parentContainer->inheritedCachePosition.y;
+		}
+
+		DrawTexturePro(*this->getTexture(), source, dest, origin, this->transformed.rotation, this->transformed.colour);
+
+		if (this->debugBox == TRUE)
+			DrawRectangleLinesEx(dest, 2, RED);
+	}
 }
 
 void vbImage::setTexture(Texture2D* tex)

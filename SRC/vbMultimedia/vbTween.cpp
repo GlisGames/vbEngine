@@ -21,13 +21,13 @@ void vbTween::init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop
 	this->callbackEnd = callback;
 	this->callbackKill = callbackKill;
 }
-FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, WORD currentStep, WORD TOTsteps)
+FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, QWORD currentStep, WORD TOTsteps)
 {
 	if (currentStep >= TOTsteps)
 		currentStep = TOTsteps;
 	return (Stop_p - Start_p) * ((FLOAT)currentStep / (FLOAT)TOTsteps) + Start_p;
 }
-FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, DWORD currentStep, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction)
+FLOAT vbTween::doTween(FLOAT Start_p, FLOAT Stop_p, QWORD currentStep, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction)
 {
 	FLOAT Current_p;
 	FLOAT p;
@@ -125,10 +125,22 @@ void vbTween::Step()
 {
 	if (this->enabled == FALSE)
 		return;
+
 	if (this->currStep > 0 && this->repeat == twRepeat && this->isFinished())
-		this->currStep++; //FIXME
+	{
+		if (this->isTimeBased)
+			this->currStep += getElapsedMillis();
+		else
+			this->currStep++; //FIXME baby one more time
+	}
 
 	FLOAT res = doTween(this->startP, this->stopP, this->currStep, this->totStep, this->repeat, this->easingF);
+
+	if (this->isTimeBased)
+		this->currStep += getElapsedMillis();
+	else
+		this->currStep++;
+
 	if (this->valueBYTE != NULL)
 		*this->valueBYTE = (BYTE)res;
 	else if (this->valueWORD != NULL)
@@ -139,7 +151,7 @@ void vbTween::Step()
 		*this->valueINT = (int)res;
 	else if (this->valueFLOAT != NULL)
 		*this->valueFLOAT = res;
-	this->currStep++;
+
 }
 
 BOOL vbTween::isFinished()
@@ -148,7 +160,15 @@ BOOL vbTween::isFinished()
 		return FALSE;
 	else if (this->currStep == 0 && this->totStep == 0)
 		return TRUE;
-	return ((this->currStep % this->totStep)==0);
+	if(this->isTimeBased == FALSE)
+		return ((this->currStep % this->totStep)==0);
+	else
+	{
+		if (this->currStep >= this->totStep)
+			return TRUE;
+		else
+			return FALSE;
+	}
 }
 
 // TWEENMAP
@@ -163,7 +183,7 @@ vbTween* vbTweenMap::addtimer(const char* name, DWORD TOTsteps, tweenRepeat loop
 	this->insert(std::pair<const char*, vbTween>(name, vbTween(0, (FLOAT)TOTsteps, TOTsteps, loop, easingFunction, numRepeats, callback)));
 	return &this->operator[](name);
 }
-vbTween* vbTweenMap::tweenGet(const char* name)
+vbTween* vbTweenMap::getTween(const char* name)
 {
 	if (this->find(name) == this->end())
 		return NULL;
@@ -211,7 +231,8 @@ void vbTweenMap::stepAll()
 		if (itw->second.isFinished() && itw->second.repeatFor > 0)
 			itw->second.repeatFor--;
 
-		if (itw->second.isFinished() && ((itw->second.repeat == twOneShot) || (itw->second.repeatFor == 0)))
+		if (itw->second.isFinished() && 
+			((itw->second.repeat == twOneShot) || ((itw->second.repeat == twRepeat || itw->second.repeat == twYoyo) && (itw->second.repeatFor == 0))))
 		{
 			if (itw->second.callbackEnd != NULL)
 				itw->second.callbackEnd();
@@ -221,7 +242,11 @@ void vbTweenMap::stepAll()
 			itw = this->erase(itw);
 		}
 		else if (itw != this->end())
+		{
+			if (itw->second.isTimeBased && itw->second.currStep >= itw->second.totStep && itw->second.repeat != twYoyo)
+				itw->second.currStep = 0;
 			itw++;
+		}
 	}
 
 	for (WORD i = 0; i < nextList.size(); i++)

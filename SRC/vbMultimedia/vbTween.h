@@ -20,13 +20,14 @@ class vbTween
 private:
 	void init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int repeatFor, tween_callback callback, tween_callback callbackKill);
 public:
-	static FLOAT doTween(FLOAT Start_p, FLOAT Stop_p, WORD currentStep, WORD TOTsteps);
-	static FLOAT doTween(FLOAT Start_p, FLOAT Stop_p, DWORD currentStep, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction);
+	static FLOAT doTween(FLOAT Start_p, FLOAT Stop_p, QWORD currentStep, WORD TOTsteps);
+	static FLOAT doTween(FLOAT Start_p, FLOAT Stop_p, QWORD currentStep, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction);
 	BOOL enabled = TRUE;
-	DWORD currStep = 0;
+	QWORD currStep = 0;
 	DWORD totStep = 1;
 	FLOAT startP = 0;
 	FLOAT stopP = 0;
+	BOOL isTimeBased = FALSE;
 	int repeatFor = 0;
 	int repeatSet = 0; //initial repeat value that has been set
 	BYTE *valueBYTE = NULL;
@@ -84,7 +85,7 @@ public:
 	};
 	vbTween* addtween(const char* name, vbTween tw);
 	vbTween* addtimer(const char* name, DWORD TOTsteps, tweenRepeat loop = twOneShot, EasingFunction easingFunction = LinearInterpolation, int numRepeats = 0, tween_callback callback = NULL);
-	vbTween* tweenGet(const char* name);
+	vbTween* getTween(const char* name);
 	void killTween(const char* name);
 	void killAll();
 	void stopAll();

@@ -1,5 +1,22 @@
 #include "vbEngine.h"
 
+void vbMessage::setup()
+{
+
+}
+void vbMessage::update()
+{
+	if (this->canClickToDismiss && this->isClicked()) {
+		this->visible = FALSE;
+	}
+}
+void vbMessage::draw()
+{
+	if (this->background == NULL) {
+		DrawRectangleLinesEx({ this->position.x, this->position.y, 450, 200 }, borderThickness, backgroundColor);
+	}
+}
+
 // INIT
 void vbMessage::init(Texture2D* tex, Vector2 pos, BOOL b) {
 	this->isAlive = TRUE;
@@ -22,17 +39,6 @@ vbMessage::vbMessage(Texture2D* tex, Vector2 pos, BOOL b) : vbCanvas(tex, pos) {
 	this->init(tex, pos, b);
 }
 
-// UPDATE
-void vbMessage::update() {
-	if (this->canClickToDismiss && this->isClicked()) {
-		this->visible = FALSE;
-	}
-}
-void vbMessage::render() {
-	if (this->background == NULL) {
-		DrawRectangleLinesEx({ this->position.x, this->position.y, 450, 200 }, borderThickness, backgroundColor);
-	}
-}
 // GETTERS & SETTERS
 BOOL vbMessage::getClickToDismiss() {
 	return this->canClickToDismiss;

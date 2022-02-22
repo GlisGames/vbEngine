@@ -14,26 +14,23 @@
       <UniqueIdentifier>{7c16cdaf-81c1-40eb-b810-d194452c1554}</UniqueIdentifier>
     </Filter>
     <Filter Include="box2d">
-      <UniqueIdentifier>{6d0254a8-8395-48e8-be43-fec22441e468}</UniqueIdentifier>
+      <UniqueIdentifier>{653b67a2-2fdf-4556-90a9-f6bb3e2e65cc}</UniqueIdentifier>
     </Filter>
     <Filter Include="box2d\collision">
-      <UniqueIdentifier>{86e75236-ffd8-4509-b90c-5b9f74d48fda}</UniqueIdentifier>
+      <UniqueIdentifier>{22bdd588-a14c-43cb-bcde-78f68ac6bc21}</UniqueIdentifier>
     </Filter>
     <Filter Include="box2d\common">
-      <UniqueIdentifier>{953e2f75-8d47-43a4-a4b4-e4c62bff9595}</UniqueIdentifier>
+      <UniqueIdentifier>{65cd5e94-86e7-4180-bbce-7bee7cf87f13}</UniqueIdentifier>
     </Filter>
     <Filter Include="box2d\dynamics">
-      <UniqueIdentifier>{ec3bf469-9002-477c-bb02-bdcef9e0c7a5}</UniqueIdentifier>
+      <UniqueIdentifier>{83ff00a4-a223-4246-8f83-ce0cd7f93645}</UniqueIdentifier>
     </Filter>
     <Filter Include="box2d\rope">
-      <UniqueIdentifier>{7a114e37-7385-4f96-884d-40322e48d5a2}</UniqueIdentifier>
+      <UniqueIdentifier>{f822c5b0-9ef6-4a34-9d29-71817e2869db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicObject.h">
-      <Filter>vbMultimedia</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\SRC\vbMultimedia\vbProperty.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\vbMultimedia\vbRenderer.h">
@@ -143,6 +140,7 @@
     <ClInclude Include="..\..\..\raylib\src\rcamera.h">
       <Filter>raylib</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbEvent.h" />
     <ClInclude Include="..\..\SRC\box2d\dynamics\b2_chain_circle_contact.h">
       <Filter>box2d\dynamics</Filter>
     </ClInclude>
@@ -170,8 +168,125 @@
     <ClInclude Include="..\..\SRC\box2d\dynamics\b2_polygon_contact.h">
       <Filter>box2d\dynamics</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\vbMultimedia\PhysicsObject.h">
-      <Filter>vbMultimedia</Filter>
+    <ClInclude Include="..\..\SRC\box2d\b2_api.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_block_allocator.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_body.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_broad_phase.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_chain_shape.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_circle_shape.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_collision.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_common.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_contact.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_contact_manager.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_distance.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_distance_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_draw.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_dynamic_tree.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_edge_shape.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_fixture.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_friction_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_gear_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_growable_stack.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_math.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_motor_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_mouse_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_polygon_shape.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_prismatic_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_pulley_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_revolute_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_rope.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_settings.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_shape.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_stack_allocator.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_time_of_impact.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_time_step.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_timer.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_types.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_weld_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_wheel_joint.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_world.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\b2_world_callbacks.h">
+      <Filter>box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\box2d\box2d.h">
+      <Filter>box2d</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\vbMultimedia\phys_Cir.h">
       <Filter>vbMultimedia</Filter>
@@ -179,12 +294,12 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\phys_Rec.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\PhysicsObject.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
-      <Filter>vbMultimedia</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbProperty.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRenderer.cpp">
@@ -289,6 +404,7 @@
     <ClCompile Include="..\..\..\raylib\src\raudio.c">
       <Filter>raylib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbEvent.cpp" />
     <ClCompile Include="..\..\SRC\box2d\collision\b2_broad_phase.cpp">
       <Filter>box2d\collision</Filter>
     </ClCompile>
@@ -424,13 +540,13 @@
     <ClCompile Include="..\..\SRC\box2d\rope\b2_rope.cpp">
       <Filter>box2d\rope</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SRC\vbMultimedia\PhysicsObject.cpp">
-      <Filter>vbMultimedia</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\phys_Cir.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\phys_Rec.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\PhysicsObject.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
   </ItemGroup>

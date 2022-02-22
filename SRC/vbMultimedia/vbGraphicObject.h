@@ -51,14 +51,44 @@ public:
 };
 typedef gObjectList::iterator gObjectIndex;
 
-class vbGraphicObject: public vbLivingObject
+class vbProperties
+{
+	public:
+	float scale = 1.0f;
+	float rotation = 0.0f;
+	Vector2 position = { 0,0 };
+	WORD width = 0;
+	WORD height = 0;
+	Color colour = WHITE;
+	BOOL visible = TRUE;
+	BOOL canBeClicked = TRUE;
+};
+
+class vbGraphicObject: public vbGameObject, public vbProperties
 {
 private:
-	int layer = 0;
+	Vector2 _calculateAbsolutePosition();
+	// Layers get printed from the smallest to the highest
+	// means that layer 0 is printer on the back of layer 1
+	// layer with the highest value gets printed on top
+	// NOTE: 
+	// The draw() function gets called from the smalles layer to the highest
+	// The update() function gets called from the highest to the smallest
+	int layer = 0; 
 	BOOL _isClicked = FALSE;
 public:
 	vbGraphicObject();
 	~vbGraphicObject();
+
+	vbProperties transformed;
+
+	virtual void setup();
+
+	virtual void update();
+
+	virtual void draw();
+
+	//properties transformed;
 	void sendToBack();
 	void moveToFront();
 	void sendBackwards();
@@ -70,22 +100,18 @@ public:
 	std::string name;
 	Vector2 getAbsolutePosition();
 	WORD getLayer();
-	FLOAT zoom = 1.0f; //zoom % - 100% is the original size
-	int rotation = 0;
-	Vector2 position = { 0,0 };
+	BOOL inheritTransformations = TRUE;
 	Vector2 pivot = { 0,0 };
 	BOOL useCenterCoordinates = FALSE; //the printing coordinates are refered to the center of the image rather than the top left
 	posRule positioningRule = posRule::POS_ABSOLUTE;
 	transformRegRule regPointRule = transformRegRule::REG_CENTER;
-	WORD width = 0;
-	WORD height = 0;
-	Color colour = WHITE;
+
+
 	Color fallbackColour = WHITE; //colour to be restored in case of changes
-	BOOL visible = TRUE;
 	BOOL debugBox = FALSE;
 	gObjectType type = TYPE_NONE;
 	gObjectList *parentList = NULL;
-	class vbContainer* parentCanvas = NULL; //forward declaration
+	class vbContainer* parentContainer = NULL; //forward declaration
 	void setParams(Vector2 position, WORD rotation, BYTE zoom, Color tint);
 
 	bool operator < (const vbGraphicObject& str) const
@@ -120,28 +146,6 @@ public:
 	BOOL isMouseOver();
 	vbGraphicObject* getChild(const char* sname);
 	vbGraphicObject* getObject(const char* sname);
-	//template <typename T>
-	//T* getObject(const char* sname);
-	//{
-	//	if (this->type == TYPE_CONTAINER)
-	//	{
-	//		vbContainer* cv = (vbContainer*)(this);
-	//		if (cv->gObjects.goMap.find(sname) != cv->gObjects.goMap.end())
-	//		{
-	//			return (T*)(cv->gObjects.goMap[sname]);
-	//		}
-	//	}
-	//	return (T*)NULL; //TODO gestire errore
-	//};
-
-
-	//{
-	//	if (this->gObjects.goMap.find(sname) != this->gObjects.goMap.end())
-	//	{
-	//		return (T*)(this->gObjects.goMap[sname]);
-	//	}
-	//	return (T*)NULL;
-	//}
 };
 
 #endif // !VBGRAPHICOBJECT_H

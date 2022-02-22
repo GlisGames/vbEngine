@@ -31,13 +31,14 @@ phys_Cir::phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, BOOL _isStatic,
 
 void phys_Cir::update()
 {
+	vbGraphicObject::update();
 	//this->body->SetAwake(TRUE);
 
 	this->position.x = this->body->GetPosition().x * PPM;
 	this->position.y = this->body->GetPosition().y * PPM;
 }
 
-void phys_Cir::render() // FIXME
+void phys_Cir::draw() // FIXME
 {
 	if (!this->texture)
 	{
@@ -55,5 +56,14 @@ void phys_Cir::render() // FIXME
 	}
 }
 
+void phys_Cir::ResetPosition(Vector2 _center) // center coordinate
+{
+	this->body->SetTransform({ _center.x / PPM, _center.y / PPM }, 0);
+}
+
+Vector2 phys_Cir::GetPosition() // center coordinate
+{
+	return { this->body->GetTransform().p.x * PPM, this->body->GetTransform().p.y * PPM };
+}
 
 

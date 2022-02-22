@@ -65,14 +65,17 @@ phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, BOOL _isStatic)
 
 void phys_Rec::update()
 {
+	vbGraphicObject::update();
 	//this->body->SetAwake(TRUE);
 
 	this->position.x = this->body->GetPosition().x * PPM;
 	this->position.y = this->body->GetPosition().y * PPM;
 }
  
-void phys_Rec::render()
+void phys_Rec::draw()
 {
+
+	vbGraphicObject::draw();
 	if (!this->texture)
 	{
 		return;
@@ -84,11 +87,20 @@ void phys_Rec::render()
 		int frameWidth = this->width;
 		int frameHeight = this->height;
 		Rectangle sourceRec = { 0.0f, 0.0f, (float)frameWidth, (float)frameHeight };
-		Rectangle destRec = { this->position.x, this->position.y, this->width, this->height };
+		Rectangle destRec = { this->position.x, this->position.y, this->width * this->scale, this->height * this->scale};
 		Vector2 origin = { (float)frameWidth / 2, (float)frameHeight / 2 };
  		DrawTexturePro(*this->texture, sourceRec, destRec, origin, this->body->GetAngle() * RAD2DEG, WHITE);
 	}
 }
 
+void phys_Rec::ResetPosition(Vector2 _center) // center coordinate
+{
+	this->body->SetTransform({ _center.x / PPM, _center.y / PPM }, 0);
+}
+
+Vector2 phys_Rec::GetPosition() // center coordinate
+{
+	return { this->body->GetTransform().p.x * PPM, this->body->GetTransform().p.y * PPM };
+}
 
 

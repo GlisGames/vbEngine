@@ -27,7 +27,6 @@
 #include "vbLivingObject.h"
 #include "vbMessage.h"
 #include "vbNumericBox.h"
-#include "vbProperty.h"
 #include "vbRenderer.h"
 #include "vbSequence.h"
 #include "vbState.h"
@@ -37,6 +36,9 @@
 #include "vbTimer.h"
 #include "vbTween.h"
 #include "vbUtils.h"
+#include "PhysicsObject.h"
+#include "phys_Cir.h"
+#include "phys_Rec.h"
 using namespace std;
 
 #endif

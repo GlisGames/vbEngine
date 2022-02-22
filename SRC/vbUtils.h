@@ -28,6 +28,16 @@ static Color ColorTurnOff(Color c)
 	return ret;
 }
 
+static Color ColorTurnOffPercent(Color c, float percent = 100.0f)
+{
+	Color ret = c;
+	percent /= 100;
+	ret.r *= percent;
+	ret.g *= percent;
+	ret.b *= percent;
+	return ret;
+}
+
 static Color colorApplyFilter(Color color, Color filter)
 {
 	Color ret = color;
@@ -40,5 +50,24 @@ static Color colorApplyFilter(Color color, Color filter)
 	ret.b = (unsigned char)(((float)color.b / 255 * cB) * 255.0f);
 	ret.a = (unsigned char)(((float)color.a / 255 * cA) * 255.0f);
 	return ret;
+}
+
+static bool IsKeyPressedAny()
+{
+	return (IsKeyPressed(KEY_A) || IsKeyPressed(KEY_B) ||
+		IsKeyPressed(KEY_C) || IsKeyPressed(KEY_D) ||
+		IsKeyPressed(KEY_E) || IsKeyPressed(KEY_F) ||
+		IsKeyPressed(KEY_G) || IsKeyPressed(KEY_H) ||
+		IsKeyPressed(KEY_I) || IsKeyPressed(KEY_J) ||
+		IsKeyPressed(KEY_K) || IsKeyPressed(KEY_L) ||
+		IsKeyPressed(KEY_M) || IsKeyPressed(KEY_N) ||
+		IsKeyPressed(KEY_O) || IsKeyPressed(KEY_P) ||
+		IsKeyPressed(KEY_Q) || IsKeyPressed(KEY_R) ||
+		IsKeyPressed(KEY_S) || IsKeyPressed(KEY_T) ||
+		IsKeyPressed(KEY_U) || IsKeyPressed(KEY_V) ||
+		IsKeyPressed(KEY_W) || IsKeyPressed(KEY_X) ||
+		IsKeyPressed(KEY_Y) || IsKeyPressed(KEY_Z) ||
+		IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_SPACE) ||
+		IsKeyPressed(KEY_BACKSPACE));
 }
 #endif

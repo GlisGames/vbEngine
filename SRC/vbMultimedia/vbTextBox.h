@@ -152,20 +152,19 @@ public:
 	vbTextbox(const vbString& seltext, Vector2 pos, Color colour, BOOL isDictionary = FALSE, vbString fontName = "default", WORD layer = 0, std::string name = "");
 	vbTextbox(const vbString& seltext, FLOAT posx, FLOAT posy, Color colour, BOOL isDictionary = FALSE, vbString fontName="default", WORD layer = 0, std::string name = "");
 	void init(const vbString& seltext, FLOAT posx, FLOAT posy, Color colour, BOOL isDictionary = FALSE, vbString fontName="default", WORD layer = 0, std::string name = "");
+	
+	virtual void vbTextbox::setup();
+	virtual void vbTextbox::update();
+	virtual void vbTextbox::draw();
+	
 	Texture2D getCacheTexture();
 	void setCacheFlag(BOOL cacheON);
 	BOOL getCacheFlag();
-	//bool addFont(const char* fontname, const char* fontFile = "arial.ttf", float fontSize = 20);
-	//bool addFontFace(const char* fontFile, float fontSize);
-	// 
-	//vector<float> centerCoords;
-	//float getBoundingScale();
-	//vector<WORD> getLineBreaks();
-	//Vector2 getGlyphPrintSize(WORD i, float scale = 1.0f);
+
 	void setFont(vbString fontName);
 	void setBoundingBox(float width, float height);
 	Vector2 getBoundingBox();
-	BOOL useBoundingBox = FALSE;
+	BOOL useBoundingBox = TRUE;
 	//float getMaxHeight();
 	//Vector2 getPrintSize(BOOL multiline = FALSE);
 	BOOL isDictionaryText = FALSE;

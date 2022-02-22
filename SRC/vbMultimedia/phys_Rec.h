@@ -15,6 +15,8 @@ public:
 	phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, BOOL _isStatic, Texture2D* _texture);
 	Texture2D* texture;
 	void update();
-	void render();
+	void draw();
+	void ResetPosition(Vector2 _center);
+	Vector2 GetPosition();
 };
 #endif // !PHYS_REC_H
