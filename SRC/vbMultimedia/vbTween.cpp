@@ -115,6 +115,14 @@ vbTween* vbTween::Pause()
 	return this;
 }
 
+vbTween* vbTween::startAfter(FLOAT time)
+{
+	startDelay = time;
+	if (this->isTimeBased)
+		startTimer = getMillis();
+	return this;
+}
+
 vbTween* vbTween::Restart()
 {
 	this->Reset();
@@ -249,6 +257,31 @@ void vbTweenMap::stepAll()
 	vbTweenMap::iterator itw = this->begin();
 	while (itw != this->end())
 	{
+		BOOL skip = FALSE;
+
+		if (itw->second.startDelay)
+		{
+			if (itw->second.isTimeBased)
+			{
+				if (getMillis() - itw->second.startTimer < itw->second.startDelay)
+					skip = TRUE;
+				else
+					itw->second.startDelay = 0;
+			}
+			if (!(itw->second.isTimeBased))
+			{
+				itw->second.startDelay--;
+				if (itw->second.startDelay > 0)
+					skip = TRUE;
+			}
+
+			if (skip)
+			{
+				if (itw != this->end()) itw++;
+				continue;
+			}
+		}
+
 		itw->second.Step();
 		BOOL _isFinished = itw->second.isFinished();
 

@@ -27,6 +27,8 @@ public:
 	DWORD totStep = 1;
 	FLOAT startP = 0;
 	FLOAT stopP = 0;
+	FLOAT startDelay = 0;
+	QWORD startTimer = 0;
 	BOOL isTimeBased = FALSE;
 	int repeatFor = 0;
 	int repeatSet = 0; //initial repeat value that has been set
@@ -40,6 +42,7 @@ public:
 	int *valueINT = NULL;
 	tweenRepeat repeat = twYoyo;
 	EasingFunction easingF = LinearInterpolation;
+	vbTween* startAfter(FLOAT time);
 	vbTween* endLambdaSet(tween_callback f) {
 		this->callbackEnd = f;
 		return this;
