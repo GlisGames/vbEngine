@@ -153,9 +153,9 @@ public:
 	vbTextbox(const vbString& seltext, FLOAT posx, FLOAT posy, Color colour, BOOL isDictionary = FALSE, vbString fontName="default", WORD layer = 0, std::string name = "");
 	void init(const vbString& seltext, FLOAT posx, FLOAT posy, Color colour, BOOL isDictionary = FALSE, vbString fontName="default", WORD layer = 0, std::string name = "");
 	
-	virtual void vbTextbox::setup();
-	virtual void vbTextbox::update();
-	virtual void vbTextbox::draw();
+	virtual void setup();
+	virtual void update();
+	virtual void draw();
 	
 	Texture2D getCacheTexture();
 	void setCacheFlag(BOOL cacheON);

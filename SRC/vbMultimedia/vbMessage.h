@@ -8,9 +8,9 @@ private:
 	void init(vbSpriteTexture* tex, Vector2 pos, BOOL b);
 	void resetMessage();
 public:
-	virtual void vbMessage::setup();
-	virtual void vbMessage::update();
-	virtual void vbMessage::draw();
+	virtual void setup();
+	virtual void update();
+	virtual void draw();
 	Color backgroundColor = WHITE;
 	float borderThickness = 5;
 	vbMessage();

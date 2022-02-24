@@ -39,9 +39,9 @@ public:
 	void removeObject(vbGraphicObject* ob);
 	void resize();
 
-	virtual void vbContainer::setup();
-	virtual void vbContainer::update();
-	virtual void vbContainer::draw();
+	virtual void setup();
+	virtual void update();
+	virtual void draw();
 
 	vbContainer* getChildCanvas(const char* sname)
 	{
