@@ -18,7 +18,7 @@ void vbMessage::draw()
 }
 
 // INIT
-void vbMessage::init(Texture2D* tex, Vector2 pos, BOOL b) {
+void vbMessage::init(vbSpriteTexture* tex, Vector2 pos, BOOL b) {
 	this->isAlive = TRUE;
 	this->position = pos;
 	this->isClickable = TRUE;
@@ -35,7 +35,7 @@ void vbMessage::init(Texture2D* tex, Vector2 pos, BOOL b) {
 vbMessage::vbMessage() : vbCanvas(NULL, { 0, 0 }) {
 	this->init(NULL, { 0, 0 }, FALSE);
 }
-vbMessage::vbMessage(Texture2D* tex, Vector2 pos, BOOL b) : vbCanvas(tex, pos) {
+vbMessage::vbMessage(vbSpriteTexture* tex, Vector2 pos, BOOL b) : vbCanvas(tex, pos) {
 	this->init(tex, pos, b);
 }
 

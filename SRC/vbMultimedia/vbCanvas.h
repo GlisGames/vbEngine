@@ -10,7 +10,7 @@ class vbCanvas : public vbContainer
 {
 private:
 public:
-	void init(Texture2D* tex, Rectangle position, vbString stext = "");
+	void init(vbSpriteTexture* tex, Rectangle position, vbString stext = "");
 	vbImage* background = NULL;
 	vbTextbox* caption = NULL;
 	vbCanvas();
@@ -19,8 +19,8 @@ public:
 	virtual void vbCanvas::update();
 	virtual void vbCanvas::draw();
 	explicit vbCanvas(Rectangle rect, vbString stext = "");
-	explicit vbCanvas(Texture2D* tex, Vector2 position, vbString stext = ""); 
-	void setBackground(Texture2D* tex);
+	explicit vbCanvas(vbSpriteTexture* tex, Vector2 position, vbString stext = ""); 
+	void setBackground(vbSpriteTexture* tex);
 	void setCaption(vbString stext, const char * appendText);
 	void setCaption(vbString stext, vbString appendText = "");
 	BYTE borderWidth = 0;

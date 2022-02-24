@@ -2,6 +2,7 @@
 #define vbSequence_H
 
 #include "basetypes.h"
+#include "vbTexture.h"
 
 enum class seqRepeatType
 {
@@ -23,9 +24,9 @@ public:
 	WORD actualIndex;
 	BOOL enabled = TRUE;
 	seqRepeatType repeat = seqRepeatType::REP_BEGINTOEND;
-	Texture2Dvector *seqList;
+	vbSpriteTexture2Dvector* seqList;
 	vbSequence();
-	vbSequence(Texture2Dvector *slist, Vector2 pos, WORD frameFrequency = 1, std::string name = "", WORD layer = 0);
+	vbSequence(vbSpriteTexture2Dvector*slist, Vector2 pos, WORD frameFrequency = 1, std::string name = "", WORD layer = 0);
 	void startAnim(seqRepeatType rep = seqRepeatType::REP_BEGINTOEND, WORD frameFrequency = 1);
 	void resetAnim();
 	void stopAnim();
@@ -34,9 +35,15 @@ public:
 };
 
 // vbSequenceMap
-class vbSequenceMap : public std::map<std::string, Texture2Dvector*>
+//class vbSequenceMap : public std::map<std::string, Texture2Dvector*>
+//{
+//public:
+//	Texture2Dvector* operator [](std::string str);
+//};
+
+class vbSequenceMap : public std::map<std::string, vbSpriteTexture2Dvector*>
 {
 public:
-	Texture2Dvector* operator [](std::string str);
+	vbSpriteTexture2Dvector* operator [](std::string str);
 };
 #endif

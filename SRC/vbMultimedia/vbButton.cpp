@@ -46,7 +46,7 @@ void vbButton::checkSize()
 	}
 }
 
-void vbButton::init(hwButton bID, Texture2D* tex, Rectangle position, Color c, vbString stext)
+void vbButton::init(hwButton bID, vbSpriteTexture* tex, Rectangle position, Color c, vbString stext)
 {
 	this->isAlive = TRUE;
 	this->position = { position.x, position.y };
@@ -69,7 +69,7 @@ vbButton::vbButton() : vbContainer(0, 0)
 	this->init(hwButton::BUTTON_NONE, NULL, { 0,0,0,0 });
 }
 
-vbButton::vbButton(hwButton bID, Texture2D* tex, Vector2 position, Color c, vbString stext)
+vbButton::vbButton(hwButton bID, vbSpriteTexture* tex, Vector2 position, Color c, vbString stext)
 	:vbContainer(tex->width, tex->height)
 {
 	this->init(bID, tex, { position.x, position.y, (FLOAT)tex->width, (FLOAT)tex->height }, c, stext);
@@ -100,7 +100,7 @@ void vbButton::setText(vbString stext, vbString appendText)
 	}
 }
 
-void vbButton::setImage(Texture2D* tex)
+void vbButton::setImage(vbSpriteTexture* tex)
 {
 	if (tex == NULL)
 		return;

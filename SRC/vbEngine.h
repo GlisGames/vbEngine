@@ -34,6 +34,7 @@
 #include "vbTextBox.h"
 #include "vbTextEngine.h"
 #include "vbTimer.h"
+#include "vbTexture.h"
 #include "vbTween.h"
 #include "vbUtils.h"
 using namespace std;

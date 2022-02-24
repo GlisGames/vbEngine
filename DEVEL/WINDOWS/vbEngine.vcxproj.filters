@@ -126,6 +126,9 @@
       <Filter>raylib</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\vbEvent.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTexture.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -234,5 +237,8 @@
       <Filter>raylib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbEvent.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTexture.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

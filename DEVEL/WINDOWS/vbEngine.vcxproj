@@ -58,6 +58,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbImage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTexture.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
     <ClInclude Include="..\..\SRC\vbStyle.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
@@ -135,6 +136,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTexture.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
     <ClCompile Include="..\..\SRC\vbStyle.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />

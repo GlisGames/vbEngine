@@ -32,7 +32,7 @@ vbSequence::vbSequence()
 	this->name = "";
 }
 
-vbSequence::vbSequence(Texture2Dvector* slist, Vector2 pos, WORD frameFrequency, std::string name, WORD layer)
+vbSequence::vbSequence(vbSpriteTexture2Dvector* slist, Vector2 pos, WORD frameFrequency, std::string name, WORD layer)
 {
 	this->name = name;
 	this->seqList = slist;
@@ -112,9 +112,9 @@ void vbSequence::stepAnim()
 }
 
 // vbSequenceMap
-Texture2Dvector* vbSequenceMap::operator [](std::string str)
+vbSpriteTexture2Dvector* vbSequenceMap::operator [](std::string str)
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
-	Texture2Dvector* ret = this->at(str);
+	vbSpriteTexture2Dvector* ret = this->at(str);
 	return ret;
 }

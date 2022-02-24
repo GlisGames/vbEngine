@@ -12,6 +12,7 @@ namespace Frames
 	}
 }
 
+std::string getParentFolder(string path);
 const char* formatMoney(DWORD value);
 
 /// <summary>

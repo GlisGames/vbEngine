@@ -29,6 +29,8 @@ public:
 	std::map<std::string, Image> imageMapLocal;
 	std::vector<Image> atlasList;
 
+	std::vector<Texture2D> spriteSheets;
+
 	vbImageMap textureMap;
 	vbSequenceMap sequenceMap;
 	vbSoundMap soundMap;

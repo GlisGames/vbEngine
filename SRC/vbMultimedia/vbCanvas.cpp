@@ -6,7 +6,7 @@ vbCanvas::~vbCanvas()
 
 }
 
-void vbCanvas::init(Texture2D* tex, Rectangle position, vbString stext)
+void vbCanvas::init(vbSpriteTexture* tex, Rectangle position, vbString stext)
 {
 	this->isAlive = TRUE;
 	this->position = { position.x, position.y };
@@ -41,7 +41,7 @@ vbCanvas::vbCanvas(Rectangle rect, vbString stext) : vbContainer(rect.width, rec
 	this->init(NULL, rect, stext);
 }
 
-vbCanvas::vbCanvas(Texture2D* tex, Vector2 position, vbString stext) : vbContainer((tex)?tex->width:0, (tex)?tex->height:0)
+vbCanvas::vbCanvas(vbSpriteTexture* tex, Vector2 position, vbString stext) : vbContainer((tex)?tex->width:0, (tex)?tex->height:0)
 {
 	if (tex)
 		this->init(tex, { position.x, position.y, (FLOAT)tex->width, (FLOAT)tex->height }, stext);
@@ -73,7 +73,7 @@ void vbCanvas::setCaption(vbString stext, vbString appendText)
 	}
 }
 
-void vbCanvas::setBackground(Texture2D* tex)
+void vbCanvas::setBackground(vbSpriteTexture* tex)
 {
 	if (tex == NULL)
 		return;

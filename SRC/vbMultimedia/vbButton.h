@@ -34,7 +34,7 @@ public:
 class vbButton : public vbContainer
 {
 private:
-	void init(hwButton bID, Texture2D* tex, Rectangle position, Color c = WHITE, vbString stext = "");
+	void init(hwButton bID, vbSpriteTexture* tex, Rectangle position, Color c = WHITE, vbString stext = "");
 	void checkSize();
 public:
 	vbButton();
@@ -44,9 +44,9 @@ public:
 	virtual void draw();
 	vbImage* image = NULL;
 	vbTextbox* text = NULL;
-	void setImage(Texture2D* tex);
+	void setImage(vbSpriteTexture* tex);
 	explicit vbButton(hwButton bID, Rectangle rect, Color c = WHITE, vbString stext = "");
-	explicit vbButton(hwButton bID, Texture2D* tex, Vector2 position, Color c = WHITE, vbString stext = "");
+	explicit vbButton(hwButton bID, vbSpriteTexture* tex, Vector2 position, Color c = WHITE, vbString stext = "");
 	void setText(vbString stext, vbString appendText = "");
 	BYTE borderWidth = 0;
 	Color borderColor = BLACK;
