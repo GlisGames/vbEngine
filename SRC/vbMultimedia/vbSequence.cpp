@@ -40,13 +40,20 @@ vbSequence::vbSequence(vbSpriteTexture2Dvector* slist, Vector2 pos, WORD frameFr
 	this->actualIndex = 0;
 	this->frameCounter = 0;
 	this->frameFreq = frameFrequency;
-	this->enabled = TRUE;
+	this->enabled = FALSE;
 	this->setLayer(layer);
 	this->setTexture(slist->at(actualIndex)); //TODO not found protection
 	this->type = TYPE_SEQUENCE;
 }
 
-void vbSequence::startAnim(seqRepeatType rep, WORD frameFrequency)
+void vbSequence::startAnimByTime(DWORD FPS, seqRepeatType rep)
+{
+	this->enabled = TRUE;
+	this->repeat = rep;
+	this->frameFreq = FPS;
+}
+
+void vbSequence::startAnimByFrame(seqRepeatType rep, WORD frameFrequency)
 {
 	this->enabled = TRUE;
 	this->repeat = rep;
@@ -57,6 +64,8 @@ void vbSequence::resetAnim()
 {
 	this->actualIndex = 0;
 	this->frameCounter = 0;
+	if(this->seqList)
+		this->setTexture(this->seqList->at(this->actualIndex));
 }
 
 void vbSequence::stopAnim()
@@ -76,36 +85,53 @@ bool vbSequence::isFinshed()
 
 void vbSequence::stepAnim()
 {
-	if (this->enabled == FALSE || this->seqList == NULL)
+	if (this->enabled == FALSE || this->seqList == NULL || this->frameFreq == 0)
 		return;
 
-	if(this->frameCounter >= 0xFFFFFFFF) //overflow prevention
-		this->frameCounter=0;
-	else
+	SDWORD advance = 0;
+
+	if (!this->isTimeBased)
 		this->frameCounter++;
 
-	if (!(this->frameCounter % this->frameFreq))
+	if (this->isTimeBased && 
+		(getMillis() - this->frameCounter >= roundf(1000.0f / this->frameFreq))) //prevent division by zero
+	{
+		QWORD calc = getMillis() - this->frameCounter;
+		WORD fps = roundf(1000.0f / this->frameFreq);
+		this->frameCounter = getMillis();
+		advance = TRUE;
+	}
+
+	if ((!this->isTimeBased && !(this->frameCounter % this->frameFreq)))
+		advance = 1;
+
+	if(advance)
 	{
 		if (this->repeat == seqRepeatType::REP_BEGINTOEND)
 		{
-			if ((this->actualIndex + 1) >= this->seqList->size())
+			if ((this->actualIndex + advance) >= this->seqList->size())
 				this->actualIndex = 0;
 			else
-				this->actualIndex++;
+				this->actualIndex += advance;
 		}
 				
 		if (this->repeat == seqRepeatType::REP_YOYO)
 		{
-			if ((this->actualIndex + 1) >= this->seqList->size()) //if we reaced the end
+			if ((this->actualIndex + advance) >= this->seqList->size()) //if we reaced the end
 				this->yoyoDirection = 1;
-			else if ((this->actualIndex - 1) < 0) //if we are back to the beginning
-				this->yoyoDirection = -1;
+			else if ((this->actualIndex - advance) < 0) //if we are back to the beginning
+				this->yoyoDirection = -1 * (advance);
 			
 			this->actualIndex += this->yoyoDirection;
 
 		}
-		else if ((this->repeat == seqRepeatType::REP_ONETIME)&&((this->actualIndex + 1) < this->seqList->size()))
-			this->actualIndex++;
+		else if ((this->repeat == seqRepeatType::REP_ONETIME))
+		{
+			if ((this->actualIndex + advance) < this->seqList->size())
+				this->actualIndex += advance;
+			else
+				this->actualIndex = this->seqList->size() - 1;
+		}
 	}
 
 	this->setTexture(this->seqList->at(this->actualIndex));

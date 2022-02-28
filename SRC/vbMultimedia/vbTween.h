@@ -39,12 +39,23 @@ public:
 	DWORD valueTIMER = NULL;
 	tween_callback callbackEnd = NULL; //called every time the tween end one cycle
 	tween_callback callbackKill = NULL; //called when the tween finished its last cycle, before being deallocated
+	tween_callback callbackStart = NULL; //called when the tween finished its last cycle, before being deallocated
 	int *valueINT = NULL;
 	tweenRepeat repeat = twYoyo;
 	EasingFunction easingF = LinearInterpolation;
 	vbTween* startAfter(FLOAT time);
 	vbTween* endLambdaSet(tween_callback f) {
 		this->callbackEnd = f;
+		return this;
+	}
+
+	/// <summary>
+	/// set a callback that is called every time the tween current step is at zero
+	/// </summary>
+	/// <param name="f"></param>
+	/// <returns></returns>
+	vbTween* onStart(tween_callback f) {
+		this->callbackStart = f;
 		return this;
 	}
 	vbTween* killLambdaSet(tween_callback f) {
@@ -71,7 +82,6 @@ public:
 	vbTween* Restart();
 	vbTween* Reset();
 	void Step();
-	void Finish();
 	BOOL isFinished();
 	vbTween* next = NULL;
 	vbTween* addNext(vbTween* n)
@@ -82,20 +92,20 @@ public:
 	}
 };
 
-class vbTweenMap : public std::map<const char*, vbTween>
+class vbTweenMap : public std::map<string, vbTween>
 {
 public:
 	template <typename T>
-	vbTween* addtween(const char* name, T* value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twYoyo, EasingFunction easingFunction = LinearInterpolation, int numRepeats = 0, tween_callback callback = NULL)
+	vbTween* addtween(string name, T* value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twYoyo, EasingFunction easingFunction = LinearInterpolation, int numRepeats = 0, tween_callback callback = NULL)
 	{
 		//FIXME solve conflicting names inside the map
-		this->insert(std::pair<const char*, vbTween>(name, vbTween(value, Start_p, Stop_p, TOTsteps, loop, easingFunction, numRepeats, callback)));
+		this->insert(std::pair<string, vbTween>(name, vbTween(value, Start_p, Stop_p, TOTsteps, loop, easingFunction, numRepeats, callback)));
 		return &this->operator[](name);
 	};
-	vbTween* addtween(const char* name, vbTween tw);
-	vbTween* addtimer(const char* name, DWORD TOTsteps, tweenRepeat loop = twOneShot, EasingFunction easingFunction = LinearInterpolation, int numRepeats = 0, tween_callback callback = NULL);
-	vbTween* getTween(const char* name);
-	void killTween(const char* name);
+	vbTween* addtween(string name, vbTween tw);
+	vbTween* addtimer(string name, DWORD TOTsteps, tweenRepeat loop = twOneShot, EasingFunction easingFunction = LinearInterpolation, int numRepeats = 0, tween_callback callback = NULL);
+	vbTween* getTween(string name);
+	void killTween(string name);
 	void killAll();
 	void stopAll();
 	void stepAll();

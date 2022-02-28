@@ -45,6 +45,7 @@ private:
 protected:
 	BOOL firstIn = TRUE;
 	DWORD frame = 0;
+	QWORD time = 0;
 
 	virtual void init() {};
 	virtual void exit() {};
@@ -57,6 +58,10 @@ public:
 	WORD stateID = 0xFF;
 	vbState();
 	void stateExit(WORD s);
+	BOOL afterAndEveryFrame(DWORD after, DWORD every);
+	BOOL afterAndUntilFrame(DWORD after, DWORD until);
+	BOOL afterAndEveryUntilFrame(DWORD after, DWORD until, DWORD every);
+
 	BOOL afterAndEvery(DWORD after, DWORD every);
 	BOOL afterAndUntil(DWORD after, DWORD until);
 	BOOL afterAndEveryUntil(DWORD after, DWORD until, DWORD every);

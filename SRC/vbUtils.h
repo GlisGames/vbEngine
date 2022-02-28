@@ -6,7 +6,7 @@
 #include <string>
 namespace Frames
 {
-	static BOOL afterAndEvery(DWORD currentFrame, DWORD after, DWORD every)
+	static BOOL afterAndEvery(QWORD currentFrame, QWORD after, QWORD every)
 	{
 		return (currentFrame > after && !((currentFrame + after) % every));
 	}
