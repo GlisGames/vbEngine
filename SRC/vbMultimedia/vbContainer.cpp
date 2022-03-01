@@ -58,6 +58,8 @@ void vbContainer::update()
 void vbContainer::draw()
 {
 	vbGraphicObject::draw();
+	if (this->gObjects.toSort)
+		this->gObjects.sortMe();
 	this->inheritedCache = FALSE;
 	this->inheritedCachePosition = { 0,0 };
 	BOOL containerToCache = FALSE;
