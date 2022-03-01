@@ -26,23 +26,31 @@ void vbContainer::update()
 	else
 		this->transformed.canBeClicked = TRUE;
 
-	for (auto it = this->gObjects.rbegin(); it != this->gObjects.rend(); it++)
-	{
-		(*it)->setClick(FALSE); //reset click flag
-		BOOL parentClickable = (this->parentContainer) ? this->parentContainer->transformed.canBeClicked : TRUE;
-		if (parentClickable && this->transformed.canBeClicked // no clicks done yet
-			&& (*it)->isClickable && (*it)->visible && visible // is visible and clickable
-			&& IsMouseButtonPressed(0) && (*it)->isMouseOver()) // and clicked
-		{
-			(*it)->setClick(TRUE);
-			this->transformed.canBeClicked = FALSE;
-		}
+	if (this->gObjects.size() == 0)
+		return;
 
-		if ((*it)->isAlive && (*it)->enabled)
+	//auto it = this->gObjects.end();
+	//for (auto it = this->gObjects.rbegin(); it != this->gObjects.rend(); it++)
+	for (int i = this->gObjects.size()-1; i>=0 ; i--)
+	{
+		//it--;
+		//vbGraphicObject *go = *it;
+		vbGraphicObject *go = this->gObjects[i];
+
+		if (go->isAlive && go->enabled)
 		{
-			(*it)->update();
+			go->setClick(FALSE); //reset click flag
+			BOOL parentClickable = (this->parentContainer) ? this->parentContainer->transformed.canBeClicked : TRUE;
+			if (parentClickable && this->transformed.canBeClicked // no clicks done yet
+				&& go->isClickable && go->visible && visible // is visible and clickable
+				&& IsMouseButtonPressed(0) && go->isMouseOver()) // and clicked
+			{
+				go->setClick(TRUE);
+				this->transformed.canBeClicked = FALSE;
+			}
+			go->update();
 		}
-	}
+	}// while (it != this->gObjects.begin());
 	if(this->parentContainer) //inherit backwards
 		this->parentContainer->transformed.canBeClicked = this->transformed.canBeClicked;
 }
@@ -89,8 +97,10 @@ void vbContainer::draw()
 
 	if (!this->useCache || containerToCache)
 	{
-		for (vbGraphicObject* obj : this->gObjects)
+		//for (vbGraphicObject* obj : this->gObjects)
+		for (int i = 0; i < this->gObjects.size(); i++)
 		{
+			vbGraphicObject* obj = this->gObjects[i];
 			if (obj->isAlive && obj->visible)
 			{
 				if (obj->type == gObjectType::TYPE_CONTAINER && (this->inheritedActiveArea || this->useActiveArea))

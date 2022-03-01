@@ -59,8 +59,6 @@ void vbImage::setup()
 void vbImage::draw()
 {
 	vbGraphicObject::draw();
-	if (this->name == "imgRay01")
-		BREAKPOINT;
 
 	if ((!this->isSpriteTexture && this->getTexture() != NULL) || (this->isSpriteTexture && this->getSpriteTexture() != NULL))
 	{

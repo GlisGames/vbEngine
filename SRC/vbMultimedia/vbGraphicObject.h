@@ -34,7 +34,7 @@ class vbContainer;
 class vbGraphicObject;
 class styleElement;
 
-class gObjectList : public std::list<vbGraphicObject*> //std::map<std::string, vbGraphicObject*>
+class gObjectList : public std::vector<vbGraphicObject*> //std::map<std::string, vbGraphicObject*>
 {
 private:
 public:
