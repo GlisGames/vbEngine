@@ -129,6 +129,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTexture.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -240,5 +241,6 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTexture.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbCamera.cpp" />
   </ItemGroup>
 </Project>

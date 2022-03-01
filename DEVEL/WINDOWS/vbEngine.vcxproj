@@ -30,6 +30,7 @@
     <ClInclude Include="..\..\SRC\basetypes.h" />
     <ClInclude Include="..\..\SRC\game\vbGame.h" />
     <ClInclude Include="..\..\SRC\game\vbState.h" />
+    <ClInclude Include="..\..\SRC\vbCamera.h" />
     <ClInclude Include="..\..\SRC\vbEngine.h" />
     <ClInclude Include="..\..\SRC\text\vbFont.h" />
     <ClInclude Include="..\..\SRC\text\hb-ft.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="..\..\SRC\text\texture_atlas.cpp" />
     <ClCompile Include="..\..\SRC\text\text_render.cpp" />
     <ClCompile Include="..\..\SRC\text\text_run.cpp" />
+    <ClCompile Include="..\..\SRC\vbCamera.cpp" />
     <ClCompile Include="..\..\SRC\vbErrors.cpp" />
     <ClCompile Include="..\..\SRC\vbEvent.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
