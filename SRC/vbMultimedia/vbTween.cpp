@@ -287,16 +287,12 @@ void vbTweenMap::stepAll()
 			itw->second.callbackStart();
 			itw->second.callbackStart = NULL;
 		}
-		if (itw->first == "twSymZoom_sym2_r1" && itw->second.repeatFor == 2)
-			BREAKPOINT;
 		itw->second.Step();
 		BOOL _isFinished = itw->second.isFinished();
 
 		if (_isFinished && itw->second.repeatFor > 0)
 		{
 			itw->second.repeatFor--;
-			if (itw->first == "twSymZoom_sym2_r1")
-				int a = 0;
 		}
 
 		if (itw->second.callbackEnd != NULL && _isFinished)
