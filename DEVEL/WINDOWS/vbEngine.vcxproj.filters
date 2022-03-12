@@ -130,6 +130,18 @@
       <Filter>vbMultimedia</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\vbCamera.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbShape.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbRectangle.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -242,5 +254,15 @@
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbCamera.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbShape.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

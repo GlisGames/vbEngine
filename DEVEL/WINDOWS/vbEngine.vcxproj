@@ -45,18 +45,22 @@
     <ClInclude Include="..\..\SRC\vbLanguage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json-builder.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbButton.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbCanvas.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbContainer.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbEasing.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicObject.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbAtlas.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbLivingObject.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbMessage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbNumericBox.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbRectangle.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbRenderer.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSequence.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbImage.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbShape.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTexture.h" />
@@ -111,6 +115,7 @@
     <ClCompile Include="..\..\SRC\vbEvent.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json-builder.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbButton.cpp">
@@ -121,6 +126,7 @@
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbContainer.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbEasing.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbImage.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbLivingObject.cpp" />
@@ -130,10 +136,12 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRenderer.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbSequence.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbShape.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
