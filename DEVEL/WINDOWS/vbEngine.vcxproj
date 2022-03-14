@@ -48,6 +48,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbButton.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbCanvas.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbCircle.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbContainer.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbEasing.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.h" />
@@ -56,6 +57,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbLivingObject.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbMessage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbNumericBox.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbRawTexture.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbRectangle.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbRenderer.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSequence.h" />
@@ -64,6 +66,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTexture.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTriangle.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
     <ClInclude Include="..\..\SRC\vbStyle.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
@@ -124,6 +127,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbCanvas.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbCircle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbContainer.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbEasing.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.cpp" />
@@ -136,6 +140,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbRawTexture.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRenderer.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbSequence.cpp">
@@ -147,6 +152,7 @@
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextEngine.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTexture.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTriangle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
     <ClCompile Include="..\..\SRC\vbStyle.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />

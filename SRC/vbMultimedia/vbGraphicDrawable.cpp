@@ -62,3 +62,50 @@ vbRoundedDrawable& vbRoundedDrawable::operator=(const vbRoundedDrawable& graphic
 vbRoundedDrawable::~vbRoundedDrawable()
 {
 }
+
+vbScaleDrawable::vbScaleDrawable(float _scale)
+	:vbGraphicDrawable(), scale(_scale)
+{
+}
+
+vbScaleDrawable::vbScaleDrawable(const vbScaleDrawable& graphic)
+	:vbGraphicDrawable(graphic), scale(graphic.scale)
+{
+}
+
+vbScaleDrawable& vbScaleDrawable::operator=(const vbScaleDrawable& graphic)
+{
+	vbGraphicDrawable::operator=(graphic);
+	this->scale = graphic.scale;
+
+	return (*this);
+}
+
+vbScaleDrawable::~vbScaleDrawable()
+{
+}
+
+vbRotateDrawable::vbRotateDrawable(float _rotation)
+	:vbGraphicDrawable(), rotation(_rotation)
+{
+
+}
+
+vbRotateDrawable::vbRotateDrawable(const vbRotateDrawable& graphic)
+	:vbGraphicDrawable(graphic), rotation(graphic.rotation)
+{
+
+}
+
+vbRotateDrawable& vbRotateDrawable::operator=(const vbRotateDrawable& graphic)
+{
+	vbGraphicDrawable::operator=(graphic);
+
+	this->rotation = graphic.rotation;
+
+	return (*this);
+}
+
+vbRotateDrawable::~vbRotateDrawable()
+{
+}

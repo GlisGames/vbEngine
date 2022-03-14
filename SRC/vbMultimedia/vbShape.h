@@ -4,7 +4,9 @@
 enum TYPE_SHAPE 
 {
 	UNDEFINED = 0,
-	RECTANGLE = 1
+	RECTANGLE = 1,
+	CIRCLE = 2,
+	TRIANGLE = 3
 };
 
 class vbShape

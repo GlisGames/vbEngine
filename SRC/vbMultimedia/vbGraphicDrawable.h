@@ -44,4 +44,31 @@ public:
 	int segments;
 };
 
+class vbScaleDrawable
+	:public vbGraphicDrawable
+{
+public:
+	vbScaleDrawable(float _scale = 1.0f);
+	vbScaleDrawable(const vbScaleDrawable& graphic);
+	vbScaleDrawable& operator=(const vbScaleDrawable& graphic);
+	virtual ~vbScaleDrawable();
+
+	virtual void drawGraphic() = 0;
+
+	float scale;
+};
+
+class vbRotateDrawable
+	:public vbGraphicDrawable
+{
+public:
+	vbRotateDrawable(float _rotation = 0.0f);
+	vbRotateDrawable(const vbRotateDrawable& graphic);
+	vbRotateDrawable& operator=(const vbRotateDrawable& graphic);
+	virtual ~vbRotateDrawable();
+
+	virtual void drawGraphic() = 0;
+
+	float rotation;
+};
 #endif

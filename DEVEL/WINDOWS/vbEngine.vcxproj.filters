@@ -142,6 +142,15 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbCircle.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbTriangle.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbRawTexture.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -262,6 +271,15 @@
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbCircle.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbTriangle.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbRawTexture.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
   </ItemGroup>
