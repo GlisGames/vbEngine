@@ -35,7 +35,7 @@ void vbNumericBox::draw()
 }
 
 // INIT
-void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
+void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus, BOOL isMoney) {
 	this->isAlive = TRUE;
 	this->positioningRule = posRule::POS_CANVAS_RELATIVE;
 	this->position = pos;
@@ -65,14 +65,17 @@ void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle 
 	this->cmdPlus->debugBox = TRUE;
 
 	this->resize();
-	//this->txtValue->setText(formatMoney(this->value));
-	this->txtValue->setText(to_string(this->value));
+	this->isMoneyBox = isMoney;
+	if(isMoney)
+		this->txtValue->setText(formatMoney(this->value));
+	else
+		this->txtValue->setText(to_string(this->value));
 }
 vbNumericBox::vbNumericBox(Vector2 pos) {
 	this->init(pos, { 0,0,0,0 }, { 0,0,0,0 }, { 0,0,0,0 });
 }
-vbNumericBox::vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
-	this->init(pos, minus, text, plus);
+vbNumericBox::vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus, BOOL isMoney = TRUE) {
+	this->init(pos, minus, text, plus, isMoney);
 }
 
 // GETTERS & SETTERS
@@ -90,8 +93,10 @@ DWORD vbNumericBox::getIncrement() {
 }
 void vbNumericBox::setValue(DWORD _value) {
 	this->value = _value;
-	//this->txtValue->setText(formatMoney(this->value));
-	this->txtValue->setText(to_string(this->value));
+	if(this->isMoneyBox)
+		this->txtValue->setText(formatMoney(this->value));
+	else
+		this->txtValue->setText(to_string(this->value));
 }
 void vbNumericBox::setMin(DWORD _min) {
 	this->min = _min;

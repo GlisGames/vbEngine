@@ -16,6 +16,8 @@ enum TYPE_GAME_STATE
 	S_PLAY_RUN,		//!< Stato di rullata
 	S_VICTORY,		//!< Stato di fine rullata
 	S_GAMEOVER,		//!< Stato in cui vengono mostrate le linee vincenti
+	S_SHOW_WIN,
+	S_CHANGE,
 	S_CUSTOM_MAP,		//!< Stato di demo
 	S_FREEGAME_PLAY,	//!< Stato che avvia le mani del Free Game
 	S_FREEGAME_EXIT,	//!< Stato di fine Free Game

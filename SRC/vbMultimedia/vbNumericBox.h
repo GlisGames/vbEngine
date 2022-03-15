@@ -9,19 +9,20 @@ private:
 	DWORD min = 0;
 	DWORD max = 0xFFFFFFFF;
 	DWORD increment = 50;
-	void init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
+	void init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus, BOOL isMoney = TRUE);
 public:
 	virtual void setup();
 	virtual void update();
 	virtual void draw();
 
+	BOOL isMoneyBox = TRUE;
 	vbButton* cmdMinus = NULL;
 	vbTextbox* txtValue = NULL;
 	vbButton* cmdPlus = NULL;
 	Sound* soundMinus = NULL;
 	Sound* soundPlus = NULL;
 	vbNumericBox(Vector2 pos);
-	vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
+	vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus, BOOL isMoney = TRUE);
 	DWORD getValue();
 	DWORD getMin();
 	DWORD getMax();
