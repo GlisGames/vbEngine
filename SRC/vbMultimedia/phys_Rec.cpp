@@ -1,6 +1,6 @@
 #include "phys_Rec.h"
 
-phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type, Texture2D* _texture) : PhysicsObject(_world, _pos, _size, _type)
+phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type, vbSpriteTexture* _texture) : PhysicsObject(_world, _pos, _size, _type)
 {
 	_pos.x /= PPM;
 	_pos.y /= PPM;
@@ -28,7 +28,7 @@ phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _typ
 		this->body->CreateFixture(&fixtureDef);
 	}
 
-	this->texture = _texture;
+	this->setTexture(_texture);
 
 	this->width = _size.x * PPM;
 	this->height = _size.y * PPM;
@@ -60,8 +60,6 @@ phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _typ
 		this->body->CreateFixture(&fixtureDef);
 	}
 
-	this->texture = NULL;
-
 	this->width = _size.x * PPM;
 	this->height = _size.y * PPM;
 	this->position.x = this->body->GetPosition().x * PPM;
@@ -70,30 +68,32 @@ phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _typ
 
 void phys_Rec::update()
 {
-	vbGraphicObject::update();
+	vbImage::update();
 	//this->body->SetAwake(TRUE);
 
 	this->position.x = this->body->GetPosition().x * PPM;
 	this->position.y = this->body->GetPosition().y * PPM;
+	this->transformed.position.x = this->body->GetPosition().x * PPM;
+	this->transformed.position.y = this->body->GetPosition().y * PPM;
+	this->transformed.rotation = this->body->GetAngle() * RAD2DEG;
 }
  
 void phys_Rec::draw()
 {
-
-	vbGraphicObject::draw();
-	if (!this->texture)
+	if (this->texture == NULL && this->spriteTexture == NULL)
 	{
 		Rectangle rec = { this->position.x, this->position.y, this->width, this->height };
 		DrawRectanglePro(rec, { (float)this->width / 2, (float)this->height / 2 }, this->body->GetTransform().q.GetAngle() * RAD2DEG, WHITE);
 	}
 	else
 	{
-		int frameWidth = this->width;
-		int frameHeight = this->height;
-		Rectangle sourceRec = { 0.0f, 0.0f, (float)frameWidth, (float)frameHeight };
-		Rectangle destRec = { this->position.x, this->position.y, this->width * this->scale, this->height * this->scale};
-		Vector2 origin = { (float)frameWidth / 2, (float)frameHeight / 2 };
- 		DrawTexturePro(*this->texture, sourceRec, destRec, origin, this->body->GetAngle() * RAD2DEG, WHITE);
+		//int frameWidth = this->width;
+		//int frameHeight = this->height;
+		//Rectangle sourceRec = { 0.0f, 0.0f, (float)frameWidth, (float)frameHeight };
+		//Rectangle destRec = { this->position.x, this->position.y, this->width * this->scale, this->height * this->scale};
+		//Vector2 origin = { (float)frameWidth / 2, (float)frameHeight / 2 };
+ 		//DrawTexturePro(*this->texture, sourceRec, destRec, origin, this->body->GetAngle() * RAD2DEG, WHITE);
+		vbImage::draw();
 	}
 }
 

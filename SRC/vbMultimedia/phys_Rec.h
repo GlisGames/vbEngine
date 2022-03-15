@@ -7,13 +7,12 @@
 #include "basetypes.h"
 #include "vbImage.h"
 
-class phys_Rec : public PhysicsObject
+class phys_Rec : public PhysicsObject, public vbImage
 {
 private:
 public:
 	phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type);
-	phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type, Texture2D* _texture);
-	Texture2D* texture;
+	phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type, vbSpriteTexture* _texture);
 	void update();
 	void draw();
 	void ResetPosition(Vector2 _center);
