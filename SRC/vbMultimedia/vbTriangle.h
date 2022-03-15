@@ -20,16 +20,4 @@ public:
 	TrianglePoints points;
 };
 
-class vbSingleColourTriangle: public vbTriangle, public vbSingleColourDrawable
-{
-public:
-	vbSingleColourTriangle(TrianglePoints _points, Color _colour);
-	vbSingleColourTriangle(const vbSingleColourTriangle& graphic);
-	vbSingleColourTriangle& operator=(const vbSingleColourTriangle& graphic);
-	~vbSingleColourTriangle();
-
-	void drawGraphic() override;
-
-};
-
 #endif
