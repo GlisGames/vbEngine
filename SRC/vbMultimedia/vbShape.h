@@ -1,5 +1,6 @@
 #ifndef VB_SHAPE_H
 #define VB_SHAPE_H
+#include "vbGraphicObject.h"
 
 enum TYPE_SHAPE 
 {
@@ -9,7 +10,7 @@ enum TYPE_SHAPE
 	TRIANGLE = 3
 };
 
-class vbShape
+class vbShape : public vbGraphicObject
 {
 public:
 	//when you create new shape, remember to set the TYPE_SHAPE for it

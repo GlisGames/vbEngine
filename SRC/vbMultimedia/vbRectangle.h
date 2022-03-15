@@ -2,10 +2,8 @@
 #define VB_RECTANGLE_H
 
 #include "raylib.h"
-#include "vbShape.h"
-#include "vbGraphicDrawable.h"
-
-class vbRectangle: public vbShape
+#include "vbGraphicObject.h"
+class vbRectangle: public vbGraphicObject
 {
 public:
 	vbRectangle(Rectangle _rect);
@@ -13,20 +11,9 @@ public:
 	vbRectangle(const vbRectangle& rectangle);
 	vbRectangle& operator=(const vbRectangle& rectangle);
 	virtual ~vbRectangle();
-
-	Rectangle rect = {0.0f, 0.0f, 0.0f, 0.0f};
-};
-
-class vbRoundedDrawRectangle
-	: public vbRectangle, public vbRoundedDrawable
-{
-public:
-	vbRoundedDrawRectangle(Rectangle _rect, Color _colour, float _roundness, int _segments);
-	vbRoundedDrawRectangle(const vbRoundedDrawRectangle& rectangle);
-	vbRoundedDrawRectangle& operator=(const vbRoundedDrawRectangle& rectangle);
-	virtual ~vbRoundedDrawRectangle();
-
-	void drawGraphic() override;
+	virtual void setup();
+	virtual void update();
+	virtual void draw();
 };
 
 #endif

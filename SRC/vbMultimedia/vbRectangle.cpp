@@ -1,57 +1,54 @@
 #include "vbRectangle.h"
 
-vbRectangle::vbRectangle(Rectangle _rect)
-	:vbShape(TYPE_SHAPE::RECTANGLE), rect(_rect)
+vbRectangle::vbRectangle(Rectangle _rect) 
 {
+	this->position.x = _rect.x;
+	this->position.y = _rect.y;
+	this->width = _rect.width;
+	this->height = _rect.height;
 }
 
 vbRectangle::vbRectangle(float x, float y, float width, float height)
-	: vbShape(TYPE_SHAPE::RECTANGLE), rect(Rectangle{ x, y, width, height })
 {
+	this->position.x = x;
+	this->position.y = y;
+	this->width = width;
+	this->height = height;
 }
 
 vbRectangle::vbRectangle(const vbRectangle& rectangle)
-	:vbShape(rectangle), rect(rectangle.rect)
 {
+	memcpy(this, &rectangle, sizeof(vbRectangle));
 }
 
 vbRectangle& vbRectangle::operator=(const vbRectangle& rectangle)
 {
-	vbShape::operator=(rectangle);
-	this->rect = rectangle.rect;
-
+	memcpy(this, &rectangle, sizeof(vbRectangle));
 	return (*this);
 }
 
 vbRectangle::~vbRectangle()
 {
-}
-
-vbRoundedDrawRectangle::vbRoundedDrawRectangle(Rectangle _rect, Color _colour, float _roundness, int _segments)
-	:vbRectangle(_rect), vbRoundedDrawable(_colour, _roundness, _segments)
-{
 
 }
 
-vbRoundedDrawRectangle::vbRoundedDrawRectangle(const vbRoundedDrawRectangle& graphic)
-	: vbRectangle(graphic), vbRoundedDrawable(graphic)
+void vbRectangle::setup()
 {
-
+	vbGraphicObject::setup();
 }
 
-vbRoundedDrawRectangle& vbRoundedDrawRectangle::operator=(const vbRoundedDrawRectangle& rectangle)
+void vbRectangle::update()
 {
-	vbRectangle::operator=(rectangle);
-	vbRoundedDrawable::operator=(rectangle);
-
-	return (*this);
+	vbGraphicObject::update();
 }
 
-vbRoundedDrawRectangle::~vbRoundedDrawRectangle()
+void vbRectangle::draw()
 {
-}
-
-void vbRoundedDrawRectangle::drawGraphic()
-{
-	DrawRectangleRounded(this->rect, this->roundness, this->segments, this->colour);
+	vbGraphicObject::draw();
+	DrawRectanglePro(
+		{ this->transformed.position.x, this->transformed.position.y,  (FLOAT)this->transformed.width, (FLOAT)this->transformed.height },
+		{ this->position.x + (this->transformed.width/2), this->position.y + (this->transformed.height /2) },
+		this->transformed.rotation, 
+		this->transformed.colour
+	);
 }
