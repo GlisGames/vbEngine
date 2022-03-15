@@ -74,7 +74,7 @@ void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle 
 vbNumericBox::vbNumericBox(Vector2 pos) {
 	this->init(pos, { 0,0,0,0 }, { 0,0,0,0 }, { 0,0,0,0 });
 }
-vbNumericBox::vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus, BOOL isMoney = TRUE) {
+vbNumericBox::vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus, BOOL isMoney) {
 	this->init(pos, minus, text, plus, isMoney);
 }
 
