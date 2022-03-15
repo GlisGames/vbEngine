@@ -78,8 +78,8 @@ void vbGraphicObject::sendToBack()
 	if (this->parentList != NULL)
 	{
 		this->layer = (*this->parentList).front()->layer + 1;
-		// Move to back without reordering the list
-		this->parentList->splice(this->parentList->begin(), *this->parentList, this->parentList->findit(this));
+		this->parentList->toSort = TRUE;
+		//this->parentList->splice(this->parentList->begin(), *this->parentList, this->parentList->findit(this));
 	}
 }
 void vbGraphicObject::moveToFront()
@@ -87,8 +87,8 @@ void vbGraphicObject::moveToFront()
 	if (this->parentList != NULL)
 	{
 		this->layer = (*this->parentList).back()->layer - 1;
-		// Move to the front without reordering the list
-		this->parentList->splice(this->parentList->end(), *this->parentList, this->parentList->findit(this));
+		this->parentList->toSort = TRUE;
+		//this->parentList->splice(this->parentList->end(), *this->parentList, this->parentList->findit(this));
 	}
 }
 void vbGraphicObject::sendBackwards()
@@ -290,7 +290,8 @@ void gObjectList::sortMe()
 {
 	if (this->toSort == TRUE)
 	{
-		this->sort(vbGraphicObject::minLayer());
+		std::sort(this->begin(), this->end(), vbGraphicObject::minLayer());
+		//this->sort(vbGraphicObject::minLayer());
 		this->toSort = FALSE;
 	}
 }

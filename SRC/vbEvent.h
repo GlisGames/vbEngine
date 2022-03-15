@@ -67,7 +67,7 @@ public:
 	/// <returns>Pointer to the newely allocated listener</returns>
 	vbEventListener<Sender>* subscribe(std::function<void(Sender)> f)
 	{
-		auto ret = new vbEventListener<vbButton*>(f);
+		auto ret = new vbEventListener<Sender*>(f);
 		ret->owner = this;
 		listeners.push_back(ret);
 		return ret;

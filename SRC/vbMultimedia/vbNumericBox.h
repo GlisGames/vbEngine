@@ -11,9 +11,9 @@ private:
 	DWORD increment = 50;
 	void init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
 public:
-	virtual void vbNumericBox::setup();
-	virtual void vbNumericBox::update();
-	virtual void vbNumericBox::draw();
+	virtual void setup();
+	virtual void update();
+	virtual void draw();
 
 	vbButton* cmdMinus = NULL;
 	vbTextbox* txtValue = NULL;

@@ -29,6 +29,14 @@ vbImage::vbImage(Texture2D* tex, Vector2 pos, std::string name, WORD layer)
 	this->position = pos;
 }
 
+vbImage::vbImage(vbSpriteTexture* tex, Vector2 pos, std::string name, WORD layer)
+{
+	this->init_(layer);
+	this->setTexture(tex);
+	this->name = name;
+	this->position = pos;
+}
+
 void vbImage::update()
 {
 	vbGraphicObject::update();
@@ -51,22 +59,47 @@ void vbImage::setup()
 void vbImage::draw()
 {
 	vbGraphicObject::draw();
-	if (this->getTexture() != NULL)
+
+	if ((!this->isSpriteTexture && this->getTexture() != NULL) || (this->isSpriteTexture && this->getSpriteTexture() != NULL))
 	{
 		Vector2 origin = { 0,0 };
 		if (this->transformed.rotation != 0)
 		{	// here we change the point of origin so that the rotation point is centered, look inside 'DrawTexturePro' to know why
 			origin = { ((float)this->transformed.width / 2.0f), ((float)this->transformed.height / 2.0f)};
+			this->transformed.position.x += origin.x;
+			this->transformed.position.y += origin.y;
 		}
 		
-		Rectangle source = { 0.0f, 0.0f, (float)this->width, (float)this->height }; // Piece of the texture to print (all of it)
-		Rectangle dest = { //portion of the framebuffer to draw with the target texture
-			this->transformed.position.x, 
-			this->transformed.position.y, 
-			(float)this->transformed.width, 
-			(float)this->transformed.height };
+		Rectangle source;
+		if(this->isSpriteTexture == FALSE)
+			source = { 0.0f, 0.0f, (float)this->width, (float)this->height }; // Piece of the texture to print (all of it)
+		else
+			source = { 
+			this->spriteTexture->spriteFrame.x, this->spriteTexture->spriteFrame.y,
+			this->spriteTexture->spriteFrame.width, this->spriteTexture->spriteFrame.height
+		};
 
-		//DrawTextureEx(*this->getTexture(), this->transformed.position, this->transformed.rotation, this->transformed.scale, this->transformed.colour);
+		Rectangle dest;
+		if(this->isSpriteTexture == FALSE)
+			dest = { //portion of the framebuffer to draw with the target texture
+				this->transformed.position.x,
+				this->transformed.position.y,
+				(float)this->transformed.width,
+				(float)this->transformed.height
+			};
+		else
+		{
+			FLOAT ratiow = this->spriteTexture->originalcut.width / (float)this->spriteTexture->originalSize.x;
+			FLOAT ratioh = this->spriteTexture->originalcut.height / (float)this->spriteTexture->originalSize.y;
+			//FLOAT scaledratiow = (float)this->transformed.width / this->spriteTexture->originalcut.width;
+			//FLOAT scaledratioh = (float)this->transformed.height / this->spriteTexture->originalcut.height;
+			dest = {
+				this->transformed.position.x + (this->spriteTexture->originalcut.x * this->transformed.scale),
+				this->transformed.position.y + (this->spriteTexture->originalcut.y * this->transformed.scale),
+				((float)this->transformed.width * ratiow),
+				((float)this->transformed.height * ratioh)
+			};
+		}
 
 		if (isCacheImage) 
 			source.height *= -1; // Cached containers created via render target are vertically flipped for openGL reasons...
@@ -77,7 +110,10 @@ void vbImage::draw()
 			dest.y -= this->parentContainer->inheritedCachePosition.y;
 		}
 
-		DrawTexturePro(*this->getTexture(), source, dest, origin, this->transformed.rotation, this->transformed.colour);
+		if (this->isSpriteTexture == FALSE)
+			DrawTexturePro(*this->getTexture(), source, dest, origin, this->transformed.rotation, this->transformed.colour);
+		else
+			DrawTexturePro(pGAME->spriteSheets[this->spriteTexture->spriteID], source, dest, origin, this->transformed.rotation, this->transformed.colour);
 
 		if (this->debugBox == TRUE)
 			DrawRectangleLinesEx(dest, 2, RED);
@@ -91,6 +127,18 @@ void vbImage::setTexture(Texture2D* tex)
 	{
 		this->width = tex->width;
 		this->height = tex->height;
+		isSpriteTexture = FALSE;
+	}
+}
+
+void vbImage::setTexture(vbSpriteTexture* tex)
+{
+	this->spriteTexture = tex;
+	if (tex != NULL)
+	{
+		this->width = tex->originalSize.x;
+		this->height = tex->originalSize.y;
+		isSpriteTexture = TRUE;
 	}
 }
 
@@ -99,13 +147,19 @@ Texture2D* vbImage::getTexture()
 	return this->texture;
 }
 
-// vbImageMap
-void vbImageMap::addTexture(std::string texname, Texture2D tex)
+vbSpriteTexture* vbImage::getSpriteTexture()
 {
-	this->insert(std::pair<std::string, Texture2D>(texname, tex));
+	return this->spriteTexture;
 }
 
-Texture2D* vbImageMap::getTexturePtr(std::string str)
+// vbImageMap
+void vbImageMap::addTexture(std::string texname, vbSpriteTexture tex)
+{
+	std::transform(texname.begin(), texname.end(), texname.begin(), ::toupper);
+	this->insert(std::pair<std::string, vbSpriteTexture>(texname, tex));
+}
+
+vbSpriteTexture* vbImageMap::getTexturePtr(std::string str)
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
 	vbImageMap::iterator it = this->find(str);
@@ -119,7 +173,7 @@ Texture2D* vbImageMap::getTexturePtr(std::string str)
 	}
 }
 
-Texture2D* vbImageMap::operator [](std::string str)
+vbSpriteTexture* vbImageMap::operator [](std::string str)
 {
 	return getTexturePtr(str);
 }

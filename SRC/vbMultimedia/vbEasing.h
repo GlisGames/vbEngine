@@ -92,6 +92,7 @@ float BackEaseIn(float p);
 float BackEaseInQuadratic(float p);
 float LinearBackEaseOut(float p);
 float BackEaseOut(float p);
+float BackEaseOutQuadratic(float p);
 float BackEaseInOut(float p);
 
 // Exponentially-decaying bounce easing

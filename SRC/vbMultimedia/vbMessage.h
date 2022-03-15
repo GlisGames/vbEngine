@@ -5,16 +5,16 @@
 class vbMessage : public vbCanvas {
 private:
 	BOOL canClickToDismiss = TRUE;
-	void init(Texture2D* tex, Vector2 pos, BOOL b);
+	void init(vbSpriteTexture* tex, Vector2 pos, BOOL b);
 	void resetMessage();
 public:
-	virtual void vbMessage::setup();
-	virtual void vbMessage::update();
-	virtual void vbMessage::draw();
+	virtual void setup();
+	virtual void update();
+	virtual void draw();
 	Color backgroundColor = WHITE;
 	float borderThickness = 5;
 	vbMessage();
-	vbMessage(Texture2D* tex, Vector2 pos, BOOL b);
+	vbMessage(vbSpriteTexture* tex, Vector2 pos, BOOL b);
 	BOOL getClickToDismiss();
 	void setClickToDismiss(BOOL b);
 	void pushMessage(vbString txt, int timer=60);

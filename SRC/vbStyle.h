@@ -14,7 +14,7 @@ class styleElement
 public:
 	Vector2* position;
 	Vector2* size;
-	Texture2D* texture;
+	vbSpriteTexture* texture;
 };
 
 class vbStyle : public map <vbString, styleElement>

@@ -312,10 +312,7 @@ void _recursiveRender(vbContainer* c)
 uint64_t prevtime = 0;
 void vbRender_updateWorld(vbContainer* worldcanvas)
 {
-	uint64_t timeNow = vbTimer::getMillis().count();
-	_recursiveUpdate(worldcanvas, worldcanvas->visible, (timeNow-prevtime));
-	clickDone = FALSE;
-	prevtime = timeNow;
+
 }
 
 void vbRender_renderWorld(vbContainer* worldcanvas)

@@ -289,7 +289,7 @@ float BackEaseInQuadratic(float p)
 float LinearBackEaseOut(float p)
 {
 	float f = (1 - p);
-	float ampRimbalzo = 0.75f; //1.0 = half symbol
+	float ampRimbalzo = 0.40f; //1.0 = half symbol
 	return (float)(1 - (f - ampRimbalzo * sin(f * (float)M_PI))); //0.8 ampiezza rimbalzo 
 }
 
@@ -302,6 +302,13 @@ float BackEaseOut(float p)
 	float f = (1 - p);
 	return (float)(1 - (f * f * f - f * sin(f * (float)M_PI)));
 }
+
+float BackEaseOutQuadratic(float p)
+{
+	float f = (1 - p);
+	return (float)(1 - (f * f - f * sin(f * (float)M_PI)));
+}
+
 //---------------------------------------------------------------------
 //! @brief Interpolazione cubica sottosmorzata (overshoot) in ingresso e uscita ( y = (1/2)*((2x)^3-(2x)*sin(2*x*pi)) in [0, 0.5), y = (1/2)*(1-((1-x)^3-(1-x)*sin((1-x)*pi))+1) in [0.5, 1])
 //! @param p progresso x dell'interpolazione (range 0.0-1.0)

@@ -5,7 +5,7 @@ vbTween::vbTween()
 vbTween::~vbTween()
 {
 	if (this->callbackKill)
-		this->callbackKill;
+		this->callbackKill();
 }
 
 void vbTween::init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int repeatFor, tween_callback callback, tween_callback callbackKill)
@@ -87,9 +87,39 @@ vbTween* vbTween::Play()
 	return this;
 }
 
+/// <summary>
+/// Bring the tween instantly to the last step and assign the value to destination
+/// </summary>
+/// <returns></returns>
+vbTween* vbTween::End()
+{
+	this->currStep = this->totStep;
+	FLOAT res = this->stopP;
+
+	if (this->valueBYTE != NULL)
+		*this->valueBYTE = (BYTE)res;
+	else if (this->valueWORD != NULL)
+		*this->valueWORD = (WORD)res;
+	else if (this->valueDWORD != NULL)
+		*this->valueDWORD = (DWORD)res;
+	else if (this->valueINT != NULL)
+		*this->valueINT = (int)res;
+	else if (this->valueFLOAT != NULL)
+		*this->valueFLOAT = res;
+	return this;
+}
+
 vbTween* vbTween::Pause()
 {
 	this->enabled = FALSE;
+	return this;
+}
+
+vbTween* vbTween::startAfter(FLOAT time)
+{
+	startDelay = time;
+	if (this->isTimeBased)
+		startTimer = getMillis();
 	return this;
 }
 
@@ -107,13 +137,6 @@ vbTween* vbTween::Stop()
 	return this;
 }
 
-// Complete the execution of the tween to the end, it is transformed to a oneshot
-void vbTween::Finish()
-{
-	this->repeat = twOneShot;
-	this->currStep = this->currStep % this->totStep;
-}
-
 vbTween* vbTween::Reset()
 {
 	this->currStep = 0;
@@ -126,7 +149,7 @@ void vbTween::Step()
 	if (this->enabled == FALSE)
 		return;
 
-	if (this->currStep > 0 && this->repeat == twRepeat && this->isFinished())
+	if (this->currStep > 0 && (this->repeat == twRepeat /*|| this->repeat == twYoyo*/) && this->isFinished())
 	{
 		if (this->isTimeBased)
 			this->currStep += getElapsedMillis();
@@ -164,6 +187,13 @@ BOOL vbTween::isFinished()
 		return ((this->currStep % this->totStep)==0);
 	else
 	{
+		if (this->repeat == twYoyo)
+		{
+			if (this->currStep >= (this->repeatSet - this->repeatFor + 1) * this->totStep)
+				return TRUE;
+			return FALSE;
+		}
+
 		if (this->currStep >= this->totStep)
 			return TRUE;
 		else
@@ -172,25 +202,25 @@ BOOL vbTween::isFinished()
 }
 
 // TWEENMAP
-vbTween* vbTweenMap::addtween(const char* name, vbTween tw)
+vbTween* vbTweenMap::addtween(string name, vbTween tw)
 {
-	this->insert(std::pair<const char*, vbTween>(name, tw));
+	this->insert(std::pair<string, vbTween>(name, tw));
 	return &this->operator[](name);
 }
-vbTween* vbTweenMap::addtimer(const char* name, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int numRepeats, tween_callback callback)
+vbTween* vbTweenMap::addtimer(string name, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int numRepeats, tween_callback callback)
 {
 	//FIXME solve conflicting names inside the map
-	this->insert(std::pair<const char*, vbTween>(name, vbTween(0, (FLOAT)TOTsteps, TOTsteps, loop, easingFunction, numRepeats, callback)));
+	this->insert(std::pair<string, vbTween>(name, vbTween(0, (FLOAT)TOTsteps, TOTsteps, loop, easingFunction, numRepeats, callback)));
 	return &this->operator[](name);
 }
-vbTween* vbTweenMap::getTween(const char* name)
+vbTween* vbTweenMap::getTween(string name)
 {
 	if (this->find(name) == this->end())
 		return NULL;
 	else
 		return &this->operator[](name);
 }
-void vbTweenMap::killTween(const char* name)
+void vbTweenMap::killTween(string name)
 {
 	if (this->find(name) != this->end())
 		this->erase(name);
@@ -227,15 +257,52 @@ void vbTweenMap::stepAll()
 	vbTweenMap::iterator itw = this->begin();
 	while (itw != this->end())
 	{
-		itw->second.Step();
-		if (itw->second.isFinished() && itw->second.repeatFor > 0)
-			itw->second.repeatFor--;
+		BOOL skip = FALSE;
 
-		if (itw->second.isFinished() && 
-			((itw->second.repeat == twOneShot) || ((itw->second.repeat == twRepeat || itw->second.repeat == twYoyo) && (itw->second.repeatFor == 0))))
+		if (itw->second.startDelay)
 		{
-			if (itw->second.callbackEnd != NULL)
-				itw->second.callbackEnd();
+			if (itw->second.isTimeBased)
+			{
+				if (getMillis() - itw->second.startTimer < itw->second.startDelay)
+					skip = TRUE;
+				else
+					itw->second.startDelay = 0;
+			}
+			else if (!(itw->second.isTimeBased))
+			{
+				itw->second.startDelay--;
+				if (itw->second.startDelay > 0)
+					skip = TRUE;
+			}
+
+			if (skip)
+			{
+				if (itw != this->end()) itw++;
+				continue;
+			}
+		}
+
+		if (itw->second.currStep == 0 && itw->second.callbackStart != NULL)
+		{
+			itw->second.callbackStart();
+			itw->second.callbackStart = NULL;
+		}
+		itw->second.Step();
+		BOOL _isFinished = itw->second.isFinished();
+
+		if (_isFinished && itw->second.repeatFor > 0)
+		{
+			itw->second.repeatFor--;
+		}
+
+		if (itw->second.callbackEnd != NULL && _isFinished)
+			itw->second.callbackEnd();
+
+		if (_isFinished && itw->second.repeatFor == 0)
+			//((itw->second.repeat == twOneShot) || ((itw->second.repeat == twRepeat || itw->second.repeat == twYoyo) && (itw->second.repeatFor == 0))))
+		{
+			if (itw->second.repeat != twYoyo)
+				itw->second.End(); //make sure that the value goes to the end;
 
 			if (itw->second.next)
 				nextList.push_back(itw->second.next);

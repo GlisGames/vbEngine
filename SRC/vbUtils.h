@@ -6,12 +6,13 @@
 #include <string>
 namespace Frames
 {
-	static BOOL afterAndEvery(DWORD currentFrame, DWORD after, DWORD every)
+	static BOOL afterAndEvery(QWORD currentFrame, QWORD after, QWORD every)
 	{
 		return (currentFrame > after && !((currentFrame + after) % every));
 	}
 }
 
+std::string getParentFolder(string path);
 const char* formatMoney(DWORD value);
 
 /// <summary>
@@ -70,4 +71,6 @@ static bool IsKeyPressedAny()
 		IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_SPACE) ||
 		IsKeyPressed(KEY_BACKSPACE));
 }
+
+
 #endif
