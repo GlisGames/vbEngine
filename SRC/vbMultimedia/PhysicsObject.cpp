@@ -1,6 +1,6 @@
 #include "PhysicsObject.h";
 
-PhysicsObject::PhysicsObject(b2World* _world, Vector2 _pos, Vector2 _size, BOOL _isStatic) : vbGraphicObject()
+PhysicsObject::PhysicsObject(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type) : vbGraphicObject()
 {
 	_pos.x /= PPM;
 	_pos.y /= PPM;
@@ -12,11 +12,10 @@ PhysicsObject::PhysicsObject(b2World* _world, Vector2 _pos, Vector2 _size, BOOL 
 	bodyDef.position.Set(_pos.x + _size.x / 2, _pos.y + _size.y / 2);
 	//bodyDef.linearDamping = 1.0f;
 	bodyDef.angularDamping = 1.0f;
-	bodyDef.gravityScale = 3.0f;
-	if (!_isStatic)
-	{
-		bodyDef.type = b2_dynamicBody;
-	}
+	bodyDef.gravityScale = 3.0f; 
+
+	bodyDef.type = _type;
+	
 	
 	this->body = _world->CreateBody(&bodyDef);
 }

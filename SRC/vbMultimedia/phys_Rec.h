@@ -11,8 +11,8 @@ class phys_Rec : public PhysicsObject
 {
 private:
 public:
-	phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, BOOL _isStatic);
-	phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, BOOL _isStatic, Texture2D* _texture);
+	phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type);
+	phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type, Texture2D* _texture);
 	Texture2D* texture;
 	void update();
 	void draw();

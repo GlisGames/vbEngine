@@ -41,13 +41,14 @@ void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle 
 	this->position = pos;
 	this->min = 0;
 	this->max = 0xFFFFFFFF;
-	this->increment = 50;
+	//this->increment = 50;
+	this->increment = 1;
 
 	// MINUS BUTTON
 	this->cmdMinus = new vbButton(hwButton::BUTTON_BETDOWN, minus);
 	this->cmdMinus->positioningRule = posRule::POS_CANVAS_RELATIVE;
 	this->addObject(this->cmdMinus);
-	//this->cmdMinus->debugBox = TRUE;
+	this->cmdMinus->debugBox = TRUE;
 
 	// VALUE
 	this->txtValue = new vbTextbox("", text.x, text.y, WHITE, FALSE, "default20", 0);
@@ -55,16 +56,17 @@ void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle 
 	this->txtValue->useBoundingBox = TRUE;
 	this->txtValue->setBoundingBox(text.width, text.height);
 	this->addObject(this->txtValue);
-	//this->txtValue->debugBox = TRUE;
+	this->txtValue->debugBox = TRUE;
 
 	// PLUS BUTTON
 	this->cmdPlus = new vbButton(hwButton::BUTTON_BETUP, plus);
 	this->cmdPlus->positioningRule = posRule::POS_CANVAS_RELATIVE;
 	this->addObject(this->cmdPlus);
-	//this->cmdPlus->debugBox = TRUE;
+	this->cmdPlus->debugBox = TRUE;
 
 	this->resize();
-	this->txtValue->setText(formatMoney(this->value));
+	//this->txtValue->setText(formatMoney(this->value));
+	this->txtValue->setText(to_string(this->value));
 }
 vbNumericBox::vbNumericBox(Vector2 pos) {
 	this->init(pos, { 0,0,0,0 }, { 0,0,0,0 }, { 0,0,0,0 });
@@ -88,7 +90,8 @@ DWORD vbNumericBox::getIncrement() {
 }
 void vbNumericBox::setValue(DWORD _value) {
 	this->value = _value;
-	this->txtValue->setText(formatMoney(this->value));
+	//this->txtValue->setText(formatMoney(this->value));
+	this->txtValue->setText(to_string(this->value));
 }
 void vbNumericBox::setMin(DWORD _min) {
 	this->min = _min;

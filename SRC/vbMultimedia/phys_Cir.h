@@ -11,11 +11,11 @@ class phys_Cir : public PhysicsObject
 {
 private:
 public:
-	//phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, BOOL _isStatic);
-	phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, BOOL _isStatic, Texture2D* _texture);
+	phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _type);
+	phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _type, Texture2D* _texture);
 	void update();
 	void draw();
-	Texture2D* texture;
+	Texture2D* texture = NULL;
 	void ResetPosition(Vector2 _center); // center coordinate
 	Vector2 GetPosition(); // center coordinate
 };
