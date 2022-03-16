@@ -5,6 +5,7 @@ vbState::vbState()
 	this->exitState = 0xFF;
 	this->canvas = new vbCanvas({ 0,0, pGAME->gameResolution.x, pGAME->gameResolution.y });
 	this->canvas->visible = FALSE;
+	this->canvas->isAlive = FALSE;
 	pGAME->mainScene->addObject(this->canvas);
 	pGAME->stateList.push_back(this);
 }
@@ -48,6 +49,7 @@ WORD vbState::run()
 		this->time = 0;
 		this->init();
 		this->firstIn = FALSE;
+		this->canvas->isAlive = TRUE;
 	}
 	this->tweens.stepAll();
 	this->checkButton();
@@ -55,6 +57,7 @@ WORD vbState::run()
 	if (this->exitState != 0xFF)
 	{
 		this->exit();
+		this->canvas->isAlive = FALSE;
 		this->firstIn = TRUE;
 		return this->exitState;
 	}
