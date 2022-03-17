@@ -42,9 +42,9 @@ void vbMessage::setClickToDismiss(BOOL b) {
 	else this->canClickToDismiss = b;
 }
 // OTHERS
-void vbMessage::pushMessage(vbString txt, int timer) {
+void vbMessage::pushMessage(vbString txt, vbString txtAppend, int timer) {
 	this->resetMessage();
-	this->setCaption(txt, "");
+	this->setCaption(txt, txtAppend);
 	this->caption->setBoundingBox((float)this->background->width, (float)this->background->height);
 	this->visible = TRUE;
 	this->moveToFront();

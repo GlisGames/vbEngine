@@ -16,7 +16,7 @@ public:
 	void render();
 	BOOL getClickToDismiss();
 	void setClickToDismiss(BOOL b);
-	void pushMessage(vbString txt, int timer=60);
+	void pushMessage(vbString txt, vbString txtAppend = "", int timer = 60);
 };
 
 #endif
