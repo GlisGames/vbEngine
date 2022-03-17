@@ -33,7 +33,7 @@ public:
 	void resetAnim();
 	void stopAnim();
 	void stepAnim();
-	bool isFinshed();
+	bool isFinished();
 };
 
 // vbSequenceMap
