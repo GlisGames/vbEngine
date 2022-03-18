@@ -74,7 +74,7 @@ void vbSequence::stopAnim()
 	this->resetAnim();
 }
 
-bool vbSequence::isFinshed()
+bool vbSequence::isFinished()
 {
 	if (this->actualIndex >= this->seqList->size() - 1)
 	{
