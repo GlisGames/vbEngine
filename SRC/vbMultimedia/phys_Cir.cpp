@@ -15,7 +15,7 @@ phys_Cir::phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _typ
 	{
 		this->body->CreateFixture(&shape, 0.0f);
 	}
-	else //if (_type == b2_dynamicBody)
+	else 
 	{
 		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &shape;
@@ -44,7 +44,7 @@ phys_Cir::phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _typ
 	{
 		this->body->CreateFixture(&shape, 0.0f);
 	}
-	else //if (_type == b2_dynamicBody)
+	else 
 	{
 		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &shape;
@@ -61,17 +61,16 @@ phys_Cir::phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _typ
 
 void phys_Cir::update()
 {
-	vbImage::update();
 	this->position.x = this->body->GetPosition().x * PPM;
 	this->position.y = this->body->GetPosition().y * PPM;
 
-	this->transformed.position.x = this->body->GetPosition().x * PPM;
-	this->transformed.position.y = this->body->GetPosition().y * PPM;
+	vbImage::update();
 	this->transformed.rotation = this->body->GetAngle() * RAD2DEG;
-	//this->body->SetAwake(TRUE);
+	this->transformed.position.x -= this->width / 2;
+	this->transformed.position.y -= this->height / 2;
 }
 
-void phys_Cir::draw() // FIXME
+void phys_Cir::draw() 
 {
 	if (this->spriteTexture == NULL && this->texture == NULL)
 	{
@@ -79,12 +78,6 @@ void phys_Cir::draw() // FIXME
 	}
 	else
 	{
-		//int frameWidth = this->width;
-		//int frameHeight = this->height;
-		//Rectangle sourceRec = { 0.0f, 0.0f, (float)frameWidth, (float)frameHeight };
-		//Rectangle destRec = { this->position.x, this->position.y, this->width, this->height };
-		//Vector2 origin = { (float)frameWidth / 2, (float)frameHeight / 2 };
-//		DrawTexturePro(*this->texture, sourceRec, destRec, origin, this->body->GetAngle() * RAD2DEG, WHITE);
 		vbImage::draw();
 	}
 }
@@ -94,9 +87,5 @@ void phys_Cir::ResetPosition(Vector2 _center) // center coordinate
 	this->body->SetTransform({ _center.x / PPM, _center.y / PPM }, 0);
 }
 
-//Vector2 phys_Cir::GetPosition() // center coordinate
-//{
-//	return { this->body->GetTransform().p.x * PPM, this->body->GetTransform().p.y * PPM };
-//}
 
 

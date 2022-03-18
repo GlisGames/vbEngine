@@ -50,7 +50,7 @@ phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _typ
 	{
 		this->body->CreateFixture(&shape, 0.0f);
 	}
-	else //if (_type == b2_dynamicBody)
+	else
 	{
 		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &shape;
@@ -68,31 +68,25 @@ phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _typ
 
 void phys_Rec::update()
 {
-	vbImage::update();
-	//this->body->SetAwake(TRUE);
-
 	this->position.x = this->body->GetPosition().x * PPM;
 	this->position.y = this->body->GetPosition().y * PPM;
-	this->transformed.position.x = this->body->GetPosition().x * PPM;
-	this->transformed.position.y = this->body->GetPosition().y * PPM;
+
+	vbImage::update();
 	this->transformed.rotation = this->body->GetAngle() * RAD2DEG;
+	this->transformed.position.x -= this->width / 2;
+	this->transformed.position.y -= this->height / 2;
+
 }
  
 void phys_Rec::draw()
 {
 	if (this->texture == NULL && this->spriteTexture == NULL)
 	{
-		Rectangle rec = { this->position.x, this->position.y, this->width, this->height };
-		DrawRectanglePro(rec, { (float)this->width / 2, (float)this->height / 2 }, this->body->GetTransform().q.GetAngle() * RAD2DEG, WHITE);
+		Rectangle rec = { this->transformed.position.x, this->transformed.position.y, this->width, this->height };
+		DrawRectanglePro(rec, { 0,0 }, this->body->GetTransform().q.GetAngle() * RAD2DEG, WHITE);
 	}
 	else
 	{
-		//int frameWidth = this->width;
-		//int frameHeight = this->height;
-		//Rectangle sourceRec = { 0.0f, 0.0f, (float)frameWidth, (float)frameHeight };
-		//Rectangle destRec = { this->position.x, this->position.y, this->width * this->scale, this->height * this->scale};
-		//Vector2 origin = { (float)frameWidth / 2, (float)frameHeight / 2 };
- 		//DrawTexturePro(*this->texture, sourceRec, destRec, origin, this->body->GetAngle() * RAD2DEG, WHITE);
 		vbImage::draw();
 	}
 }
@@ -102,9 +96,5 @@ void phys_Rec::ResetPosition(Vector2 _center) // center coordinate
 	this->body->SetTransform({ _center.x / PPM, _center.y / PPM }, 0);
 }
 
-Vector2 phys_Rec::GetPosition() // center coordinate
-{
-	return { this->body->GetTransform().p.x * PPM, this->body->GetTransform().p.y * PPM };
-}
 
 
