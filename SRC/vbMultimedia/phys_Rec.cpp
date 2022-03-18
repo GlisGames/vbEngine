@@ -82,7 +82,7 @@ void phys_Rec::draw()
 {
 	if (this->texture == NULL && this->spriteTexture == NULL)
 	{
-		Rectangle rec = { this->transformed.position.x, this->transformed.position.y, this->width, this->height };
+		Rectangle rec = { (FLOAT)this->transformed.position.x, (FLOAT)this->transformed.position.y, (FLOAT)this->width, (FLOAT)this->height };
 		DrawRectanglePro(rec, { 0,0 }, this->body->GetTransform().q.GetAngle() * RAD2DEG, WHITE);
 	}
 	else
