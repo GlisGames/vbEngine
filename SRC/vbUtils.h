@@ -28,7 +28,6 @@ static Color ColorTurnOff(Color c)
 	ret.b /= 2;
 	return ret;
 }
-
 static Color ColorTurnOffPercent(Color c, float percent = 100.0f)
 {
 	Color ret = c;

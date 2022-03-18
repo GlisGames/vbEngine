@@ -51,6 +51,7 @@ void vbMessage::setClickToDismiss(BOOL b) {
 void vbMessage::pushMessage(vbString txt, int timer) {
 	this->resetMessage();
 	this->setCaption(txt, "");
+	this->caption->setBoundingBox((float)this->background->width, (float)this->background->height);
 	this->visible = TRUE;
 	this->moveToFront();
 	this->tweens.addtimer("twtimer", timer)
