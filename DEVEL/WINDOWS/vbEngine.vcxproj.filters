@@ -323,6 +323,9 @@
       <Filter>vbMultimedia</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\UtilityMath.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbVector2D.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -599,5 +602,8 @@
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\UtilityMath.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbVector2D.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
