@@ -322,7 +322,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\phys_Rec.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Users\PC\Downloads\UtilityMath.h" />
+    <ClInclude Include="..\..\SRC\UtilityMath.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -598,6 +598,6 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\PhysicsObject.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Users\PC\Downloads\UtilityMath.cpp" />
+    <ClCompile Include="..\..\SRC\UtilityMath.cpp" />
   </ItemGroup>
 </Project>

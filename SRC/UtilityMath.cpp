@@ -34,7 +34,7 @@ float getAngleFromPoints(const Vector2& origin, const Vector2& destination)
 	Vector2 normVec = normalizeVector2(vec);
 	
 
-	return RADIANS_TO_DEGREE(std::asinf(normVec.x));
+	return std::signbit(normVec.y) ? RADIANS_TO_DEGREE(std::asinf(normVec.x)) : 180 - RADIANS_TO_DEGREE(std::asinf(normVec.x));
 }
 
 int cmpFloat(const float& first, const float& second, const float& epsilon)
