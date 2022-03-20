@@ -40,6 +40,7 @@
 #include "PhysicsObject.h"
 #include "phys_Cir.h"
 #include "phys_Rec.h"
+#include "UtilityMath.h"
 using namespace std;
 
 #endif
