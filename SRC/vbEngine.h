@@ -41,6 +41,8 @@
 #include "vbPhys_Cir.h"
 #include "vbPhys_Rec.h"
 #include "vbContactListener.h"
+#include "UtilityMath.h"
+
 using namespace std;
 
 #endif

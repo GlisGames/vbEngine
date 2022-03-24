@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\SRC\UtilityMath.h" />
     <ClInclude Include="..\..\..\raylib\src\config.h" />
     <ClInclude Include="..\..\..\raylib\src\raudio.h" />
     <ClInclude Include="..\..\..\raylib\src\raylib.h" />
@@ -121,11 +122,13 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTexture.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTriangle.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbVector2D.h" />
     <ClInclude Include="..\..\SRC\vbStyle.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
     <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\SRC\UtilityMath.cpp" />
     <ClCompile Include="..\..\..\raylib\src\raudio.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
@@ -256,6 +259,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTexture.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTriangle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbVector2D.cpp" />
     <ClCompile Include="..\..\SRC\vbStyle.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />

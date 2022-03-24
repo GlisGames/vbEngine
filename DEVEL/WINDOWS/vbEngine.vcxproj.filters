@@ -325,6 +325,10 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbContactListener.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\UtilityMath.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbVector2D.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -440,6 +444,7 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbShape.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
@@ -599,7 +604,8 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbPhysicsObject.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp">
+    <ClCompile Include="..\..\SRC\UtilityMath.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbVector2D.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbContactListener.cpp">
