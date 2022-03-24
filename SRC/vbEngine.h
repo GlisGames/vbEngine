@@ -37,9 +37,10 @@
 #include "vbTexture.h"
 #include "vbTween.h"
 #include "vbUtils.h"
-#include "PhysicsObject.h"
-#include "phys_Cir.h"
-#include "phys_Rec.h"
+#include "vbPhysicsObject.h"
+#include "vbPhys_Cir.h"
+#include "vbPhys_Rec.h"
+#include "vbContactListener.h"
 using namespace std;
 
 #endif

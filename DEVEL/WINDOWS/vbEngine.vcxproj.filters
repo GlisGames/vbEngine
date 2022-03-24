@@ -313,13 +313,16 @@
     <ClInclude Include="..\..\SRC\box2d\b2_pulley_joint.h">
       <Filter>box2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\vbMultimedia\PhysicsObject.h">
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbPhysicsObject.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\vbMultimedia\phys_Cir.h">
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbPhys_Cir.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\vbMultimedia\phys_Rec.h">
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbPhys_Rec.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbContactListener.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
   </ItemGroup>
@@ -587,16 +590,19 @@
     <ClCompile Include="..\..\SRC\box2d\rope\b2_rope.cpp">
       <Filter>box2d\rope</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SRC\vbMultimedia\phys_Cir.cpp">
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbPhys_Cir.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SRC\vbMultimedia\phys_Rec.cpp">
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbPhys_Rec.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SRC\vbMultimedia\PhysicsObject.cpp">
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbPhysicsObject.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbContactListener.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
   </ItemGroup>

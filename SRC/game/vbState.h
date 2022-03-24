@@ -48,7 +48,7 @@ private:
 protected:
 	BOOL firstIn = TRUE;
 	DWORD frame = 0;
-	QWORD time = 0;
+	QWORD Time = 0;
 
 	virtual void init() {};
 	virtual void exit() {};

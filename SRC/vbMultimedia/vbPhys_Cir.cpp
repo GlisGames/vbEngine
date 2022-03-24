@@ -1,6 +1,7 @@
-#include "phys_Cir.h"
+#include "vbPhys_Cir.h"
+#include "vbContactListener.h"
 
-phys_Cir::phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _type, vbSpriteTexture* _texture) : PhysicsObject(_world, _pos, { _radius, _radius }, _type)
+vbPhys_Cir::vbPhys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _type, vbSpriteTexture* _texture, vbContactListener* _listener) : vbPhysicsObject(_world, _pos, { _radius, _radius }, _type, _listener)
 {
 	_pos.x /= PPM;
 	_pos.y /= PPM;
@@ -31,7 +32,7 @@ phys_Cir::phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _typ
 	this->position.y = this->body->GetPosition().y * PPM;
 }
 
-phys_Cir::phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _type) : PhysicsObject(_world, _pos, { _radius, _radius }, _type)
+vbPhys_Cir::vbPhys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _type, vbContactListener* _listener) : vbPhysicsObject(_world, _pos, { _radius, _radius }, _type, _listener)
 {
 	_pos.x /= PPM;
 	_pos.y /= PPM;
@@ -59,7 +60,7 @@ phys_Cir::phys_Cir(b2World* _world, Vector2 _pos, FLOAT _radius, b2BodyType _typ
 	this->position.y = this->body->GetPosition().y * PPM;
 }
 
-void phys_Cir::update()
+void vbPhys_Cir::update()
 {
 	this->position.x = this->body->GetPosition().x * PPM;
 	this->position.y = this->body->GetPosition().y * PPM;
@@ -70,7 +71,7 @@ void phys_Cir::update()
 	this->transformed.position.y -= this->height / 2;
 }
 
-void phys_Cir::draw() 
+void vbPhys_Cir::draw() 
 {
 	if (this->spriteTexture == NULL && this->texture == NULL)
 	{
@@ -82,7 +83,7 @@ void phys_Cir::draw()
 	}
 }
 
-void phys_Cir::ResetPosition(Vector2 _center) // center coordinate
+void vbPhys_Cir::ResetPosition(Vector2 _center) // center coordinate
 {
 	this->body->SetTransform({ _center.x / PPM, _center.y / PPM }, 0);
 }

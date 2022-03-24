@@ -1,11 +1,14 @@
-#include "phys_Rec.h"
+#include "vbPhys_Rec.h"
+#include "vbPhysicsObject.h"
 
-phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type, vbSpriteTexture* _texture) : PhysicsObject(_world, _pos, _size, _type)
+vbPhys_Rec::vbPhys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type, vbSpriteTexture* _texture, vbContactListener* _listener) : vbPhysicsObject(_world, _pos, _size, _type, _listener)
 {
 	_pos.x /= PPM;
 	_pos.y /= PPM;
 	_size.x /= PPM;
 	_size.y /= PPM;
+
+	this->isAlive = TRUE;
 
 	b2PolygonShape shape;
 	shape.SetAsBox(_size.x / 2, _size.y / 2);
@@ -36,7 +39,7 @@ phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _typ
 	this->position.y = this->body->GetPosition().y * PPM;
 }
 
-phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type) : PhysicsObject(_world, _pos, _size, _type)
+vbPhys_Rec::vbPhys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _type, vbContactListener* _listener) : vbPhysicsObject(_world, _pos, _size, _type, _listener)
 {
 	_pos.x /= PPM;
 	_pos.y /= PPM;
@@ -66,7 +69,7 @@ phys_Rec::phys_Rec(b2World* _world, Vector2 _pos, Vector2 _size, b2BodyType _typ
 	this->position.y = this->body->GetPosition().y * PPM;
 }
 
-void phys_Rec::update()
+void vbPhys_Rec::update()
 {
 	this->position.x = this->body->GetPosition().x * PPM;
 	this->position.y = this->body->GetPosition().y * PPM;
@@ -78,7 +81,7 @@ void phys_Rec::update()
 
 }
  
-void phys_Rec::draw()
+void vbPhys_Rec::draw()
 {
 	if (this->texture == NULL && this->spriteTexture == NULL)
 	{
@@ -91,7 +94,7 @@ void phys_Rec::draw()
 	}
 }
 
-void phys_Rec::ResetPosition(Vector2 _center) // center coordinate
+void vbPhys_Rec::ResetPosition(Vector2 _center) // center coordinate
 {
 	this->body->SetTransform({ _center.x / PPM, _center.y / PPM }, 0);
 }

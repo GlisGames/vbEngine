@@ -16,15 +16,15 @@ void vbState::stateExit(WORD s)
 }
 BOOL vbState::afterAndEvery(DWORD after, DWORD every)
 {
-	return (this->time > after && !((this->time + after) % every));
+	return (this->Time > after && !((this->Time + after) % every));
 }
 BOOL vbState::afterAndUntil(DWORD after, DWORD until)
 {
-	return (this->time > after && (this->time < until));
+	return (this->Time > after && (this->Time < until));
 }
 BOOL vbState::afterAndEveryUntil(DWORD after, DWORD until, DWORD every)
 {
-	return (this->time > after && !((this->time + after) % every) && (this->time < until));
+	return (this->Time > after && !((this->Time + after) % every) && (this->Time < until));
 }
 
 BOOL vbState::afterAndEveryFrame(DWORD after, DWORD every)
@@ -46,7 +46,7 @@ WORD vbState::run()
 	{
 		this->exitState = 0xFF;
 		this->frame = 0;
-		this->time = 0;
+		this->Time = 0;
 		this->init();
 		this->firstIn = FALSE;
 		this->canvas->isAlive = TRUE;
@@ -62,6 +62,6 @@ WORD vbState::run()
 		return this->exitState;
 	}
 	this->frame++;
-	this->time+=getElapsedMillis();
+	this->Time+=getElapsedMillis();
 	return 0xFF;
 }

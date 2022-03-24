@@ -59,6 +59,11 @@ void vbImage::setup()
 void vbImage::draw()
 {
 	vbGraphicObject::draw();
+	
+	if (this->spriteTexture->name == "bar_green")
+	{
+		BREAKPOINT;
+	}
 
 	if ((!this->isSpriteTexture && this->getTexture() != NULL) || (this->isSpriteTexture && this->getSpriteTexture() != NULL))
 	{

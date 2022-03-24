@@ -94,13 +94,14 @@
     <ClInclude Include="..\..\SRC\vbLanguage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json-builder.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json.h" />
-    <ClInclude Include="..\..\SRC\vbMultimedia\PhysicsObject.h" />
-    <ClInclude Include="..\..\SRC\vbMultimedia\phys_Cir.h" />
-    <ClInclude Include="..\..\SRC\vbMultimedia\phys_Rec.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbPhysicsObject.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbPhys_Cir.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbPhys_Rec.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbButton.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbCanvas.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbCircle.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbContactListener.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbContainer.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbEasing.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.h" />
@@ -215,9 +216,9 @@
     <ClCompile Include="..\..\SRC\vbEvent.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\PhysicsObject.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\phys_Cir.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\phys_Rec.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbPhysicsObject.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbPhys_Cir.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbPhys_Rec.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbASCIITextGraphic.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json-builder.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json.cpp" />
@@ -228,6 +229,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbCircle.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbContactListener.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbContainer.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbEasing.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.cpp" />
