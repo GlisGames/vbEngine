@@ -74,6 +74,42 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbNumericBox.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_collide_edge.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_collide_polygon.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_collision.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_distance.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_dynamic_tree.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_edge_shape.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_polygon_shape.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_time_of_impact.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_broad_phase.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_chain_shape.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_circle_shape.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\box2d\collision\b2_collide_circle.cpp">
+      <Filter>box2d\collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="text">
@@ -126,6 +162,12 @@
     </Filter>
     <Filter Include="text\deps\icu\unicode">
       <UniqueIdentifier>{27a27111-9ebf-4a84-8a6b-5520865b0231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="box2d">
+      <UniqueIdentifier>{18bce291-89d1-4d78-9e98-bf51df6dc53c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="box2d\collision">
+      <UniqueIdentifier>{854a8e35-1dc5-4fff-929e-6004d2543ac2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
