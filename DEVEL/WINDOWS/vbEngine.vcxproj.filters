@@ -329,6 +329,9 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbVector2D.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\text\shader.h">
+      <Filter>text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -610,6 +613,9 @@
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbContactListener.cpp">
       <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\text\shader.cpp">
+      <Filter>text</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

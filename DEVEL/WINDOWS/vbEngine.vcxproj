@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\SRC\text\shader.h" />
     <ClInclude Include="..\..\SRC\UtilityMath.h" />
     <ClInclude Include="..\..\..\raylib\src\config.h" />
     <ClInclude Include="..\..\..\raylib\src\raudio.h" />
@@ -128,6 +129,7 @@
     <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\SRC\text\shader.cpp" />
     <ClCompile Include="..\..\SRC\UtilityMath.cpp" />
     <ClCompile Include="..\..\..\raylib\src\raudio.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
