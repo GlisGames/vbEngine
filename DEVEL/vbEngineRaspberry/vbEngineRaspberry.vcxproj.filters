@@ -22,7 +22,6 @@
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbErrors.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
-    <ClCompile Include="..\..\SRC\vbStyles.cpp" />
     <ClCompile Include="..\..\SRC\box2d\collision\b2_collide_edge.cpp">
       <Filter>box2d\collision</Filter>
     </ClCompile>
@@ -248,30 +247,6 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbPhys_Cir.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\raudio.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rcore.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rglfw.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rmodels.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rshapes.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rtext.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rtextures.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\utils.c">
-      <Filter>raylib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\SRC\UtilityMath.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />
@@ -284,6 +259,7 @@
     <ClCompile Include="..\..\SRC\vbCamera.cpp" />
     <ClCompile Include="..\..\SRC\vbEvent.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
+    <ClCompile Include="..\..\SRC\vbStyle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="text">
@@ -354,9 +330,6 @@
     </Filter>
     <Filter Include="wiringpi">
       <UniqueIdentifier>{64e12592-b452-4b5c-a976-01bcabde13e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="raylib">
-      <UniqueIdentifier>{5aa4d95b-89e6-44bd-9a41-b795ec9cbc46}</UniqueIdentifier>
     </Filter>
     <Filter Include="game">
       <UniqueIdentifier>{09d398cb-edf4-43d3-8923-f004caaef460}</UniqueIdentifier>
@@ -1546,7 +1519,6 @@
     <ClInclude Include="..\..\SRC\vbEngine.h" />
     <ClInclude Include="..\..\SRC\vbErrors.h" />
     <ClInclude Include="..\..\SRC\vbLanguage.h" />
-    <ClInclude Include="..\..\SRC\vbStyles.h" />
     <ClInclude Include="..\..\SRC\vbUtils.h" />
     <ClInclude Include="..\..\SRC\vbGPIO.h" />
     <ClInclude Include="..\..\SRC\box2d\dynamics\b2_contact_solver.h">
@@ -1678,30 +1650,6 @@
     <ClInclude Include="..\..\SRC\wiringpi\wiringPi.h">
       <Filter>wiringpi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\config.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\raudio.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\raylib.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\raymath.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\rcamera.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\rgestures.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\rlgl.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\raylib\src\utils.h">
-      <Filter>raylib</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\SRC\UtilityMath.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
     <ClInclude Include="..\..\SRC\game\vbGame.h">
@@ -1832,6 +1780,7 @@
     <ClInclude Include="..\..\SRC\box2d\b2_growable_stack.h">
       <Filter>box2d</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbStyle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\SRC\text\deps\glm\detail\type_vec1.inl">

@@ -35,6 +35,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -51,6 +52,10 @@
     <EnableIncrementalBuild>WithNinja</EnableIncrementalBuild>
     <MultiProcNumber>4</MultiProcNumber>
     <ValidateArchitecture>false</ValidateArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <EnableIncrementalBuild>WithNinja</EnableIncrementalBuild>
+    <MultiProcNumber>4</MultiProcNumber>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
@@ -69,56 +74,14 @@
       <Command>gpio export 17 out</Command>
       <Message>export pin 17 using the gpio utility so that we can execute the blink program without sudo</Message>
     </RemotePostBuildEvent>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(RemoteProjectDir)SRC/wiringpi;$(RemoteProjectDir)SRC/game;$(RemoteProjectDir)SRC/;$(RemoteProjectDir)SRC/vbMultimedia;$(RemoteProjectDir)SRC/text/;$(RemoteProjectDir)SRC/text/deps/;$(RemoteProjectDir)SRC/text/deps/icu;$(RemoteProjectDir)SRC/text/deps/harfbuzz/src;$(RemoteProjectDir)SRC/text/deps/harfbuzz/src/glad/include;$(RemoteProjectDir)SRC/text/deps/freetype;$(RemoteProjectDir)SRC/text/deps/freetype/include;$(RemoteProjectDir)SRC/text/deps/glm;/home/pi/GLIS/raylib/src;/home/pi/GLIS/raylib/src/external/;/home/pi/GLIS/raylib/src/external/glfw/include;$(SolutionDir)..\SRC\;$(SolutionDir)..\SRC\vbMultimedia;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;PLATFORM_RPI;PLATFORM_RASPBERRY;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;GRAPHICS_API_OPENGL_33;_CONSOLE;HAVE_PTHREAD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CppLanguageStandard>c++14</CppLanguageStandard>
+      <AdditionalOptions>-fcommon -D_DEFAULT_SOURCE -Wno-missing-braces -Wunused-result $(sdl-config --cflags) $(sdl-config --libs) %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\raylib\src\raudio.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rcore.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rglfw.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rmodels.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rshapes.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rtext.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\rtextures.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">CompileAsC</CompileAs>
-    </ClCompile>
-    <ClCompile Include="..\..\..\raylib\src\utils.c">
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">CompileAsC</CompileAs>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">CompileAsC</CompileAs>
-    </ClCompile>
     <ClCompile Include="..\..\SRC\box2d\collision\b2_broad_phase.cpp" />
     <ClCompile Include="..\..\SRC\box2d\collision\b2_chain_shape.cpp" />
     <ClCompile Include="..\..\SRC\box2d\collision\b2_circle_shape.cpp" />
@@ -208,22 +171,15 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTriangle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTween.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbVector2D.cpp" />
-    <ClCompile Include="..\..\SRC\vbStyles.cpp" />
+    <ClCompile Include="..\..\SRC\vbStyle.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\raylib\src\config.h" />
-    <ClInclude Include="..\..\..\raylib\src\raudio.h" />
-    <ClInclude Include="..\..\..\raylib\src\raylib.h" />
-    <ClInclude Include="..\..\..\raylib\src\raymath.h" />
-    <ClInclude Include="..\..\..\raylib\src\rcamera.h" />
-    <ClInclude Include="..\..\..\raylib\src\rgestures.h" />
-    <ClInclude Include="..\..\..\raylib\src\rlgl.h" />
-    <ClInclude Include="..\..\..\raylib\src\utils.h" />
     <ClInclude Include="..\..\SRC\basetypes.h" />
     <ClInclude Include="..\..\SRC\box2d\b2_api.h" />
     <ClInclude Include="..\..\SRC\box2d\b2_block_allocator.h" />
@@ -709,7 +665,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTriangle.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTween.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbVector2D.h" />
-    <ClInclude Include="..\..\SRC\vbStyles.h" />
+    <ClInclude Include="..\..\SRC\vbStyle.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
     <ClInclude Include="..\..\SRC\vbUtils.h" />
     <ClInclude Include="..\..\SRC\wiringpi\wiringPi.h" />
