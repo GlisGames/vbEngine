@@ -9,6 +9,7 @@
 #include "vbSequence.h"
 #include "vbLanguage.h"
 #include "vbTextEngine.h"
+#include "vbRectangle.h"
 
 class vbSoundMap : private std::map<std::string, Sound>
 {
