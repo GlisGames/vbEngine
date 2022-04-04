@@ -272,6 +272,8 @@ void vbTextbox::draw()
     vbGraphicObject::draw();
     if (this->visible == TRUE)
     {
+        this->transformed.position.x -= this->parentContainer->inheritedCachePosition.x;
+        this->transformed.position.y -= this->parentContainer->inheritedCachePosition.y;
         if (this->getText().length() > 0 && this->getText() != "")
         {
             pGAME->textEngine.render.DrawTextBoundingAlfons(this, this->transformed.position.x, this->transformed.position.y, this->transformed.colour, this->transformed.scale, this->transformed.rotation);
@@ -383,6 +385,8 @@ void vbTextbox::setText(vbString toset, vbString _appendText)
         this->setDirty();
         if (this->useCache)
             this->CacheText();
+        if (this->parentContainer != NULL && this->parentContainer->getCacheFlag())
+            this->parentContainer->updateCache();
     }
 }
 
