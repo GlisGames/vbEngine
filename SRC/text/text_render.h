@@ -1,7 +1,7 @@
 #ifndef __TEXT_RENDER_H__
 #define __TEXT_RENDER_H__
 
-#include "shader.h"
+//#include "shader.h"
 #include "vbFont.h"
 #include "texture_atlas.h"
 #include "vbTextBox.h"

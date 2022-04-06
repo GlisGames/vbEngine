@@ -18,12 +18,12 @@ vbRectangle::vbRectangle(float x, float y, float width, float height)
 
 vbRectangle::vbRectangle(const vbRectangle& rectangle)
 {
-	memcpy(this, &rectangle, sizeof(vbRectangle));
+	//memcpy(this, &rectangle, sizeof(vbRectangle));
 }
 
 vbRectangle& vbRectangle::operator=(const vbRectangle& rectangle)
 {
-	memcpy(this, &rectangle, sizeof(vbRectangle));
+	//memcpy(this, &rectangle, sizeof(vbRectangle));
 	return (*this);
 }
 
