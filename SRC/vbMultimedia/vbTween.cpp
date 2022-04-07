@@ -288,6 +288,9 @@ void vbTweenMap::stepAll()
 			itw->second.callbackStart = NULL;
 		}
 		itw->second.Step();
+		if (itw->second.callbackStep != NULL)
+			itw->second.callbackStep();
+
 		BOOL _isFinished = itw->second.isFinished();
 
 		if (_isFinished && itw->second.repeatFor > 0)

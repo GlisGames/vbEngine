@@ -40,6 +40,7 @@ public:
 	tween_callback callbackEnd = NULL; //called every time the tween end one cycle
 	tween_callback callbackKill = NULL; //called when the tween finished its last cycle, before being deallocated
 	tween_callback callbackStart = NULL; //called when the tween finished its last cycle, before being deallocated
+	tween_callback callbackStep = NULL; //called when the tween finished its last cycle, before being deallocated
 	int *valueINT = NULL;
 	tweenRepeat repeat = twYoyo;
 	EasingFunction easingF = LinearInterpolation;
@@ -56,6 +57,10 @@ public:
 	/// <returns></returns>
 	vbTween* onStart(tween_callback f) {
 		this->callbackStart = f;
+		return this;
+	}
+	vbTween* onStep(tween_callback f) {
+		this->callbackStep = f;
 		return this;
 	}
 	vbTween* killLambdaSet(tween_callback f) {
