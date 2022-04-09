@@ -130,6 +130,7 @@
     <ClCompile Include="..\..\SRC\game\vbGame.cpp" />
     <ClCompile Include="..\..\SRC\game\vbState.cpp" />
     <ClCompile Include="..\..\SRC\text\hb-ft.cc" />
+    <ClCompile Include="..\..\SRC\text\shader.cpp" />
     <ClCompile Include="..\..\SRC\text\skyline_binpack.cpp" />
     <ClCompile Include="..\..\SRC\text\texture_atlas.cpp" />
     <ClCompile Include="..\..\SRC\text\text_render.cpp" />
@@ -620,6 +621,7 @@
     <ClInclude Include="..\..\SRC\text\deps\icu\ustr_imp.h" />
     <ClInclude Include="..\..\SRC\text\hb-ft.h" />
     <ClInclude Include="..\..\SRC\text\scope_guard.h" />
+    <ClInclude Include="..\..\SRC\text\shader.h" />
     <ClInclude Include="..\..\SRC\text\skyline_binpack.h" />
     <ClInclude Include="..\..\SRC\text\texture_atlas.h" />
     <ClInclude Include="..\..\SRC\text\text_render.h" />

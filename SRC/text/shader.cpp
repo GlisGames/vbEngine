@@ -1,6 +1,6 @@
 #include "shader.h"
 #include "scope_guard.h"
-#include <glad/glad.h>
+#include "glad.h"
 #include <cassert>
 
 ShaderProgram::ShaderProgram()

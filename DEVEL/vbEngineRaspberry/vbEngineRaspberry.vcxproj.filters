@@ -260,6 +260,9 @@
     <ClCompile Include="..\..\SRC\vbEvent.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbStyle.cpp" />
+    <ClCompile Include="..\..\SRC\text\shader.cpp">
+      <Filter>text</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="text">
@@ -1781,6 +1784,9 @@
       <Filter>box2d</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\vbStyle.h" />
+    <ClInclude Include="..\..\SRC\text\shader.h">
+      <Filter>text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\SRC\text\deps\glm\detail\type_vec1.inl">
