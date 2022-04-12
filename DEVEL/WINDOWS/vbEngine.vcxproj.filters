@@ -329,6 +329,9 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbVector2D.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicText.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -609,6 +612,9 @@
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbContactListener.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicText.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
   </ItemGroup>

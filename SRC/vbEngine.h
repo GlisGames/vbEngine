@@ -42,6 +42,7 @@
 #include "vbPhys_Rec.h"
 #include "vbContactListener.h"
 #include "UtilityMath.h"
+#include "vbGraphicText.h"
 
 using namespace std;
 

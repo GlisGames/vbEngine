@@ -95,6 +95,7 @@
     <ClInclude Include="..\..\SRC\vbLanguage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json-builder.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbGraphicText.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbPhysicsObject.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbPhys_Cir.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbPhys_Rec.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="..\..\SRC\vbEvent.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicText.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbPhysicsObject.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbPhys_Cir.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbPhys_Rec.cpp" />
