@@ -8,9 +8,10 @@ vbGraphicText::vbGraphicText()
 }
 
 vbGraphicText::vbGraphicText(Font _font, string _initialText, Vector2 _position, WORD _size)
-	:font(_font), text(_initialText), size(_size)
+	:font(_font), size(_size)
 {
 	this->position = _position;
+	this->settext(_initialText);
 }
 
 void vbGraphicText::settext(string _text)
@@ -42,7 +43,7 @@ void vbGraphicText::draw()
 		this->transformed.position.x += origin.x;
 		this->transformed.position.y += origin.y;
 	}
-	DrawTextPro(this->font, this->text.c_str(), this->transformed.position, origin, this->transformed.rotation, this->size*this->transformed.scale, this->spacing, WHITE);
+	DrawTextPro(this->font, this->text.c_str(), this->transformed.position, origin, this->transformed.rotation, this->size*this->transformed.scale, this->spacing, this->transformed.colour);
 }
 
 
