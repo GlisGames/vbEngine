@@ -80,6 +80,18 @@ public:
 #endif
 	}
 
+	/// <summary>
+	/// like IsKeyDown from raylib
+	/// </summary>
+	/// <returns>true if button is down, otherwise false</returns>
+	BOOL isButtonDown()
+	{
+		pressedMutex.lock();
+		BOOL result = pull_mode == PUD_UP ? (buttonState == LOW) : (buttonState == HIGH);
+		pressedMutex.unlock();
+		return result;
+	}
+
 	BOOL isPressed()
 	{
 		BOOL ret = FALSE;
