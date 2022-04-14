@@ -29,6 +29,7 @@
 #include "vbNumericBox.h"
 #include "vbRenderer.h"
 #include "vbSequence.h"
+#include "vbRectangle.h"
 #include "vbState.h"
 #include "vbStyle.h"
 #include "vbTextBox.h"

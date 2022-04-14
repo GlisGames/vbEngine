@@ -447,7 +447,6 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbShape.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicDrawable.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
@@ -615,6 +614,9 @@
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicText.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
   </ItemGroup>
