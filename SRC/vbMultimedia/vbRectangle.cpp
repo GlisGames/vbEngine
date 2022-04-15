@@ -8,24 +8,24 @@ vbRectangle::vbRectangle(Rectangle _rect)
 	this->height = _rect.height;
 }
 
-vbRectangle::vbRectangle(float x, float y, float width, float height)
-{
-	this->position.x = x;
-	this->position.y = y;
-	this->width = width;
-	this->height = height;
-}
-
-vbRectangle::vbRectangle(const vbRectangle& rectangle)
-{
-	memcpy(this, &rectangle, sizeof(vbRectangle));
-}
-
-vbRectangle& vbRectangle::operator=(const vbRectangle& rectangle)
-{
-	memcpy(this, &rectangle, sizeof(vbRectangle));
-	return (*this);
-}
+//vbRectangle::vbRectangle(float x, float y, float width, float height)
+//{
+//	this->position.x = x;
+//	this->position.y = y;
+//	this->width = width;
+//	this->height = height;
+//}
+//
+//vbRectangle::vbRectangle(const vbRectangle& rectangle)
+//{
+//	memcpy(this, &rectangle, sizeof(vbRectangle));
+//}
+//
+//vbRectangle& vbRectangle::operator=(const vbRectangle& rectangle)
+//{
+//	memcpy(this, &rectangle, sizeof(vbRectangle));
+//	return (*this);
+//}
 
 vbRectangle::~vbRectangle()
 {
