@@ -36,7 +36,7 @@ public:
 	WORD *valueWORD = NULL;
 	DWORD *valueDWORD = NULL;
 	FLOAT *valueFLOAT = NULL;
-	DWORD valueTIMER = NULL;
+	DWORD *valueTIMER = NULL;
 	tween_callback callbackEnd = NULL; //called every time the tween end one cycle
 	tween_callback callbackKill = NULL; //called when the tween finished its last cycle, before being deallocated
 	tween_callback callbackStart = NULL; //called when the tween finished its last cycle, before being deallocated

@@ -6,6 +6,8 @@ vbTween::~vbTween()
 {
 	if (this->callbackKill)
 		this->callbackKill();
+	//if (this->valueTIMER)
+	//	free(this->valueTIMER);
 }
 
 void vbTween::init(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int repeatFor, tween_callback callback, tween_callback callbackKill)
@@ -78,7 +80,9 @@ vbTween::vbTween(int* value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenR
 }
 vbTween::vbTween(FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop, EasingFunction easingFunction, int repeatFor, tween_callback callback, tween_callback callbackKill)
 {
-	this->valueDWORD = &this->valueTIMER;
+	if (this->valueTIMER == NULL)
+		this->valueTIMER = new DWORD(0);
+	this->valueDWORD = this->valueTIMER;
 	init(Start_p, Stop_p, TOTsteps, loop, easingFunction, repeatFor, callback, callbackKill);
 }
 vbTween* vbTween::Play()

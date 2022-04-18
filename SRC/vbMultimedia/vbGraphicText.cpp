@@ -11,21 +11,26 @@ vbGraphicText::vbGraphicText(Font _font, string _initialText, Vector2 _position,
 	:font(_font), size(_size)
 {
 	this->position = _position;
-	this->settext(_initialText);
+	this->setText(_initialText);
 }
 
-void vbGraphicText::settext(string _text)
+void vbGraphicText::setText(string _text)
 {
-	this->text = _text;
-	Vector2 size = MeasureTextEx(this->font, this->text.c_str(), this->size * this->scale, this->spacing);
-	this->width = size.x;
-	this->height = size.y;
-
+	if (this->text != _text)
+	{
+		this->text = _text;
+		Vector2 size = MeasureTextEx(this->font, this->text.c_str(), this->size * this->scale, this->spacing);
+		this->width = size.x;
+		this->height = size.y;
+	}
 }
 
 void vbGraphicText::setFont(Font _font)
 {
-	settext(this->text);
+	this->font = _font;
+	Vector2 size = MeasureTextEx(this->font, this->text.c_str(), this->size * this->scale, this->spacing);
+	this->width = size.x;
+	this->height = size.y;
 }
 
 void vbGraphicText::update()

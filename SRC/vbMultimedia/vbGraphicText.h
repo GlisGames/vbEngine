@@ -46,7 +46,7 @@ public:
 	WORD spacing = 1;
 	vbGraphicText();
 	vbGraphicText(Font _font, string _initialText = "", Vector2 _position = {0,0}, WORD _size = 1.0f);
-	void settext(string _text);
+	void setText(string _text);
 	void setFont(Font _font);
 	//virtual void setup();
 	virtual void update();

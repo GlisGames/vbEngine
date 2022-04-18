@@ -36,5 +36,6 @@ std::string getParentFolder(string path)
 const char* formatMoney(DWORD value)
 {
 	//if currency = Euro
-	return TextFormat(u8"€%.2f", (float)value / 100.0f);
+	//return TextFormat(u8"€%.2f", (float)value / 100.0f);
+	return TextFormat("€%.2f", (float)value / 100.0f);
 }
