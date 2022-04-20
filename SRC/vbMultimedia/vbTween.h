@@ -29,7 +29,7 @@ public:
 	FLOAT stopP = 0;
 	FLOAT startDelay = 0;
 	QWORD startTimer = 0;
-	BOOL isTimeBased = FALSE;
+	BOOL isTimeBased = TRUE;
 	int repeatFor = 0;
 	int repeatSet = 0; //initial repeat value that has been set
 	BYTE *valueBYTE = NULL;
