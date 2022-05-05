@@ -95,6 +95,9 @@ public:
 	styleElement* style(vbString element_name);
 	void changeStyle(vbContainer* c, vbString stylename);
 	vbTextEngine textEngine;
+	BOOL errorState = FALSE;
+	string errorMessage = "";
+	DWORD errorCode = 0;
 
 	Vector2 gameResolution;
 	Vector2 screenResolution;
