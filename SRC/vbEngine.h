@@ -37,6 +37,7 @@
 #include "vbStyles.h"
 #include "vbNumericBox.h"
 #include "vbTimer.h"
+#include "EasterEggObject.h"
 
 Image LoadImageRawFromBuffer(unsigned char* fileData, unsigned int dataSize, int width, int height, int format, int headerSize);
 
@@ -67,7 +68,7 @@ class vbState;
 class vbGame
 {
 private:
-	vbStyle *current_style;
+	vbStyle* current_style;
 public:
 	vbGame() {};
 	vbContainer mainGame;
@@ -76,7 +77,7 @@ public:
 	vbImage* mainBG;
 	vbState* currentState;
 	DWORD gameCredits = 0;
-	
+
 	std::vector<vbState*> stateList;
 	//BYTE startBet;
 	//DWORD betView[MAXBETBOX];

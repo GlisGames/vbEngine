@@ -39,6 +39,7 @@
     <ClInclude Include="..\..\SRC\vbErrors.h" />
     <ClInclude Include="..\..\SRC\vbGPIO.h" />
     <ClInclude Include="..\..\SRC\vbLanguage.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\EasterEggObject.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json-builder.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\json.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbButton.h" />
@@ -95,6 +96,7 @@
     <ClCompile Include="..\..\SRC\vbErrors.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\EasterEggObject.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json-builder.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\json.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbButton.cpp" />
