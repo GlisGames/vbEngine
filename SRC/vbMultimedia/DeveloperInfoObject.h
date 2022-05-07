@@ -9,13 +9,12 @@
 #include <iostream>
 #endif // PLATFORM_WEB
 
-class EasterEggObject
+class DeveloperInfoObject
 {
 public:
-	EasterEggObject();
-	~EasterEggObject();
-	Vector2 center = {18.0f, 18.0f};
-	float radius = 18.0f;
+	DeveloperInfoObject();
+	~DeveloperInfoObject();
+	Rectangle rect = {0.0f, 0.0f, 36.0f, 36.0f};
 
 	void update();
 	void render();

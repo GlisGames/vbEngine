@@ -119,9 +119,7 @@
     <ClInclude Include="..\..\SRC\vbUtils.h" />
     <ClInclude Include="..\..\SRC\vbGPIO.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
-    <ClInclude Include="..\..\SRC\vbMultimedia\EasterEggObject.h">
-      <Filter>vbMultimedia</Filter>
-    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\DeveloperInfoObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -226,8 +224,6 @@
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />
-    <ClCompile Include="..\..\SRC\vbMultimedia\EasterEggObject.cpp">
-      <Filter>vbMultimedia</Filter>
-    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\DeveloperInfoObject.cpp" />
   </ItemGroup>
 </Project>

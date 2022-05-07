@@ -303,7 +303,7 @@ void _recursiveRender(vbContainer* c)
 
 void vbRender_printWorld(vbContainer* worldcanvas)
 {
-	static EasterEggObject easterEgg;
+	static DeveloperInfoObject easterEgg;
 	_recursiveUpdate(worldcanvas, worldcanvas->visible);
 	easterEgg.update();
 	_recursiveRender(worldcanvas);
