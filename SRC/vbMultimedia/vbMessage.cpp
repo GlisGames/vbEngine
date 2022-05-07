@@ -48,19 +48,23 @@ void vbMessage::pushMessage(vbString txt, vbString txtAppend, int timer) {
 	this->caption->setBoundingBox((float)this->background->width, (float)this->background->height);
 	this->visible = TRUE;
 	this->moveToFront();
-	this->tweens.addtimer("twtimer", timer)
-		->endLambdaSet(
-			lvoid{
-				this->tweens.addtween("twfadeout", (this->background != NULL) ? &this->background->colour.a : &this->backgroundColor.a, 255, 0, 60, twOneShot);
-				this->tweens.addtween("twfadeouttxt", &this->caption->colour.a, 255, 0, 60, twOneShot)
-					->endLambdaSet(lvoid{ 
-					this->visible = FALSE;
-					});
-			});
+	if (timer)
+	{
+		this->tweens.addtimer("twtimer", timer)
+			->endLambdaSet(
+				lvoid{
+					this->tweens.addtween("twfadeout", (this->background != NULL) ? &this->background->colour.a : &this->backgroundColor.a, 255, 0, 60, twOneShot);
+					this->tweens.addtween("twfadeouttxt", &this->caption->colour.a, 255, 0, 60, twOneShot)
+						->endLambdaSet(lvoid{
+						this->visible = FALSE;
+						});
+				});
+	}
 }
 void vbMessage::resetMessage() {
 	if (this->background != NULL) this->background->colour.a = 255;
 	this->backgroundColor.a = 255;
 	this->caption->colour.a = 255;
 	this->tweens.clear();
+	this->visible = FALSE;
 }

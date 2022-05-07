@@ -1,6 +1,10 @@
 #include "vbEngine.h"
 
-// INIT
+/// <summary>
+/// 
+/// </summary>
+/// <param name="_duration">IN SECONDS</param>
+/// <param name="callback"></param>
 void vbTimer::init(double _duration, timer_callback callback) {
 	this->isAlive = TRUE;
 	this->initTime = GetTime();
