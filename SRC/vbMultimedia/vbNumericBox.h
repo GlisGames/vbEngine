@@ -2,6 +2,19 @@
 #define VBNUMERICBOX_H
 #include "vbButton.h"
 #include "vbTextBox.h"
+#include <functional>
+
+#define DEFAULT_MIN_REACH_HANDLE [](vbNumericBox* e) \
+	{ \
+	string val = " " + string(formatMoney(e->min)); \
+	pGAME->alertBox->pushMessage("txt_min_reach", val); \
+	} \
+
+#define DEFAULT_MAX_REACH_HANDLE [](vbNumericBox* e) \
+	{ \
+	string val = " " + string(formatMoney(e->max)); \
+	pGAME->alertBox->pushMessage("txt_max_reach", val); \
+	}
 
 class vbNumericBox : public vbCanvas {
 private:
@@ -16,6 +29,9 @@ public:
 	vbButton* cmdPlus = NULL;
 	Sound* soundMinus = NULL;
 	Sound* soundPlus = NULL;
+	std::function<void(vbNumericBox*)> minReachHandle;
+	std::function<void(vbNumericBox*)> maxReachHandle;
+
 	vbNumericBox(Vector2 pos);
 	vbNumericBox(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus);
 	void update();

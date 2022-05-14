@@ -30,6 +30,9 @@ void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle 
 
 	this->resize();
 	this->txtValue->setText(formatMoney(this->value));
+
+	this->minReachHandle = DEFAULT_MIN_REACH_HANDLE;
+	this->maxReachHandle = DEFAULT_MAX_REACH_HANDLE;
 }
 vbNumericBox::vbNumericBox(Vector2 pos) {
 	this->init(pos, { 0,0,0,0 }, { 0,0,0,0 }, { 0,0,0,0 });
@@ -48,8 +51,7 @@ void vbNumericBox::update() {
 		}
 		else
 		{
-			string val = " " + string(formatMoney(this->min));
-			pGAME->alertBox->pushMessage("txt_min_reach", val);
+			this->minReachHandle(this);
 		}
 	}
 	if (this->cmdPlus->isClicked() ) {
@@ -61,8 +63,7 @@ void vbNumericBox::update() {
 		}
 		else
 		{
-			string val = " " + string(formatMoney(this->max));
-			pGAME->alertBox->pushMessage("txt_max_reach", val);
+			this->maxReachHandle(this);
 		}
 	}
 	this->cmdMinus->isClickable = this->isClickable;
