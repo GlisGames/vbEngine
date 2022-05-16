@@ -136,7 +136,8 @@ public:
 	}
 	void stateExit(WORD s)
 	{
-		this->exitState = s;
+		if(s != this->stateID)
+			this->exitState = s;
 	};
 	vbTweenMap tweens;
 	vbContainer *canvas;
