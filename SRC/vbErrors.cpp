@@ -2,8 +2,8 @@
 
 void PANIC(const char* message)
 {
-	//while (true)
-	//{
+	while (true)
+	{
 		pGAME->errorState = FALSE;
 		WaitTime(100);
 		BeginDrawing();
@@ -12,6 +12,6 @@ void PANIC(const char* message)
 		DrawText(TextFormat("ERROR, please refresh (F5) the page."), 50, 0, 30, BLACK);
 		DrawText(message, 50, 60, 40, BLACK);
 		EndDrawing();
-		exit(1);
-	//}
+		//exit(1);
+	}
 }
