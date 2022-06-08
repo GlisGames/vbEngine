@@ -154,5 +154,6 @@ void vbSlider::setValue(const float& value)
 		throw std::invalid_argument("value is out of range: _value = " + std::to_string(value) + ", _range = (" + std::to_string(m_min) + ", " + std::to_string(m_max) + ")");
 	}
 	m_value = value;
-	m_onChangeValueCallback(*this);
+	if(m_onChangeValueCallback != nullptr)
+		m_onChangeValueCallback(*this);
 }
