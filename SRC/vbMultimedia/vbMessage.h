@@ -5,19 +5,19 @@
 class vbMessage : public vbCanvas {
 private:
 	BOOL canClickToDismiss = TRUE;
-	void init(vbSpriteTexture* tex, Vector2 pos, BOOL b);
-	void resetMessage();
+	void init(vbSpriteTexture* _tex, Vector2 _pos, BOOL _isClickDismiss, Vector2 _offset);
+	Vector2 offset = { 0.0f, 0.0f };
 public:
-	virtual void setup();
-	virtual void update();
-	virtual void draw();
 	Color backgroundColor = WHITE;
-	float borderThickness = 5;
 	vbMessage();
-	vbMessage(vbSpriteTexture* tex, Vector2 pos, BOOL b);
+	vbMessage(vbSpriteTexture* _tex, Vector2 _pos = { 0,0 }, BOOL _isClickDismiss = TRUE, Vector2 _offset = { 0, 0 });
+	void update();
+	void draw();
+	void resetMessage();
 	BOOL getClickToDismiss();
 	void setClickToDismiss(BOOL b);
-	void pushMessage(vbString txt, int timer=60);
+	void pushMessage(vbString _txt, vbString _txtAppend = "", DWORD _timer = 60, Vector2 _offset = { 0,0 });
+	void resetOffset();
 };
 
 #endif
