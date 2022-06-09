@@ -2,8 +2,6 @@
 #define VBCANVAS_H
 
 #include "vbContainer.h"
-#include "basetypes.h"
-#include "vbImage.h"
 #include "vbTextBox.h"
 
 class vbCanvas : public vbContainer

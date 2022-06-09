@@ -2,8 +2,6 @@
 #define VBBUTTON_H
 
 #include "vbContainer.h"
-#include "basetypes.h"
-#include "vbImage.h"
 #include "vbTextBox.h"
 #include "vbEvent.h"
 

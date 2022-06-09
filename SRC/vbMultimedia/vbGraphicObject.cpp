@@ -15,8 +15,6 @@ void vbGraphicObject::setup()
 void vbGraphicObject::update()
 {
 	vbGameObject::update();
-	if (this->name == "gtxtBonus")
-		BREAKPOINT;
 	this->tweens.stepAll();
 
 	this->transformed.position = _calculateAbsolutePosition();
