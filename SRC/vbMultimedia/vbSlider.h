@@ -76,7 +76,7 @@ inline const float& vbSlider::min() const
 
 inline const float& vbSlider::min()
 {
-	static_cast<const vbSlider&>(*this).min();
+	return static_cast<const vbSlider&>(*this).min();
 }
 
 inline const float& vbSlider::value() const
