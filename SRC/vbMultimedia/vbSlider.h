@@ -46,9 +46,17 @@ public:
 
 	const SliderDirection& direct() const;
 	SliderDirection& direct();
-	vbImage *imgSlider = NULL;
-	vbImage *imgBar = NULL;
+	
 	void setOnValueChangeCallback(const std::function<void(const vbSlider&)>& callback);
+
+	const vbImage* imgTrack() const;
+	const vbImage* imgFill() const;
+	const vbImage* imgHandle() const;
+
+	//lock to avoid change the image
+	vbImage& imgTrack();
+	vbImage& imgFill();
+	vbImage& imgHandle();
 
 protected:
 	float m_max;
@@ -58,6 +66,9 @@ protected:
 	std::function<void(const vbSlider&)> m_onChangeValueCallback;
 	Color m_valueColor;
 	Color m_remainColor;
+	vbImage* m_imgTrack;
+	vbImage* m_imgFill;
+	vbImage* m_imgHandle;
 
 };
 
@@ -104,6 +115,36 @@ inline SliderDirection& vbSlider::direct()
 inline void vbSlider::setOnValueChangeCallback(const std::function<void(const vbSlider&)>& callback)
 {
 	m_onChangeValueCallback = callback;
+}
+
+inline const vbImage* vbSlider::imgTrack() const
+{
+	return m_imgTrack;
+}
+
+inline const vbImage* vbSlider::imgFill() const
+{
+	return m_imgFill;
+}
+
+inline const vbImage* vbSlider::imgHandle() const
+{
+	return m_imgHandle;
+}
+
+inline vbImage& vbSlider::imgTrack()
+{
+	return *m_imgTrack;
+}
+
+inline vbImage& vbSlider::imgFill()
+{
+	return *m_imgFill;
+}
+
+inline vbImage& vbSlider::imgHandle()
+{
+	return *m_imgHandle;
 }
 
 #endif // !VB_SLIDER_H

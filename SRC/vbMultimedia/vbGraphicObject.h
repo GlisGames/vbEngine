@@ -76,6 +76,7 @@ private:
 	// The update() function gets called from the highest to the smallest
 	int layer = 0; 
 	BOOL _isClicked = FALSE;
+	BOOL _isMouseDown = FALSE;
 public:
 	vbGraphicObject();
 	~vbGraphicObject();
@@ -141,8 +142,14 @@ public:
 	{
 		this->_isClicked = on;
 	}
+
+	void setMouseDown(BOOL on)
+	{
+		this->_isMouseDown = on;
+	}
 	BOOL isClickable = FALSE;
 	BOOL isClicked();
+	BOOL isMouseDown();
 	BOOL isMouseOver();
 	vbGraphicObject* getChild(const char* sname);
 	vbGraphicObject* getObject(const char* sname);

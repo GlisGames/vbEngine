@@ -1,6 +1,7 @@
 #include "vbSlider.h"
 vbSlider::vbSlider(const Rectangle& boundingArea, const SliderDirection& direct, const Color& valueColor, const Color& remainColor)
-	:vbGraphicObject(), m_onChangeValueCallback(nullptr), m_valueColor(valueColor), m_remainColor(remainColor)
+	:vbGraphicObject(), m_onChangeValueCallback(nullptr), m_valueColor(valueColor), m_remainColor(remainColor),
+	m_imgFill(new vbImage()), m_imgHandle(new vbImage()), m_imgTrack(new vbImage())
 {
 	this->position = {boundingArea.x, boundingArea.y};
 	this->width = boundingArea.width;
@@ -13,7 +14,8 @@ vbSlider::vbSlider(const Rectangle& boundingArea, const SliderDirection& direct,
 
 vbSlider::vbSlider(const vbSlider& slider)
 	:m_direct(slider.m_direct), m_max(slider.m_max), m_min(slider.m_min), m_value(slider.m_value), m_onChangeValueCallback(slider.m_onChangeValueCallback),
-	m_valueColor(slider.m_valueColor), m_remainColor(slider.m_remainColor)
+	m_valueColor(slider.m_valueColor), m_remainColor(slider.m_remainColor),
+	m_imgFill(slider.m_imgFill), m_imgHandle(slider.m_imgHandle), m_imgTrack(slider.m_imgTrack)
 {
 	this->position = slider.position;
 	this->width = slider.width;
@@ -32,7 +34,9 @@ vbSlider& vbSlider::operator=(const vbSlider& slider)
 	m_onChangeValueCallback = slider.m_onChangeValueCallback;
 	m_valueColor = slider.m_valueColor;
 	m_remainColor = slider.m_remainColor;
-
+	m_imgFill = slider.m_imgFill;
+	m_imgHandle = slider.m_imgHandle;
+	m_imgTrack = slider.m_imgTrack;
 	return (*this);
 }
 
@@ -44,13 +48,21 @@ vbSlider::~vbSlider()
 void vbSlider::setup()
 {
 	vbGraphicObject::setup();
+	this->m_imgFill->setup();
+	this->m_imgHandle->setup();
+	this->m_imgTrack->setup();
 	this->isClickable = TRUE;
 }
 
 void vbSlider::update()
 {
 	vbGraphicObject::update();
-	if (isClicked())
+	m_imgFill->position = this->position;
+	this->m_imgFill->update();
+	this->m_imgHandle->update();
+	m_imgTrack->position = this->position;
+	this->m_imgTrack->update();
+	if (isMouseDown())
 	{
 		Vector2 mousePos = GetMousePosition();
 		Vector2 offset = { mousePos.x - transformed.position.x, mousePos.y - transformed.position.y };
@@ -125,8 +137,18 @@ void vbSlider::draw()
 		break;
 	}
 
-	DrawRectangleRec(valueRect, m_valueColor);
-	DrawRectangleRec(remainRect, m_remainColor);
+	//this->m_imgFill->draw();
+	//this->m_imgHandle->draw();
+	//this->m_imgTrack->draw();
+	if(m_imgTrack->getTexture() == NULL)
+		DrawRectangleRec(valueRect, m_valueColor);
+	else
+		this->m_imgTrack->draw();
+
+	if(m_imgFill->getTexture() == NULL)
+		DrawRectangleRec(remainRect, m_remainColor);
+	else
+		this->m_imgFill->draw();
 }
 
 void vbSlider::setMax(const float& max)

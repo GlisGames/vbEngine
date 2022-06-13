@@ -40,16 +40,24 @@ void vbContainer::update()
 		if (go->isAlive && go->enabled)
 		{
 			go->setClick(FALSE); //reset click flag
+			go->setMouseDown(FALSE);
 			BOOL parentClickable = (this->parentContainer) ? this->parentContainer->transformed.canBeClicked : TRUE;
 			if (parentClickable && this->transformed.canBeClicked // no clicks done yet
 				&& go->isClickable && go->visible && visible // is visible and clickable
-			
-				&& (IsMouseButtonDown(0) || IsMouseButtonPressed(0)) && go->isMouseOver()
+				&& go->isMouseOver()
 			) // and clicked
 			{
-				go->setClick(TRUE);
-				this->transformed.canBeClicked = FALSE;
+				if (IsMouseButtonPressed(0))
+				{
+					go->setClick(TRUE);
+					this->transformed.canBeClicked = FALSE;
+				}
+				else if (IsMouseButtonDown(0))
+				{
+					go->setMouseDown(TRUE);
+				}
 			}
+
 			go->update();
 		}
 	}// while (it != this->gObjects.begin());
