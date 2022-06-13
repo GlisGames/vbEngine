@@ -1,6 +1,8 @@
+#include "vbEngine.h"
 #include "vbSlider.h"
+
 vbSlider::vbSlider(const Rectangle& boundingArea, const SliderDirection& direct, const Color& valueColor, const Color& remainColor)
-	:vbGraphicObject(), m_onChangeValueCallback(nullptr), m_valueColor(valueColor), m_remainColor(remainColor),
+	:vbContainer(), m_onChangeValueCallback(nullptr), m_valueColor(valueColor), m_remainColor(remainColor),
 	m_imgFill(new vbImage()), m_imgHandle(new vbImage()), m_imgTrack(new vbImage())
 {
 	this->position = {boundingArea.x, boundingArea.y};
@@ -10,6 +12,29 @@ vbSlider::vbSlider(const Rectangle& boundingArea, const SliderDirection& direct,
 	this->m_max = 1;
 	this->m_min = 0;
 	this->m_value = 0;
+	this->addObject(m_imgFill);
+	this->addObject(m_imgHandle);
+	this->addObject(m_imgTrack);
+
+	m_imgHandle->regPointRule = transformRegRule::REG_CENTER;
+}
+
+vbSlider::vbSlider(const Vector2& boundingArea, const SliderDirection& direct, Texture2D* track, Texture2D* fill, Texture2D* handle)
+	:vbContainer(), m_onChangeValueCallback(nullptr), m_valueColor(WHITE), m_remainColor(WHITE),
+	m_imgFill(new vbImage(fill)), m_imgHandle(new vbImage(handle)), m_imgTrack(new vbImage(track))
+{
+	this->position = { boundingArea.x, boundingArea.y };
+	this->width = track->width;
+	this->height = track->height;
+	this->m_direct = direct;
+	this->m_max = 1;
+	this->m_min = 0;
+	this->m_value = 0;
+	this->addObject(m_imgFill);
+	this->addObject(m_imgHandle);
+	this->addObject(m_imgTrack);
+
+	m_imgHandle->regPointRule = transformRegRule::REG_CENTER;
 }
 
 vbSlider::vbSlider(const vbSlider& slider)
@@ -20,6 +45,7 @@ vbSlider::vbSlider(const vbSlider& slider)
 	this->position = slider.position;
 	this->width = slider.width;
 	this->height = slider.height;
+	this->gObjects.insert(this->gObjects.end(), slider.gObjects.begin(), slider.gObjects.end());
 }
 
 vbSlider& vbSlider::operator=(const vbSlider& slider)
@@ -37,6 +63,8 @@ vbSlider& vbSlider::operator=(const vbSlider& slider)
 	m_imgFill = slider.m_imgFill;
 	m_imgHandle = slider.m_imgHandle;
 	m_imgTrack = slider.m_imgTrack;
+	this->gObjects.insert(this->gObjects.end(), slider.gObjects.begin(), slider.gObjects.end());
+
 	return (*this);
 }
 
@@ -48,20 +76,17 @@ vbSlider::~vbSlider()
 void vbSlider::setup()
 {
 	vbGraphicObject::setup();
-	this->m_imgFill->setup();
-	this->m_imgHandle->setup();
-	this->m_imgTrack->setup();
 	this->isClickable = TRUE;
+	//memcpy(&transformed, dynamic_cast<vbProperties*>(this), sizeof(vbProperties));
 }
 
 void vbSlider::update()
 {
-	vbGraphicObject::update();
+	vbContainer::update();
+	
 	m_imgFill->position = this->position;
-	this->m_imgFill->update();
-	this->m_imgHandle->update();
 	m_imgTrack->position = this->position;
-	this->m_imgTrack->update();
+	
 	if (isMouseDown())
 	{
 		Vector2 mousePos = GetMousePosition();
@@ -84,11 +109,32 @@ void vbSlider::update()
 			break;
 		}
 	}
+
+	float normalizeValue = (m_value - m_min) / (m_max - m_min);
+	switch (m_direct)
+	{
+	case SliderDirection::LeftToRight:
+		m_imgHandle->position.x = transformed.position.x + transformed.width * (normalizeValue)-m_imgHandle->transformed.width * 0.5f;
+		m_imgHandle->position.y = transformed.position.y;
+		break;
+	case SliderDirection::RightToLeft:
+		m_imgHandle->position.x = transformed.position.x + transformed.width * (1 - normalizeValue) - m_imgHandle->transformed.width * 0.5f;
+		m_imgHandle->position.y = transformed.position.y;
+		break;
+	case SliderDirection::BottomToTop:
+		m_imgHandle->position.y = transformed.position.y + transformed.height * (1 - normalizeValue) - m_imgHandle->transformed.height * 0.5f;
+		m_imgHandle->position.x = transformed.position.x;
+		break;
+	case SliderDirection::TopToBottom:
+		m_imgHandle->position.y = transformed.position.y + transformed.height * (normalizeValue)-m_imgHandle->transformed.height * 0.5f;
+		m_imgHandle->position.x = transformed.position.x;
+		break;
+	}
 }
 
 void vbSlider::draw()
 {
-	vbGraphicObject::draw();
+	//vbGraphicObject::draw();
 	float normalizeValue = (m_value - m_min) / (m_max - m_min);
 	Rectangle valueRect = {};
 	Rectangle remainRect = {};
@@ -148,7 +194,17 @@ void vbSlider::draw()
 	if(m_imgFill->getTexture() == NULL)
 		DrawRectangleRec(remainRect, m_remainColor);
 	else
+	{
+		BeginScissorMode(valueRect.x, valueRect.y, valueRect.width, valueRect.height);
 		this->m_imgFill->draw();
+		EndScissorMode();
+	}
+
+	if (m_imgHandle->getTexture() != NULL)
+	{
+		this->m_imgHandle->draw();
+	}
+		
 }
 
 void vbSlider::setMax(const float& max)
@@ -178,4 +234,7 @@ void vbSlider::setValue(const float& value)
 	m_value = value;
 	if(m_onChangeValueCallback != nullptr)
 		m_onChangeValueCallback(*this);
+
+	
 }
+

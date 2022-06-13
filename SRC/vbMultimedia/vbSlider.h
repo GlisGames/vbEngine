@@ -1,11 +1,9 @@
 #ifndef VB_SLIDER_H
 #define VB_SLIDER_H
 
+#include "vbContainer.h"
 #include "basetypes.h"
-#include "vbTextBox.h"
-#include "vbImage.h"
 #include "raylib.h"
-#include "vbLivingObject.h"
 #include <functional>
 #include <stdexcept>
 
@@ -17,10 +15,11 @@ enum class SliderDirection
 	TopToBottom
 };
 
-class vbSlider: public vbGraphicObject
+class vbSlider: public vbContainer
 {
 public:
 	vbSlider(const Rectangle& boundingArea, const SliderDirection& direct = SliderDirection::LeftToRight, const Color& valueColor = RED, const Color& remainColor = BLUE);
+	vbSlider(const Vector2& boundingArea, const SliderDirection& direct, Texture2D* track, Texture2D* fill, Texture2D* handle);
 	vbSlider(const vbSlider& slider);
 	vbSlider& operator=(const vbSlider& slider);
 	virtual ~vbSlider();
@@ -53,7 +52,8 @@ public:
 	const vbImage* imgFill() const;
 	const vbImage* imgHandle() const;
 
-	//lock to avoid change the image
+	//lock to avoid change the vbImage, if you wanna style one of them, just give it a name
+
 	vbImage& imgTrack();
 	vbImage& imgFill();
 	vbImage& imgHandle();
@@ -66,9 +66,11 @@ protected:
 	std::function<void(const vbSlider&)> m_onChangeValueCallback;
 	Color m_valueColor;
 	Color m_remainColor;
+	
 	vbImage* m_imgTrack;
 	vbImage* m_imgFill;
 	vbImage* m_imgHandle;
+
 
 };
 
@@ -146,5 +148,6 @@ inline vbImage& vbSlider::imgHandle()
 {
 	return *m_imgHandle;
 }
+
 
 #endif // !VB_SLIDER_H
