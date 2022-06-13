@@ -43,7 +43,9 @@ void vbContainer::update()
 			BOOL parentClickable = (this->parentContainer) ? this->parentContainer->transformed.canBeClicked : TRUE;
 			if (parentClickable && this->transformed.canBeClicked // no clicks done yet
 				&& go->isClickable && go->visible && visible // is visible and clickable
-				&& IsMouseButtonPressed(0) && go->isMouseOver()) // and clicked
+			
+				&& (IsMouseButtonDown(0) || IsMouseButtonPressed(0)) && go->isMouseOver()
+			) // and clicked
 			{
 				go->setClick(TRUE);
 				this->transformed.canBeClicked = FALSE;

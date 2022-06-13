@@ -3,6 +3,7 @@
 
 #include "basetypes.h"
 #include "vbTextBox.h"
+#include "vbImage.h"
 #include "raylib.h"
 #include "vbLivingObject.h"
 #include <functional>
@@ -45,7 +46,8 @@ public:
 
 	const SliderDirection& direct() const;
 	SliderDirection& direct();
-
+	vbImage *imgSlider = NULL;
+	vbImage *imgBar = NULL;
 	void setOnValueChangeCallback(const std::function<void(const vbSlider&)>& callback);
 
 protected:
