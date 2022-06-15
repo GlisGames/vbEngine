@@ -45,6 +45,14 @@
 #include "UtilityMath.h"
 #include "vbGraphicText.h"
 
+//SPINE
+#include "spine/spine.h"
+#include "spine-raylib.h"
+#include "riconsdata.h"
+#include "glad.h"
+#include "gui_textbox_extended.h"
+#include "raygui.h"
+
 using namespace std;
 
 #endif

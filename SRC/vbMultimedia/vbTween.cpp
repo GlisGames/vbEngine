@@ -286,7 +286,7 @@ void vbTweenMap::stepAll()
 			}
 		}
 
-		if (itw->second.currStep == 0 && itw->second.callbackStart != NULL)
+		if (itw->second.currStep == 0 && itw->second.callbackStart != NULL && itw->second.enabled)
 		{
 			itw->second.callbackStart();
 			itw->second.callbackStart = NULL;
