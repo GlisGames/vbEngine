@@ -136,7 +136,7 @@ void engine_drawMesh(Vertex *vertices, int start, int count, Texture *texture, V
 Texture2D *texture_2d_create(char *path) {
     tm_textures[texture_index] = LoadTexture(path);
     Texture2D *t = &tm_textures[texture_index];
-    SetTextureFilter(*t, RL_TEXTURE_FILTER_BILINEAR);
+    SetTextureFilter(*t, RL_TEXTURE_FILTER_BILINEAR); // FIXME
     texture_index++;
     return t;
 }
@@ -236,16 +236,16 @@ void drawSkeleton(spSkeleton *skeleton, Vector3 position, bool PMA) {
                 switch (blend_mode)
                 {
                     default: //Normal
-                        rlSetBlendFactors(PMA ? GL_ONE : GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_FUNC_ADD);
+                        rlSetBlendMode(PMA ? GL_ONE : GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_FUNC_ADD);
                         break;
                     case 1: //Additive
-                        rlSetBlendFactors(PMA ? GL_ONE : GL_SRC_ALPHA, GL_ONE, GL_FUNC_ADD);
+                        rlSetBlendMode(PMA ? GL_ONE : GL_SRC_ALPHA, GL_ONE, GL_FUNC_ADD);
                         break;
                     case 2: //Multiply
-                        rlSetBlendFactors(GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA, GL_FUNC_ADD);
+                        rlSetBlendMode(GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA, GL_FUNC_ADD);
                         break;
                     case 3: //Screen
-                        rlSetBlendFactors(GL_ONE, GL_ONE_MINUS_SRC_COLOR, GL_FUNC_ADD);
+                        rlSetBlendMode(GL_ONE, GL_ONE_MINUS_SRC_COLOR, GL_FUNC_ADD);
                         break;
                 }
                 BeginBlendMode(BLEND_CUSTOM); 
@@ -291,16 +291,16 @@ void drawSkeleton(spSkeleton *skeleton, Vector3 position, bool PMA) {
                 switch (blend_mode)
                 {
                     default: //Normal
-                        rlSetBlendFactors(PMA ? GL_ONE : GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_FUNC_ADD);
+                        rlSetBlendMode(PMA ? GL_ONE : GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_FUNC_ADD);
                         break;
                     case 1: //Additive
-                        rlSetBlendFactors(PMA ? GL_ONE : GL_SRC_ALPHA, GL_ONE, GL_FUNC_ADD);
+                        rlSetBlendMode(PMA ? GL_ONE : GL_SRC_ALPHA, GL_ONE, GL_FUNC_ADD);
                         break;
                     case 2: //Multiply
-                        rlSetBlendFactors(GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA, GL_FUNC_ADD);
+                        rlSetBlendMode(GL_DST_COLOR, GL_ONE_MINUS_SRC_ALPHA, GL_FUNC_ADD);
                         break;
                     case 3: //Screen
-                        rlSetBlendFactors(GL_ONE, GL_ONE_MINUS_SRC_COLOR, GL_FUNC_ADD);
+                        rlSetBlendMode(GL_ONE, GL_ONE_MINUS_SRC_COLOR, GL_FUNC_ADD);
                         break;
                 }
                 BeginBlendMode(BLEND_CUSTOM); 
