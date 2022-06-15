@@ -134,7 +134,7 @@ void vbSlider::update()
 
 void vbSlider::draw()
 {
-	//vbGraphicObject::draw();
+	vbGraphicObject::draw();
 	float normalizeValue = (m_value - m_min) / (m_max - m_min);
 	Rectangle valueRect = {};
 	Rectangle remainRect = {};
