@@ -43,7 +43,7 @@
     <ClInclude Include="..\..\SRC\spine\extension.h" />
     <ClInclude Include="..\..\SRC\spine\IkConstraint.h" />
     <ClInclude Include="..\..\SRC\spine\IkConstraintData.h" />
-    <ClInclude Include="..\..\SRC\spine\Json.h" />
+    <ClInclude Include="..\..\SRC\spine\JsonSpine.h" />
     <ClInclude Include="..\..\SRC\spine\MeshAttachment.h" />
     <ClInclude Include="..\..\SRC\spine\PathAttachment.h" />
     <ClInclude Include="..\..\SRC\spine\PathConstraint.h" />
@@ -175,6 +175,45 @@
     <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\SRC\spine\Animation.cpp" />
+    <ClCompile Include="..\..\SRC\spine\AnimationState.cpp" />
+    <ClCompile Include="..\..\SRC\spine\AnimationStateData.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Array.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Atlas.cpp" />
+    <ClCompile Include="..\..\SRC\spine\AtlasAttachmentLoader.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Attachment.cpp" />
+    <ClCompile Include="..\..\SRC\spine\AttachmentLoader.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Bone.cpp" />
+    <ClCompile Include="..\..\SRC\spine\BoneData.cpp" />
+    <ClCompile Include="..\..\SRC\spine\BoundingBoxAttachment.cpp" />
+    <ClCompile Include="..\..\SRC\spine\ClippingAttachment.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Color.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Event.cpp" />
+    <ClCompile Include="..\..\SRC\spine\EventData.cpp" />
+    <ClCompile Include="..\..\SRC\spine\extension.cpp" />
+    <ClCompile Include="..\..\SRC\spine\IkConstraint.cpp" />
+    <ClCompile Include="..\..\SRC\spine\IkConstraintData.cpp" />
+    <ClCompile Include="..\..\SRC\spine\JsonSpine.cpp" />
+    <ClCompile Include="..\..\SRC\spine\MeshAttachment.cpp" />
+    <ClCompile Include="..\..\SRC\spine\PathAttachment.cpp" />
+    <ClCompile Include="..\..\SRC\spine\PathConstraint.cpp" />
+    <ClCompile Include="..\..\SRC\spine\PathConstraintData.cpp" />
+    <ClCompile Include="..\..\SRC\spine\PointAttachment.cpp" />
+    <ClCompile Include="..\..\SRC\spine\RegionAttachment.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Skeleton.cpp" />
+    <ClCompile Include="..\..\SRC\spine\SkeletonBinary.cpp" />
+    <ClCompile Include="..\..\SRC\spine\SkeletonBounds.cpp" />
+    <ClCompile Include="..\..\SRC\spine\SkeletonClipping.cpp" />
+    <ClCompile Include="..\..\SRC\spine\SkeletonData.cpp" />
+    <ClCompile Include="..\..\SRC\spine\SkeletonJson.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Skin.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Slot.cpp" />
+    <ClCompile Include="..\..\SRC\spine\SlotData.cpp" />
+    <ClCompile Include="..\..\SRC\spine\TransformConstraint.cpp" />
+    <ClCompile Include="..\..\SRC\spine\TransformConstraintData.cpp" />
+    <ClCompile Include="..\..\SRC\spine\Triangulator.cpp" />
+    <ClCompile Include="..\..\SRC\spine\VertexAttachment.cpp" />
+    <ClCompile Include="..\..\SRC\spine\VertexEffect.cpp" />
     <ClCompile Include="..\..\SRC\UtilityMath.cpp" />
     <ClCompile Include="..\..\..\raylib\src\raudio.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>

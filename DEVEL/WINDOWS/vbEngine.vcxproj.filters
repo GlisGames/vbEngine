@@ -395,7 +395,7 @@
     <ClInclude Include="..\..\SRC\spine\IkConstraintData.h">
       <Filter>spine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\spine\Json.h">
+    <ClInclude Include="..\..\SRC\spine\JsonSpine.h">
       <Filter>spine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\SRC\spine\MeshAttachment.h">
@@ -749,6 +749,123 @@
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp">
       <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SkeletonClipping.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SkeletonData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SkeletonJson.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Skin.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Slot.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SlotData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\TransformConstraint.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\TransformConstraintData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Triangulator.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\VertexAttachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\VertexEffect.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Animation.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\AnimationState.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\AnimationStateData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Array.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Atlas.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\AtlasAttachmentLoader.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Attachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\AttachmentLoader.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Bone.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\BoneData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\BoundingBoxAttachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\ClippingAttachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Color.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Event.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\EventData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\extension.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\IkConstraint.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\IkConstraintData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\JsonSpine.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\MeshAttachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\PathAttachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\PathConstraint.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\PathConstraintData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\PointAttachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\RegionAttachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Skeleton.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SkeletonBinary.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SkeletonBounds.cpp">
+      <Filter>spine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

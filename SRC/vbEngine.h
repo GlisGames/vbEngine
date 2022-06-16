@@ -19,7 +19,8 @@
 #include "vbContainer.h"
 #include "vbEasing.h"
 #include "vbErrors.h"
-#include "vbGame.h"
+#include "game/vbGame.h"
+#include "game/vbState.h"
 #include "vbGraphicObject.h"
 #include "vbGPIO.h"
 #include "vbImage.h"
@@ -30,7 +31,6 @@
 #include "vbRenderer.h"
 #include "vbSequence.h"
 #include "vbRectangle.h"
-#include "vbState.h"
 #include "vbStyle.h"
 #include "vbTextBox.h"
 #include "vbTextEngine.h"
@@ -46,10 +46,10 @@
 #include "vbGraphicText.h"
 
 //SPINE
-#include "spine/spine.h"
-#include "riconsdata.h"
+#include <spine/spine.h>
 #include "glad.h"
-#include "raygui.h"
+#include "gui_textbox_extended.h"
+#include "riconsdata.h"
 
 using namespace std;
 
