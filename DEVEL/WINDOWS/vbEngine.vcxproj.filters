@@ -338,6 +338,8 @@
     <ClInclude Include="..\..\SRC\gui_textbox_extended.h" />
     <ClInclude Include="..\..\SRC\riconsdata.h" />
     <ClInclude Include="..\..\SRC\spine-raylib.h" />
+    <ClInclude Include="..\..\SRC\glad.h" />
+    <ClInclude Include="..\..\SRC\raygui.h" />
     <ClInclude Include="..\..\SRC\spine\Animation.h">
       <Filter>spine</Filter>
     </ClInclude>
@@ -461,8 +463,6 @@
     <ClInclude Include="..\..\SRC\spine\VertexEffect.h">
       <Filter>spine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\SRC\glad.h" />
-    <ClInclude Include="..\..\SRC\raygui.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -750,39 +750,6 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbRectangle.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\SkeletonClipping.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\SkeletonData.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\SkeletonJson.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\Skin.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\Slot.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\SlotData.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\TransformConstraint.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\TransformConstraintData.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\Triangulator.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\VertexAttachment.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\SRC\spine\VertexEffect.cpp">
-      <Filter>spine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\SRC\spine\Animation.cpp">
       <Filter>spine</Filter>
     </ClCompile>
@@ -865,6 +832,39 @@
       <Filter>spine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\spine\SkeletonBounds.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SkeletonClipping.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SkeletonData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SkeletonJson.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Skin.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Slot.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\SlotData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\TransformConstraint.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\TransformConstraintData.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\Triangulator.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\VertexAttachment.cpp">
+      <Filter>spine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\spine\VertexEffect.cpp">
       <Filter>spine</Filter>
     </ClCompile>
   </ItemGroup>
