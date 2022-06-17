@@ -463,6 +463,12 @@
     <ClInclude Include="..\..\SRC\spine\VertexEffect.h">
       <Filter>spine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\hdtldecl.h" />
+    <ClInclude Include="..\..\SRC\spine-hittest.h" />
+    <ClInclude Include="..\..\SRC\spine-export.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbSpineObject.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -867,5 +873,13 @@
     <ClCompile Include="..\..\SRC\spine\VertexEffect.cpp">
       <Filter>spine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\spine-raylib.cpp" />
+    <ClCompile Include="..\..\SRC\spine-hittest.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSpineObject.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

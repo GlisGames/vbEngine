@@ -21,8 +21,11 @@
   <ItemGroup>
     <ClInclude Include="..\..\SRC\glad.h" />
     <ClInclude Include="..\..\SRC\gui_textbox_extended.h" />
+    <ClInclude Include="..\..\SRC\hdtldecl.h" />
     <ClInclude Include="..\..\SRC\raygui.h" />
     <ClInclude Include="..\..\SRC\riconsdata.h" />
+    <ClInclude Include="..\..\SRC\spine-export.h" />
+    <ClInclude Include="..\..\SRC\spine-hittest.h" />
     <ClInclude Include="..\..\SRC\spine-raylib.h" />
     <ClInclude Include="..\..\SRC\spine\Animation.h" />
     <ClInclude Include="..\..\SRC\spine\AnimationState.h" />
@@ -164,6 +167,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSequence.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbImage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbShape.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbSpineObject.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTexture.h" />
@@ -175,6 +179,8 @@
     <ClInclude Include="..\..\SRC\vbUtils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\SRC\spine-hittest.cpp" />
+    <ClCompile Include="..\..\SRC\spine-raylib.cpp" />
     <ClCompile Include="..\..\SRC\spine\Animation.cpp" />
     <ClCompile Include="..\..\SRC\spine\AnimationState.cpp" />
     <ClCompile Include="..\..\SRC\spine\AnimationStateData.cpp" />
@@ -339,6 +345,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbShape.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSpineObject.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -350,6 +357,9 @@
     <ClCompile Include="..\..\SRC\vbStyle.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />
     <ClCompile Include="..\..\SRC\vbUtils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DCC81AC0-F29F-49F9-8FCD-757D005A27F0}</ProjectGuid>

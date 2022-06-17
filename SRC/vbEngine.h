@@ -44,6 +44,7 @@
 #include "vbContactListener.h"
 #include "UtilityMath.h"
 #include "vbGraphicText.h"
+#include "vbSpineObject.h"
 
 //SPINE
 #include <spine/spine.h>
