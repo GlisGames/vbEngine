@@ -32,6 +32,7 @@ enum TYPE_GAME_STATE
 	S_CONTROL,	//!< Stato di valutazione delle configurazioni presenti sui rulli
 	S_ENTER_HIGHSCORE,	
 	S_HIGHSCORE,		
+	S_ERROR,		
 #if GAME_TYPE&AWP_GAME
 	S_MISTERYWIN = 21,
 	S_ARROTONDA = 22,	//!< Stato di arrotondamento della vincita
