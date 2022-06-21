@@ -15,8 +15,8 @@ public:
 	spSkeleton* skeleton;
 	spAnimationStateData* animationStateData;
 	spAnimationState* animationState;
-
-	void doAnimation(const char* animation_name, DWORD repeat);
+	
+	void doAnimation(const char* animation_name, DWORD repeat, FLOAT delayinSecond = 0);
 	void update();
 	void draw();
 

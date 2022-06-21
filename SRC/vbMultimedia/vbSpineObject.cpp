@@ -15,7 +15,7 @@ vbSpineObject::vbSpineObject(const char* atlas_path, const char* json_path, Vect
         spSkeletonJson_dispose(json);
         printf("ERROR!\n");
     }
-
+    
     spBone_setYDown(true);
     skeleton = spSkeleton_create(skeletonData);
     skeleton->scaleX = 0.3;
@@ -26,7 +26,7 @@ vbSpineObject::vbSpineObject(const char* atlas_path, const char* json_path, Vect
     animationState = spAnimationState_create(animationStateData);
 }
 
-void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat)  // repeat = -1 : loop indefinitely
+void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat, FLOAT delayinSecond = 0)  // repeat = -1 : loop indefinitely
 {
     if (spSkeletonData_findAnimation(skeletonData, animation_name) == 0)
     {
@@ -36,14 +36,13 @@ void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat)  // re
     
     if (repeat == -1)
     {
-        spAnimationState_setAnimationByName(animationState, 0, animation_name, 1);
+        spAnimationState_addAnimationByName(animationState, 0, animation_name, 1, delayinSecond);
     }
     else
     {
-        for (int i = 0; i < repeat; i++)
+        myfor(i, < , repeat)
         {
-            printf("%d\n", spSkeletonData_findAnimation(skeletonData, animation_name)->duration);
-            spAnimationState_setAnimationByName(animationState, 0, animation_name, i * spSkeletonData_findAnimation(skeletonData, animation_name)->duration);
+            spAnimationState_addAnimationByName(animationState, i, animation_name, 0, i * (delayinSecond + (FLOAT)spSkeletonData_findAnimation(skeletonData, animation_name)->duration));
         }
     }
 }
