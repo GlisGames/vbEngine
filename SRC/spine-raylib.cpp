@@ -94,7 +94,8 @@ rlSetTexture(0);
 void engine_drawMesh(Vertex* vertices, int start, int count, Texture* texture, Vector3 position, int* vertex_order) {
     Vertex vertex;
     {
-        for (int vertexIndex = start; vertexIndex < count; vertexIndex += 3) {
+        for (int vertexIndex = start; vertexIndex < count; vertexIndex += 3) 
+        {
             rlSetTexture(texture->id);
             rlBegin(RL_QUADS);
             {
@@ -103,9 +104,9 @@ void engine_drawMesh(Vertex* vertices, int start, int count, Texture* texture, V
                     vertex = vertices[vertexIndex + i];
                     rlTexCoord2f(vertex.u, vertex.v);
                     rlColor4f(vertex.r, vertex.g, vertex.b, vertex.a);
-                    rlVertex3f(vertex.x, vertex.y, anti_z_fighting_index);
+                    rlVertex3f(vertex.x + position.x, vertex.y + position.y, position.z - anti_z_fighting_index);
                 }
-                rlVertex3f(vertex.x, vertex.y, anti_z_fighting_index);
+                rlVertex3f(vertex.x + position.x, vertex.y + position.y, position.z - anti_z_fighting_index);
             }
             rlEnd();
 #ifdef SP_DRAW_DOUBLE_FACED
@@ -114,11 +115,11 @@ void engine_drawMesh(Vertex* vertices, int start, int count, Texture* texture, V
 #endif
 
 #ifdef SP_RENDER_WIREFRAME
-            DrawTriangleLines((Vector2) { vertices[vertexIndex].x + position.x, vertices[vertexIndex].y + position.y },
-                (Vector2) {
+            DrawTriangleLines({ vertices[vertexIndex].x + position.x, vertices[vertexIndex].y + position.y },
+                 {
                 vertices[vertexIndex + 1].x + position.x, vertices[vertexIndex + 1].y + position.y
             },
-                (Vector2) {
+                 {
                 vertices[vertexIndex + 2].x + position.x, vertices[vertexIndex + 2].y + position.y
             }, vertexIndex == 0 ? RED : GREEN);
 #endif
@@ -260,12 +261,13 @@ void drawSkeleton(spSkeleton* skeleton, Vector3 position, bool PMA) {
                     break;
                 }
 
-                BeginBlendMode(BLEND_ALPHA);
+                BeginBlendMode(BLEND_CUSTOM);
             }
 
             engine_draw_region(vertices, texture, position, vertex_order);
         }
         else if (attachment->type == SP_ATTACHMENT_MESH) {
+            //continue;
             // Cast to an spMeshAttachment so we can get the rendererObject
             // and compute the world vertices
             spMeshAttachment* mesh = (spMeshAttachment*)attachment;
@@ -320,7 +322,7 @@ void drawSkeleton(spSkeleton* skeleton, Vector3 position, bool PMA) {
                     rlSetBlendMode(RL_BLEND_CUSTOM);
                     break;
                 }
-                BeginBlendMode(BLEND_ALPHA);
+                BeginBlendMode(BLEND_CUSTOM);
             }
             // Draw the mesh we created for the attachment
             engine_drawMesh(vertices, 0, vertexIndex, texture, position, vertex_order);

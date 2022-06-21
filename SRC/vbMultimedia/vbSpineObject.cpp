@@ -26,7 +26,7 @@ vbSpineObject::vbSpineObject(const char* atlas_path, const char* json_path, Vect
     animationState = spAnimationState_create(animationStateData);
 }
 
-void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat, FLOAT delayinSecond = 0)  // repeat = -1 : loop indefinitely
+void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat, FLOAT delayinSecond)  // repeat = -1 : loop indefinitely
 {
     if (spSkeletonData_findAnimation(skeletonData, animation_name) == 0)
     {
