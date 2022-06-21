@@ -164,19 +164,6 @@ void _spAtlasPage_createTexture(spAtlasPage* self, const char* path) {
 int VERTEX_ORDER_NORMAL[] = { 0, 1, 2, 4 };
 int VERTEX_ORDER_INVERSE[] = { 4, 2, 1, 0 };
 
-//// Definition from glad.h
-//#define GL_ZERO 0
-//#define GL_ONE 1
-//#define GL_SRC_COLOR 0x0300
-//#define GL_ONE_MINUS_SRC_COLOR 0x0301
-//#define GL_SRC_ALPHA 0x0302
-//#define GL_ONE_MINUS_SRC_ALPHA 0x0303
-//#define GL_DST_ALPHA 0x0304
-//#define GL_ONE_MINUS_DST_ALPHA 0x0305
-//#define GL_DST_COLOR 0x0306
-//#define GL_ONE_MINUS_DST_COLOR 0x0307
-//#define GL_SRC_ALPHA_SATURATE 0x0308
-//#define GL_FUNC_ADD 0x8006
 #include <glad.h>
 
 void drawSkeleton(spSkeleton* skeleton, Vector3 position, bool PMA) {

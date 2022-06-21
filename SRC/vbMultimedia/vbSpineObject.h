@@ -1,9 +1,10 @@
 #ifndef VBSPINEOBJECT_H
 #define VBSPINEOBJECT_H
 
+#include "vbGraphicObject.h"
 #include "spine-raylib.h"
 
-class vbSpineObject
+class vbSpineObject : public vbGraphicObject
 {
 public:
 	vbSpineObject(const char* atlas_path, const char* json_path, Vector2 _position);
@@ -14,8 +15,8 @@ public:
 	spSkeleton* skeleton;
 	spAnimationStateData* animationStateData;
 	spAnimationState* animationState;
-	Vector3 position;
 
+	void doAnimation(const char* animation_name, DWORD repeat);
 	void update();
 	void draw();
 
