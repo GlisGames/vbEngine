@@ -120,6 +120,7 @@
     <ClInclude Include="..\..\SRC\vbGPIO.h" />
     <ClInclude Include="..\..\SRC\vbTimer.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\DeveloperInfoObject.h" />
+    <ClInclude Include="..\..\SRC\vbAudio.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -225,5 +226,6 @@
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbTimer.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\DeveloperInfoObject.cpp" />
+    <ClCompile Include="..\..\SRC\vbAudio.cpp" />
   </ItemGroup>
 </Project>

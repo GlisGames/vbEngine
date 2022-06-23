@@ -28,6 +28,7 @@
     <ClInclude Include="..\..\..\raylib\src\rlgl.h" />
     <ClInclude Include="..\..\..\raylib\src\utils.h" />
     <ClInclude Include="..\..\SRC\basetypes.h" />
+    <ClInclude Include="..\..\SRC\vbAudio.h" />
     <ClInclude Include="..\..\SRC\vbEngine.h" />
     <ClInclude Include="..\..\SRC\text\vbFont.h" />
     <ClInclude Include="..\..\SRC\text\hb-ft.h" />
@@ -93,6 +94,7 @@
     <ClCompile Include="..\..\SRC\text\texture_atlas.cpp" />
     <ClCompile Include="..\..\SRC\text\text_render.cpp" />
     <ClCompile Include="..\..\SRC\text\text_run.cpp" />
+    <ClCompile Include="..\..\SRC\vbAudio.cpp" />
     <ClCompile Include="..\..\SRC\vbErrors.cpp" />
     <ClCompile Include="..\..\SRC\vbGPIO.cpp" />
     <ClCompile Include="..\..\SRC\vbLanguage.cpp" />
