@@ -126,7 +126,11 @@ BYTE vbStyleMap::loadStyle(vbString stylename, vbString filepath)
 					}
 
 					if (elem_string != NULL)
-						element.texture = pGAME->textureMap[elem_string->u.string.ptr];
+					{
+						element.texture = pGAME->textureMap.getTexturePtr(elem_string->u.string.ptr, TRUE);
+						if (element.texture == NULL)
+							element.fontName = elem_string->u.string.ptr;
+					}
 
 					newstyle.insert(make_pair(nam, element));
 				}
