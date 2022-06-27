@@ -44,6 +44,10 @@ public:
 	chrono::milliseconds getDuration();
 	void setInitTime();
 	void setDuration(chrono::milliseconds _duration, timer_callback callback = NULL);
+	BOOL isFinished()
+	{
+		return this->isTimesUp;
+	}
 
 	//template <class callable, class... arguments>
 	//void later(bool async, callable&& f, arguments&&... args); // TESTING Thread safe with callable 

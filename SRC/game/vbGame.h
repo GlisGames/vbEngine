@@ -26,6 +26,7 @@ public:
 	Vector2 gameResolution = { 0, 0 };
 	vbContainer* mainScene = NULL;
 	vbState* currentState;
+	TYPE_GAME_STATE systemState = S_SYS_GAME_RUN;
 	std::vector<vbState*> stateList;
 	std::map<std::string, Image> imageMapLocal;
 	std::vector<Image> atlasList;
