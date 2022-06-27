@@ -145,6 +145,12 @@ void vbGraphicObject::applyStyle(styleElement* prop)
 			tx = (vbImage*)(this);
 			tx->setTexture(prop->texture);
 		}
+		if (prop->fontName != NULL && this->type == TYPE_TEXT)
+		{
+			vbTextbox* textbox;
+			textbox = (vbTextbox*)this;
+			textbox->setFont(prop->fontName);
+		}
 	}
 }
 

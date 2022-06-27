@@ -159,7 +159,7 @@ void vbImageMap::addTexture(std::string texname, vbSpriteTexture tex)
 	this->insert(std::pair<std::string, vbSpriteTexture>(texname, tex));
 }
 
-vbSpriteTexture* vbImageMap::getTexturePtr(std::string str)
+vbSpriteTexture* vbImageMap::getTexturePtr(std::string str, BOOL searchOnly)
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::toupper);
 	vbImageMap::iterator it = this->find(str);
@@ -167,8 +167,11 @@ vbSpriteTexture* vbImageMap::getTexturePtr(std::string str)
 		return &this->at(str);
 	else
 	{
-		string msg = "TEXTURE '" + str + "' NOT FOUND";
-		PANIC(msg.c_str());
+		if (searchOnly == FALSE)
+		{
+			string msg = "TEXTURE '" + str + "' NOT FOUND";
+			PANIC(msg.c_str());
+		}
 		return NULL;
 	}
 }

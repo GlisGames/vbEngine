@@ -37,7 +37,7 @@ class vbImageMap : private std::map<std::string, vbSpriteTexture>
 {
 public:
 	void addTexture(std::string texname, vbSpriteTexture tex);
-	vbSpriteTexture* getTexturePtr(std::string str);
+	vbSpriteTexture* getTexturePtr(std::string str, BOOL searchOnly = FALSE);
 	vbSpriteTexture* operator [](std::string str);
 };
 
