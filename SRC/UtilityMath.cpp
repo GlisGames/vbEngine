@@ -47,3 +47,14 @@ int cmpFloat(const float& first, const float& second, const float& epsilon)
 
 	return -1;
 }
+
+Color convertIntToColor(const std::uint32_t& code)
+{
+	return Color
+	{ 
+		static_cast<unsigned char>((code & 0xff000000) >> 24) , 
+		static_cast<unsigned char>((code & 0xff0000) >> 16) ,
+		static_cast<unsigned char>((code & 0xff00) >> 8) ,
+		static_cast<unsigned char>(code & 0xff)
+	};
+}
