@@ -6,4 +6,4 @@
 #include "hdtldecl.h"
 
 void texture_2d_destroy();
-HDTLAPI void drawSkeleton(spSkeleton* skeleton, Vector3 position, bool PMA);
+void drawSkeleton(spSkeleton* skeleton, Vector3 position, bool PMA);
