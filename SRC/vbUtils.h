@@ -4,6 +4,7 @@
 #include <locale>
 #include <codecvt>
 #include <string>
+#include <random>
 namespace Frames
 {
 	static BOOL afterAndEvery(QWORD currentFrame, QWORD after, QWORD every)
@@ -71,5 +72,8 @@ static bool IsKeyPressedAny()
 		IsKeyPressed(KEY_BACKSPACE));
 }
 
+//get uuid
+//reference: https://github.com/TheCherno/Hazel/blob/215d4953e07c56bc22adc4652d3f3ad8f9381564/Hazel/src/Hazel/Core/UUID.cpp
+std::uint64_t getUUID();
 
 #endif
