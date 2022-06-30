@@ -36,12 +36,12 @@ enum TYPE_GAME_STATE
 	S_SYS_ERROR,
 	S_SYS_SUSPEND,
 #if GAME_TYPE&AWP_GAME
-	S_MISTERYWIN = 21,
-	S_ARROTONDA = 22,	//!< Stato di arrotondamento della vincita
+	S_MISTERYWIN = 27,
+	S_ARROTONDA = 28,	//!< Stato di arrotondamento della vincita
 #endif
-	S_LOADING = 23, 
-	S_BONUS_ONE = 24,
-	S_BONUS_TWO = 25
+	S_LOADING = 29, 
+	S_BONUS_ONE = 30,
+	S_BONUS_TWO = 31
 };
 
 class vbState
