@@ -326,7 +326,8 @@ void vbTweenMap::stepAll()
 	for (WORD i = 0; i < nextList.size(); i++)
 	{
 		nextList[i]->enabled = TRUE;
-		//this->addtween("next", *nextList[i]);
-		//nextList[i]->currStep = 1;
+		//use uuid to make sure that is only one 
+		this->addtween(std::to_string(getUUID()), *nextList[i]);
+		nextList[i]->currStep = 1;
 	}
 }

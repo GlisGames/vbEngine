@@ -169,6 +169,14 @@ BOOL vbGraphicObject::isClicked()
 	//return false;
 }
 
+BOOL vbGraphicObject::isMouseDown()
+{
+	if (this->enabled == FALSE)
+		return false;
+
+	return _isMouseDown;
+}
+
 BOOL vbGraphicObject::isMouseOver()
 {
 //	Vector2 windowSize = { (float)window_getInnerWidth(), (float)window_getInnerHeight() };
@@ -190,6 +198,8 @@ BOOL vbGraphicObject::isMouseOver()
 		return true;
 	return false;
 }
+
+
 
 WORD vbGraphicObject::getLayer()
 {

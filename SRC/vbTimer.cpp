@@ -42,9 +42,6 @@ void vbTimer::update(){
 	chrono::milliseconds t = monotonicMillis - initTime;
 	if (t >= this->duration) {
 		this->isTimesUp = TRUE;
-	}
-
-	if (this->isTimesUp) {
 		if (this->callbackEnd != NULL) {
 			this->callbackEnd();
 			this->initTime = monotonicMillis;
@@ -53,7 +50,6 @@ void vbTimer::update(){
 			this->endLambda();
 			this->initTime = monotonicMillis;
 		}
-		this->isTimesUp = FALSE;
 	}
 }
 // GETTERS & SETTERS

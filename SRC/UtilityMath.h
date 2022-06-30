@@ -2,10 +2,12 @@
 #define UTILITY_MATH_H
 
 #include "raylib.h"
+#include <cstdint>
 #include <cmath>
 #include <utility>
 #include <vector>
 #include <functional>
+#include <iostream>
 #define DEFAULT_CMP_FLOAT_EPSILON 0.01f
 
 #define SQUARE_VECTOR2_DISTANCE(vector2) ((vector2).x * (vector2).x + (vector2).y * (vector2).y)
@@ -23,6 +25,6 @@ float getAngleFromPoints(const Vector2& origin, const Vector2& destination);
 //make compare float become safer
 int cmpFloat(const float& first, const float& second, const float& epsilon = DEFAULT_CMP_FLOAT_EPSILON);
 
-
+Color convertIntToColor(const std::uint32_t& code);
 
 #endif

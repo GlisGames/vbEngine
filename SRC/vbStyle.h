@@ -14,7 +14,8 @@ class styleElement
 public:
 	Vector2* position;
 	Vector2* size;
-	vbSpriteTexture* texture;
+	vbSpriteTexture* texture = NULL;
+	vbString fontName = "";
 };
 
 class vbStyle : public map <vbString, styleElement>

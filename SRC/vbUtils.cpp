@@ -39,3 +39,12 @@ const char* formatMoney(DWORD value)
 	//return TextFormat(u8"€%.2f", (float)value / 100.0f);
 	return TextFormat("€%.2f", (float)value / 100.0f);
 }
+
+std::uint64_t getUUID()
+{
+	static std::random_device s_RandomDevice;
+	static std::mt19937_64 s_Engine(s_RandomDevice());
+	static std::uniform_int_distribution<uint64_t> s_UniformDistribution;
+
+	return s_UniformDistribution(s_Engine);
+}
