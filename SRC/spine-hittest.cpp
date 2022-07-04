@@ -185,7 +185,8 @@ int __cdecl Point_In_Polygon_2D1(float x, float y, size_t vl, float* ps)
 static float* tempVerts = NULL;
 static int tempVertsC = 0;
 
-__declspec(dllexport) int spSkeleton_containsPoint(spSkeleton* self, float px, float py) {
+//__declspec(dllexport) int spSkeleton_containsPoint(spSkeleton* self, float px, float py) {
+int spSkeleton_containsPoint(spSkeleton* self, float px, float py) {
 	float minX = 3.402823466e+38F;
 	float minY = 3.402823466e+38F;
 	float maxX = 1.175494351e-38F;

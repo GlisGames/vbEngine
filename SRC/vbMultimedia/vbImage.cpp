@@ -59,10 +59,6 @@ void vbImage::setup()
 void vbImage::draw()
 {
 	vbGraphicObject::draw();
-<<<<<<< HEAD
-=======
-	
->>>>>>> 63cb312c6d3b2f46966bd9c928efc838ceeeef93
 
 	if ((!this->isSpriteTexture && this->getTexture() != NULL) || (this->isSpriteTexture && this->getSpriteTexture() != NULL))
 	{

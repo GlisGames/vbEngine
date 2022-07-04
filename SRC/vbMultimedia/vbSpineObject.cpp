@@ -18,12 +18,17 @@ vbSpineObject::vbSpineObject(const char* atlas_path, const char* json_path, Vect
     
     spBone_setYDown(true);
     skeleton = spSkeleton_create(skeletonData);
-    skeleton->scaleX = 0.3;
-    skeleton->scaleY = 0.3;
+    skeleton->scaleX = 1;
+    skeleton->scaleY = 1;
 
     // Create the spAnimationStateData
     animationStateData = spAnimationStateData_create(skeletonData);
     animationState = spAnimationState_create(animationStateData);
+}
+
+DWORD vbSpineObject::getAnimationDurationByName(const char* animation_name)
+{
+    return spSkeletonData_findAnimation(skeletonData, animation_name)->duration * 1000;
 }
 
 void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat, FLOAT delayinSecond)  // repeat = -1 : loop indefinitely
