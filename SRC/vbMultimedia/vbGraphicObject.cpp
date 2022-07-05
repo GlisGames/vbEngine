@@ -151,6 +151,10 @@ void vbGraphicObject::applyStyle(styleElement* prop)
 			tb = (vbTextbox*)this;
 			tb->setFont(prop->fontName);
 		}
+		if (prop->scale != NULL)
+		{
+			this->scale = prop->scale;
+		}
 	}
 }
 

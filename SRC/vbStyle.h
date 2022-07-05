@@ -16,6 +16,7 @@ public:
 	Vector2* size;
 	vbSpriteTexture* texture = NULL;
 	vbString fontName = "";
+	FLOAT scale;
 };
 
 class vbStyle : public map <vbString, styleElement>

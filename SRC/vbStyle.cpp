@@ -94,13 +94,22 @@ BYTE vbStyleMap::loadStyle(vbString stylename, vbString filepath)
 					styleElement element = {0};
 					const json_value* first = slist->u.object.values[i].value->u.array.values[0];
 					const json_value* second = (slist->u.object.values[i].value->u.array.length == 2) ? second = slist->u.object.values[i].value->u.array.values[1] : NULL;
+					const json_value* third = (slist->u.object.values[i].value->u.array.length == 3) ? third = slist->u.object.values[i].value->u.array.values[2] : NULL;
 
 					const json_value* elem_coord = (first->type == json_array) ? first : NULL;
 					const json_value* elem_string = (first->type == json_string) ? first : NULL;
 
+					const json_value* elem_value = (first->type == json_double && second == NULL && third == NULL) ? first : NULL;
+
 					if (second != NULL)
 					{	if (second->type == json_array && elem_coord == NULL) elem_coord = second;
 						if (second->type == json_string && elem_string == NULL) elem_string = second;
+						if (second->type == json_double && third == NULL)  elem_value = second;
+					}
+					
+					if (third != NULL)
+					{
+						elem_value = third;
 					}
 
 					if (elem_coord != NULL) //we have coordinates
@@ -125,11 +134,16 @@ BYTE vbStyleMap::loadStyle(vbString stylename, vbString filepath)
 						}
 					}
 
-					if (elem_string != NULL)
+					if (elem_string != NULL) // we have texture
 					{
 						element.texture = pGAME->textureMap.getTexturePtr(elem_string->u.string.ptr, TRUE);
-						if (element.texture == NULL)
+						if (element.texture == NULL) // if string's not a texture name then it is font name
 							element.fontName = elem_string->u.string.ptr;
+					}
+
+					if (elem_value != NULL) // we have scale change
+					{
+						element.scale = elem_value->u.dbl;
 					}
 
 					newstyle.insert(make_pair(nam, element));
