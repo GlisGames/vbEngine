@@ -469,6 +469,12 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSpineObject.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbSlider.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbSound.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -876,6 +882,12 @@
     <ClCompile Include="..\..\SRC\spine-raylib.cpp" />
     <ClCompile Include="..\..\SRC\spine-hittest.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbSpineObject.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSound.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSlider.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
   </ItemGroup>

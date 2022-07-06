@@ -65,7 +65,10 @@ void vbImage::draw()
 		Vector2 origin = { 0,0 };
 		if (this->transformed.rotation != 0)
 		{	// here we change the point of origin so that the rotation point is centered, look inside 'DrawTexturePro' to know why
-			origin = { ((float)this->transformed.width / 2.0f), ((float)this->transformed.height / 2.0f)};
+			if(this->isSpriteTexture)
+				origin = { (this->spriteTexture->originalcut.width / 2.0f), (this->spriteTexture->originalcut.height / 2.0f) };
+			else
+				origin = { ((float)this->transformed.width / 2.0f), ((float)this->transformed.height / 2.0f)};
 			this->transformed.position.x += origin.x;
 			this->transformed.position.y += origin.y;
 		}
