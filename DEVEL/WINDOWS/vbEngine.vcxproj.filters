@@ -335,6 +335,9 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSlider.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbSound.h">
+      <Filter>vbMultimedia</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -623,6 +626,9 @@
       <Filter>vbMultimedia</Filter>
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbSlider.cpp">
+      <Filter>vbMultimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSound.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
   </ItemGroup>

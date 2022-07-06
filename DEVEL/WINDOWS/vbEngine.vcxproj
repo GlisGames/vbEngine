@@ -119,6 +119,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbImage.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbShape.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSlider.h" />
+    <ClInclude Include="..\..\SRC\vbMultimedia\vbSound.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextBox.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTextEngine.h" />
     <ClInclude Include="..\..\SRC\vbMultimedia\vbTexture.h" />
@@ -256,6 +257,7 @@
     </ClCompile>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbShape.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbSlider.cpp" />
+    <ClCompile Include="..\..\SRC\vbMultimedia\vbSound.cpp" />
     <ClCompile Include="..\..\SRC\vbMultimedia\vbTextBox.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
