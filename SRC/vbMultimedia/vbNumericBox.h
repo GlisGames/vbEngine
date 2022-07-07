@@ -27,8 +27,8 @@ public:
 	vbButton* cmdMinus = NULL;
 	vbTextbox* txtValue = NULL;
 	vbButton* cmdPlus = NULL;
-	Sound* soundMinus = NULL;
-	Sound* soundPlus = NULL;
+	DWORD soundMinus = NULL;
+	DWORD soundPlus = NULL;
 	std::function<void(vbNumericBox*)> minReachHandle;
 	std::function<void(vbNumericBox*)> maxReachHandle;
 

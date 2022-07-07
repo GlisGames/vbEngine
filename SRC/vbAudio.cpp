@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
+#include "raylib.h"
 #include "vbAudio.h"
 
 #define FADE_IN	1	//!< Indica se la risorsa audio deve essere eseguita con un fade d'ingresso 
@@ -99,6 +99,16 @@ int AU_Init(char *file_path, void *dev, WORD num_total_sound, AUDIO_RESOURCE_DES
 	fclose(_pFile);
 	free(_buffer);
 
+	return 0;
+}
+
+int vbLoadSound(vbString path)
+{
+	Wave wave = LoadWave(path.c_str());
+
+	//Sound sound = LoadSoundFromWave(wave);
+	NEA_LoadSound(wave.data, (wave.frameCount * wave.channels * sizeof(short)), wave.sampleRate, AL_FORMAT_STEREO16, 0);
+	UnloadWave(wave);       // Sound is loaded, we can unload wave
 	return 0;
 }
 

@@ -13,6 +13,10 @@
 
 #include "basetypes.h"
 
+#ifdef EMSCRIPTEN
+#define MAX_PATH 256
+#endif
+
 //! @def MAX_GAIN
 //! @brief Massimo valore del gain
 #define MAX_GAIN 100
@@ -41,7 +45,7 @@
 #define COMMON_AUDIO_RESOURCE_SET_ID 0
 //! @def GAME_AUDIO_RESOURCE_SET_ID
 //! @brief Indice per le risorse specifiche di gioco
-#define GAME_AUDIO_RESOURCE_SET_ID 1
+#define GAME_AUDIO_RESOURCE_SET_ID 0
 //! @def ALL_AUDIO_RESOURCE_SET_ID
 //! @brief Indice per entrambe le risorse 
 #define ALL_AUDIO_RESOURCE_SET_ID 2
@@ -114,6 +118,7 @@ extern TYPE_AUDIO_DEVICE Audio_Device;
 int AU_Init(char *file_path, void *dev, WORD num_total_sound, AUDIO_RESOURCE_DESCRIPTION * S_Res_Desc, unsigned short resID);
 int NEA_Init(void *adev, unsigned short resID);
 int NEA_LoadSound(void* data, unsigned long size,  float freq , int format, unsigned short resID);
+int vbLoadSound(vbString path);
 
 void NEA_PauseSound(unsigned short sound_id, WORD fade, WORD time);
 int NEA_Play(WORD pos, DWORD loops=0, DWORD volume=0);

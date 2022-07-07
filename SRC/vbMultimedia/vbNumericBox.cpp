@@ -1,4 +1,6 @@
 #include "vbEngine.h"
+#include "vbAudio.h"
+
 // INIT
 void vbNumericBox::init(Vector2 pos, Rectangle minus, Rectangle text, Rectangle plus) {
 	this->isAlive = TRUE;
@@ -47,7 +49,7 @@ void vbNumericBox::update() {
 			this->value -= this->increment;
 			this->setValue(this->value);
 			if (this->soundMinus != NULL)
-				PlaySound(*this->soundMinus);
+				NEA_Play(this->soundMinus, 0, 100);
 		}
 		else
 		{
@@ -59,7 +61,7 @@ void vbNumericBox::update() {
 			this->value += this->increment;
 			this->setValue(this->value);
 			if (this->soundPlus != NULL)
-				PlaySound(*this->soundPlus);
+				NEA_Play(this->soundPlus, 0, 100);
 		}
 		else
 		{
