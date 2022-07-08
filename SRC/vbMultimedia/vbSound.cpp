@@ -1,5 +1,6 @@
 #include "vbSound.h"
 #include "vbAudio.h"
+#include "vbErrors.h"
 
 vbSound::vbSound(vbString soundPath)
 {
@@ -46,6 +47,8 @@ void vbSound::loadSound(vbString soundPath)
 	int ret = vbLoadSound(soundPath);
 	if (ret != -1)
 		this->soundID = ret;
+	else
+		PANIC(TextFormat("Unable to load sound %s", soundPath.c_str()));
 }
 
 void vbSound::setup()
