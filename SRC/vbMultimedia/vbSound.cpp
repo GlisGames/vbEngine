@@ -12,7 +12,7 @@ void vbSound::play(DWORD volume, BOOL loop, DWORD fadeinFrames)
 	if (fadeinFrames)
 		vbPlaySoundFade(this->soundID, loop, volume, fadeinFrames);
 	else
-		vbPlaySound(this->soundID, loop);
+		vbPlaySound(this->soundID, loop, volume);
 
 	this->enabled = TRUE;
 }
