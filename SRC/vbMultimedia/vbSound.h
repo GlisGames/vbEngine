@@ -6,18 +6,15 @@
 class vbSound : public vbGameObject
 {
 private:
-	Sound sound;
-	int repeat = 0;
-	DWORD fadein = 0;
-	DWORD fadeout = 0;
-	QWORD startMillis = 0;
-	//vbTween twFades; //todo fading tween
+	DWORD soundID = 0;
 public:
-	vbSound(Sound thesound);
 	vbSound(vbString soundPath);
-	void play(int repeatFor = 1, DWORD _fadein = 0, DWORD _fadeout = 0);
-	void pause();
-	void stop();
+	vbSound() {};
+	void play(DWORD volume = 100, BOOL loop = FALSE, DWORD fadeinFrames = 0);
+	void pause(DWORD fadeFrames = 0);
+	void stop(DWORD fadeOutFrames = 0);
+	void setVolume(DWORD gain);
+	void loadSound(vbString soundPath);
 	~vbSound();
 	virtual void setup();
 	virtual void update();

@@ -1,40 +1,51 @@
 #include "vbSound.h"
-
-
-vbSound::vbSound(Sound thesound)
-{
-	this->sound = thesound;
-}
+#include "vbAudio.h"
 
 vbSound::vbSound(vbString soundPath)
 {
-	this->sound = LoadSound(soundPath.c_str());
+	this->loadSound(soundPath);
 }
 
-void vbSound::play(int repeatFor, DWORD fadein, DWORD fadeout)
+void vbSound::play(DWORD volume, BOOL loop, DWORD fadeinFrames)
 {
-	this->repeat = repeatFor;
-	PlaySound(this->sound);
+	if (fadeinFrames)
+		vbPlaySoundFade(this->soundID, loop, volume, fadeinFrames);
+	else
+		vbPlaySound(this->soundID, loop);
+
 	this->enabled = TRUE;
-	//this->startMillis = getMillis();
-	//TODO FADE
 }
 
-void vbSound::pause()
+void vbSound::pause(DWORD fadeFrames)
 {
-	PauseSound(this->sound);
+	vbPauseSound(this->soundID, 1, fadeFrames);
 	this->enabled = FALSE;
 }
 
-void vbSound::stop()
+void vbSound::stop(DWORD fadeOutFrames)
 {
-	StopSound(this->sound);
+	if (fadeOutFrames)
+		vbStopSoundFade(this->soundID, fadeOutFrames);
+	else
+		vbStopSound(this->soundID);
+
 	this->enabled = FALSE;
+}
+
+void vbSound::setVolume(DWORD gain)
+{
+	vbSetSoundVolume(this->soundID, gain);
 }
 
 vbSound::~vbSound()
 {
-	UnloadSound(this->sound);
+	vbKillSound(this->soundID);
+}
+void vbSound::loadSound(vbString soundPath)
+{
+	int ret = vbLoadSound(soundPath);
+	if (ret != -1)
+		this->soundID = ret;
 }
 
 void vbSound::setup()
@@ -44,16 +55,5 @@ void vbSound::setup()
 
 void vbSound::update()
 {
-	if (this->repeat < 0 || this->repeat)
-	{
-		if (!IsSoundPlaying(this->sound))
-		{
-			PlaySound(this->sound);
-			if (this->repeat) this->repeat--;
-		}
-	}
-
-	if (this->repeat == 0 && !IsSoundPlaying(this->sound))
-		this->enabled = FALSE;
 
 }

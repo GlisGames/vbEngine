@@ -80,6 +80,7 @@
     <ClInclude Include="..\..\SRC\box2d\dynamics\b2_polygon_contact.h" />
     <ClInclude Include="..\..\SRC\game\vbGame.h" />
     <ClInclude Include="..\..\SRC\game\vbState.h" />
+    <ClInclude Include="..\..\SRC\vbAudio.h" />
     <ClInclude Include="..\..\SRC\vbCamera.h" />
     <ClInclude Include="..\..\SRC\vbEngine.h" />
     <ClInclude Include="..\..\SRC\text\vbFont.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="..\..\SRC\text\texture_atlas.cpp" />
     <ClCompile Include="..\..\SRC\text\text_render.cpp" />
     <ClCompile Include="..\..\SRC\text\text_run.cpp" />
+    <ClCompile Include="..\..\SRC\vbAudio.cpp" />
     <ClCompile Include="..\..\SRC\vbCamera.cpp" />
     <ClCompile Include="..\..\SRC\vbErrors.cpp" />
     <ClCompile Include="..\..\SRC\vbEvent.cpp" />

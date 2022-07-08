@@ -11,6 +11,7 @@
 #include "raylib.h"
 #include "utils.h" 
 #include "json.h"
+#include "vbAudio.h"
 
 //MULTIMEDIA
 #include "vbAtlas.h"

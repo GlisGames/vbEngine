@@ -338,6 +338,7 @@
     <ClInclude Include="..\..\SRC\vbMultimedia\vbSound.h">
       <Filter>vbMultimedia</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SRC\vbAudio.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\SRC\vbMultimedia\vbGraphicObject.cpp">
@@ -631,5 +632,6 @@
     <ClCompile Include="..\..\SRC\vbMultimedia\vbSound.cpp">
       <Filter>vbMultimedia</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\SRC\vbAudio.cpp" />
   </ItemGroup>
 </Project>
