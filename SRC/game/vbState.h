@@ -41,7 +41,8 @@ enum TYPE_GAME_STATE
 #endif
 	S_LOADING = 29, 
 	S_BONUS_ONE = 30,
-	S_BONUS_TWO = 31
+	S_BONUS_TWO = 31,
+	S_FREESPIN = 32
 };
 
 class vbState

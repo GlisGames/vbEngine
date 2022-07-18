@@ -1,7 +1,7 @@
 #include "basetypes.h"
 #include "vbSpineObject.h"
 
-vbSpineObject::vbSpineObject(const char* atlas_path, const char* json_path, Vector2 _position) : vbGraphicObject()
+vbSpineObject::vbSpineObject(const char* atlas_path, const char* json_path, Vector2 _position, Vector2 scale) : vbGraphicObject() // position center
 {
     // Init spine
     position = { _position.x, _position.y};
@@ -18,8 +18,8 @@ vbSpineObject::vbSpineObject(const char* atlas_path, const char* json_path, Vect
     
     spBone_setYDown(true);
     skeleton = spSkeleton_create(skeletonData);
-    skeleton->scaleX = 1;
-    skeleton->scaleY = 1;
+    skeleton->scaleX = scale.x;
+    skeleton->scaleY = scale.y;
 
     // Create the spAnimationStateData
     animationStateData = spAnimationStateData_create(skeletonData);
@@ -31,8 +31,9 @@ DWORD vbSpineObject::getAnimationDurationByName(const char* animation_name)
     return spSkeletonData_findAnimation(skeletonData, animation_name)->duration * 1000;
 }
 
-void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat, FLOAT delayinSecond)  // repeat = -1 : loop indefinitely
+void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat, BOOL force, FLOAT delayinSecond)  // repeat = -1 : loop indefinitely
 {
+    if (force)    spAnimationState_clearTrack(animationState, 0);
     if (spSkeletonData_findAnimation(skeletonData, animation_name) == 0)
     {
         printf("animation doesn't exist.\n");
@@ -41,15 +42,20 @@ void vbSpineObject::doAnimation(const char* animation_name, DWORD repeat, FLOAT 
     
     if (repeat == -1)
     {
-        spAnimationState_addAnimationByName(animationState, 0, animation_name, 1, delayinSecond);
+        spAnimationState_addAnimationByName(animationState, 0, animation_name, 1, delayinSecond); // ONLY USE TRACK 0
     }
     else
     {
-        myfor(i, < , repeat)
+        for (int i = 0; i < repeat; i++)
         {
-            spAnimationState_addAnimationByName(animationState, i, animation_name, 0, i * (delayinSecond + (FLOAT)spSkeletonData_findAnimation(skeletonData, animation_name)->duration));
+            spAnimationState_addAnimationByName(animationState, 0, animation_name, 0, delayinSecond); // ONLY USE TRACK 0
         }
     }
+}
+
+void vbSpineObject::clearAnimation(DWORD track)
+{
+    spAnimationState_clearTrack(animationState, 0);
 }
 
 void vbSpineObject::update()
@@ -58,6 +64,7 @@ void vbSpineObject::update()
 
     spAnimationState_update(animationState, GetFrameTime());
     spAnimationState_apply(animationState, skeleton);
+    if (!spAnimationState_getCurrent(animationState, 0))    return;
     spSkeleton_updateWorldTransform(skeleton);
 }
 
