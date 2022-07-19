@@ -34,25 +34,46 @@ public:
 class vbButton : public vbContainer
 {
 private:
-	void init(hwButton bID, vbSpriteTexture* tex, Rectangle position, Color c = WHITE, vbString stext = "");
+	void init(hwButton bID, vbSpriteTexture* tex, Rectangle rect, Color c = WHITE, vbString stext = "");
 	void checkSize();
+	BOOL bWasMouseOver = FALSE;
+
 public:
 	vbButton();
 	~vbButton();
+	explicit vbButton(hwButton bID, Rectangle rect, Color c = WHITE, vbString stext = "");
+	explicit vbButton(hwButton bID, vbSpriteTexture* tex, Vector2 position, Color c = WHITE, vbString stext = "");
 	virtual void setup();
 	virtual void update();
 	virtual void draw();
+
+	hwButton buttonID;
 	vbImage* image = NULL;
 	vbTextbox* text = NULL;
 	void setImage(vbSpriteTexture* tex);
-	explicit vbButton(hwButton bID, Rectangle rect, Color c = WHITE, vbString stext = "");
-	explicit vbButton(hwButton bID, vbSpriteTexture* tex, Vector2 position, Color c = WHITE, vbString stext = "");
 	void setText(vbString stext, vbString appendText = "");
 	BYTE borderWidth = 0;
 	Color borderColor = BLACK;
+
+	/* Combine EventListener.setcallback and Event.subscribe together
+	Can be called anytime during the game to get a better control,
+	instead of hard-coding the subscribe() statement within init() */
+
+	void bindOnClick(std::function<void (vbButton*)> f);
+	void bindOnMouseOver(std::function<void(vbButton*)> f);
+	void bindOnMouseOut(std::function<void(vbButton*)> f);
+
+	/* The hard-coded mouse over logics written before,
+	turn off the color by percentage */
+	void useDefaultHolderEffect(float percent);
+
+protected:
 	vbEventListener<vbButton*> onClickListener;
-	hwButton buttonID;
 	vbEvent<vbButton*> onClick;
+	vbEventListener<vbButton*> onMouseOverListener;
+	vbEvent<vbButton*> onMouseOver;
+	vbEventListener<vbButton*> onMouseOutListener;
+	vbEvent<vbButton*> onMouseOut;
 };
 
 #endif // !VBBUTTON_H

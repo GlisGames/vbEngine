@@ -17,16 +17,24 @@ void vbButton::update()
 	vbContainer::update();
 	if (this->image != NULL)
 	{
-		if (this->isMouseOver() &&
-			(this->image->colour.r == this->image->fallbackColour.r) &&
-			(this->image->colour.g == this->image->fallbackColour.g) &&
-			(this->image->colour.b == this->image->fallbackColour.b))
+		// It was mouse over on the previous frame
+		if (this->bWasMouseOver)
 		{
-			this->image->colour = ColorTurnOffPercent(this->image->colour, 70.0f);
+			// not anymore, trigger mouse out event
+			if (!this->isMouseOver())
+			{
+				this->onMouseOut.trigger(this);
+				this->bWasMouseOver = FALSE;
+			}
 		}
-		else if (!this->isMouseOver())
+		else
 		{
-			this->image->colour = this->image->fallbackColour;
+			// It is mouse over right now, trigger mouse over event
+			if (this->isMouseOver())
+			{
+				this->onMouseOver.trigger(this);
+				this->bWasMouseOver = TRUE;
+			}
 		}
 	}
 	if (this->isClicked())
@@ -48,12 +56,12 @@ void vbButton::checkSize()
 	}
 }
 
-void vbButton::init(hwButton bID, vbSpriteTexture* tex, Rectangle position, Color c, vbString stext)
+void vbButton::init(hwButton bID, vbSpriteTexture* tex, Rectangle rect, Color c, vbString stext)
 {
 	this->isAlive = TRUE;
-	this->position = { position.x, position.y };
-	this->width = position.width;
-	this->height = position.height;
+	this->position = { rect.x, rect.y };
+	this->width = rect.width;
+	this->height = rect.height;
 	this->setImage(tex);
 	this->setText(stext);
 	if (this->image != NULL)
@@ -63,7 +71,6 @@ void vbButton::init(hwButton bID, vbSpriteTexture* tex, Rectangle position, Colo
 	}
 	this->isClickable = TRUE;
 	this->buttonID = bID;
-	this->onClick.subscribe(&this->onClickListener);
 }
 
 vbButton::vbButton() : vbContainer(0, 0)
@@ -81,6 +88,22 @@ vbButton::vbButton(hwButton bID, Rectangle rect, Color c, vbString stext)
 	:vbContainer(rect.width, rect.height)
 {
 	this->init(bID, NULL, rect, c, stext);
+}
+
+void vbButton::setImage(vbSpriteTexture* tex)
+{
+	if (this->image == NULL)
+	{
+		this->image = new vbImage(tex);
+		this->width = (FLOAT)tex->width;
+		this->height = (FLOAT)tex->height;
+		this->image->positioningRule = posRule::POS_CANVAS_RELATIVE;
+		this->image->regPointRule = transformRegRule::REG_CENTER;
+		this->image->position = { 0,0 };
+		this->addObject(this->image);
+	}
+	else
+		this->image->setTexture(tex);
 }
 
 void vbButton::setText(vbString stext, vbString appendText)
@@ -102,21 +125,37 @@ void vbButton::setText(vbString stext, vbString appendText)
 	}
 }
 
-void vbButton::setImage(vbSpriteTexture* tex)
+void vbButton::bindOnClick(std::function<void(vbButton*)> f)
 {
-	if (tex == NULL)
-		return;
+	this->onClickListener.setCallback(f);
+	this->onClick.subscribe(&this->onClickListener);
+}
 
-	if (this->image == NULL)
-	{
-		this->image = new vbImage(tex);
-		this->width = (FLOAT)tex->width;
-		this->height = (FLOAT)tex->height;
-		this->image->positioningRule = posRule::POS_CANVAS_RELATIVE;
-		this->image->regPointRule = transformRegRule::REG_CENTER;
-		this->image->position = { 0,0 };
-		this->addObject(this->image);
-	}
-	else
-		this->image->setTexture(tex);
+void vbButton::bindOnMouseOver(std::function<void(vbButton*)> f)
+{
+	this->onMouseOverListener.setCallback(f);
+	this->onMouseOver.subscribe(&this->onMouseOverListener);
+}
+
+void vbButton::bindOnMouseOut(std::function<void(vbButton*)> f)
+{
+	this->onMouseOutListener.setCallback(f);
+	this->onMouseOut.subscribe(&this->onMouseOutListener);
+}
+
+void vbButton::useDefaultHolderEffect(float percent)
+{
+	this->bindOnMouseOver([=](vbButton* b)
+		{
+			if ((b->image->colour.r == b->image->fallbackColour.r) &&
+				(b->image->colour.g == b->image->fallbackColour.g) &&
+				(b->image->colour.b == b->image->fallbackColour.b))
+			{
+				b->image->colour = ColorTurnOffPercent(b->image->colour, percent);
+			}
+		});
+	this->bindOnMouseOut([=](vbButton* b)
+		{
+			b->image->colour = b->image->fallbackColour;
+		});
 }
