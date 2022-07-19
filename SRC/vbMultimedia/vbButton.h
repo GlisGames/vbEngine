@@ -41,7 +41,9 @@ private:
 public:
 	vbButton();
 	~vbButton();
+	/* Specify button's size by Rectangle */
 	explicit vbButton(hwButton bID, Rectangle rect, Color c = WHITE, vbString stext = "");
+	/* Specify button's size by Sprite Texture */
 	explicit vbButton(hwButton bID, vbSpriteTexture* tex, Vector2 position, Color c = WHITE, vbString stext = "");
 	virtual void setup();
 	virtual void update();

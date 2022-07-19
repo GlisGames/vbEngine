@@ -62,13 +62,13 @@ void vbButton::init(hwButton bID, vbSpriteTexture* tex, Rectangle rect, Color c,
 	this->position = { rect.x, rect.y };
 	this->width = rect.width;
 	this->height = rect.height;
+
 	this->setImage(tex);
 	this->setText(stext);
-	if (this->image != NULL)
-	{
-		this->image->fallbackColour = c;
-		this->image->colour = this->image->fallbackColour;
-	}
+	// after setImage(), this->image is always not null.
+	this->image->fallbackColour = c;
+	this->image->colour = this->image->fallbackColour;
+
 	this->isClickable = TRUE;
 	this->buttonID = bID;
 }
@@ -95,8 +95,6 @@ void vbButton::setImage(vbSpriteTexture* tex)
 	if (this->image == NULL)
 	{
 		this->image = new vbImage(tex);
-		this->width = (FLOAT)tex->width;
-		this->height = (FLOAT)tex->height;
 		this->image->positioningRule = posRule::POS_CANVAS_RELATIVE;
 		this->image->regPointRule = transformRegRule::REG_CENTER;
 		this->image->position = { 0,0 };
