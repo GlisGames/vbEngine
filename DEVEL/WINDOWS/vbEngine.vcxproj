@@ -325,26 +325,26 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>vbEngine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>vbEngine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>vbEngine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>vbEngine</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -365,11 +365,8 @@
       <AdditionalLibraryDirectories>$(SolutionDir)..\BIN\;$(SolutionDir)bin\$(Platform)\$(Configuration)\;$(SolutionDir)..\SRC\lib\dlfcn;$(SolutionDir)..\SRC\lib\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.exe" "$(SolutionDir)..\BIN"
-COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.lib" "$(SolutionDir)..\BIN"
-COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.dll" "$(SolutionDir)..\BIN"
-COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.pdb" "$(SolutionDir)..\BIN"
-</Command>
+      <Command>MOVE "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.lib" "$(SolutionDir)..\SRC\lib"
+MOVE "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.pdb" "$(SolutionDir)..\SRC\lib"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -390,11 +387,8 @@ COPY "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.pdb" "$(SolutionDir)..\BI
       <AdditionalLibraryDirectories>$(SolutionDir)..\BIN\;$(SolutionDir)bin\$(Platform)\$(Configuration)\;$(SolutionDir)..\SRC\lib\dlfcn;$(SolutionDir)..\SRC\lib\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\$(TargetFileName) $(SolutionDir)\..\bin\
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.lib $(SolutionDir)\..\bin
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.dll $(SolutionDir)\..\bin
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.pdb $(SolutionDir)\..\bin
-</Command>
+      <Command>MOVE "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.lib" "$(SolutionDir)..\SRC\lib"
+MOVE "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.pdb" "$(SolutionDir)..\SRC\lib"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -418,11 +412,8 @@ COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.pdb $(SolutionDir)\..\bin
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winmm.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;vbEngine.lib;dlfcnWin.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\$(TargetFileName) $(SolutionDir)\..\bin\
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.lib $(SolutionDir)\..\bin
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.dll $(SolutionDir)\..\bin
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.pdb $(SolutionDir)\..\bin
-</Command>
+      <Command>MOVE "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.lib" "$(SolutionDir)..\SRC\lib"
+MOVE "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.pdb" "$(SolutionDir)..\SRC\lib"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -446,11 +437,8 @@ COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.pdb $(SolutionDir)\..\bin
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winmm.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;vbEngine.lib;dlfcnWin.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\$(TargetFileName) $(SolutionDir)\..\bin\
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.lib $(SolutionDir)\..\bin
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.dll $(SolutionDir)\..\bin
-COPY $(SolutionDir)\bin\$(Platform)\$(Configuration)\*.pdb $(SolutionDir)\..\bin
-</Command>
+      <Command>MOVE "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.lib" "$(SolutionDir)..\SRC\lib"
+MOVE "$(SolutionDir)bin\$(Platform)\$(Configuration)\*.pdb" "$(SolutionDir)..\SRC\lib"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
