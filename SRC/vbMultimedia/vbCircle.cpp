@@ -1,14 +1,15 @@
 #include "vbCircle.h"
 
 vbCircle::vbCircle(Vector2 _center, float _radius)
-	: radius(_radius)
+	:radius(_radius)
 {
+	position = _center;
 }
 
 vbCircle::vbCircle(const vbCircle& circle)
 	:radius(circle.radius)
 {
-
+	position = circle.position;
 }
 
 vbCircle& vbCircle::operator=(const vbCircle& circle)
@@ -34,6 +35,9 @@ void vbCircle::update()
 void vbCircle::draw()
 {
 	vbGraphicObject::draw();
-	DrawCircleV(this->transformed.position, this->radius * this->transformed.scale, this->transformed.colour);
+	DrawCircleV(
+		this->transformed.position,
+		this->radius * this->transformed.scale,
+		this->transformed.colour);
 }
 

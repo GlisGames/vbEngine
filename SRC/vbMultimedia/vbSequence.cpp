@@ -83,6 +83,12 @@ bool vbSequence::isFinished()
 	return false;
 }
 
+void vbSequence::stepTo(WORD frame)
+{
+	if(frame < this->seqList->size())
+		this->setTexture(this->seqList->at(frame));
+}
+
 void vbSequence::stepAnim()
 {
 	if (this->enabled == FALSE || this->seqList == NULL || this->frameFreq == 0)

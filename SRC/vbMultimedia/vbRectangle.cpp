@@ -46,9 +46,9 @@ void vbRectangle::draw()
 {
 	vbGraphicObject::draw();
 	DrawRectanglePro(
-		{ this->position.x, this->position.y,  (FLOAT)this->width, (FLOAT)this->height },
-		{ 0,0 },
-		this->rotation, 
-		this->colour
+		{ this->transformed.position.x, this->transformed.position.y, (FLOAT)this->transformed.width, (FLOAT)this->transformed.height },
+		{ 0, 0 },
+		this->transformed.rotation,
+		this->transformed.colour
 	);
 }

@@ -34,6 +34,7 @@ public:
 	void stopAnim();
 	void stepAnim();
 	bool isFinished();
+	void stepTo(WORD frame);
 };
 
 // vbSequenceMap

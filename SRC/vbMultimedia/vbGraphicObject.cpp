@@ -19,29 +19,29 @@ void vbGraphicObject::update()
 		BREAKPOINT;
 	this->tweens.stepAll();
 
-	this->transformed.position = _calculateAbsolutePosition();
-	if (this->parentContainer != NULL && this->inheritTransformations == TRUE)
+	if (this->inheritTransformations == TRUE)
 	{
-		this->transformed.scale = this->scale * this->parentContainer->transformed.scale;
-		this->transformed.rotation = this->rotation + this->parentContainer->transformed.rotation;
-
-		if (this->parentContainer->colour.a != 255 || this->parentContainer->colour.r != 255 ||
-			this->parentContainer->colour.g != 255 || this->parentContainer->colour.b != 255)
-			this->transformed.colour = colorApplyFilter(this->colour, this->parentContainer->colour);
-		else
-			this->transformed.colour = this->colour;
-
-		this->transformed.width = this->width * this->transformed.scale;
-		this->transformed.height = this->height * this->transformed.scale;
-
-		this->transformed.visible = this->parentContainer->transformed.visible;
-		if (this->regPointRule == transformRegRule::REG_CENTER && (this->parentContainer->transformed.scale != this->transformed.scale || this->parentContainer->regPointRule == transformRegRule::REG_TOP_LEFT))
+		if (this->parentContainer != NULL)
 		{
-			this->transformed.position =
-			{ this->transformed.position.x + (((float)this->width * 0.5f) * (1.0f - this->transformed.scale))
-			, this->transformed.position.y + (((float)this->height * 0.5f) * (1.0f - this->transformed.scale)) };
+			this->transformed.scale = this->scale * this->parentContainer->transformed.scale;
+			this->transformed.rotation = this->rotation + this->parentContainer->transformed.rotation;
+
+			if (this->parentContainer->colour.a != 255 || this->parentContainer->colour.r != 255 ||
+				this->parentContainer->colour.g != 255 || this->parentContainer->colour.b != 255)
+				this->transformed.colour = colorApplyFilter(this->colour, this->parentContainer->colour);
+			else
+				this->transformed.colour = this->colour;
+
+			this->transformed.width = this->width * this->transformed.scale;
+			this->transformed.height = this->height * this->transformed.scale;
+
+			this->transformed.visible = this->parentContainer->transformed.visible;
 		}
+
+		this->transformed.position = getAbsolutePositionTransformed();
 	}
+	else
+		this->transformed.position = getAbsolutePosition();
 }
 
 
@@ -217,7 +217,9 @@ WORD vbGraphicObject::getLayer()
 Vector2 vbGraphicObject::getAbsolutePosition()
 {
 	Vector2 pos = { 0, 0 };
-	//Calculate the right position according to the positioning role
+	vbContainer* pc = this->parentContainer;
+
+	// Calculate the right position according to the positioning role
 	if (this->positioningRule == posRule::POS_ABSOLUTE)
 		pos = this->position;
 	else if (this->positioningRule == posRule::POS_PIVOT_RELATIVE)
@@ -227,41 +229,6 @@ Vector2 vbGraphicObject::getAbsolutePosition()
 	}
 	else if (this->positioningRule == posRule::POS_CANVAS_RELATIVE)
 	{
-		vbContainer* pc = this->parentContainer;
-		if (pc == NULL)
-			pos = this->position;
-		else
-		{
-			Vector2 parentPos = pc->getAbsolutePosition();
-			pos.x = this->position.x + parentPos.x;
-			pos.y = this->position.y + parentPos.y;
-		}
-	}
-	else
-		pos = this->position;
-
-	if (this->useCenterCoordinates == TRUE)
-	{
-		pos.x = this->position.x - (this->width / 2);
-		pos.y = this->position.y - (this->height / 2);
-	}
-	return pos;
-}
-
-Vector2 vbGraphicObject::_calculateAbsolutePosition()
-{
-	Vector2 pos = { 0, 0 };
-	//Calculate the right position according to the positioning role
-	if (this->positioningRule == posRule::POS_ABSOLUTE)
-		pos = this->position;
-	else if (this->positioningRule == posRule::POS_PIVOT_RELATIVE)
-	{
-		pos.x = this->position.x + this->pivot.x;
-		pos.y = this->position.y + this->pivot.y;
-	}
-	else if (this->positioningRule == posRule::POS_CANVAS_RELATIVE)
-	{
-		vbContainer* pc = this->parentContainer;
 		if (pc == NULL)
 			pos = this->position;
 		else
@@ -279,6 +246,49 @@ Vector2 vbGraphicObject::_calculateAbsolutePosition()
 		pos.x = this->position.x - (this->width / 2);
 		pos.y = this->position.y - (this->height / 2);
 	}
+	return pos;
+}
+
+Vector2 vbGraphicObject::getAbsolutePositionTransformed()
+{
+	Vector2 pos = { 0, 0 };
+	vbContainer* pc = this->parentContainer;
+
+	// Calculate the right position according to the positioning role
+	if (this->positioningRule == posRule::POS_ABSOLUTE)
+		pos = this->position;
+	else if (this->positioningRule == posRule::POS_PIVOT_RELATIVE)
+	{
+		pos.x = this->position.x + this->pivot.x;
+		pos.y = this->position.y + this->pivot.y;
+	}
+	else if (this->positioningRule == posRule::POS_CANVAS_RELATIVE)
+	{
+		if (pc == NULL)
+			pos = this->position;
+		else
+		{
+			Vector2 parentPos = pc->transformed.position;
+			pos.x = this->position.x * this->transformed.scale + parentPos.x;
+			pos.y = this->position.y * this->transformed.scale + parentPos.y;
+		}
+	}
+	else
+		pos = this->position;
+
+	if (this->useCenterCoordinates == TRUE)
+	{
+		pos.x = this->position.x - (this->width / 2);
+		pos.y = this->position.y - (this->height / 2);
+	}
+
+	if ((pc != NULL) && (this->regPointRule == transformRegRule::REG_CENTER)
+		&& (pc->transformed.scale != this->transformed.scale || pc->regPointRule == transformRegRule::REG_TOP_LEFT))
+	{
+		pos.x += ((float)this->width * 0.5f) * (1.f - this->transformed.scale);
+		pos.y += ((float)this->height * 0.5f) * (1.f - this->transformed.scale);
+	}
+
 	return pos;
 }
 

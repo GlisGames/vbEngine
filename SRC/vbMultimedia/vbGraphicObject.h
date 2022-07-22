@@ -67,7 +67,7 @@ class vbProperties
 class vbGraphicObject: public vbGameObject, public vbProperties
 {
 private:
-	Vector2 _calculateAbsolutePosition();
+	//Vector2 _calculateAbsolutePosition();
 	// Layers get printed from the smallest to the highest
 	// means that layer 0 is printer on the back of layer 1
 	// layer with the highest value gets printed on top
@@ -100,6 +100,7 @@ public:
 	vbTween* addtween(const char* name, vbTween tw) { return this->tweens.addtween(name, tw); };
 	std::string name;
 	Vector2 getAbsolutePosition();
+	Vector2 getAbsolutePositionTransformed();
 	WORD getLayer();
 	BOOL inheritTransformations = TRUE;
 	Vector2 pivot = { 0,0 };

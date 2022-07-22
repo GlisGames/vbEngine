@@ -101,7 +101,7 @@ class vbTweenMap : public std::map<string, vbTween>
 {
 public:
 	template <typename T>
-	vbTween* addtween(string name, T* value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twYoyo, EasingFunction easingFunction = LinearInterpolation, int numRepeats = 0, tween_callback callback = NULL)
+	vbTween* addtween(string name, T* value, FLOAT Start_p, FLOAT Stop_p, DWORD TOTsteps, tweenRepeat loop = twYoyo, EasingFunction easingFunction = LinearInterpolation, int numRepeats = -1, tween_callback callback = NULL)
 	{
 		//FIXME solve conflicting names inside the map
 		this->insert(std::pair<string, vbTween>(name, vbTween(value, Start_p, Stop_p, TOTsteps, loop, easingFunction, numRepeats, callback)));
