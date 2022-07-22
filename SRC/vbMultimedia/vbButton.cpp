@@ -78,16 +78,24 @@ vbButton::vbButton() : vbContainer(0, 0)
 	this->init(hwButton::BUTTON_NONE, NULL, { 0,0,0,0 });
 }
 
-vbButton::vbButton(hwButton bID, vbSpriteTexture* tex, Vector2 position, Color c, vbString stext)
+vbButton::vbButton(hwButton bID, vbSpriteTexture* tex, Vector2 position, Color c, vbString stext, BOOL defaultEffect)
 	:vbContainer(tex->width, tex->height)
 {
 	this->init(bID, tex, { position.x, position.y, (FLOAT)tex->width, (FLOAT)tex->height }, c, stext);
+	if (defaultEffect == TRUE)
+	{
+		this->useDefaultHolderEffect(70.f);
+	}
 }
 
-vbButton::vbButton(hwButton bID, Rectangle rect, Color c, vbString stext)
+vbButton::vbButton(hwButton bID, Rectangle rect, Color c, vbString stext, BOOL defaultEffect)
 	:vbContainer(rect.width, rect.height)
 {
 	this->init(bID, NULL, rect, c, stext);
+	if (defaultEffect == TRUE)
+	{
+		this->useDefaultHolderEffect(70.f);
+	}
 }
 
 void vbButton::setImage(vbSpriteTexture* tex)

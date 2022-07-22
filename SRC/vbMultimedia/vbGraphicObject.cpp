@@ -269,8 +269,8 @@ Vector2 vbGraphicObject::getAbsolutePositionTransformed()
 		else
 		{
 			Vector2 parentPos = pc->transformed.position;
-			pos.x = this->position.x * this->transformed.scale + parentPos.x;
-			pos.y = this->position.y * this->transformed.scale + parentPos.y;
+			pos.x = this->position.x * pc->transformed.scale + parentPos.x;
+			pos.y = this->position.y * pc->transformed.scale + parentPos.y;
 		}
 	}
 	else
